@@ -21,31 +21,11 @@ import org.newdawn.slick.util.ResourceLoader;
 public class main {
 	
 	// Store variables
-	boolean exit_store;
-	
-	float final_total;
-	
-	float peanuts_amount;
-	int book_amount;
-	int movie_amount;
-	
-	// Store items declared
-	item peanuts;
-	item book;
-	item movie;
-		
-	// Price constants
-	final float PEANUTS_PRICE = 1.8f;
-	final float BOOK_PRICE = 9f;
-	final float MOVIE_PRICE = 14.99f;
-	
-	final float PEANUTS_SHIPPING_PRICE = 0.5f;
-	final float MOVIE_SHIPPING_PERCENTAGE = 5;
-	final float BOOK_SHIPPING_PRICE = 1.03f;
+	boolean exit;
 	
 	// Window size
-	int width = 800;
-	int height = 600;
+	int width = 320;
+	int height = 240;
 	
 	// Declaring the background image
 	private Texture background;
@@ -81,10 +61,7 @@ public class main {
 		try{
 		
 			background = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("background.png"));
-			
-			peanuts = new item(405,377,0.1,TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("peanuts.png")));
-			book = new item(510,395,1,TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("book.png")));
-			movie = new item(575,387,1,TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("movie.png")));
+		
 			
 
 		
@@ -148,10 +125,8 @@ public class main {
 	    	
 	    // Handles exit button
 	    if(location_clicked(160,300,380,600))
-	    	exit_store=true;
+	    	exit=true;
 	    
-	    // Calculate the total cost for all items
-	    final_total = ((PEANUTS_SHIPPING_PRICE*peanuts_amount)+(PEANUTS_PRICE*peanuts_amount))+((BOOK_SHIPPING_PRICE*book_amount)+(book_amount*BOOK_PRICE))+(((MOVIE_SHIPPING_PERCENTAGE/100)*(movie_amount*MOVIE_PRICE))+(movie_amount*MOVIE_PRICE));
 	    
 	    // update FPS Counter
 	    updateFPS(); 
@@ -213,7 +188,7 @@ public class main {
 	    loadImage();
 			
 	    // Runs update when the program has not been exited
-	    while (!Display.isCloseRequested() && !exit_store) {
+	    while (!Display.isCloseRequested() && !exit) {
 	        int delta = getDelta();
 	        	
 	        	
@@ -225,9 +200,7 @@ public class main {
 	        
 	        // Draw everything to the screen
 	        drawTexture(background,0,0);
-	        peanuts.drawTexture();
-	        book.drawTexture();
-	        movie.drawTexture();
+	 
 	    		
 	        font2.drawString(690,360, "Left click", Color.blue);
 	    	font2.drawString(690,385, "to buy", Color.blue);
@@ -239,30 +212,12 @@ public class main {
 	   		font2.drawString(150,320, "Welcome to Danny's Assorted Goods Market!", Color.black);
 	   		font2.drawString(400,470, "Peanuts    Book     Movie", Color.black);
 	   		font2.drawString(400,495, "$1.80/lb   $9.00    $14.99", Color.black);
-	   		font2.drawString(360,520, "Qty: " + String.format("%.1f",peanuts_amount) + " lb", Color.black);
-    		font2.drawString(520,520, book_amount + "", Color.black);
-	    	font2.drawString(604,520, movie_amount + "", Color.black);
-	    	font2.drawString(360,545, "Total: $" + String.format("%.2f",final_total), Color.red);
+	   	
 	    		
 	    	// Run the update loop to get mouse information and exit status
 	    	update(delta);
 	    	
-	    	// With the new mouse information, we send it to the item object
-	    	peanuts.setMouseValues(mouse_x, mouse_y, leftButtonDown, rightButtonDown);
-	    	
-	    	// item.update checks for mouse clicks, and returns the amount changed
-	    	peanuts_amount+=peanuts.update();
-	    	
-	    	// No negative values for what is bought
-	    	if(peanuts_amount<0.0)peanuts_amount=0.0f;
-	    		
-	    	book.setMouseValues(mouse_x, mouse_y, leftButtonDown, rightButtonDown);
-	    	book_amount+=book.update();
-	    	if(book_amount<0.0)book_amount=0;
-	    		
-	    	movie.setMouseValues(mouse_x, mouse_y, leftButtonDown, rightButtonDown);
-	    	movie_amount+=movie.update();
-	    	if(movie_amount<0.0)movie_amount=0;
+	 
 	    	
 	    	Display.update();
 	        
