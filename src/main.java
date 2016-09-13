@@ -20,6 +20,7 @@ import org.newdawn.slick.util.ResourceLoader;
 @SuppressWarnings("deprecation")
 public class main {
 	
+	Character MainCharacter;
 	// Store variables
 	boolean exit;
 	
@@ -60,8 +61,7 @@ public class main {
 	public void loadImage(){
 		try{
 		
-			background = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("background.png"));
-		
+			background = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("background.png"),GL11.GL_NEAREST);
 			
 
 		
@@ -117,7 +117,7 @@ public class main {
 	    mouse_y = Mouse.getY(); 
 	    
 	    // Convert mouse to 0,0 at top left of the window
-	    mouse_y=600-mouse_y;
+	    mouse_y=240-mouse_y;
 	    
 	    // Get mouse buttons
 	    leftButtonDown = Mouse.isButtonDown(0);
@@ -133,7 +133,7 @@ public class main {
 	}
 	
 	// Draw a texture object to the screen
-	public void drawTexture(Texture newTexture,int x, int y){
+	public void draw_texture(Texture newTexture,int x, int y){
 		
 		newTexture.bind();
 	    
@@ -156,8 +156,11 @@ public class main {
 	   
 		// Trys to setup displays
 	    try {
-	        Display.setDisplayMode(new DisplayMode(width,height));
+	        //Display.setDisplayMode(new DisplayMode(width,height));
+	        //Display.setFullscreen(true);
+	        Display.setDisplayModeAndFullscreen(Display.getDesktopDisplayMode());
 	        Display.create();
+	        Keyboard.create();
 	    } catch (LWJGLException e) {
 	        e.printStackTrace();
 	        System.exit(0);
@@ -186,9 +189,17 @@ public class main {
 		// Load our data
 	    loadFont();
 	    loadImage();
+	    
+	    //Setup game data
+	    MainCharacter = new Character(0,Keyboard.KEY_LEFT,Keyboard.KEY_RIGHT,Keyboard.KEY_UP,Keyboard.KEY_DOWN);
 			
 	    // Runs update when the program has not been exited
 	    while (!Display.isCloseRequested() && !exit) {
+	    	
+	    	Keyboard.poll();
+	    	if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE))
+	    		exit=true;
+	    	
 	        int delta = getDelta();
 	        	
 	        	
@@ -199,23 +210,15 @@ public class main {
 	        Color.white.bind();
 	        
 	        // Draw everything to the screen
-	        drawTexture(background,0,0);
+	        draw_texture(background,0,0);
 	 
-	    		
-	        font2.drawString(690,360, "Left click", Color.blue);
-	    	font2.drawString(690,385, "to buy", Color.blue);
-	    		
-	   		font2.drawString(690,420, "Right click", Color.blue);
-	   		font2.drawString(690,445, "to return", Color.blue);
-
-	    	font2.drawString(210,520, "Exit", Color.black);
-	   		font2.drawString(150,320, "Welcome to Danny's Assorted Goods Market!", Color.black);
-	   		font2.drawString(400,470, "Peanuts    Book     Movie", Color.black);
-	   		font2.drawString(400,495, "$1.80/lb   $9.00    $14.99", Color.black);
-	   	
+	  
 	    		
 	    	// Run the update loop to get mouse information and exit status
 	    	update(delta);
+	    	MainCharacter.update();
+	    	MainCharacter.draw();
+	    	
 	    	
 	 
 	    	
