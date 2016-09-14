@@ -66,6 +66,22 @@ public class Character {
 		
 		
 	}
+	public int getX(){
+		return x;
+	}
+	
+	public int getY(){
+		return y;
+	}
+	
+	public void setX(int newX){
+		x = newX;
+	}
+	
+	public void setY(int newY){
+		y = newY;
+	}
+	
 	public void update(int delta){
 		if(Keyboard.isKeyDown(key_left)){
 			x-=speed;

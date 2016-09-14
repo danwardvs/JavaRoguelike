@@ -20,22 +20,15 @@ import org.newdawn.slick.util.ResourceLoader;
 @SuppressWarnings("deprecation")
 public class main {
 	
-	Character MainCharacter;
+	Character gameCharacter;
+	World gameWorld;
+	
 	// Store variables
 	boolean exit;
 	
 	// Window size
 	int width = 320;
 	int height = 240;
-	
-	// Declaring the background image
-	private Texture background;
-	
-	// Declaring the font 
-    private TrueTypeFont font2;
-     
-    // Should the text be aliased?
-    private boolean antiAlias = true;
 	
     // Mouse position variables
 	int mouse_x;
@@ -55,34 +48,6 @@ public class main {
 	    if(mouse_x>min_x && mouse_x<max_x && mouse_y>min_y && mouse_y<max_y && leftButtonDown)
 	        return true;
 	    else return false;
-	}
-	
-	//Loads images from file and declares the items with their properties
-	public void loadImage(){
-		try{
-		
-			background = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("background.png"),GL11.GL_NEAREST);
-			
-
-		
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	// Load font from file
-	public void loadFont(){
-		
-        try {
-            InputStream inputStream = ResourceLoader.getResourceAsStream("OpenSans-Regular.ttf");
-             
-            Font awtFont2 = Font.createFont(Font.TRUETYPE_FONT, inputStream);
-            awtFont2 = awtFont2.deriveFont(24f); // set font size
-            font2 = new TrueTypeFont(awtFont2, antiAlias);
-             
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 	}
 	
 	// Calculate and display FPS
@@ -132,23 +97,7 @@ public class main {
 	    updateFPS(); 
 	}
 	
-	// Draw a texture object to the screen
-	public void draw_texture(Texture newTexture,int x, int y){
-		
-		newTexture.bind();
-	    
-		// Draw the texture using 4 verts
-	    GL11.glBegin(GL11.GL_QUADS);
-	    	GL11.glTexCoord2f(0,0);
-	    	GL11.glVertex2f(x,y);
-	    	GL11.glTexCoord2f(1,0);
-	    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y);
-	    	GL11.glTexCoord2f(1,1);
-	    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y+newTexture.getTextureHeight());
-	    	GL11.glTexCoord2f(0,1);
-	    	GL11.glVertex2f(x,y+newTexture.getTextureHeight());
-	    GL11.glEnd();
-	}
+	
 	
 	@SuppressWarnings("deprecation")
 	// Runs once when program starts up
@@ -186,13 +135,10 @@ public class main {
 		GL11.glOrtho(0, width, height, 0, 1, -1);
 		GL11.glMatrixMode(GL11.GL_MODELVIEW);
 	    
-		// Load our data
-	    loadFont();
-	    loadImage();
-	    
 	    //Setup game data
-	    MainCharacter = new Character(0,Keyboard.KEY_LEFT,Keyboard.KEY_RIGHT,Keyboard.KEY_UP,Keyboard.KEY_DOWN,Keyboard.KEY_A,Keyboard.KEY_D,Keyboard.KEY_W,Keyboard.KEY_S);
-			
+	    gameCharacter = new Character(0,Keyboard.KEY_LEFT,Keyboard.KEY_RIGHT,Keyboard.KEY_UP,Keyboard.KEY_DOWN,Keyboard.KEY_A,Keyboard.KEY_D,Keyboard.KEY_W,Keyboard.KEY_S);
+		gameWorld = new World(gameCharacter,0,0);
+	    
 	    // Runs update when the program has not been exited
 	    while (!Display.isCloseRequested() && !exit) {
 	    	
@@ -210,14 +156,17 @@ public class main {
 	        Color.white.bind();
 	        
 	        // Draw everything to the screen
-	        draw_texture(background,0,0);
+	        gameWorld.update();
+	        gameWorld.draw();
+	        
+	        
 	 
 	  
 	    		
 	    	// Run the update loop to get mouse information and exit status
 	    	update(delta);
-	    	MainCharacter.update(delta);
-	    	MainCharacter.draw();
+	    	gameCharacter.update(delta);
+	    	gameCharacter.draw();
 	    	
 	    	
 	 
