@@ -191,7 +191,7 @@ public class main {
 	    loadImage();
 	    
 	    //Setup game data
-	    MainCharacter = new Character(0,Keyboard.KEY_LEFT,Keyboard.KEY_RIGHT,Keyboard.KEY_UP,Keyboard.KEY_DOWN);
+	    MainCharacter = new Character(0,Keyboard.KEY_LEFT,Keyboard.KEY_RIGHT,Keyboard.KEY_UP,Keyboard.KEY_DOWN,Keyboard.KEY_A,Keyboard.KEY_D,Keyboard.KEY_W,Keyboard.KEY_S);
 			
 	    // Runs update when the program has not been exited
 	    while (!Display.isCloseRequested() && !exit) {
@@ -216,7 +216,7 @@ public class main {
 	    		
 	    	// Run the update loop to get mouse information and exit status
 	    	update(delta);
-	    	MainCharacter.update();
+	    	MainCharacter.update(delta);
 	    	MainCharacter.draw();
 	    	
 	    	
