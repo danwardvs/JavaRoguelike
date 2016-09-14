@@ -14,8 +14,14 @@ public class Character {
 	int key_right;
 	int key_up;
 	int key_down;
+	int speed = 2;
+	boolean direction = false;
+	int state;
 	
-	Texture texture;
+	Texture texture_attack_up;
+	Texture texture_attack_forward;
+	Texture texture_attack_down;
+	Texture texture_idle;
 	
 	public Character(int newCharacterIndex,int newLeft,int newRight, int newUp, int newDown){
 		character_index = newCharacterIndex;
@@ -29,8 +35,14 @@ public class Character {
 	void load_images(){
 		try{
 			
-			texture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("CharacterAttackForward.png"),GL11.GL_NEAREST);
-			//texture.setTextureFilter(arg0);
+			texture_attack_up = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("CharacterAttackUp.png"),GL11.GL_NEAREST);
+
+			texture_attack_down = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("CharacterAttackDown.png"),GL11.GL_NEAREST);
+
+			texture_attack_forward = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("CharacterAttackForward.png"),GL11.GL_NEAREST);
+			
+			texture_idle = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("CharacterIdle.png"),GL11.GL_NEAREST);
+
 			
 
 		
@@ -42,41 +54,64 @@ public class Character {
 	}
 	public void update(){
 		if(Keyboard.isKeyDown(key_left)){
-			x-=5;
+			x-=speed;
+			direction=false;
 		}
 		if(Keyboard.isKeyDown(key_right)){
-			x+=5;
+			x+=speed;
+			direction=true;
 		}
 		
 		if(Keyboard.isKeyDown(key_up)){
-			y-=5;
+			y-=speed;
 		}
 		if(Keyboard.isKeyDown(key_down)){
-			y+=5;
+			y+=speed;
 		}
 		
 		
 	}
 	
 	public void draw(){
-		draw_texture(texture);
+		draw_texture(texture_attack_up,direction);
 	}
 	
 	// Draws the texture to the screen
-	void draw_texture(Texture newTexture){
+	void draw_texture(Texture newTexture, boolean isFlipped){
 		
-		texture.bind();
-		            
+		newTexture.bind();
+		GL11.glPushMatrix();
+		GL11.glLoadIdentity();
+		
+		//GL11.glScalef(1, 1, 1);
 		GL11.glBegin(GL11.GL_QUADS);
+		
+		
 	   		GL11.glTexCoord2f(0,0);
 	   		GL11.glVertex2f(x,y);
-		    	GL11.glTexCoord2f(1,0);
-		    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y);
-		    	GL11.glTexCoord2f(1,1);
-		    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y+texture.getTextureHeight());
-		    	GL11.glTexCoord2f(0,1);
-		    	GL11.glVertex2f(x,y+newTexture.getTextureHeight());
+	   			if(isFlipped){
+			    	GL11.glTexCoord2f(1,0);
+			    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y);
+			    	GL11.glTexCoord2f(1,1);
+			    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y+texture.getTextureHeight());
+			    	GL11.glTexCoord2f(0,1);
+			    	GL11.glVertex2f(x,y+newTexture.getTextureHeight());
+	   			}
+	   			if(!isFlipped){
+	   				GL11.glTexCoord2f(-1,0);
+			    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y);
+			    	GL11.glTexCoord2f(-1,1);
+			    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y+texture.getTextureHeight());
+			    	GL11.glTexCoord2f(0,1);
+			    	GL11.glVertex2f(x,y+newTexture.getTextureHeight());
+	   				
+	   			}
+		    	
 		    GL11.glEnd();
-		 }	
+		 
+		    GL11.glPopMatrix();
+		    
+		}
+		
 	
 }
