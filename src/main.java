@@ -137,7 +137,7 @@ public class main {
 	    
 	    //Setup game data
 	    gameCharacter = new Character(0,Keyboard.KEY_LEFT,Keyboard.KEY_RIGHT,Keyboard.KEY_UP,Keyboard.KEY_DOWN,Keyboard.KEY_A,Keyboard.KEY_D,Keyboard.KEY_W,Keyboard.KEY_S);
-		gameWorld = new World(gameCharacter,0,0);
+		gameWorld = new World(gameCharacter,1,1);
 	    
 	    // Runs update when the program has not been exited
 	    while (!Display.isCloseRequested() && !exit) {

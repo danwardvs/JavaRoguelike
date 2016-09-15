@@ -12,12 +12,17 @@ public class World {
 	Character gameCharacter;
 	
 	Texture[][] background = new Texture[5][5];
+	boolean location_exists[][] = new boolean[5][5];
+	
 	
 	
 	public World(Character newCharacter,int newX, int newY){
 		x = newX;
 		y = newY;
 		gameCharacter = newCharacter;
+		
+		location_exists[1][1] = true;
+		location_exists[2][1] = true;
 		
 		load_images();
 		
@@ -26,8 +31,8 @@ public class World {
 	void load_images(){
 		try{
 			
-			background[0][0] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("background_0_0.png"),GL11.GL_NEAREST);
-			background[1][0] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("background_1_0.png"),GL11.GL_NEAREST);
+			background[1][1] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("background_0_0.png"),GL11.GL_NEAREST);
+			background[2][1] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("background_1_0.png"),GL11.GL_NEAREST);
 
 			
 		} catch (IOException e) {
@@ -41,12 +46,22 @@ public class World {
 	}
 	public void update(){
 		if(gameCharacter.getX()>304){
-			x+=1;
-			gameCharacter.setX(0);
+			if(location_exists[x+1][y]){
+				x+=1;
+				gameCharacter.setX(0);
+			}
+			else{
+				gameCharacter.setX(304);
+			}
 		}
 		if(gameCharacter.getX()<0){
-			x-=1;
-			gameCharacter.setX(304);
+			if(location_exists[x-1][y]){
+				x-=1;
+				gameCharacter.setX(304);
+			}
+			else{
+				gameCharacter.setX(0);
+			}
 		}
 	}
 	
