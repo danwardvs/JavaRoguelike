@@ -23,6 +23,10 @@ public class Character {
 	int attack_timer=0;
 	
 	int speed = 2;
+	int walk_step=0;
+	int walk_step_speed=5;
+	int move_x=0;
+	int move_y=0;
 	boolean direction = false;
 	int state=1;
 	
@@ -83,21 +87,35 @@ public class Character {
 	}
 	
 	public void update(int delta){
+		
+		walk_step++;
+	
+		move_x=0;
+		move_y=0;
 		if(Keyboard.isKeyDown(key_left)){
-			x-=speed;
 			direction=true;
+			move_x=-speed;
 		}
 		if(Keyboard.isKeyDown(key_right)){
-			x+=speed;
+			move_x=speed;
 			direction=false;
 		}
 		
 		if(Keyboard.isKeyDown(key_up)){
-			y-=speed;
+			move_y=-speed;
+		
 		}
+		
 		if(Keyboard.isKeyDown(key_down)){
-			y+=speed;
+			move_y=speed;
+		
 		}
+		if(walk_step>=walk_step_speed){
+			x+=move_x;
+			y+=move_y;
+			walk_step=0;
+		}
+		
 		if(Keyboard.isKeyDown(key_attack_left) && attack_timer==0){
 			direction=true;
 			state=4;
@@ -121,7 +139,8 @@ public class Character {
 			state=3;
 			attack_timer=1000;
 		}
-		
+			
+			
 		if(state!=1){
 			if(attack_timer>0)
 				attack_timer-=delta;
