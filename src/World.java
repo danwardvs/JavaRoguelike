@@ -63,7 +63,27 @@ public class World {
 				gameCharacter.setX(0);
 			}
 		}
+	
+	
+	if(gameCharacter.getY()>210){
+		if(location_exists[x][y+1]){
+			y+=1;
+			gameCharacter.setY(0);
+		}
+		else{
+			gameCharacter.setY(210);
+		}
 	}
+	if(gameCharacter.getY()<-10){
+		if(location_exists[x][y-1]){
+			y-=1;
+			gameCharacter.setY(210);
+		}
+		else{
+			gameCharacter.setY(-10);
+		}
+	}
+}
 	
 	// Draw a texture object to the screen
 	void draw_texture(Texture newTexture,int x, int y){

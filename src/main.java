@@ -156,17 +156,21 @@ public class main {
 	        Color.white.bind();
 	        
 	        // Draw everything to the screen
-	        gameWorld.update();
-	        gameWorld.draw();
+	        
 	        
 	        
 	 
 	  
-	    		
+	        gameWorld.draw();	
 	    	// Run the update loop to get mouse information and exit status
 	    	update(delta);
 	    	gameCharacter.update(delta);
+	    	
+	    	
+	    	gameWorld.update();
+	    	
 	    	gameCharacter.draw();
+	       
 	    	
 	    	
 	 

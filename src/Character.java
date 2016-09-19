@@ -22,18 +22,22 @@ public class Character {
 	
 	int attack_timer=0;
 	
-	int speed = 2;
+	int attack_speed=100;
+	int speed = 1;
 	int walk_step=0;
-	int walk_step_speed=5;
+	int walk_step_speed=0;
+	int walk_frame=0;
 	int move_x=0;
 	int move_y=0;
 	boolean direction = false;
+	boolean key_pressed=false;
 	int state=1;
 	
 	Texture texture_attack_up;
 	Texture texture_attack_forward;
 	Texture texture_attack_down;
 	Texture texture_idle;
+	Texture texture_idle_step;
 	
 	public Character(int newCharacterIndex,int newLeft,int newRight, int newUp, int newDown, int newAttackLeft, int newAttackRight, int newAttackUp, int newAttackDown){
 		character_index = newCharacterIndex;
@@ -60,6 +64,8 @@ public class Character {
 			texture_attack_forward = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("CharacterAttackForward.png"),GL11.GL_NEAREST);
 						
 			texture_idle = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("CharacterIdle.png"),GL11.GL_NEAREST);
+			
+			texture_idle_step = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("CharacterIdleStep.png"),GL11.GL_NEAREST);
 
 			
 
@@ -114,32 +120,50 @@ public class Character {
 			x+=move_x;
 			y+=move_y;
 			walk_step=0;
+			
+			
 		}
 		
-		if(Keyboard.isKeyDown(key_attack_left) && attack_timer==0){
+		
+		if(Keyboard.isKeyDown(key_attack_left) && attack_timer==0 && !key_pressed){
 			direction=true;
 			state=4;
-			attack_timer=1000;
+			attack_timer=attack_speed;
+			key_pressed=true;
 		}
 		
-		if(Keyboard.isKeyDown(key_attack_right) && attack_timer==0){
+		if(Keyboard.isKeyDown(key_attack_right) && attack_timer==0 && !key_pressed){
 			direction=false;
 			state=4;
-			attack_timer=1000;
+			attack_timer=attack_speed;
+			key_pressed=true;
 		}
 		
-		if(Keyboard.isKeyDown(key_attack_up) && attack_timer==0){
+		if(Keyboard.isKeyDown(key_attack_up) && attack_timer==0 && !key_pressed){
 			
 			state=2;
-			attack_timer=1000;
+			attack_timer=attack_speed;
+			key_pressed=true;
 		}
 		
-		if(Keyboard.isKeyDown(key_attack_down) && attack_timer==0){
+		if(Keyboard.isKeyDown(key_attack_down) && attack_timer==0 && !key_pressed){
 		
 			state=3;
-			attack_timer=1000;
+			attack_timer=attack_speed;
+			key_pressed=true;
 		}
-			
+		
+		if(!Keyboard.isKeyDown(key_attack_down) && !Keyboard.isKeyDown(key_attack_up)  && !Keyboard.isKeyDown(key_attack_left)  && !Keyboard.isKeyDown(key_attack_right) ){
+			key_pressed=false;
+		}
+		
+		
+		if(move_x!=0 || move_y!=0){
+			walk_frame++;
+			if(walk_frame==11)
+				walk_frame=0;
+		}else
+			walk_frame=0;	
 			
 		if(state!=1){
 			if(attack_timer>0)
@@ -150,14 +174,18 @@ public class Character {
 			}
 		}
 		
-		
 	}
 	
 	public void draw(){
 		
 		switch(state){
-			case 1:draw_texture(texture_idle,direction);
+			case 1:
+				if(walk_frame<5)
+					draw_texture(texture_idle,direction);
+				else
+					draw_texture(texture_idle_step,direction);
 				break;
+				
 			case 2:draw_texture(texture_attack_up,direction);
 				break;
 			case 3:draw_texture(texture_attack_down,direction);
