@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.opengl.Texture;
@@ -10,6 +12,7 @@ public class World {
 	int x;
 	int y;
 	Character gameCharacter;
+	public List<Enemy> gameEnemys = new ArrayList<Enemy>();
 	
 	Texture[][] background = new Texture[5][5];
 	boolean location_exists[][] = new boolean[5][5];
@@ -25,6 +28,14 @@ public class World {
 		location_exists[2][1] = true;
 		
 		load_images();
+		
+	}
+	public void create_enemy(Enemy newEnemy){
+		gameEnemys.add(newEnemy);	
+		
+	}
+	
+	public void draw_enemy(){
 		
 	}
 	

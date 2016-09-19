@@ -8,6 +8,8 @@ import org.lwjgl.input.Mouse;
 
 import java.awt.Font;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.io.IOException;
 
 import org.newdawn.slick.opengl.Texture;
@@ -22,6 +24,8 @@ public class main {
 	
 	Character gameCharacter;
 	World gameWorld;
+	
+	
 	
 	// Store variables
 	boolean exit;
@@ -138,6 +142,9 @@ public class main {
 	    //Setup game data
 	    gameCharacter = new Character(0,Keyboard.KEY_LEFT,Keyboard.KEY_RIGHT,Keyboard.KEY_UP,Keyboard.KEY_DOWN,Keyboard.KEY_A,Keyboard.KEY_D,Keyboard.KEY_W,Keyboard.KEY_S);
 		gameWorld = new World(gameCharacter,1,1);
+		for(int i=0; i<10; i++){
+			gameWorld.create_enemy(new Enemy((int)(Math.random()*320),(int)(Math.random()*200),0));
+		}
 	    
 	    // Runs update when the program has not been exited
 	    while (!Display.isCloseRequested() && !exit) {
@@ -169,6 +176,10 @@ public class main {
 	    	
 	    	gameWorld.update();
 	    	
+	    	for(Enemy enemy: gameWorld.gameEnemys){
+	        	enemy.draw();
+	    	}
+	    	
 	    	gameCharacter.draw();
 	       
 	    	
@@ -189,8 +200,9 @@ public class main {
 	
 	// Create a new main and run it
 	public static void main(String[] args) {
+		
 		main MyMain = new main();
-		MyMain.start();
+			MyMain.start();
 		
 	}
 
