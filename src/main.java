@@ -145,6 +145,11 @@ public class main {
 		for(int i=0; i<10; i++){
 			gameWorld.create_enemy(new Enemy((int)(Math.random()*320),(int)(Math.random()*200),0));
 		}
+		
+		for(int i=0; i<10; i++){
+			gameWorld.create_item(new Item("Sword"));
+		}
+	    
 	    
 	    // Runs update when the program has not been exited
 	    while (!Display.isCloseRequested() && !exit) {
@@ -178,6 +183,9 @@ public class main {
 	    	
 	    	for(Enemy enemy: gameWorld.gameEnemys){
 	        	enemy.draw();
+	    	}
+	    	for(Item item: gameWorld.gameItems){
+	        	item.draw();
 	    	}
 	    	
 	    	gameCharacter.draw();

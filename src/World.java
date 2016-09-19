@@ -13,6 +13,7 @@ public class World {
 	int y;
 	Character gameCharacter;
 	public List<Enemy> gameEnemys = new ArrayList<Enemy>();
+	public List<Item> gameItems = new ArrayList<Item>();
 	
 	Texture[][] background = new Texture[5][5];
 	boolean location_exists[][] = new boolean[5][5];
@@ -33,6 +34,9 @@ public class World {
 	public void create_enemy(Enemy newEnemy){
 		gameEnemys.add(newEnemy);	
 		
+	}
+	public void create_item(Item newItem){
+		gameItems.add(newItem);
 	}
 	
 	public void draw_enemy(){
