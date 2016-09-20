@@ -23,12 +23,13 @@ public class Character {
 	int attack_timer=0;
 	
 	int attack_speed=100;
-	int speed = 1;
+	float speed = 0.0625f;
 	int walk_step=0;
 	int walk_step_speed=0;
 	int walk_frame=0;
 	int move_x=0;
 	int move_y=0;
+	float tick_speed;
 	boolean direction = false;
 	boolean key_pressed=false;
 	int state=1;
@@ -54,6 +55,14 @@ public class Character {
 		load_images();
 		
 	}
+	boolean collision(int x_min_1, int x_max_1, int x_min_2, int x_max_2, int y_min_1, int y_max_1, int y_min_2, int y_max_2){
+		if(x_min_1 < x_max_2 && y_min_1 < y_max_2 && x_min_2 < x_max_1 && y_min_2 < y_max_1)
+			return true;
+		else
+			return false;
+		
+	}
+	
 	void load_images(){
 		try{
 			
@@ -94,26 +103,31 @@ public class Character {
 	
 	public void update(int delta){
 		
+		System.out.println(delta);
+		System.out.println(speed);
 		walk_step++;
-	
+		if(delta==17)
+			delta=16;
+		tick_speed=delta*speed;
+		System.out.println(speed);
 		move_x=0;
 		move_y=0;
 		if(Keyboard.isKeyDown(key_left)){
 			direction=true;
-			move_x=-speed;
+			move_x=(int)-tick_speed;
 		}
 		if(Keyboard.isKeyDown(key_right)){
-			move_x=speed;
+			move_x=(int)tick_speed;
 			direction=false;
 		}
 		
 		if(Keyboard.isKeyDown(key_up)){
-			move_y=-speed;
+			move_y=(int)-tick_speed;
 		
 		}
 		
 		if(Keyboard.isKeyDown(key_down)){
-			move_y=speed;
+			move_y=(int)tick_speed;
 		
 		}
 		if(walk_step>=walk_step_speed){

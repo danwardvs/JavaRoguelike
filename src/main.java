@@ -109,7 +109,8 @@ public class main {
 	   
 		// Trys to setup displays
 	    try {
-	        //Display.setDisplayMode(new DisplayMode(width,height));
+	        //
+	    	//Display.setDisplayMode(new DisplayMode(width,height));
 	        //Display.setFullscreen(true);
 	        Display.setDisplayModeAndFullscreen(Display.getDesktopDisplayMode());
 	        Display.create();
@@ -143,12 +144,12 @@ public class main {
 	    gameCharacter = new Character(0,Keyboard.KEY_LEFT,Keyboard.KEY_RIGHT,Keyboard.KEY_UP,Keyboard.KEY_DOWN,Keyboard.KEY_A,Keyboard.KEY_D,Keyboard.KEY_W,Keyboard.KEY_S);
 		gameWorld = new World(gameCharacter,1,1);
 		for(int i=0; i<10; i++){
-			gameWorld.create_enemy(new Enemy((int)(Math.random()*320),(int)(Math.random()*200),0));
+			gameWorld.create_enemy(new Enemy((int)(Math.random()*320),(int)(Math.random()*200),1,1,0));
 		}
 		
-		for(int i=0; i<10; i++){
-			gameWorld.create_item(new Item("Sword"));
-		}
+		
+		gameWorld.create_item(new Item("Sword",100,100,1,1));
+		
 	    
 	    
 	    // Runs update when the program has not been exited
@@ -182,10 +183,10 @@ public class main {
 	    	gameWorld.update();
 	    	
 	    	for(Enemy enemy: gameWorld.gameEnemys){
-	        	enemy.draw();
+	        	enemy.draw(gameWorld.get_world_x(),gameWorld.get_world_y());
 	    	}
 	    	for(Item item: gameWorld.gameItems){
-	        	item.draw();
+	        	item.draw(gameWorld.get_world_x(),gameWorld.get_world_y());
 	    	}
 	    	
 	    	gameCharacter.draw();

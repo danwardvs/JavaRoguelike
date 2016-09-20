@@ -10,21 +10,29 @@ public class Enemy {
 	int x;
 	int y;
 	int type;
+	int world_x;
+	int world_y;
 	Texture texture;
 	
-	public Enemy(int newX, int newY, int newType){
+	public Enemy(int newX, int newY, int newWorldX, int newWorldY, int newType){
 	// Number 1
 		x = newX;
 		y = newY;
 		type = newType;
-		
+		world_x = newWorldX;
+		world_y = newWorldY;
 		load_images();
 		
 	}
 	
-	public void draw(){
-		draw_texture(texture,false);
+	public void draw(int newWorldX, int newWorldY){
+		if(newWorldX==world_x && newWorldY==world_y)
+			draw_texture(texture,false);
 	}
+	public void update(){
+		
+	}
+	
 	
 	public void update(int delta){
 		
@@ -32,8 +40,8 @@ public class Enemy {
 	
 	void load_images(){
 		try{
-			
-			texture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("Enemy.png"),GL11.GL_NEAREST);
+			if(type==0)
+				texture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("Enemy.png"),GL11.GL_NEAREST);
 
 			
 

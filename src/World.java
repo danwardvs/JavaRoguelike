@@ -38,10 +38,13 @@ public class World {
 	public void create_item(Item newItem){
 		gameItems.add(newItem);
 	}
-	
-	public void draw_enemy(){
-		
+	public int get_world_x(){
+		return x;
 	}
+	public int get_world_y(){
+		return y;
+	}
+	
 	
 	void load_images(){
 		try{

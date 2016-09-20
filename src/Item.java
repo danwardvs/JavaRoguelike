@@ -11,15 +11,22 @@ public class Item {
 	int y;
 	String name;
 	Texture texture;
+	int world_x;
+	int world_y;
 	
-	public Item(String newName){
+	public Item(String newName, int newX, int newY, int newWorldX, int newWorldY){
 		name = newName;
+		x = newX;
+		y = newY;
+		world_x = newWorldX;
+		world_y = newWorldY;
 		load_images(name);
 	}
 	
 	
-	public void draw(){
-		draw_texture(texture,false);
+	public void draw(int newWorldX, int newWorldY){
+		if(newWorldX==world_x && newWorldY==world_y)
+			draw_texture(texture,false);
 	}
 	
 	void load_images(String newName){
