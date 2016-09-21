@@ -9,6 +9,8 @@ import org.newdawn.slick.util.ResourceLoader;
 public class Character {
 	int x=0;
 	int y=0;
+	int world_x;
+	int world_y;
 	int character_index;
 	int key_left;
 	int key_right;
@@ -34,11 +36,15 @@ public class Character {
 	boolean key_pressed=false;
 	int state=1;
 	
+	Item current_item;
+	
 	Texture texture_attack_up;
 	Texture texture_attack_forward;
 	Texture texture_attack_down;
 	Texture texture_idle;
 	Texture texture_idle_step;
+	
+	World gameWorld;
 	
 	public Character(int newCharacterIndex,int newLeft,int newRight, int newUp, int newDown, int newAttackLeft, int newAttackRight, int newAttackUp, int newAttackDown){
 		character_index = newCharacterIndex;
@@ -52,6 +58,8 @@ public class Character {
 		key_attack_right = newAttackRight;
 		key_attack_up = newAttackUp;
 		
+		
+		
 		load_images();
 		
 	}
@@ -62,6 +70,17 @@ public class Character {
 			return false;
 		
 	}
+	public void setWorld(World newGameWorld){
+		gameWorld = newGameWorld;
+	}
+	public void setWorldX(int newWorldX){
+		world_x = newWorldX;
+	}
+	
+	public void setWorldY(int newWorldY){
+		world_y = newWorldY;
+	}
+	
 	
 	void load_images(){
 		try{
@@ -103,13 +122,34 @@ public class Character {
 	
 	public void update(int delta){
 		
-		System.out.println(delta);
-		System.out.println(speed);
+		for(int j = 0; j < gameWorld.gameItems.size(); j++)
+		{
+			if(collision(x,x+16,gameWorld.gameItems.get(j).getX(),gameWorld.gameItems.get(j).getX()+16,y,y+32,gameWorld.gameItems.get(j).getY(),gameWorld.gameItems.get(j).getY()+16)){
+        		if(world_x==gameWorld.gameItems.get(j).getWorldX() && world_y==gameWorld.gameItems.get(j).getWorldY()){
+        			current_item = gameWorld.gameItems.get(j);
+        			gameWorld.gameItems.remove(j);
+        			System.out.println("True");
+        		}
+        	}
+		
+		
+		}
+		/**
+		for(Item item: gameWorld.gameItems){
+        	if(collision(x,x+16,item.getX(),item.getX()+16,y,y+32,item.getY(),item.getY()+16)){
+        		if(world_x==item.getWorldX() && world_y==item.getWorldY()){
+        			gameWorld.gameItems.remove(item);
+        			System.out.println("True");
+        		}
+        	}
+    	}*/
+		
+		
 		walk_step++;
 		if(delta==17)
 			delta=16;
 		tick_speed=delta*speed;
-		System.out.println(speed);
+		
 		move_x=0;
 		move_y=0;
 		if(Keyboard.isKeyDown(key_left)){
@@ -206,6 +246,9 @@ public class Character {
 				break;
 			case 4:draw_texture(texture_attack_forward,direction);
 				break;
+		}
+		if(current_item!=null){
+			current_item.draw(x,y,true);
 		}
 		
 	}

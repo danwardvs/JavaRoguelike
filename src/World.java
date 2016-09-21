@@ -28,16 +28,28 @@ public class World {
 		location_exists[1][1] = true;
 		location_exists[2][1] = true;
 		
+		gameCharacter.setWorldX(x);
+		gameCharacter.setWorldY(y);
+		
 		load_images();
 		
 	}
+	
+
+	
 	public void create_enemy(Enemy newEnemy){
 		gameEnemys.add(newEnemy);	
 		
 	}
 	public void create_item(Item newItem){
 		gameItems.add(newItem);
+		System.out.println(newItem.name);
 	}
+	public void destroy_item(Item newItem){
+		gameItems.remove(newItem);
+	}
+	
+	
 	public int get_world_x(){
 		return x;
 	}
@@ -63,9 +75,13 @@ public class World {
 		draw_texture(background[x][y],0,0);
 	}
 	public void update(){
+
+		
+		
 		if(gameCharacter.getX()>304){
 			if(location_exists[x+1][y]){
 				x+=1;
+				gameCharacter.setWorldX(x);
 				gameCharacter.setX(0);
 			}
 			else{
@@ -75,6 +91,7 @@ public class World {
 		if(gameCharacter.getX()<0){
 			if(location_exists[x-1][y]){
 				x-=1;
+				gameCharacter.setWorldX(x);
 				gameCharacter.setX(304);
 			}
 			else{
@@ -87,6 +104,7 @@ public class World {
 		if(location_exists[x][y+1]){
 			y+=1;
 			gameCharacter.setY(0);
+			gameCharacter.setWorldY(y);
 		}
 		else{
 			gameCharacter.setY(210);
@@ -96,6 +114,7 @@ public class World {
 		if(location_exists[x][y-1]){
 			y-=1;
 			gameCharacter.setY(210);
+			gameCharacter.setWorldY(y);
 		}
 		else{
 			gameCharacter.setY(-10);

@@ -24,9 +24,30 @@ public class Item {
 	}
 	
 	
-	public void draw(int newWorldX, int newWorldY){
-		if(newWorldX==world_x && newWorldY==world_y)
-			draw_texture(texture,false);
+	public void draw(int newX, int newY, boolean newLocal){
+		if(newX==world_x && newY==world_y && !newLocal)
+			draw_texture(x,y,texture,false);
+		else if(newLocal){
+			draw_texture(newX,newY,texture,false);
+		}
+		
+	}
+	
+	
+	
+	public int getX(){
+		return x;
+	}
+	
+	public int getY(){
+		return y;
+	}
+	public int getWorldX(){
+		return world_x;
+	}
+	
+	public int getWorldY(){
+		return world_y;
 	}
 	
 	void load_images(String newName){
@@ -43,7 +64,7 @@ public class Item {
 	}
 	
 	 //Draws the texture to the screen
-	void draw_texture(Texture newTexture, boolean isFlipped){
+	void draw_texture(int newX, int newY, Texture newTexture, boolean isFlipped){
 			
 			newTexture.bind();
 			
@@ -56,27 +77,27 @@ public class Item {
 		   		
 		   			if(!isFlipped){
 		   				GL11.glTexCoord2f(0,0);
-		   		   		GL11.glVertex2f(x,y);
+		   		   		GL11.glVertex2f(newX,newY);
 		   				
 		   				
 				    	GL11.glTexCoord2f(1,0);
-				    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y);
+				    	GL11.glVertex2f(newX+newTexture.getTextureWidth(),newY);
 				    	GL11.glTexCoord2f(1,1);
-				    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y+newTexture.getTextureHeight());
+				    	GL11.glVertex2f(newX+newTexture.getTextureWidth(),newY+newTexture.getTextureHeight());
 				    	GL11.glTexCoord2f(0,1);
-				    	GL11.glVertex2f(x,y+newTexture.getTextureHeight());
+				    	GL11.glVertex2f(newX,newY+newTexture.getTextureHeight());
 		   			}
 		   			if(isFlipped){
 		   				GL11.glTexCoord2f(0,0);
-		   		   		GL11.glVertex2f(x,y);
+		   		   		GL11.glVertex2f(newX,newY);
 		   				
 		   				
 		   				GL11.glTexCoord2f(-1,0);
-				    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y);
+				    	GL11.glVertex2f(newX+newTexture.getTextureWidth(),newY);
 				    	GL11.glTexCoord2f(-1,1);
-				    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y+newTexture.getTextureHeight());
+				    	GL11.glVertex2f(newX+newTexture.getTextureWidth(),newY+newTexture.getTextureHeight());
 				    	GL11.glTexCoord2f(0f,1);
-				    	GL11.glVertex2f(x,y+newTexture.getTextureHeight());
+				    	GL11.glVertex2f(newX,newY+newTexture.getTextureHeight());
 		   				
 		   			}
 			    	

@@ -39,6 +39,7 @@ public class main {
 	int mouse_y;
 	boolean leftButtonDown;
 	boolean rightButtonDown;
+	boolean fullscreen=true;
 
 	 // Variables for FPS system
 	long lastFrame;
@@ -109,10 +110,15 @@ public class main {
 	   
 		// Trys to setup displays
 	    try {
+	    	if(fullscreen){
+		        Display.setDisplayModeAndFullscreen(Display.getDesktopDisplayMode());
+
+	    	}
+	    	if(!fullscreen)
+	    		Display.setDisplayMode(new DisplayMode(width,height));
 	        //
-	    	//Display.setDisplayMode(new DisplayMode(width,height));
+	    	//
 	        //Display.setFullscreen(true);
-	        Display.setDisplayModeAndFullscreen(Display.getDesktopDisplayMode());
 	        Display.create();
 	        Keyboard.create();
 	    } catch (LWJGLException e) {
@@ -143,6 +149,8 @@ public class main {
 	    //Setup game data
 	    gameCharacter = new Character(0,Keyboard.KEY_LEFT,Keyboard.KEY_RIGHT,Keyboard.KEY_UP,Keyboard.KEY_DOWN,Keyboard.KEY_A,Keyboard.KEY_D,Keyboard.KEY_W,Keyboard.KEY_S);
 		gameWorld = new World(gameCharacter,1,1);
+		gameCharacter.setWorld(gameWorld);
+
 		for(int i=0; i<10; i++){
 			gameWorld.create_enemy(new Enemy((int)(Math.random()*320),(int)(Math.random()*200),1,1,0));
 		}
@@ -186,7 +194,7 @@ public class main {
 	        	enemy.draw(gameWorld.get_world_x(),gameWorld.get_world_y());
 	    	}
 	    	for(Item item: gameWorld.gameItems){
-	        	item.draw(gameWorld.get_world_x(),gameWorld.get_world_y());
+	        	item.draw(gameWorld.get_world_x(),gameWorld.get_world_y(),false);
 	    	}
 	    	
 	    	gameCharacter.draw();
