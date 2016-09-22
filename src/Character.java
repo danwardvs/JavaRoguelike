@@ -36,6 +36,9 @@ public class Character {
 	boolean key_pressed=false;
 	int state=1;
 	
+	int item_offset_x=8;
+	int item_offset_y=8;
+	
 	Item current_item;
 	
 	Texture texture_attack_up;
@@ -134,15 +137,6 @@ public class Character {
 		
 		
 		}
-		/**
-		for(Item item: gameWorld.gameItems){
-        	if(collision(x,x+16,item.getX(),item.getX()+16,y,y+32,item.getY(),item.getY()+16)){
-        		if(world_x==item.getWorldX() && world_y==item.getWorldY()){
-        			gameWorld.gameItems.remove(item);
-        			System.out.println("True");
-        		}
-        	}
-    	}*/
 		
 		
 		walk_step++;
@@ -154,10 +148,19 @@ public class Character {
 		move_y=0;
 		if(Keyboard.isKeyDown(key_left)){
 			direction=true;
+			if(attack_timer==0){
+				item_offset_x=-10;
+				item_offset_y=10;
+			}
+			
 			move_x=(int)-tick_speed;
 		}
 		if(Keyboard.isKeyDown(key_right)){
 			move_x=(int)tick_speed;
+			if(attack_timer==0){
+				item_offset_x=10;
+				item_offset_y=10;
+			}
 			direction=false;
 		}
 		
@@ -182,6 +185,8 @@ public class Character {
 		if(Keyboard.isKeyDown(key_attack_left) && attack_timer==0 && !key_pressed){
 			direction=true;
 			state=4;
+			item_offset_x=-12;
+			item_offset_y=12;
 			attack_timer=attack_speed;
 			key_pressed=true;
 		}
@@ -189,19 +194,37 @@ public class Character {
 		if(Keyboard.isKeyDown(key_attack_right) && attack_timer==0 && !key_pressed){
 			direction=false;
 			state=4;
+			item_offset_x=12;
+			item_offset_y=12;
 			attack_timer=attack_speed;
 			key_pressed=true;
 		}
 		
 		if(Keyboard.isKeyDown(key_attack_up) && attack_timer==0 && !key_pressed){
 			
+			if(direction){
+				item_offset_x=-12;
+				item_offset_y=2;
+			}
+			else{
+				item_offset_x=12;
+				item_offset_y=2;
+			}
 			state=2;
 			attack_timer=attack_speed;
 			key_pressed=true;
 		}
 		
 		if(Keyboard.isKeyDown(key_attack_down) && attack_timer==0 && !key_pressed){
-		
+			
+			if(direction){
+				item_offset_x=-12;
+				item_offset_y=18;
+			}
+			else{
+				item_offset_x=12;
+				item_offset_y=18;
+			}
 			state=3;
 			attack_timer=attack_speed;
 			key_pressed=true;
@@ -225,6 +248,15 @@ public class Character {
 			if(attack_timer<=0){
 				attack_timer=0;
 				state=1;
+				if(direction){
+					item_offset_x=-8;
+					item_offset_y=10;
+				}
+				
+				else{
+					item_offset_x=8;
+					item_offset_y=10;
+				}
 			}
 		}
 		
@@ -248,7 +280,11 @@ public class Character {
 				break;
 		}
 		if(current_item!=null){
-			current_item.draw(x,y,true);
+			if(state==4)
+				current_item.draw(x+item_offset_x,y+item_offset_y,true,direction,true);
+			else
+				current_item.draw(x+item_offset_x,y+item_offset_y,true,direction,false);
+
 		}
 		
 	}

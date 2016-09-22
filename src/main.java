@@ -182,21 +182,22 @@ public class main {
 	        
 	 
 	  
-	        gameWorld.draw();	
+	        
 	    	// Run the update loop to get mouse information and exit status
 	    	update(delta);
 	    	gameCharacter.update(delta);
 	    	
 	    	
 	    	gameWorld.update();
+	    	gameWorld.draw();
 	    	
 	    	for(Enemy enemy: gameWorld.gameEnemys){
 	        	enemy.draw(gameWorld.get_world_x(),gameWorld.get_world_y());
 	    	}
 	    	for(Item item: gameWorld.gameItems){
-	        	item.draw(gameWorld.get_world_x(),gameWorld.get_world_y(),false);
+	        	item.draw(gameWorld.get_world_x(),gameWorld.get_world_y(),false,false,false);
 	    	}
-	    	
+	    		
 	    	gameCharacter.draw();
 	       
 	    	
