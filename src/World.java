@@ -35,7 +35,13 @@ public class World {
 		
 	}
 	
-
+	boolean collision(int x_min_1, int x_max_1, int x_min_2, int x_max_2, int y_min_1, int y_max_1, int y_min_2, int y_max_2){
+		if(x_min_1 < x_max_2 && y_min_1 < y_max_2 && x_min_2 < x_max_1 && y_min_2 < y_max_1)
+			return true;
+		else
+			return false;
+		
+	}
 	
 	public void create_enemy(Enemy newEnemy){
 		gameEnemys.add(newEnemy);	
@@ -57,6 +63,18 @@ public class World {
 		return y;
 	}
 	
+	public void apply_damage(int newX, int newY,int radius){
+		for(int j = 0; j < gameEnemys.size(); j++)
+		{
+        		if(collision(newX-radius,newX+radius,gameEnemys.get(j).getX(),gameEnemys.get(j).getX()+gameEnemys.get(j).getWidth(),newY-radius,newY+radius,gameEnemys.get(j).getY(),gameEnemys.get(j).getY()+gameEnemys.get(j).getHeight())){
+        			gameEnemys.remove(j);
+        			System.out.println("Gotcha!");
+        		}
+        
+		
+		
+		}
+	}
 	
 	void load_images(){
 		try{

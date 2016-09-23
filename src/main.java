@@ -195,7 +195,7 @@ public class main {
 	        	enemy.draw(gameWorld.get_world_x(),gameWorld.get_world_y());
 	    	}
 	    	for(Item item: gameWorld.gameItems){
-	        	item.draw(gameWorld.get_world_x(),gameWorld.get_world_y(),false,false,false);
+	        	item.draw(gameWorld.get_world_x(),gameWorld.get_world_y(),false,false,1,1);
 	    	}
 	    		
 	    	gameCharacter.draw();

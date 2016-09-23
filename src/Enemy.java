@@ -27,12 +27,32 @@ public class Enemy {
 	
 	public void draw(int newWorldX, int newWorldY){
 		if(newWorldX==world_x && newWorldY==world_y)
-			draw_texture(texture,false);
+			draw_texture(texture,1);
 	}
 	public void update(){
 		
 	}
+	public int getWidth(){
+		return texture.getImageWidth();
+	}
+	public int getHeight(){
+		return texture.getImageHeight();
+	}
 	
+	public int getX(){
+		return x;
+	}
+	
+	public int getY(){
+		return y;
+	}
+	public int getWorldX(){
+		return world_x;
+	}
+	
+	public int getWorldY(){
+		return world_y;
+	}
 	
 	public void update(int delta){
 		
@@ -52,7 +72,7 @@ public class Enemy {
 	}
 	
 	// Draws the texture to the screen
-	void draw_texture(Texture newTexture, boolean isFlipped){
+	void draw_texture(Texture newTexture, int newScale){
 			
 			newTexture.bind();
 			
@@ -63,31 +83,19 @@ public class Enemy {
 			
 		   	
 		   		
-		   			if(!isFlipped){
+		   			
 		   				GL11.glTexCoord2f(0,0);
 		   		   		GL11.glVertex2f(x,y);
 		   				
 		   				
-				    	GL11.glTexCoord2f(1,0);
+				    	GL11.glTexCoord2f(newScale*1,0);
 				    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y);
-				    	GL11.glTexCoord2f(1,1);
+				    	GL11.glTexCoord2f(newScale*1,1);
 				    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y+newTexture.getTextureHeight());
 				    	GL11.glTexCoord2f(0,1);
 				    	GL11.glVertex2f(x,y+newTexture.getTextureHeight());
-		   			}
-		   			if(isFlipped){
-		   				GL11.glTexCoord2f(0,0);
-		   		   		GL11.glVertex2f(x,y);
-		   				
-		   				
-		   				GL11.glTexCoord2f(-1,0);
-				    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y);
-				    	GL11.glTexCoord2f(-1,1);
-				    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y+newTexture.getTextureHeight());
-				    	GL11.glTexCoord2f(0f,1);
-				    	GL11.glVertex2f(x,y+newTexture.getTextureHeight());
-		   				
-		   			}
+		   			
+		   		
 			    	
 			    GL11.glEnd();
 			 

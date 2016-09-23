@@ -189,6 +189,7 @@ public class Character {
 			item_offset_y=12;
 			attack_timer=attack_speed;
 			key_pressed=true;
+			gameWorld.apply_damage(x+scale_from_direction()*15, y+16, 5);
 		}
 		
 		if(Keyboard.isKeyDown(key_attack_right) && attack_timer==0 && !key_pressed){
@@ -198,36 +199,33 @@ public class Character {
 			item_offset_y=12;
 			attack_timer=attack_speed;
 			key_pressed=true;
+			gameWorld.apply_damage(x+scale_from_direction()*15, y+16, 5);
+
 		}
 		
 		if(Keyboard.isKeyDown(key_attack_up) && attack_timer==0 && !key_pressed){
 			
-			if(direction){
-				item_offset_x=-12;
-				item_offset_y=2;
-			}
-			else{
-				item_offset_x=12;
-				item_offset_y=2;
-			}
+			
+			item_offset_x=scale_from_direction()*12;
+			item_offset_y=2;
+			
 			state=2;
 			attack_timer=attack_speed;
 			key_pressed=true;
+			gameWorld.apply_damage(x+scale_from_direction()*15, y, 5);
 		}
 		
 		if(Keyboard.isKeyDown(key_attack_down) && attack_timer==0 && !key_pressed){
 			
-			if(direction){
-				item_offset_x=-12;
-				item_offset_y=18;
-			}
-			else{
-				item_offset_x=12;
-				item_offset_y=18;
-			}
+		
+			item_offset_x=scale_from_direction()*12;
+			item_offset_y=18;
+		
 			state=3;
 			attack_timer=attack_speed;
 			key_pressed=true;
+			gameWorld.apply_damage(x+scale_from_direction()*15, y+32, 5);
+
 		}
 		
 		if(!Keyboard.isKeyDown(key_attack_down) && !Keyboard.isKeyDown(key_attack_up)  && !Keyboard.isKeyDown(key_attack_left)  && !Keyboard.isKeyDown(key_attack_right) ){
@@ -248,18 +246,28 @@ public class Character {
 			if(attack_timer<=0){
 				attack_timer=0;
 				state=1;
-				if(direction){
-					item_offset_x=-8;
-					item_offset_y=10;
-				}
 				
-				else{
-					item_offset_x=8;
-					item_offset_y=10;
-				}
+				item_offset_x=scale_from_direction()*8;
+				item_offset_y=10;
+			
 			}
 		}
 		
+	}
+	int scale_from_direction(){
+		if(direction)
+			return -1;
+		return 1;
+	}
+	int scale_from_state(){
+		if(state==3)
+			return -1;
+		return 1;
+	}
+	boolean image_from_state(){
+		if(state==4)
+			return true;
+		return false;
 	}
 	
 	public void draw(){
@@ -267,30 +275,28 @@ public class Character {
 		switch(state){
 			case 1:
 				if(walk_frame<5)
-					draw_texture(texture_idle,direction);
+					draw_texture(texture_idle,scale_from_direction());
 				else
-					draw_texture(texture_idle_step,direction);
+					draw_texture(texture_idle_step,scale_from_direction());
 				break;
 				
-			case 2:draw_texture(texture_attack_up,direction);
+			case 2:draw_texture(texture_attack_up,scale_from_direction());
 				break;
-			case 3:draw_texture(texture_attack_down,direction);
+			case 3:draw_texture(texture_attack_down,scale_from_direction());
 				break;
-			case 4:draw_texture(texture_attack_forward,direction);
+			case 4:draw_texture(texture_attack_forward,scale_from_direction());
 				break;
 		}
 		if(current_item!=null){
-			if(state==4)
-				current_item.draw(x+item_offset_x,y+item_offset_y,true,direction,true);
-			else
-				current_item.draw(x+item_offset_x,y+item_offset_y,true,direction,false);
+		
+			current_item.draw(x+item_offset_x,y+item_offset_y,true,image_from_state(),scale_from_direction(),scale_from_state());
 
 		}
 		
 	}
 	
 	// Draws the texture to the screen
-	void draw_texture(Texture newTexture, boolean isFlipped){
+	void draw_texture(Texture newTexture,int newScale){
 		
 		newTexture.bind();
 		
@@ -301,31 +307,19 @@ public class Character {
 		
 	   	
 	   		
-	   			if(!isFlipped){
+	  
 	   				GL11.glTexCoord2f(0,0);
 	   		   		GL11.glVertex2f(x,y);
 	   				
 	   				
-			    	GL11.glTexCoord2f(1,0);
+			    	GL11.glTexCoord2f(newScale*1,0);
 			    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y);
-			    	GL11.glTexCoord2f(1,1);
+			    	GL11.glTexCoord2f(newScale*1,1);
 			    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y+newTexture.getTextureHeight());
 			    	GL11.glTexCoord2f(0,1);
 			    	GL11.glVertex2f(x,y+newTexture.getTextureHeight());
-	   			}
-	   			if(isFlipped){
-	   				GL11.glTexCoord2f(0,0);
-	   		   		GL11.glVertex2f(x,y);
-	   				
-	   				
-	   				GL11.glTexCoord2f(-1,0);
-			    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y);
-			    	GL11.glTexCoord2f(-1,1);
-			    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y+newTexture.getTextureHeight());
-			    	GL11.glTexCoord2f(0f,1);
-			    	GL11.glVertex2f(x,y+newTexture.getTextureHeight());
-	   				
-	   			}
+	   		
+	   			
 		    	
 		    GL11.glEnd();
 		 
