@@ -16,6 +16,8 @@ public class Item {
 	private int world_y;
 	private int[] damage_offset_x = new int[3];
 	private int[] damage_offset_y = new int[3];
+	private int[] item_offset_x = new int[4];
+	private int[] item_offset_y = new int[4];
 	private int damage_radius;
 	private int damage;
 	
@@ -41,12 +43,37 @@ public class Item {
 		damage_offset_x[1] = newLowerX;
 		damage_offset_y[1] = newLowerY;
 	}
+	
+	
+	public void setItemOffset(int newRestX, int newRestY, int newLowerX, int newLowerY,int newMidX, int newMidY, int newHighX, int newHighY){
+		
+		item_offset_x[0] = newRestX;
+		item_offset_y[0] = newRestY;
+		
+		item_offset_x[2] = newHighX;
+		item_offset_y[2] = newHighY;
+		
+		item_offset_x[3] = newMidX;
+		item_offset_y[3] = newMidY;
+		
+		item_offset_x[1] = newLowerX;
+		item_offset_y[1] = newLowerY;
+	}
+
 	public int getDamageOffsetX(int newIndex){
 		return damage_offset_x[newIndex];
 	}
 	
 	public int getDamageOffsetY(int newIndex){
 		return damage_offset_y[newIndex];
+	}
+	
+	public int getItemOffsetX(int newIndex){
+		return item_offset_x[newIndex];
+	}
+	
+	public int getItemOffsetY(int newIndex){
+		return item_offset_y[newIndex];
 	}
 	
 	public String getName(){

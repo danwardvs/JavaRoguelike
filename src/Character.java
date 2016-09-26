@@ -52,6 +52,7 @@ public class Character {
 	private Texture texture_idle_step;
 	
 	private Texture hit;
+	private Texture debug;
 	
 	World gameWorld;
 	
@@ -104,6 +105,9 @@ public class Character {
 			texture_idle_step = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("CharacterIdleStep.png"),GL11.GL_NEAREST);
 
 			hit = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("Hit.png"),GL11.GL_NEAREST);
+			
+			debug = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("debug.png"),GL11.GL_NEAREST);
+
 
 
 		
@@ -129,24 +133,32 @@ public class Character {
 		y = newY;
 	}
 	
-
+	void attack(int newState){
+		
+		state = newState;
+		attack_timer=attack_speed;
+		key_pressed=true;
+		
+		gameWorld.apply_damage(x+8+scale_from_direction()*current_item.getDamageOffsetX(state-2), y+current_item.getDamageOffsetY(state-2), 1);
+		
+		hit_mark_time=0;
+		//hit_mark_x = x+8+scale_from_direction()*current_item.getDamageOffsetX(state-2);
+		
+		hit_mark_x=((x+8-3)+current_item.getDamageOffsetX(state-2)*scale_from_direction());
+		hit_mark_y = (y-3)+current_item.getDamageOffsetY(state-2);
+		
+	}
+	
 	public void update(int delta){
-		
-		//System.out.println(gameWorld.getItems().get(0).getY());
-		
+				
 		for(int j = 0; j < gameWorld.getItems().size(); j++)
 		{
 			if(collision(x,x+16,gameWorld.getItems().get(j).getX(),gameWorld.getItems().get(j).getX()+16,y,y+32,gameWorld.getItems().get(j).getY(),gameWorld.getItems().get(j).getY()+16)){
         		if(world_x==gameWorld.getItems().get(j).getWorldX() && world_y==gameWorld.getItems().get(j).getWorldY()){
-					System.out.println(gameWorld.getItems().get(j).getWorldX());
-					System.out.println(gameWorld.getItems().get(j).getWorldY());
-						
-					System.out.println(world_x);
-					System.out.println(world_y);
+				
 					
 					current_item = gameWorld.getItems().get(j);
         			gameWorld.getItems().remove(j);
-        			System.out.println("True");
         		}
         	}
 		
@@ -203,60 +215,27 @@ public class Character {
 		
 		if(Keyboard.isKeyDown(key_attack_left) && attack_timer==0 && !key_pressed){
 			direction=true;
-			state=4;
-			item_offset_x=-12;
-			item_offset_y=12;
-			attack_timer=attack_speed;
-			key_pressed=true;
-			gameWorld.apply_damage(x+scale_from_direction()*current_item.getDamageOffsetX(state-2), y+current_item.getDamageOffsetY(state-2), 5);
-			hit_mark_time=0;
-			hit_mark_x = x+scale_from_direction()*current_item.getDamageOffsetX(state-2);
-			hit_mark_y = y+current_item.getDamageOffsetY(state-2);
+			attack(4);
+		
 		}
 		
 		if(Keyboard.isKeyDown(key_attack_right) && attack_timer==0 && !key_pressed){
+			
 			direction=false;
-			state=4;
-			item_offset_x=12;
-			item_offset_y=12;
-			attack_timer=attack_speed;
-			key_pressed=true;
-			gameWorld.apply_damage(x+scale_from_direction()*current_item.getDamageOffsetX(state-2), y+current_item.getDamageOffsetY(state-2), 5);
-			hit_mark_time=0;
-			hit_mark_x = x+scale_from_direction()*current_item.getDamageOffsetX(state-2);
-			hit_mark_y = y+current_item.getDamageOffsetY(state-2);
+			attack(4);
+	
 	
 		}
 		
 		if(Keyboard.isKeyDown(key_attack_up) && attack_timer==0 && !key_pressed){
 			
-			
-			item_offset_x=scale_from_direction()*12;
-			item_offset_y=2;
-			
-			state=2;
-			attack_timer=attack_speed;
-			key_pressed=true;
-			gameWorld.apply_damage(x+scale_from_direction()*current_item.getDamageOffsetX(state-2), y+current_item.getDamageOffsetY(state-2), 5);
-			hit_mark_time=0;
-			hit_mark_x = x+scale_from_direction()*current_item.getDamageOffsetX(state-2);
-			hit_mark_y = y+current_item.getDamageOffsetY(state-2);
-			
+			attack(2);
+
 		}
 		
 		if(Keyboard.isKeyDown(key_attack_down) && attack_timer==0 && !key_pressed){
 			
-		
-			item_offset_x=scale_from_direction()*12;
-			item_offset_y=18;
-		
-			state=3;
-			attack_timer=attack_speed;
-			key_pressed=true;
-			gameWorld.apply_damage(x+scale_from_direction()*15, y+current_item.getDamageOffsetY(state-2), 5);
-			hit_mark_time=0;
-			hit_mark_x = x+scale_from_direction()*current_item.getDamageOffsetX(state-2);
-			hit_mark_y = y+current_item.getDamageOffsetY(state-2);
+			attack(3);
 
 		}
 		
@@ -322,8 +301,12 @@ public class Character {
 		
 		
 		if(current_item!=null){
+			int newState=state-1;
 		
-			current_item.draw(x+item_offset_x,y+item_offset_y,true,image_from_state(),scale_from_direction(),scale_from_state());
+
+			current_item.draw(x+current_item.getItemOffsetX(newState)*scale_from_direction(),y+current_item.getItemOffsetY(newState),true,image_from_state(),scale_from_direction(),scale_from_state());
+			System.out.println(current_item.getItemOffsetX(newState)*scale_from_direction());
+			System.out.println(current_item.getItemOffsetY(newState)*scale_from_direction());
 
 		}
 		
@@ -332,6 +315,7 @@ public class Character {
 
 			
 		}
+		//draw_texture(debug);
 		
 	}
 	
@@ -339,31 +323,19 @@ public class Character {
 		
 		newTexture.bind();
 		
-		
-		//GL11.glScalef(1, 1, 1);
 		GL11.glBegin(GL11.GL_QUADS);
-		
-		
-	   	
-	   		
-	  
+
 	   				GL11.glTexCoord2f(0,0);
 	   		   		GL11.glVertex2f(newX,newY);
-	   				
-	   				
 			    	GL11.glTexCoord2f(newScale*1,0);
 			    	GL11.glVertex2f(newX+newTexture.getTextureWidth(),newY);
 			    	GL11.glTexCoord2f(newScale*1,1);
 			    	GL11.glVertex2f(newX+newTexture.getTextureWidth(),newY+newTexture.getTextureHeight());
 			    	GL11.glTexCoord2f(0,1);
 			    	GL11.glVertex2f(newX,newY+newTexture.getTextureHeight());
-	   		
-	   			
 		    	
 		    GL11.glEnd();
-		 
-		
-		    
+		     
 		}
 	
 	// Draws the texture to the screen
@@ -371,31 +343,37 @@ public class Character {
 		
 		newTexture.bind();
 		
-		
-		//GL11.glScalef(1, 1, 1);
 		GL11.glBegin(GL11.GL_QUADS);
-		
-		
-	   	
-	   		
 	  
 	   				GL11.glTexCoord2f(0,0);
 	   		   		GL11.glVertex2f(x,y);
-	   				
-	   				
 			    	GL11.glTexCoord2f(newScale*1,0);
 			    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y);
 			    	GL11.glTexCoord2f(newScale*1,1);
 			    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y+newTexture.getTextureHeight());
 			    	GL11.glTexCoord2f(0,1);
 			    	GL11.glVertex2f(x,y+newTexture.getTextureHeight());
-	   		
-	   			
 		    	
 		    GL11.glEnd();
-		 
+
+		}
+	
+	// Draws the texture to the screen
+	void draw_texture(Texture newTexture){
 		
-		    
+		newTexture.bind();
+		
+		GL11.glBegin(GL11.GL_QUADS);
+	   				GL11.glTexCoord2f(0,0);
+	   		   		GL11.glVertex2f(x,y);
+			    	GL11.glTexCoord2f(1,0);
+			    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y);
+			    	GL11.glTexCoord2f(1,1);
+			    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y+newTexture.getTextureHeight());
+			    	GL11.glTexCoord2f(0,1);
+			    	GL11.glVertex2f(x,y+newTexture.getTextureHeight());	
+		    GL11.glEnd();
+	 
 		}
 		
 	
