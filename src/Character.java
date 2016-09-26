@@ -24,6 +24,10 @@ public class Character {
 	
 	private int attack_timer=0;
 	
+	private int hit_mark_time=0;
+	private int hit_mark_x;
+	private int hit_mark_y;
+	
 	private int attack_speed=100;
 	private float speed = 0.0625f;
 	private int walk_step=0;
@@ -46,6 +50,8 @@ public class Character {
 	private Texture texture_attack_down;
 	private Texture texture_idle;
 	private Texture texture_idle_step;
+	
+	private Texture hit;
 	
 	World gameWorld;
 	
@@ -97,7 +103,8 @@ public class Character {
 			
 			texture_idle_step = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("CharacterIdleStep.png"),GL11.GL_NEAREST);
 
-			
+			hit = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("Hit.png"),GL11.GL_NEAREST);
+
 
 		
 		} catch (IOException e) {
@@ -122,6 +129,7 @@ public class Character {
 		y = newY;
 	}
 	
+
 	public void update(int delta){
 		
 		//System.out.println(gameWorld.getItems().get(0).getY());
@@ -147,6 +155,7 @@ public class Character {
 		
 		
 		walk_step++;
+		hit_mark_time++;
 		
 		// Correcting the 60fps rounding stutter error
 		if(delta==17)
@@ -199,7 +208,10 @@ public class Character {
 			item_offset_y=12;
 			attack_timer=attack_speed;
 			key_pressed=true;
-			gameWorld.apply_damage(x+scale_from_direction()*15, y+16, 5);
+			gameWorld.apply_damage(x+scale_from_direction()*current_item.getDamageOffsetX(state-2), y+current_item.getDamageOffsetY(state-2), 5);
+			hit_mark_time=0;
+			hit_mark_x = x+scale_from_direction()*current_item.getDamageOffsetX(state-2);
+			hit_mark_y = y+current_item.getDamageOffsetY(state-2);
 		}
 		
 		if(Keyboard.isKeyDown(key_attack_right) && attack_timer==0 && !key_pressed){
@@ -209,8 +221,11 @@ public class Character {
 			item_offset_y=12;
 			attack_timer=attack_speed;
 			key_pressed=true;
-			gameWorld.apply_damage(x+scale_from_direction()*15, y+16, 5);
-
+			gameWorld.apply_damage(x+scale_from_direction()*current_item.getDamageOffsetX(state-2), y+current_item.getDamageOffsetY(state-2), 5);
+			hit_mark_time=0;
+			hit_mark_x = x+scale_from_direction()*current_item.getDamageOffsetX(state-2);
+			hit_mark_y = y+current_item.getDamageOffsetY(state-2);
+	
 		}
 		
 		if(Keyboard.isKeyDown(key_attack_up) && attack_timer==0 && !key_pressed){
@@ -222,7 +237,11 @@ public class Character {
 			state=2;
 			attack_timer=attack_speed;
 			key_pressed=true;
-			gameWorld.apply_damage(x+scale_from_direction()*15, y, 5);
+			gameWorld.apply_damage(x+scale_from_direction()*current_item.getDamageOffsetX(state-2), y+current_item.getDamageOffsetY(state-2), 5);
+			hit_mark_time=0;
+			hit_mark_x = x+scale_from_direction()*current_item.getDamageOffsetX(state-2);
+			hit_mark_y = y+current_item.getDamageOffsetY(state-2);
+			
 		}
 		
 		if(Keyboard.isKeyDown(key_attack_down) && attack_timer==0 && !key_pressed){
@@ -234,7 +253,10 @@ public class Character {
 			state=3;
 			attack_timer=attack_speed;
 			key_pressed=true;
-			gameWorld.apply_damage(x+scale_from_direction()*15, y+32, 5);
+			gameWorld.apply_damage(x+scale_from_direction()*15, y+current_item.getDamageOffsetY(state-2), 5);
+			hit_mark_time=0;
+			hit_mark_x = x+scale_from_direction()*current_item.getDamageOffsetX(state-2);
+			hit_mark_y = y+current_item.getDamageOffsetY(state-2);
 
 		}
 		
@@ -297,13 +319,52 @@ public class Character {
 			case 4:draw_texture(texture_attack_forward,scale_from_direction());
 				break;
 		}
+		
+		
 		if(current_item!=null){
 		
 			current_item.draw(x+item_offset_x,y+item_offset_y,true,image_from_state(),scale_from_direction(),scale_from_state());
 
 		}
 		
+		if(hit_mark_time<10){
+			draw_texture(hit,1,hit_mark_x,hit_mark_y);
+
+			
+		}
+		
 	}
+	
+	void draw_texture(Texture newTexture,int newScale, int newX, int newY){
+		
+		newTexture.bind();
+		
+		
+		//GL11.glScalef(1, 1, 1);
+		GL11.glBegin(GL11.GL_QUADS);
+		
+		
+	   	
+	   		
+	  
+	   				GL11.glTexCoord2f(0,0);
+	   		   		GL11.glVertex2f(newX,newY);
+	   				
+	   				
+			    	GL11.glTexCoord2f(newScale*1,0);
+			    	GL11.glVertex2f(newX+newTexture.getTextureWidth(),newY);
+			    	GL11.glTexCoord2f(newScale*1,1);
+			    	GL11.glVertex2f(newX+newTexture.getTextureWidth(),newY+newTexture.getTextureHeight());
+			    	GL11.glTexCoord2f(0,1);
+			    	GL11.glVertex2f(newX,newY+newTexture.getTextureHeight());
+	   		
+	   			
+		    	
+		    GL11.glEnd();
+		 
+		
+		    
+		}
 	
 	// Draws the texture to the screen
 	void draw_texture(Texture newTexture,int newScale){

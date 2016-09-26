@@ -7,15 +7,17 @@ import org.newdawn.slick.util.ResourceLoader;
 
 public class Item {
 	
-	int x;
-	int y;
-	String name;
-	Texture texture;
-	Texture texture_2;
-	int world_x;
-	int world_y;
-	int damage_radius;
-	int damage;
+	private int x;
+	private int y;
+	private String name;
+	private Texture texture;
+	private Texture texture_2;
+	private int world_x;
+	private int world_y;
+	private int[] damage_offset_x = new int[3];
+	private int[] damage_offset_y = new int[3];
+	private int damage_radius;
+	private int damage;
 	
 	public Item(String newName, int newX, int newY, int newWorldX, int newWorldY, int newDamageRadius, int newDamage){
 		name = newName;
@@ -26,6 +28,29 @@ public class Item {
 		damage_radius=newDamageRadius;
 		damage=newDamage;
 		load_images(name);
+	}
+	
+	public void setDamageOffset(int newLowerX, int newLowerY,int newMidX, int newMidY, int newHighX, int newHighY){
+		
+		damage_offset_x[0] = newHighX;
+		damage_offset_y[0] = newHighY;
+		
+		damage_offset_x[2] = newMidX;
+		damage_offset_y[2] = newMidY;
+		
+		damage_offset_x[1] = newLowerX;
+		damage_offset_y[1] = newLowerY;
+	}
+	public int getDamageOffsetX(int newIndex){
+		return damage_offset_x[newIndex];
+	}
+	
+	public int getDamageOffsetY(int newIndex){
+		return damage_offset_y[newIndex];
+	}
+	
+	public String getName(){
+		return name;
 	}
 	
 	

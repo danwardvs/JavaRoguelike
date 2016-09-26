@@ -67,7 +67,7 @@ public class World {
 	}
 	public void create_item(Item newItem){
 		gameItems.add(newItem);
-		System.out.println(newItem.name);
+		System.out.println(newItem.getName());
 	}
 	public void destroy_item(Item newItem){
 		gameItems.remove(newItem);

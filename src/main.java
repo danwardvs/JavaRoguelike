@@ -156,7 +156,9 @@ public class main {
 		}
 		
 		
-		gameWorld.create_item(new Item("Sword",100,125,1,1,5,1));
+		Item newItem =  new Item("Sword",100,125,1,1,5,1);
+		newItem.setDamageOffset(15, 32, 15, 16, 15, 0);
+		gameWorld.create_item(newItem);
 		
 	    
 	    
