@@ -7,45 +7,45 @@ import org.newdawn.slick.opengl.TextureLoader;
 import org.newdawn.slick.util.ResourceLoader;
 
 public class Character {
-	int x=0;
-	int y=0;
-	int world_x;
-	int world_y;
-	int character_index;
-	int key_left;
-	int key_right;
-	int key_up;
-	int key_down;
+	private int x=0;
+	private int y=0;
+	private int world_x;
+	private int world_y;
+	private int character_index;
+	private int key_left;
+	private int key_right;
+	private int key_up;
+	private int key_down;
 	
-	int key_attack_left;
-	int key_attack_right;
-	int key_attack_up;
-	int key_attack_down;
+	private int key_attack_left;
+	private int key_attack_right;
+	private int key_attack_up;
+	private int key_attack_down;
 	
-	int attack_timer=0;
+	private int attack_timer=0;
 	
-	int attack_speed=100;
-	float speed = 0.0625f;
-	int walk_step=0;
-	int walk_step_speed=0;
-	int walk_frame=0;
-	int move_x=0;
-	int move_y=0;
-	float tick_speed;
-	boolean direction = false;
-	boolean key_pressed=false;
-	int state=1;
+	private int attack_speed=100;
+	private float speed = 0.0625f;
+	private int walk_step=0;
+	private int walk_step_speed=0;
+	private int walk_frame=0;
+	private int move_x=0;
+	private int move_y=0;
+	private float tick_speed;
+	private boolean direction = false;
+	private boolean key_pressed=false;
+	private int state=1;
 	
-	int item_offset_x=8;
-	int item_offset_y=8;
+	private int item_offset_x=8;
+	private int item_offset_y=8;
 	
-	Item current_item;
+	private Item current_item;
 	
-	Texture texture_attack_up;
-	Texture texture_attack_forward;
-	Texture texture_attack_down;
-	Texture texture_idle;
-	Texture texture_idle_step;
+	private Texture texture_attack_up;
+	private Texture texture_attack_forward;
+	private Texture texture_attack_down;
+	private Texture texture_idle;
+	private Texture texture_idle_step;
 	
 	World gameWorld;
 	
@@ -83,7 +83,6 @@ public class Character {
 	public void setWorldY(int newWorldY){
 		world_y = newWorldY;
 	}
-	
 	
 	void load_images(){
 		try{
@@ -125,12 +124,20 @@ public class Character {
 	
 	public void update(int delta){
 		
-		for(int j = 0; j < gameWorld.gameItems.size(); j++)
+		//System.out.println(gameWorld.getItems().get(0).getY());
+		
+		for(int j = 0; j < gameWorld.getItems().size(); j++)
 		{
-			if(collision(x,x+16,gameWorld.gameItems.get(j).getX(),gameWorld.gameItems.get(j).getX()+16,y,y+32,gameWorld.gameItems.get(j).getY(),gameWorld.gameItems.get(j).getY()+16)){
-        		if(world_x==gameWorld.gameItems.get(j).getWorldX() && world_y==gameWorld.gameItems.get(j).getWorldY()){
-        			current_item = gameWorld.gameItems.get(j);
-        			gameWorld.gameItems.remove(j);
+			if(collision(x,x+16,gameWorld.getItems().get(j).getX(),gameWorld.getItems().get(j).getX()+16,y,y+32,gameWorld.getItems().get(j).getY(),gameWorld.getItems().get(j).getY()+16)){
+        		if(world_x==gameWorld.getItems().get(j).getWorldX() && world_y==gameWorld.getItems().get(j).getWorldY()){
+					System.out.println(gameWorld.getItems().get(j).getWorldX());
+					System.out.println(gameWorld.getItems().get(j).getWorldY());
+						
+					System.out.println(world_x);
+					System.out.println(world_y);
+					
+					current_item = gameWorld.getItems().get(j);
+        			gameWorld.getItems().remove(j);
         			System.out.println("True");
         		}
         	}
@@ -140,8 +147,11 @@ public class Character {
 		
 		
 		walk_step++;
+		
+		// Correcting the 60fps rounding stutter error
 		if(delta==17)
 			delta=16;
+		
 		tick_speed=delta*speed;
 		
 		move_x=0;

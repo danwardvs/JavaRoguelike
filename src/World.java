@@ -9,33 +9,51 @@ import org.newdawn.slick.util.ResourceLoader;
 
 public class World {
 	
-	int x;
-	int y;
-	Character gameCharacter;
-	public List<Enemy> gameEnemys = new ArrayList<Enemy>();
-	public List<Item> gameItems = new ArrayList<Item>();
+	//Game Data
+	private int x;
+	private int y;
 	
-	Texture[][] background = new Texture[5][5];
-	boolean location_exists[][] = new boolean[5][5];
+	private List<Enemy> gameEnemys = new ArrayList<Enemy>();
+	private List<Item> gameItems = new ArrayList<Item>();
+	private Character[] gameCharacters = new Character[4];
+	
+	private Texture[][] background = new Texture[5][5];
+	private boolean locationExists[][] = new boolean[5][5];
 	
 	
 	
-	public World(Character newCharacter,int newX, int newY){
+	public World(int newX, int newY){
 		x = newX;
-		y = newY;
-		gameCharacter = newCharacter;
+		y = newY;;
 		
-		location_exists[1][1] = true;
-		location_exists[2][1] = true;
+		locationExists[1][1] = true;
+		locationExists[2][1] = true;
 		
-		gameCharacter.setWorldX(x);
-		gameCharacter.setWorldY(y);
-		
-		load_images();
+		loadTextures();
 		
 	}
 	
-	boolean collision(int x_min_1, int x_max_1, int x_min_2, int x_max_2, int y_min_1, int y_max_1, int y_min_2, int y_max_2){
+	public void setCharacter(Character newCharacter, int newIndex){
+		newCharacter.setWorld(this);
+		gameCharacters[newIndex] = newCharacter;
+		
+	}
+	
+	public List<Enemy> getEnemys(){
+		return gameEnemys;
+	}
+	
+	public List<Item> getItems(){
+		return gameItems;
+	}
+	
+	public Character getCharacter(int newIndex){
+		return gameCharacters[newIndex];
+	}
+	
+	
+	
+	private boolean collision(int x_min_1, int x_max_1, int x_min_2, int x_max_2, int y_min_1, int y_max_1, int y_min_2, int y_max_2){
 		if(x_min_1 < x_max_2 && y_min_1 < y_max_2 && x_min_2 < x_max_1 && y_min_2 < y_max_1)
 			return true;
 		else
@@ -54,6 +72,10 @@ public class World {
 	public void destroy_item(Item newItem){
 		gameItems.remove(newItem);
 	}
+	
+	public void destroy_enemy(Enemy newEnemy){
+		gameEnemys.remove(newEnemy);	
+	}	
 	
 	
 	public int get_world_x(){
@@ -76,7 +98,8 @@ public class World {
 		}
 	}
 	
-	void load_images(){
+	private void loadTextures(){
+		
 		try{
 			
 			background[1][1] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("background_0_0.png"),GL11.GL_NEAREST);
@@ -90,52 +113,52 @@ public class World {
 	}
 	
 	public void draw(){
+		
 		draw_texture(background[x][y],0,0);
 	}
+	
 	public void update(){
-
 		
-		
-		if(gameCharacter.getX()>304){
-			if(location_exists[x+1][y]){
+		if(gameCharacters[0].getX()>304){
+			if(locationExists[x+1][y]){
 				x+=1;
-				gameCharacter.setWorldX(x);
-				gameCharacter.setX(0);
+				gameCharacters[0].setWorldX(x);
+				gameCharacters[0].setX(0);
 			}
 			else{
-				gameCharacter.setX(304);
+				gameCharacters[0].setX(304);
 			}
 		}
-		if(gameCharacter.getX()<0){
-			if(location_exists[x-1][y]){
+		if(gameCharacters[0].getX()<0){
+			if(locationExists[x-1][y]){
 				x-=1;
-				gameCharacter.setWorldX(x);
-				gameCharacter.setX(304);
+				gameCharacters[0].setWorldX(x);
+				gameCharacters[0].setX(304);
 			}
 			else{
-				gameCharacter.setX(0);
+				gameCharacters[0].setX(0);
 			}
 		}
 	
 	
-	if(gameCharacter.getY()>210){
-		if(location_exists[x][y+1]){
+	if(gameCharacters[0].getY()>210){
+		if(locationExists[x][y+1]){
 			y+=1;
-			gameCharacter.setY(0);
-			gameCharacter.setWorldY(y);
+			gameCharacters[0].setY(0);
+			gameCharacters[0].setWorldY(y);
 		}
 		else{
-			gameCharacter.setY(210);
+			gameCharacters[0].setY(210);
 		}
 	}
-	if(gameCharacter.getY()<-10){
-		if(location_exists[x][y-1]){
+	if(gameCharacters[0].getY()<-10){
+		if(locationExists[x][y-1]){
 			y-=1;
-			gameCharacter.setY(210);
-			gameCharacter.setWorldY(y);
+			gameCharacters[0].setY(210);
+			gameCharacters[0].setWorldY(y);
 		}
 		else{
-			gameCharacter.setY(-10);
+			gameCharacters[0].setY(-10);
 		}
 	}
 }

@@ -22,10 +22,7 @@ import org.newdawn.slick.util.ResourceLoader;
 @SuppressWarnings("deprecation")
 public class main {
 	
-	Character gameCharacter;
 	World gameWorld;
-	
-	
 	
 	// Store variables
 	boolean exit;
@@ -147,16 +144,19 @@ public class main {
 		GL11.glMatrixMode(GL11.GL_MODELVIEW);
 	    
 	    //Setup game data
-	    gameCharacter = new Character(0,Keyboard.KEY_LEFT,Keyboard.KEY_RIGHT,Keyboard.KEY_UP,Keyboard.KEY_DOWN,Keyboard.KEY_A,Keyboard.KEY_D,Keyboard.KEY_W,Keyboard.KEY_S);
-		gameWorld = new World(gameCharacter,1,1);
-		gameCharacter.setWorld(gameWorld);
+	    //gameCharacter = new Character(0,Keyboard.KEY_LEFT,Keyboard.KEY_RIGHT,Keyboard.KEY_UP,Keyboard.KEY_DOWN,Keyboard.KEY_A,Keyboard.KEY_D,Keyboard.KEY_W,Keyboard.KEY_S);
+		gameWorld = new World(1,1);
+		gameWorld.setCharacter(new Character(0,Keyboard.KEY_LEFT,Keyboard.KEY_RIGHT,Keyboard.KEY_UP,Keyboard.KEY_DOWN,Keyboard.KEY_A,Keyboard.KEY_D,Keyboard.KEY_W,Keyboard.KEY_S), 0);
+		//gameWorld.getCharacter(0).setWorld(gameWorld);
+		gameWorld.getCharacter(0).setWorldX(1);
+		gameWorld.getCharacter(0).setWorldY(1);
 
 		for(int i=0; i<10; i++){
 			gameWorld.create_enemy(new Enemy((int)(Math.random()*320),(int)(Math.random()*200),1,1,0));
 		}
 		
 		
-		gameWorld.create_item(new Item("Sword",100,100,1,1));
+		gameWorld.create_item(new Item("Sword",100,125,1,1,5,1));
 		
 	    
 	    
@@ -185,20 +185,20 @@ public class main {
 	        
 	    	// Run the update loop to get mouse information and exit status
 	    	update(delta);
-	    	gameCharacter.update(delta);
+	    	gameWorld.getCharacter(0).update(delta);
 	    	
 	    	
 	    	gameWorld.update();
 	    	gameWorld.draw();
 	    	
-	    	for(Enemy enemy: gameWorld.gameEnemys){
+	    	for(Enemy enemy: gameWorld.getEnemys()){
 	        	enemy.draw(gameWorld.get_world_x(),gameWorld.get_world_y());
 	    	}
-	    	for(Item item: gameWorld.gameItems){
+	    	for(Item item: gameWorld.getItems()){
 	        	item.draw(gameWorld.get_world_x(),gameWorld.get_world_y(),false,false,1,1);
 	    	}
 	    		
-	    	gameCharacter.draw();
+	    	gameWorld.getCharacter(0).draw();
 	       
 	    	
 	    	
