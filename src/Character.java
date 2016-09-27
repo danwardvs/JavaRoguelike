@@ -144,8 +144,9 @@ public class Character {
 		hit_mark_time=0;
 		//hit_mark_x = x+8+scale_from_direction()*current_item.getDamageOffsetX(state-2);
 		
-		hit_mark_x=((x+8-3)+current_item.getDamageOffsetX(state-2)*scale_from_direction());
-		hit_mark_y = (y-3)+current_item.getDamageOffsetY(state-2);
+		hit_mark_x=((x+8-4)+current_item.getDamageOffsetX(state-2)*scale_from_direction());
+		hit_mark_y = (y-4)+current_item.getDamageOffsetY(state-2);
+		
 		
 	}
 	
@@ -213,13 +214,13 @@ public class Character {
 		}
 		
 		
-		if(Keyboard.isKeyDown(key_attack_left) && attack_timer==0 && !key_pressed){
+		if(Keyboard.isKeyDown(key_attack_left) && attack_timer==0 && !key_pressed && move_x<=0){
 			direction=true;
 			attack(4);
 		
 		}
 		
-		if(Keyboard.isKeyDown(key_attack_right) && attack_timer==0 && !key_pressed){
+		if(Keyboard.isKeyDown(key_attack_right) && attack_timer==0 && !key_pressed && move_x>=0){
 			
 			direction=false;
 			attack(4);
