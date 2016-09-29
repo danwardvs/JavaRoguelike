@@ -36,7 +36,7 @@ public class main {
 	int mouse_y;
 	boolean leftButtonDown;
 	boolean rightButtonDown;
-	boolean fullscreen=true;
+	boolean fullscreen=false;
 
 	 // Variables for FPS system
 	long lastFrame;
@@ -151,8 +151,9 @@ public class main {
 		gameWorld.getCharacter(0).setWorldX(1);
 		gameWorld.getCharacter(0).setWorldY(1);
 
-		for(int i=0; i<10; i++){
-			gameWorld.create_enemy(new Enemy((int)(Math.random()*320),(int)(Math.random()*200),1,1,0));
+		for(int i=0; i<50; i++){
+			gameWorld.create_enemy(new Enemy(gameWorld,(int)(Math.random()*320),(int)(Math.random()*200),1,1,0,100));
+			
 		}
 		
 		
@@ -188,20 +189,11 @@ public class main {
 	        
 	    	// Run the update loop to get mouse information and exit status
 	    	update(delta);
-	    	gameWorld.getCharacter(0).update(delta);
 	    	
 	    	
-	    	gameWorld.update();
-	    	gameWorld.draw();
 	    	
-	    	for(Enemy enemy: gameWorld.getEnemys()){
-	        	enemy.draw(gameWorld.get_world_x(),gameWorld.get_world_y());
-	    	}
-	    	for(Item item: gameWorld.getItems()){
-	        	item.draw(gameWorld.get_world_x(),gameWorld.get_world_y(),false,false,1,1);
-	    	}
-	    		
-	    	gameWorld.getCharacter(0).draw();
+	    	gameWorld.update(delta);
+	    	
 	       
 	    	
 	    	

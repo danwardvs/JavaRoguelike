@@ -85,11 +85,11 @@ public class World {
 		return y;
 	}
 	
-	public void apply_damage(int newX, int newY,int radius){
+	public void apply_damage(int newX, int newY,int newRadius, int newDamage){
 		for(int j = 0; j < gameEnemys.size(); j++)
 		{
-        		if(collision(newX-radius,newX+radius,gameEnemys.get(j).getX(),gameEnemys.get(j).getX()+gameEnemys.get(j).getWidth(),newY-radius,newY+radius,gameEnemys.get(j).getY(),gameEnemys.get(j).getY()+gameEnemys.get(j).getHeight())){
-        			gameEnemys.remove(j);
+        		if(collision(newX-newRadius,newX+newRadius,gameEnemys.get(j).getX(),gameEnemys.get(j).getX()+gameEnemys.get(j).getWidth(),newY-newRadius,newY+newRadius,gameEnemys.get(j).getY(),gameEnemys.get(j).getY()+gameEnemys.get(j).getHeight())){
+        			gameEnemys.get(j).recieveDamage(10);
         			System.out.println("Gotcha!");
         		}
         
@@ -117,8 +117,26 @@ public class World {
 		draw_texture(background[x][y],0,0);
 	}
 	
-	public void update(){
+	public void update(int delta){
 		
+		draw();
+    	
+    	for(int i=0; i<gameEnemys.size(); i++){
+    		gameEnemys.get(i).update();
+    		if(gameEnemys.get(i).getHealth()<=0){
+    			gameEnemys.remove(i);
+    		}
+    		gameEnemys.get(i).draw(x,y);
+    		
+    	}
+    	for(Item item: getItems()){
+        	item.draw(get_world_x(),get_world_y(),false,false,1,1);
+    	}
+    	
+    	getCharacter(0).update(delta);
+    	getCharacter(0).draw();
+		
+	
 		if(gameCharacters[0].getX()>304){
 			if(locationExists[x+1][y]){
 				x+=1;

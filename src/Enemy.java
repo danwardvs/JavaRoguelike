@@ -12,16 +12,21 @@ public class Enemy {
 	int type;
 	int world_x;
 	int world_y;
+	int health;
 	Texture texture;
+	World gameWorld;
 	
-	public Enemy(int newX, int newY, int newWorldX, int newWorldY, int newType){
+	public Enemy(World newWorld, int newX, int newY, int newWorldX, int newWorldY, int newType, int newHealth){
 	// Number 1
 		x = newX;
 		y = newY;
 		type = newType;
 		world_x = newWorldX;
 		world_y = newWorldY;
+		gameWorld = newWorld;
+		health = newHealth;
 		load_images();
+		System.out.println(x + ":" + y);
 		
 	}
 	
@@ -40,7 +45,7 @@ public class Enemy {
 	}
 	
 	public int getX(){
-		return x;
+		return x + 100;
 	}
 	
 	public int getY(){
@@ -53,10 +58,24 @@ public class Enemy {
 	public int getWorldY(){
 		return world_y;
 	}
-	
-	public void update(int delta){
-		
+	public int getHealth(){
+		return health;
 	}
+	
+	public void recieveDamage(int newDamage){
+		health-=newDamage;
+		if(health<0)
+			health=0;
+		System.out.println("Hurt!:"+health);
+	}
+	
+	public boolean update(int delta){
+		if(health>=0)
+			return true;
+		return false;
+	}
+	
+	
 	
 	void load_images(){
 		try{

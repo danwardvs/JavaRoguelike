@@ -138,15 +138,22 @@ public class Character {
 		state = newState;
 		attack_timer=attack_speed;
 		key_pressed=true;
+		int damage_x=x+8+(scale_from_direction()*current_item.getDamageOffsetX(state-2));
+		int damage_y=y+current_item.getDamageOffsetY(state-2);
 		
-		gameWorld.apply_damage(x+8+scale_from_direction()*current_item.getDamageOffsetX(state-2), y+current_item.getDamageOffsetY(state-2), 1);
+		gameWorld.apply_damage(damage_x, damage_y, 1, current_item.getDamage());
+		
+		System.out.println(damage_x);
+		System.out.println(x);
+
 		
 		hit_mark_time=0;
 		//hit_mark_x = x+8+scale_from_direction()*current_item.getDamageOffsetX(state-2);
+		System.out.println(damage_x + ":" + damage_y);
 		
 		hit_mark_x=((x+8-4)+current_item.getDamageOffsetX(state-2)*scale_from_direction());
 		hit_mark_y = (y-4)+current_item.getDamageOffsetY(state-2);
-		
+
 		
 	}
 	
@@ -306,8 +313,6 @@ public class Character {
 		
 
 			current_item.draw(x+current_item.getItemOffsetX(newState)*scale_from_direction(),y+current_item.getItemOffsetY(newState),true,image_from_state(),scale_from_direction(),scale_from_state());
-			System.out.println(current_item.getItemOffsetX(newState)*scale_from_direction());
-			System.out.println(current_item.getItemOffsetY(newState)*scale_from_direction());
 
 		}
 		
