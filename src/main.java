@@ -24,32 +24,20 @@ public class main {
 	
 	World gameWorld;
 	
-	// Store variables
 	boolean exit;
+	
 	
 	// Window size
 	int width = 320;
 	int height = 240;
-	
-    // Mouse position variables
-	int mouse_x;
-	int mouse_y;
-	boolean leftButtonDown;
-	boolean rightButtonDown;
 	boolean fullscreen=true;
+	
 	 // Variables for FPS system
 	long lastFrame;
     
 	int fps;
 	
 	long lastFPS;
-	
-	// Function for checking if a location is clicked
-	public boolean location_clicked(int min_x,int max_x,int min_y,int max_y){
-	    if(mouse_x>min_x && mouse_x<max_x && mouse_y>min_y && mouse_y<max_y && leftButtonDown)
-	        return true;
-	    else return false;
-	}
 	
 	// Calculate and display FPS
 	public void updateFPS() {
@@ -76,30 +64,6 @@ public class main {
 	}
 	
 	// Store update loop
-	public void update(int delta) {
-	       
-		// Get mouse location
-		mouse_x = Mouse.getX(); 
-	    mouse_y = Mouse.getY(); 
-	    
-	    // Convert mouse to 0,0 at top left of the window
-	    mouse_y=240-mouse_y;
-	    
-	    // Get mouse buttons
-	    leftButtonDown = Mouse.isButtonDown(0);
-	    rightButtonDown = Mouse.isButtonDown(1);
-	    	
-	    // Handles exit button
-	    if(location_clicked(160,300,380,600))
-	    	exit=true;
-	    
-	    
-	    // update FPS Counter
-	    updateFPS(); 
-	}
-	
-	
-	
 	@SuppressWarnings("deprecation")
 	// Runs once when program starts up
 	public void start() {
@@ -166,6 +130,8 @@ public class main {
 	    // Runs update when the program has not been exited
 	    while (!Display.isCloseRequested() && !exit) {
 	    	
+	    	updateFPS(); 
+	    	
 	    	Keyboard.poll();
 	    	if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE))
 	    		exit=true;
@@ -178,26 +144,9 @@ public class main {
 	        
 	        // Sets screen color to white AKA no color
 	        Color.white.bind();
-	        
-	        // Draw everything to the screen
-	        
-	        
-	        
-	 
-	  
-	        
-	    	// Run the update loop to get mouse information and exit status
-	    	update(delta);
-	    	
-	    	
-	    	
+
 	    	gameWorld.update(delta);
-	    	
-	       
-	    	
-	    	
-	 
-	    	
+	    
 	    	Display.update();
 	        
 	    	// Keeps the display from going above 60 FPS
