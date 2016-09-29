@@ -68,8 +68,6 @@ public class Character {
 		key_attack_right = newAttackRight;
 		key_attack_up = newAttackUp;
 		
-		
-		
 		load_images();
 		
 	}
@@ -132,6 +130,9 @@ public class Character {
 	public void setY(int newY){
 		y = newY;
 	}
+	public void setItem(Item newItem){
+		current_item = newItem;
+	}
 	
 	void attack(int newState){
 		
@@ -140,12 +141,8 @@ public class Character {
 		key_pressed=true;
 		int damage_x=x+8+(scale_from_direction()*current_item.getDamageOffsetX(state-2));
 		int damage_y=y+current_item.getDamageOffsetY(state-2);
-		
-		
 
-		
 		hit_mark_time=0;
-		//hit_mark_x = x+8+scale_from_direction()*current_item.getDamageOffsetX(state-2);
 		
 		hit_mark_x=((x+8-4)+current_item.getDamageOffsetX(state-2)*scale_from_direction());
 		hit_mark_y = (y-4)+current_item.getDamageOffsetY(state-2);
@@ -162,8 +159,6 @@ public class Character {
 		{
 			if(collision(x,x+16,gameWorld.getItems().get(j).getX(),gameWorld.getItems().get(j).getX()+16,y,y+32,gameWorld.getItems().get(j).getY(),gameWorld.getItems().get(j).getY()+16)){
         		if(world_x==gameWorld.getItems().get(j).getWorldX() && world_y==gameWorld.getItems().get(j).getWorldY()){
-        			
-        			
 					current_item = gameWorld.getItems().get(j);
         			gameWorld.getItems().remove(j);
         		}
@@ -215,41 +210,33 @@ public class Character {
 			x+=move_x;
 			y+=move_y;
 			walk_step=0;
-			
-			
 		}
 		
 		
 		if(Keyboard.isKeyDown(key_attack_left) && attack_timer==0 && !key_pressed && move_x<=0){
 			direction=true;
 			attack(4);
-		
 		}
 		
 		if(Keyboard.isKeyDown(key_attack_right) && attack_timer==0 && !key_pressed && move_x>=0){
 			
 			direction=false;
 			attack(4);
-	
-	
 		}
 		
 		if(Keyboard.isKeyDown(key_attack_up) && attack_timer==0 && !key_pressed){
 			
 			attack(2);
-
 		}
 		
 		if(Keyboard.isKeyDown(key_attack_down) && attack_timer==0 && !key_pressed){
 			
 			attack(3);
-
 		}
 		
 		if(!Keyboard.isKeyDown(key_attack_down) && !Keyboard.isKeyDown(key_attack_up)  && !Keyboard.isKeyDown(key_attack_left)  && !Keyboard.isKeyDown(key_attack_right) ){
 			key_pressed=false;
 		}
-		
 		
 		if(move_x!=0 || move_y!=0){
 			walk_frame++;

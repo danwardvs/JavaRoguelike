@@ -7,18 +7,20 @@ import org.newdawn.slick.util.ResourceLoader;
 
 public class Enemy {
 	
-	int x;
-	int y;
-	int type;
-	int world_x;
-	int world_y;
-	int health;
-	int hurt;
-	int direction;
-	int speed=1;
+	private int SCREEN_W = 320;
+	private int SCREEN_H = 240;
+	private int x;
+	private int y;
+	private int type;
+	private int world_x;
+	private int world_y;
+	private int health;
+	private int hurt;
+	private int direction;
+	private int speed=1;
 	int wait_direction;
-	Texture texture;
-	World gameWorld;
+	private Texture texture;
+	private World gameWorld;
 	
 	public Enemy(World newWorld, int newX, int newY, int newWorldX, int newWorldY, int newType, int newHealth){
 	// Number 1
@@ -30,7 +32,6 @@ public class Enemy {
 		gameWorld = newWorld;
 		health = newHealth;
 		load_images();
-		System.out.println(x + ":" + y);
 		
 	}
 	
@@ -57,10 +58,29 @@ public class Enemy {
 			if(direction==4)
 				y-=speed;
 		}
-		hurt--;
+		
+		if(x<0+getWidth())
+			x=0+getWidth();
+		
+		if(y<0+getHeight())
+			y=0+getHeight();
+		
+		if(x>SCREEN_W-getWidth())
+			x=SCREEN_W-getWidth();
+		
+		if(y>SCREEN_H-getHeight())
+			y=SCREEN_H-getHeight();
+		
+		
+		
+		
 		wait_direction--;
+		hurt--;
+		//Preventing any overflowing on an idle enemy
 		if(hurt<0)
 			hurt=0;
+		if(wait_direction<0)
+			wait_direction=0;
 		
 		
 	}
@@ -94,7 +114,7 @@ public class Enemy {
 	
 	public void recieveDamage(int newDamage){
 		health-=newDamage;
-		hurt=10;
+		hurt=5;
 		if(health<0)
 			health=0;
 	}

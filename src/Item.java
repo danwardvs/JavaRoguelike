@@ -29,7 +29,6 @@ public class Item {
 		world_y = newWorldY;
 		damage_radius=newDamageRadius;
 		damage=newDamage;
-		load_images(name);
 	}
 	
 	public void setDamageOffset(int newLowerX, int newLowerY,int newMidX, int newMidY, int newHighX, int newHighY){
@@ -79,19 +78,33 @@ public class Item {
 	public String getName(){
 		return name;
 	}
+	public void setTexture(String newName, int newAmount){
+		
+		texture = load_texture(newName + ".png");
+		
+		if(newAmount==1){
+			texture_2 = load_texture(newName + "_2.png");
+		}
+			
+		
+	}
 	
 	
 	public void draw(int newX, int newY, boolean newLocal, boolean newSecondary, int newScaleX, int newScaleY){
-		Texture newTexture;
 		
-		if(newSecondary)
-			newTexture=texture_2;
-		else
-			newTexture=texture;
-		if(newX==world_x && newY==world_y && !newLocal)
-			draw_texture(x,y,newTexture,newScaleX,newScaleY);
-		else if(newLocal){
-			draw_texture(newX,newY,newTexture,newScaleX,newScaleY);
+		if(texture != null){
+			
+			Texture newTexture;
+			
+			if(newSecondary)
+				newTexture=texture_2;
+			else
+				newTexture=texture;
+			if(newX==world_x && newY==world_y && !newLocal)
+				draw_texture(x,y,newTexture,newScaleX,newScaleY);
+			else if(newLocal){
+				draw_texture(newX,newY,newTexture,newScaleX,newScaleY);
+			}
 		}
 		
 	}
@@ -120,18 +133,16 @@ public class Item {
 		return damage;
 	}
 	
-	void load_images(String newName){
+	Texture load_texture(String newPath){
+		Texture newTexture = null;
 		try{
 			
-			texture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(newName + ".png"),GL11.GL_NEAREST);
-			texture_2 = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(newName + "_2.png"),GL11.GL_NEAREST);
+			newTexture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(newPath),GL11.GL_NEAREST);
 
-			
-
-		
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return newTexture;
 	}
 	
 	 //Draws the texture to the screen
@@ -139,31 +150,19 @@ public class Item {
 			
 			newTexture.bind();
 			
-			int newScale=0;
-			//GL11.glScalef(1, 1, 1);
 			GL11.glBegin(GL11.GL_QUADS);
-			
-			
 		   			
-		   				
+		   		GL11.glTexCoord2f(0,0);
+		   		GL11.glVertex2f(newX,newY);
+			    GL11.glTexCoord2f(newScaleX*1,0);
+			    GL11.glVertex2f(newX+newTexture.getTextureWidth(),newY);
+			    GL11.glTexCoord2f(newScaleX*1,newScaleY*1);
+			    GL11.glVertex2f(newX+newTexture.getTextureWidth(),newY+newTexture.getTextureHeight());
+				GL11.glTexCoord2f(0,newScaleY*1);
+				GL11.glVertex2f(newX,newY+newTexture.getTextureHeight());
 		   		
-		   			
-		   			GL11.glTexCoord2f(0,0);
-		   		   	GL11.glVertex2f(newX,newY);
-		   				
-		   				
-				    GL11.glTexCoord2f(newScaleX*1,0);
-				    GL11.glVertex2f(newX+newTexture.getTextureWidth(),newY);
-				    GL11.glTexCoord2f(newScaleX*1,newScaleY*1);
-				    GL11.glVertex2f(newX+newTexture.getTextureWidth(),newY+newTexture.getTextureHeight());
-				    GL11.glTexCoord2f(0,newScaleY*1);
-				    GL11.glVertex2f(newX,newY+newTexture.getTextureHeight());
-		   		
-			    	
-			    GL11.glEnd();
+			GL11.glEnd();
 			 
-			
-			    
-			}
+	}
 	
 }

@@ -87,7 +87,7 @@ public class World {
 	public void apply_damage(int newX, int newY,int newRadius, int newDamage){
 		for(int j = 0; j < gameEnemys.size(); j++){
         	if(collision(newX-newRadius,newX+newRadius,gameEnemys.get(j).getX(),gameEnemys.get(j).getX()+gameEnemys.get(j).getWidth(),newY-newRadius,newY+newRadius,gameEnemys.get(j).getY(),gameEnemys.get(j).getY()+gameEnemys.get(j).getHeight())){
-        		gameEnemys.get(j).recieveDamage(100);
+        		gameEnemys.get(j).recieveDamage(newDamage);
         	
        		}
 		}

@@ -28,8 +28,8 @@ public class main {
 	
 	
 	// Window size
-	int width = 320;
-	int height = 240;
+	public static final int SCREEN_W = 320;
+	public static final int SCREEN_H = 240;
 	boolean fullscreen=true;
 	
 	 // Variables for FPS system
@@ -75,7 +75,7 @@ public class main {
 
 	    	}
 	    	if(!fullscreen)
-	    		Display.setDisplayMode(new DisplayMode(width,height));
+	    		Display.setDisplayMode(new DisplayMode(SCREEN_W,SCREEN_H));
 	        //
 	    	//
 	        //Display.setFullscreen(true);
@@ -103,7 +103,7 @@ public class main {
 			 
 		GL11.glMatrixMode(GL11.GL_PROJECTION);
 		GL11.glLoadIdentity();
-		GL11.glOrtho(0, width, height, 0, 1, -1);
+		GL11.glOrtho(0, SCREEN_W, SCREEN_H, 0, 1, -1);
 		GL11.glMatrixMode(GL11.GL_MODELVIEW);
 	    
 	    //Setup game data
@@ -121,9 +121,15 @@ public class main {
 		
 		
 		Item newItem =  new Item("Sword",100,125,1,1,5,50);
+		newItem.setTexture("Sword",1);
 		newItem.setDamageOffset(19, 33, 20, 22, 19, 4);
 		newItem.setItemOffset(10,10,12, 2,12,12,12,18);
 		gameWorld.create_item(newItem);
+		Item newItem2 =  new Item("Fist",100,125,1,1,5,10);
+		newItem2.setDamageOffset(7, 25, 7, 20, 8, 13);
+		gameWorld.getCharacter(0).setItem(newItem2);
+		
+
 		
 	    
 	    
