@@ -87,7 +87,7 @@ public class World {
 	public void apply_damage(int newX, int newY,int newRadius, int newDamage){
 		for(int j = 0; j < gameEnemys.size(); j++){
         	if(collision(newX-newRadius,newX+newRadius,gameEnemys.get(j).getX(),gameEnemys.get(j).getX()+gameEnemys.get(j).getWidth(),newY-newRadius,newY+newRadius,gameEnemys.get(j).getY(),gameEnemys.get(j).getY()+gameEnemys.get(j).getHeight())){
-        		gameEnemys.get(j).recieveDamage(50);
+        		gameEnemys.get(j).recieveDamage(100);
         	
        		}
 		}
@@ -118,13 +118,15 @@ public class World {
     	
     	for(int i=0; i<gameEnemys.size(); i++){
     		gameEnemys.get(i).update();
+    		gameEnemys.get(i).draw(x,y);
+    		
+    		
+    	}
+    	
+    	for(int i=0; i<gameEnemys.size(); i++){
     		if(gameEnemys.get(i).getHealth()<=0){
     			gameEnemys.remove(i);
-    		}else{
-        		gameEnemys.get(i).draw(x,y);
-
     		}
-    		
     	}
     	for(Item item: getItems()){
         	item.draw(get_world_x(),get_world_y(),false,false,1,1);

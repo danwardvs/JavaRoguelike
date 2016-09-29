@@ -13,6 +13,10 @@ public class Enemy {
 	int world_x;
 	int world_y;
 	int health;
+	int hurt;
+	int direction;
+	int speed=1;
+	int wait_direction;
 	Texture texture;
 	World gameWorld;
 	
@@ -31,10 +35,33 @@ public class Enemy {
 	}
 	
 	public void draw(int newWorldX, int newWorldY){
+		boolean newHurt=false;
+		if(hurt>0)
+			newHurt=true;
 		if(newWorldX==world_x && newWorldY==world_y)
-			draw_texture(texture,1);
+			draw_texture(texture,1,newHurt);
 	}
 	public void update(){
+		if(wait_direction<=0){
+			if(Math.ceil(Math.random()*20)==2){
+				direction=(int)Math.floor(Math.random()*5);
+				wait_direction=200;
+					
+			}
+			if(direction==1)
+				x+=speed;
+			if(direction==2)
+				x-=speed;
+			if(direction==3)
+				y+=speed;
+			if(direction==4)
+				y-=speed;
+		}
+		hurt--;
+		wait_direction--;
+		if(hurt<0)
+			hurt=0;
+		
 		
 	}
 	public int getWidth(){
@@ -54,6 +81,9 @@ public class Enemy {
 	public int getWorldX(){
 		return world_x;
 	}
+	public void setHurt(int newHurt){
+		hurt = newHurt;
+	}
 	
 	public int getWorldY(){
 		return world_y;
@@ -64,6 +94,7 @@ public class Enemy {
 	
 	public void recieveDamage(int newDamage){
 		health-=newDamage;
+		hurt=10;
 		if(health<0)
 			health=0;
 	}
@@ -90,31 +121,28 @@ public class Enemy {
 	}
 	
 	// Draws the texture to the screen
-	void draw_texture(Texture newTexture, int newScale){
+	void draw_texture(Texture newTexture, int newScale, boolean newHurt){
 			
 			newTexture.bind();
 			
+
 			
 			//GL11.glScalef(1, 1, 1);
 			GL11.glBegin(GL11.GL_QUADS);
 			
 			
-		   	
-		   		
-		   			
-		   				GL11.glTexCoord2f(0,0);
-		   		   		GL11.glVertex2f(x,y);
-		   				
-		   				
-				    	GL11.glTexCoord2f(newScale*1,0);
-				    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y);
-				    	GL11.glTexCoord2f(newScale*1,1);
-				    	GL11.glVertex2f(x+newTexture.getTextureWidth(),y+newTexture.getTextureHeight());
-				    	GL11.glTexCoord2f(0,1);
-				    	GL11.glVertex2f(x,y+newTexture.getTextureHeight());
-		   			
-		   		
-			    	
+				if(newHurt)
+					GL11.glColor3f(1, 0, 0);
+		   		GL11.glTexCoord2f(0,0);
+		   		GL11.glVertex2f(x,y);
+				GL11.glTexCoord2f(newScale*1,0);
+				GL11.glVertex2f(x+newTexture.getTextureWidth(),y);
+				GL11.glTexCoord2f(newScale*1,1);
+				GL11.glVertex2f(x+newTexture.getTextureWidth(),y+newTexture.getTextureHeight());
+				GL11.glTexCoord2f(0,1);
+				GL11.glVertex2f(x,y+newTexture.getTextureHeight());
+				GL11.glColor3f(1, 1, 1);
+
 			    GL11.glEnd();
 			 
 			
