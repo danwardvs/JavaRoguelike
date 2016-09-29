@@ -45,7 +45,7 @@ public class Enemy {
 	}
 	
 	public int getX(){
-		return x + 100;
+		return x;
 	}
 	
 	public int getY(){
@@ -66,7 +66,6 @@ public class Enemy {
 		health-=newDamage;
 		if(health<0)
 			health=0;
-		System.out.println("Hurt!:"+health);
 	}
 	
 	public boolean update(int delta){

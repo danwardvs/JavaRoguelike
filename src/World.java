@@ -67,7 +67,6 @@ public class World {
 	}
 	public void create_item(Item newItem){
 		gameItems.add(newItem);
-		System.out.println(newItem.getName());
 	}
 	public void destroy_item(Item newItem){
 		gameItems.remove(newItem);
@@ -86,15 +85,11 @@ public class World {
 	}
 	
 	public void apply_damage(int newX, int newY,int newRadius, int newDamage){
-		for(int j = 0; j < gameEnemys.size(); j++)
-		{
-        		if(collision(newX-newRadius,newX+newRadius,gameEnemys.get(j).getX(),gameEnemys.get(j).getX()+gameEnemys.get(j).getWidth(),newY-newRadius,newY+newRadius,gameEnemys.get(j).getY(),gameEnemys.get(j).getY()+gameEnemys.get(j).getHeight())){
-        			gameEnemys.get(j).recieveDamage(10);
-        			System.out.println("Gotcha!");
-        		}
-        
-		
-		
+		for(int j = 0; j < gameEnemys.size(); j++){
+        	if(collision(newX-newRadius,newX+newRadius,gameEnemys.get(j).getX(),gameEnemys.get(j).getX()+gameEnemys.get(j).getWidth(),newY-newRadius,newY+newRadius,gameEnemys.get(j).getY(),gameEnemys.get(j).getY()+gameEnemys.get(j).getHeight())){
+        		gameEnemys.get(j).recieveDamage(50);
+        	
+       		}
 		}
 	}
 	
@@ -125,8 +120,10 @@ public class World {
     		gameEnemys.get(i).update();
     		if(gameEnemys.get(i).getHealth()<=0){
     			gameEnemys.remove(i);
+    		}else{
+        		gameEnemys.get(i).draw(x,y);
+
     		}
-    		gameEnemys.get(i).draw(x,y);
     		
     	}
     	for(Item item: getItems()){

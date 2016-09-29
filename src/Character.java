@@ -141,18 +141,17 @@ public class Character {
 		int damage_x=x+8+(scale_from_direction()*current_item.getDamageOffsetX(state-2));
 		int damage_y=y+current_item.getDamageOffsetY(state-2);
 		
-		gameWorld.apply_damage(damage_x, damage_y, 1, current_item.getDamage());
 		
-		System.out.println(damage_x);
-		System.out.println(x);
 
 		
 		hit_mark_time=0;
 		//hit_mark_x = x+8+scale_from_direction()*current_item.getDamageOffsetX(state-2);
-		System.out.println(damage_x + ":" + damage_y);
 		
 		hit_mark_x=((x+8-4)+current_item.getDamageOffsetX(state-2)*scale_from_direction());
 		hit_mark_y = (y-4)+current_item.getDamageOffsetY(state-2);
+		
+		gameWorld.apply_damage(damage_x, damage_y, 1, current_item.getDamage());
+
 
 		
 	}
@@ -163,8 +162,8 @@ public class Character {
 		{
 			if(collision(x,x+16,gameWorld.getItems().get(j).getX(),gameWorld.getItems().get(j).getX()+16,y,y+32,gameWorld.getItems().get(j).getY(),gameWorld.getItems().get(j).getY()+16)){
         		if(world_x==gameWorld.getItems().get(j).getWorldX() && world_y==gameWorld.getItems().get(j).getWorldY()){
-				
-					
+        			
+        			
 					current_item = gameWorld.getItems().get(j);
         			gameWorld.getItems().remove(j);
         		}
