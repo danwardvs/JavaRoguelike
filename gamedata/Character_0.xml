@@ -2,7 +2,7 @@
 <level>
 	<object type="Character">
 		<index>0</index>		
-		<x>250</x>
+		<x>10</x>
 		<y>10</y>
 
 	</object>			

@@ -1,6 +1,11 @@
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
+import java.nio.file.Files;
 
 import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.opengl.Texture;
@@ -13,14 +18,14 @@ public class World {
 	private int x;
 	private int y;
 	
+	private WorldLoader gameLoader;
+	
 	private List<Enemy> gameEnemys = new ArrayList<Enemy>();
 	private List<Item> gameItems = new ArrayList<Item>();
 	private Character[] gameCharacters = new Character[4];
 	
 	private Texture[][] background = new Texture[5][5];
 	private boolean locationExists[][] = new boolean[5][5];
-	
-	
 	
 	public World(int newX, int newY){
 		x = newX;
@@ -32,6 +37,13 @@ public class World {
 		loadTextures();
 		
 	}
+	public void setup(){
+		gameLoader = new WorldLoader(this, 1,1);
+		gameLoader.load_level("gamedata/Level_1_1.xml", 1,1);
+		gameLoader.load_characters("gamedata/Character_0.xml");
+		
+	}
+	
 	
 	public void setCharacter(Character newCharacter, int newIndex){
 		newCharacter.setWorld(this);
@@ -83,6 +95,56 @@ public class World {
 	}
 	public int get_world_y(){
 		return y;
+	}
+	
+	private void write_file(String newPath, String newString){
+		try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+			new FileOutputStream(newPath), "utf-8"))) {
+			writer.write(newString);
+		
+		
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void write_level(){
+		
+	
+		
+		String newEntry = "<?xml version=\"1.0\"?>\n\n<level>";
+		
+		for(int j = 0; j < gameEnemys.size(); j++){
+			String newLevelEntry = "";
+			newLevelEntry = newLevelEntry + "	<object type=\"Enemy\">\n";
+			newLevelEntry += "		<type>" + gameEnemys.get(j).getType() + "</type>\n";
+			newLevelEntry += "		<health>" + gameEnemys.get(j).getHealth() + "</health>\n";
+			newLevelEntry += "		<x>" + gameEnemys.get(j).getX() + "</x>\n";
+			newLevelEntry += "		<y>" + gameEnemys.get(j).getY() + "</y>\n";
+			newLevelEntry += "	</object>\n\n";
+
+			
+			
+			
+			System.out.println(newLevelEntry);
+			
+			newEntry += newLevelEntry;
+			
+			
+			
+		}
+		newEntry += "</level>";
+		
+		
+		
+		gameEnemys.clear();
+		gameItems.clear();
+		
+		write_file("gamedata/Level_"+x+"_"+y+".xml",newEntry);		
+
+	}
+	public void read_level(){
+		gameLoader.load_level("gamedata/Level_"+x+"_"+y+".xml", x, y);
 	}
 	
 	public void apply_damage(int newX, int newY,int newRadius, int newDamage){
@@ -139,9 +201,12 @@ public class World {
 	
 		if(gameCharacters[0].getX()>304){
 			if(locationExists[x+1][y]){
+				write_level();
 				x+=1;
 				gameCharacters[0].setWorldX(x);
 				gameCharacters[0].setX(0);
+				read_level();
+
 			}
 			else{
 				gameCharacters[0].setX(304);
@@ -149,9 +214,12 @@ public class World {
 		}
 		if(gameCharacters[0].getX()<0){
 			if(locationExists[x-1][y]){
+				write_level();
 				x-=1;
 				gameCharacters[0].setWorldX(x);
 				gameCharacters[0].setX(304);
+				read_level();
+
 			}
 			else{
 				gameCharacters[0].setX(0);
@@ -161,9 +229,11 @@ public class World {
 	
 	if(gameCharacters[0].getY()>210){
 		if(locationExists[x][y+1]){
+			write_level();
 			y+=1;
 			gameCharacters[0].setY(0);
 			gameCharacters[0].setWorldY(y);
+			read_level();
 		}
 		else{
 			gameCharacters[0].setY(210);
@@ -171,9 +241,12 @@ public class World {
 	}
 	if(gameCharacters[0].getY()<-10){
 		if(locationExists[x][y-1]){
+			write_level();
 			y-=1;
 			gameCharacters[0].setY(210);
 			gameCharacters[0].setWorldY(y);
+			read_level();
+
 		}
 		else{
 			gameCharacters[0].setY(-10);

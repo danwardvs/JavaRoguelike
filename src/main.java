@@ -110,14 +110,7 @@ public class main {
 	    //Setup game data
 	    //gameCharacter = new Character(0,Keyboard.KEY_LEFT,Keyboard.KEY_RIGHT,Keyboard.KEY_UP,Keyboard.KEY_DOWN,Keyboard.KEY_A,Keyboard.KEY_D,Keyboard.KEY_W,Keyboard.KEY_S);
 		gameWorld = new World(1,1);
-		gameLoader = new WorldLoader(gameWorld, 1,1);
-		gameLoader.load_level("gamedata/Level_1_1.xml", 1,1);
-		gameLoader.load_characters("gamedata/Character_0.xml");
-
-		for(int i=0; i<50; i++){
-			//gameWorld.create_enemy(new Enemy(gameWorld,(int)(Math.random()*320),(int)(Math.random()*200),1,1,0,100));
-			
-		}
+		gameWorld.setup();
 		
 		
 		Item newItem =  new Item("Sword",100,125,1,1,5,50);

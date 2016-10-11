@@ -44,7 +44,7 @@ public class Enemy {
 		if(wait_direction<=0){
 			if(Math.ceil(Math.random()*20)==2){
 				direction=(int)Math.floor(Math.random()*5);
-				wait_direction=200;
+				wait_direction=10;
 					
 			}
 			if(direction==1)
@@ -113,6 +113,10 @@ public class Enemy {
 	}
 	public int getHealth(){
 		return health;
+	}
+	
+	public int getType(){
+		return type;
 	}
 	
 	public void recieveDamage(int newDamage){
