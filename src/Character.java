@@ -56,8 +56,11 @@ public class Character {
 	
 	World gameWorld;
 	
-	public Character(int newCharacterIndex,int newLeft,int newRight, int newUp, int newDown, int newAttackLeft, int newAttackRight, int newAttackUp, int newAttackDown){
+	public Character(int newCharacterIndex,int newX, int newY, int newLeft,int newRight, int newUp, int newDown, int newAttackLeft, int newAttackRight, int newAttackUp, int newAttackDown){
+		
 		character_index = newCharacterIndex;
+		x = newX;
+		y = newY;
 		key_left =  newLeft;
 		key_right = newRight;
 		key_up = newUp;

@@ -63,6 +63,7 @@ public class World {
 	
 	public void create_enemy(Enemy newEnemy){
 		gameEnemys.add(newEnemy);	
+		System.out.println(newEnemy);
 		
 	}
 	public void create_item(Item newItem){

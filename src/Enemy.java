@@ -22,13 +22,11 @@ public class Enemy {
 	private Texture texture;
 	private World gameWorld;
 	
-	public Enemy(World newWorld, int newX, int newY, int newWorldX, int newWorldY, int newType, int newHealth){
+	public Enemy(World newWorld, int newX, int newY, int newType, int newHealth){
 	// Number 1
 		x = newX;
 		y = newY;
 		type = newType;
-		world_x = newWorldX;
-		world_y = newWorldY;
 		gameWorld = newWorld;
 		health = newHealth;
 		load_images();
@@ -39,8 +37,8 @@ public class Enemy {
 		boolean newHurt=false;
 		if(hurt>0)
 			newHurt=true;
-		if(newWorldX==world_x && newWorldY==world_y)
-			draw_texture(texture,1,newHurt);
+
+		draw_texture(texture,1,newHurt);
 	}
 	public void update(){
 		if(wait_direction<=0){
@@ -98,15 +96,20 @@ public class Enemy {
 	public int getY(){
 		return y;
 	}
-	public int getWorldX(){
-		return world_x;
-	}
 	public void setHurt(int newHurt){
 		hurt = newHurt;
 	}
-	
+	public int getWorldX(){
+		return world_x;
+	}
 	public int getWorldY(){
 		return world_y;
+	}
+	public void setWorldX(int newX){
+		world_x = newX;
+	}
+	public void setWorldY(int newY){
+		world_y = newY;
 	}
 	public int getHealth(){
 		return health;

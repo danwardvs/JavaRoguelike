@@ -23,6 +23,7 @@ import org.newdawn.slick.util.ResourceLoader;
 public class main {
 	
 	World gameWorld;
+	WorldLoader gameLoader;
 	
 	boolean exit;
 	
@@ -109,13 +110,12 @@ public class main {
 	    //Setup game data
 	    //gameCharacter = new Character(0,Keyboard.KEY_LEFT,Keyboard.KEY_RIGHT,Keyboard.KEY_UP,Keyboard.KEY_DOWN,Keyboard.KEY_A,Keyboard.KEY_D,Keyboard.KEY_W,Keyboard.KEY_S);
 		gameWorld = new World(1,1);
-		gameWorld.setCharacter(new Character(0,Keyboard.KEY_LEFT,Keyboard.KEY_RIGHT,Keyboard.KEY_UP,Keyboard.KEY_DOWN,Keyboard.KEY_A,Keyboard.KEY_D,Keyboard.KEY_W,Keyboard.KEY_S), 0);
-		//gameWorld.getCharacter(0).setWorld(gameWorld);
-		gameWorld.getCharacter(0).setWorldX(1);
-		gameWorld.getCharacter(0).setWorldY(1);
+		gameLoader = new WorldLoader(gameWorld, 1,1);
+		gameLoader.load_level("gamedata/Level_1_1.xml", 1,1);
+		gameLoader.load_characters("gamedata/Character_0.xml");
 
 		for(int i=0; i<50; i++){
-			gameWorld.create_enemy(new Enemy(gameWorld,(int)(Math.random()*320),(int)(Math.random()*200),1,1,0,100));
+			//gameWorld.create_enemy(new Enemy(gameWorld,(int)(Math.random()*320),(int)(Math.random()*200),1,1,0,100));
 			
 		}
 		

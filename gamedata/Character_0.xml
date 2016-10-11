@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<level>
+	<object type="Character">
+		<index>0</index>		
+		<x>250</x>
+		<y>10</y>
+
+	</object>			
+	
+</level>
+
