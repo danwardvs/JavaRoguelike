@@ -4,22 +4,22 @@
 	<object type="Enemy">
 		<type>0</type>
 		<health>160</health>
-		<x>34</x>
-		<y>129</y>
+		<x>32</x>
+		<y>201</y>
 	</object>
 
 	<object type="Enemy">
 		<type>0</type>
 		<health>160</health>
-		<x>127</x>
-		<y>51</y>
+		<x>121</x>
+		<y>117</y>
 	</object>
 
 	<object type="Enemy">
 		<type>0</type>
 		<health>160</health>
-		<x>234</x>
-		<y>50</y>
+		<x>185</x>
+		<y>32</y>
 	</object>
 
 	<object type="Item">
@@ -28,7 +28,7 @@
 		<y>208</y>
 		<damage>100</damage>
 		<damage_radius>5</damage_radius>
-		<texture_number>1</texture_number>
+		<texture_number>2</texture_number>
 	</object>
 
 

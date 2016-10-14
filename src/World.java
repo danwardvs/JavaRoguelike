@@ -45,7 +45,7 @@ public class World {
 		gameLoader.load_characters("gamedata/Character_0.xml");
 		
 		mainMenu = new Menu();
-		//mainMenu.create_button(new Button(10,10,100,50,0f,1f,0f));
+		mainMenu.create_button(new Button(10,10,100,50,0f,1f,0f));
 		
 		
 		

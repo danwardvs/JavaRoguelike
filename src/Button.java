@@ -18,13 +18,24 @@ public class Button {
 	private int width;
 	private int height;
 	private boolean mouse_left_down;
+	private boolean is_hovered;
 	private float r;
 	private float b;
 	private float g;
 
 	private Texture texture;
 	
-
+	private boolean location_clicked(int min_x,int max_x,int min_y,int max_y){
+	    if(mouse_x>min_x && mouse_x<max_x && mouse_y>min_y && mouse_y<max_y && mouse_left_down)
+	        return true;
+	    else return false;
+	}
+	
+	private boolean location_hovered(int min_x,int max_x,int min_y,int max_y){
+	    if(mouse_x>min_x && mouse_x<max_x && mouse_y>min_y && mouse_y<max_y)
+	        return true;
+	    else return false;
+	}
 	
 	public Button(int newX, int newY, int newWidth, int newHeight, float newR, float newB, float newG){
 		x = newX;
@@ -41,21 +52,15 @@ public class Button {
 	public void update(){
 		
 		mouse_x = Mouse.getX();
-		mouse_y = Mouse.getY()-320;
-		mouse_left_down = true;
-		System.out.println(mouse_x + ":" + mouse_y);
+		mouse_y = Math.abs(Mouse.getY()-240);
+		mouse_left_down = Mouse.isButtonDown(0);
 		
 		if(location_clicked(x,x+width,y,y+height)){
-			int x = 0/0;
 			System.out.println("EXIT");
 		}
 		
-	}
-	
-	private boolean location_clicked(int min_x,int max_x,int min_y,int max_y){
-	    if(mouse_x>min_x && mouse_x<max_x && mouse_y>min_y && mouse_y<max_y && mouse_left_down)
-	        return true;
-	    else return false;
+		is_hovered = location_hovered(x,x+width,y,y+height);
+		System.out.println(is_hovered);
 	}
 	
 	private Texture loadTexture(String newPath){
@@ -97,7 +102,10 @@ public class Button {
 	    	
 	    GL11.glEnd();
 	    
-	    GL11.glColor3f(r, g, b);
+	    if(!is_hovered)
+	    		GL11.glColor3f(r, g, b);
+	    
+	    	//GL11.glColor3f(r+0.2f, g+0.2f, b+0.2f);
 	    
 		GL11.glBegin(GL11.GL_QUADS);
 	
