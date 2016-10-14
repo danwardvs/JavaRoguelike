@@ -10,6 +10,7 @@ public class Item {
 	private int x;
 	private int y;
 	private String name;
+	private int texture_number=0;
 	private Texture texture;
 	private Texture texture_2;
 	private int[] damage_offset_x = new int[3];
@@ -76,9 +77,14 @@ public class Item {
 	}
 	public void setTexture(String newName, int newAmount){
 		
-		texture = load_texture(newName + ".png");
+		texture_number = newAmount;
 		
 		if(newAmount==1){
+			texture = load_texture(newName + ".png");
+			
+		}
+		
+		if(newAmount==2){
 			texture_2 = load_texture(newName + "_2.png");
 		}
 			
@@ -90,9 +96,7 @@ public class Item {
 	}
 	
 	public void draw(int newX, int newY, boolean newLocal, boolean newSecondary, int newScaleX, int newScaleY){
-		
-		System.out.println("Drawing!");
-		
+				
 		if(texture != null){
 			
 			Texture newTexture;
@@ -123,6 +127,9 @@ public class Item {
 	
 	public int getDamage(){
 		return damage;
+	}
+	public int getTextureNumber(){
+		return texture_number;
 	}
 	
 	Texture load_texture(String newPath){

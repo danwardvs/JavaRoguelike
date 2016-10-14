@@ -24,11 +24,7 @@ public class Button {
 
 	private Texture texture;
 	
-	private boolean location_clicked(int min_x,int max_x,int min_y,int max_y){
-	    if(mouse_x>min_x && mouse_x<max_x && mouse_y>min_y && mouse_y<max_y && mouse_left_down)
-	        return true;
-	    else return false;
-	}
+
 	
 	public Button(int newX, int newY, int newWidth, int newHeight, float newR, float newB, float newG){
 		x = newX;
@@ -39,30 +35,15 @@ public class Button {
 		b = newB;
 		g = newG;
 		
-		texture = load_texture("button.png");
+		texture = loadTexture("button.png");
 	}
 	
-	private Texture load_texture(String newPath){
-		Texture newTexture = null;
-		try{
-			
-			newTexture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(newPath),GL11.GL_NEAREST);
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return newTexture;
-		
-	}
-	
-	public void draw(){
-		draw_texture(texture,r,g,b);
-	}
 	public void update(){
 		
 		mouse_x = Mouse.getX();
-		mouse_y = Mouse.getY();
-		mouse_left_down = Mouse.isButtonDown(0);
+		mouse_y = Mouse.getY()-320;
+		mouse_left_down = true;
+		System.out.println(mouse_x + ":" + mouse_y);
 		
 		if(location_clicked(x,x+width,y,y+height)){
 			int x = 0/0;
@@ -71,8 +52,36 @@ public class Button {
 		
 	}
 	
+	private boolean location_clicked(int min_x,int max_x,int min_y,int max_y){
+	    if(mouse_x>min_x && mouse_x<max_x && mouse_y>min_y && mouse_y<max_y && mouse_left_down)
+	        return true;
+	    else return false;
+	}
+	
+	private Texture loadTexture(String newPath){
+		
+		Texture newTexture = null;
+		
+		try{
+			
+			newTexture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(newPath),GL11.GL_NEAREST);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return newTexture;
+		
+	}
+	
+	public void draw(){
+		
+		drawTexture(texture,r,g,b);
+	}
+
+	
 	// Draws the texture to the screen
-	void draw_texture(Texture newTexture, float newR, float newB, float newG){
+	void drawTexture(Texture newTexture, float newR, float newB, float newG){
 				
 		newTexture.bind();
 		
@@ -90,7 +99,7 @@ public class Button {
 	    
 	    GL11.glColor3f(r, g, b);
 	    
-		 GL11.glBegin(GL11.GL_QUADS);
+		GL11.glBegin(GL11.GL_QUADS);
 	
 	    	GL11.glVertex2f(x+1,y+1);
 	

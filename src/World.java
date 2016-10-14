@@ -45,7 +45,7 @@ public class World {
 		gameLoader.load_characters("gamedata/Character_0.xml");
 		
 		mainMenu = new Menu();
-		mainMenu.create_button(new Button(10,10,100,50,0f,1f,0f));
+		//mainMenu.create_button(new Button(10,10,100,50,0f,1f,0f));
 		
 		
 		
@@ -87,7 +87,6 @@ public class World {
 	}
 	public void create_item(Item newItem){
 		gameItems.add(newItem);
-		System.out.println(newItem);
 	}
 	public void destroy_item(Item newItem){
 		gameItems.remove(newItem);
@@ -149,7 +148,7 @@ public class World {
 			newLevelEntry += "		<y>" + gameItems.get(j).getY() + "</y>\n";
 			newLevelEntry += "		<damage>" + gameItems.get(j).getDamage() + "</damage>\n";
 			newLevelEntry += "		<damage_radius>" + gameItems.get(j).getDamageRadius() + "</damage_radius>\n";
-
+			newLevelEntry += "		<texture_number>" + gameItems.get(j).getTextureNumber() + "</texture_number>\n";
 
 			newLevelEntry += "	</object>\n\n";
 

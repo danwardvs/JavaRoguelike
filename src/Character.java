@@ -71,16 +71,9 @@ public class Character {
 		key_attack_right = newAttackRight;
 		key_attack_up = newAttackUp;
 		
-		load_images();
-		
+		loadData();
 	}
-	boolean collision(int x_min_1, int x_max_1, int x_min_2, int x_max_2, int y_min_1, int y_max_1, int y_min_2, int y_max_2){
-		if(x_min_1 < x_max_2 && y_min_1 < y_max_2 && x_min_2 < x_max_1 && y_min_2 < y_max_1)
-			return true;
-		else
-			return false;
-		
-	}
+
 	public void setWorld(World newGameWorld){
 		gameWorld = newGameWorld;
 	}
@@ -92,32 +85,6 @@ public class Character {
 		world_y = newWorldY;
 	}
 	
-	void load_images(){
-		try{
-			
-			texture_attack_up = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("CharacterAttackUpwards.png"),GL11.GL_NEAREST);
-
-			texture_attack_down = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("CharacterAttackDownwards.png"),GL11.GL_NEAREST);
-
-			texture_attack_forward = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("CharacterAttackForward.png"),GL11.GL_NEAREST);
-						
-			texture_idle = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("CharacterIdle.png"),GL11.GL_NEAREST);
-			
-			texture_idle_step = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("CharacterIdleStep.png"),GL11.GL_NEAREST);
-
-			hit = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("Hit.png"),GL11.GL_NEAREST);
-			
-			debug = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("debug.png"),GL11.GL_NEAREST);
-
-
-
-		
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		
-	}
 	public int getX(){
 		return x;
 	}
@@ -135,6 +102,37 @@ public class Character {
 	}
 	public void setItem(Item newItem){
 		current_item = newItem;
+	}
+	
+	void loadData(){
+		try{
+			
+			texture_attack_up = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("CharacterAttackUpwards.png"),GL11.GL_NEAREST);
+
+			texture_attack_down = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("CharacterAttackDownwards.png"),GL11.GL_NEAREST);
+
+			texture_attack_forward = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("CharacterAttackForward.png"),GL11.GL_NEAREST);
+						
+			texture_idle = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("CharacterIdle.png"),GL11.GL_NEAREST);
+			
+			texture_idle_step = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("CharacterIdleStep.png"),GL11.GL_NEAREST);
+
+			hit = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("Hit.png"),GL11.GL_NEAREST);
+			
+			debug = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("debug.png"),GL11.GL_NEAREST);
+		
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	boolean collision(int x_min_1, int x_max_1, int x_min_2, int x_max_2, int y_min_1, int y_max_1, int y_min_2, int y_max_2){
+		if(x_min_1 < x_max_2 && y_min_1 < y_max_2 && x_min_2 < x_max_1 && y_min_2 < y_max_1)
+			return true;
+		else
+			return false;
+		
 	}
 	
 	void attack(int newState){
@@ -156,12 +154,11 @@ public class Character {
 	
 	public void update(int delta){
 				
-		for(int j = 0; j < gameWorld.getItems().size(); j++)
+		for(int i = 0; i < gameWorld.getItems().size(); i++)
 		{
-			if(collision(x,x+16,gameWorld.getItems().get(j).getX(),gameWorld.getItems().get(j).getX()+16,y,y+32,gameWorld.getItems().get(j).getY(),gameWorld.getItems().get(j).getY()+16)){
-				current_item = gameWorld.getItems().get(j);
-        		gameWorld.getItems().remove(j);
-        		System.out.println(gameWorld.getItems().size());
+			if(collision(x,x+16,gameWorld.getItems().get(i).getX(),gameWorld.getItems().get(i).getX()+16,y,y+32,gameWorld.getItems().get(i).getY(),gameWorld.getItems().get(i).getY()+16)){
+				current_item = gameWorld.getItems().get(i);
+        		gameWorld.getItems().remove(i);
         		
         	}
 		
@@ -258,21 +255,6 @@ public class Character {
 		}
 		
 	}
-	int scale_from_direction(){
-		if(direction)
-			return -1;
-		return 1;
-	}
-	int scale_from_state(){
-		if(state==3)
-			return -1;
-		return 1;
-	}
-	boolean image_from_state(){
-		if(state==4)
-			return true;
-		return false;
-	}
 	
 	public void draw(){
 		
@@ -310,6 +292,22 @@ public class Character {
 		
 	}
 	
+	int scale_from_direction(){
+		if(direction)
+			return -1;
+		return 1;
+	}
+	int scale_from_state(){
+		if(state==3)
+			return -1;
+		return 1;
+	}
+	boolean image_from_state(){
+		if(state==4)
+			return true;
+		return false;
+	}
+
 	void draw_texture(Texture newTexture,int newScale, int newX, int newY){
 		
 		newTexture.bind();

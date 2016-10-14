@@ -125,7 +125,6 @@ public class WorldLoader {
 						newItem.setDamageOffset(19, 33, 20, 22, 19, 4);
 						newItem.setItemOffset(10,10,12, 2,12,12,12,18);
 						gameWorld.create_item(newItem);
-						//System.out.println(gameWorld.getItems().size());
 					}
 				}
 			}

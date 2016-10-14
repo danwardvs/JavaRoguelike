@@ -26,12 +26,12 @@ public class main {
 	WorldLoader gameLoader;
 	
 	boolean exit;
-	
+
 	
 	// Window size
 	public static final int SCREEN_W = 320;
 	public static final int SCREEN_H = 240;
-	boolean fullscreen=true;
+	boolean fullscreen=false;
 	
 	 // Variables for FPS system
 	long lastFrame;

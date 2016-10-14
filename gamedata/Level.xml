@@ -1,0 +1,15 @@
+<object type="Enemy">
+		<type>0</type>
+		<health>160</health>
+		<x>120</x>
+		<y>208</y>
+	</object>
+
+<object type="Item">
+		<name>Sword</name>
+		<texture_number>1</texture_number>
+		<damage>100</damage>
+		<damage_radius>5</damage_radius>	
+		<x>120</x>
+		<y>208</y>
+	</object>
