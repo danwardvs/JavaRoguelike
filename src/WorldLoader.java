@@ -20,12 +20,15 @@ public class WorldLoader {
 	int index;
 	int type;
 	int health;
+	int damage;
+	int damage_radius;
+	int texture_number;
+	String name;
 	
 	
 	public WorldLoader(World newWorld, int newWorldX, int newWorldY){
+		
 		gameWorld = newWorld;
-		world_x = newWorldX;
-		world_y = newWorldY;
 		
 	}
 	public void load_characters(String newCharacterPath){
@@ -102,6 +105,27 @@ public class WorldLoader {
 
 						Enemy newEnemy = new Enemy(gameWorld,x,y,type,health);
 						gameWorld.create_enemy(newEnemy);
+					}
+					
+					else if(object_type.equals("Item")){
+						
+						name = eElement.getElementsByTagName("name").item(0).getTextContent();
+						
+						x = Integer.valueOf(eElement.getElementsByTagName("x").item(0).getTextContent());
+						y = Integer.valueOf(eElement.getElementsByTagName("y").item(0).getTextContent());
+						
+						texture_number = Integer.valueOf(eElement.getElementsByTagName("texture_number").item(0).getTextContent());
+
+						
+						damage = Integer.valueOf(eElement.getElementsByTagName("damage").item(0).getTextContent());
+						damage_radius = Integer.valueOf(eElement.getElementsByTagName("damage_radius").item(0).getTextContent());
+						
+						Item newItem = new Item(name,x,y,damage_radius,damage);
+						newItem.setTexture(name,texture_number);
+						newItem.setDamageOffset(19, 33, 20, 22, 19, 4);
+						newItem.setItemOffset(10,10,12, 2,12,12,12,18);
+						gameWorld.create_item(newItem);
+						//System.out.println(gameWorld.getItems().size());
 					}
 				}
 			}

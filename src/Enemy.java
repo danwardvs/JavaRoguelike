@@ -160,6 +160,7 @@ public class Enemy {
 			
 				if(newHurt)
 					GL11.glColor3f(1, 0, 0);
+				
 		   		GL11.glTexCoord2f(0,0);
 		   		GL11.glVertex2f(x,y);
 				GL11.glTexCoord2f(newScale*1,0);

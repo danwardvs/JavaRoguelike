@@ -20,6 +20,8 @@ public class World {
 	
 	private WorldLoader gameLoader;
 	
+	private Menu mainMenu;
+	
 	private List<Enemy> gameEnemys = new ArrayList<Enemy>();
 	private List<Item> gameItems = new ArrayList<Item>();
 	private Character[] gameCharacters = new Character[4];
@@ -41,6 +43,11 @@ public class World {
 		gameLoader = new WorldLoader(this, 1,1);
 		gameLoader.load_level("gamedata/Level_1_1.xml", 1,1);
 		gameLoader.load_characters("gamedata/Character_0.xml");
+		
+		mainMenu = new Menu();
+		mainMenu.create_button(new Button(10,10,100,50,0f,1f,0f));
+		
+		
 		
 	}
 	
@@ -75,11 +82,12 @@ public class World {
 	
 	public void create_enemy(Enemy newEnemy){
 		gameEnemys.add(newEnemy);	
-		System.out.println(newEnemy);
+		
 		
 	}
 	public void create_item(Item newItem){
 		gameItems.add(newItem);
+		System.out.println(newItem);
 	}
 	public void destroy_item(Item newItem){
 		gameItems.remove(newItem);
@@ -97,6 +105,11 @@ public class World {
 		return y;
 	}
 	
+	public void save_level(){
+		write_file("gamedata/Level_"+x+"_"+y+".xml",parse_level());		
+
+	}
+	
 	private void write_file(String newPath, String newString){
 		try (Writer writer = new BufferedWriter(new OutputStreamWriter(
 			new FileOutputStream(newPath), "utf-8"))) {
@@ -108,11 +121,11 @@ public class World {
 		}
 	}
 	
-	private void write_level(){
+	private String parse_level(){
 		
 	
 		
-		String newEntry = "<?xml version=\"1.0\"?>\n\n<level>";
+		String newEntry = "<?xml version=\"1.0\"?>\n\n<level>\n";
 		
 		for(int j = 0; j < gameEnemys.size(); j++){
 			String newLevelEntry = "";
@@ -123,24 +136,37 @@ public class World {
 			newLevelEntry += "		<y>" + gameEnemys.get(j).getY() + "</y>\n";
 			newLevelEntry += "	</object>\n\n";
 
+			newEntry += newLevelEntry;
+
+		}
+		
+		for(int j = 0; j < gameItems.size(); j++){
 			
-			
-			
-			System.out.println(newLevelEntry);
+			String newLevelEntry = "";
+			newLevelEntry = newLevelEntry + "	<object type=\"Item\">\n";
+			newLevelEntry += "		<name>" + gameItems.get(j).getName() + "</name>\n";
+			newLevelEntry += "		<x>" + gameItems.get(j).getX() + "</x>\n";
+			newLevelEntry += "		<y>" + gameItems.get(j).getY() + "</y>\n";
+			newLevelEntry += "		<damage>" + gameItems.get(j).getDamage() + "</damage>\n";
+			newLevelEntry += "		<damage_radius>" + gameItems.get(j).getDamageRadius() + "</damage_radius>\n";
+
+
+			newLevelEntry += "	</object>\n\n";
+
 			
 			newEntry += newLevelEntry;
 			
-			
-			
 		}
-		newEntry += "</level>";
+		
+		newEntry += "\n\n</level>";
 		
 		
 		
 		gameEnemys.clear();
 		gameItems.clear();
 		
-		write_file("gamedata/Level_"+x+"_"+y+".xml",newEntry);		
+		return newEntry;
+		
 
 	}
 	public void read_level(){
@@ -173,16 +199,18 @@ public class World {
 	public void draw(){
 		
 		draw_texture(background[x][y],0,0);
+		mainMenu.draw();
 	}
 	
 	public void update(int delta){
 		
 		draw();
+		mainMenu.update();
     	
     	for(int i=0; i<gameEnemys.size(); i++){
+    		
     		gameEnemys.get(i).update();
     		gameEnemys.get(i).draw(x,y);
-    		
     		
     	}
     	
@@ -192,7 +220,7 @@ public class World {
     		}
     	}
     	for(Item item: getItems()){
-        	item.draw(get_world_x(),get_world_y(),false,false,1,1);
+        	item.draw(item.getX(),item.getY(),false,false,1,1);
     	}
     	
     	getCharacter(0).update(delta);
@@ -201,7 +229,7 @@ public class World {
 	
 		if(gameCharacters[0].getX()>304){
 			if(locationExists[x+1][y]){
-				write_level();
+				save_level();
 				x+=1;
 				gameCharacters[0].setWorldX(x);
 				gameCharacters[0].setX(0);
@@ -214,7 +242,7 @@ public class World {
 		}
 		if(gameCharacters[0].getX()<0){
 			if(locationExists[x-1][y]){
-				write_level();
+				save_level();
 				x-=1;
 				gameCharacters[0].setWorldX(x);
 				gameCharacters[0].setX(304);
@@ -229,7 +257,7 @@ public class World {
 	
 	if(gameCharacters[0].getY()>210){
 		if(locationExists[x][y+1]){
-			write_level();
+			save_level();
 			y+=1;
 			gameCharacters[0].setY(0);
 			gameCharacters[0].setWorldY(y);
@@ -241,7 +269,7 @@ public class World {
 	}
 	if(gameCharacters[0].getY()<-10){
 		if(locationExists[x][y-1]){
-			write_level();
+			save_level();
 			y-=1;
 			gameCharacters[0].setY(210);
 			gameCharacters[0].setWorldY(y);

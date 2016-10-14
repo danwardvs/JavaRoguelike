@@ -12,8 +12,6 @@ public class Item {
 	private String name;
 	private Texture texture;
 	private Texture texture_2;
-	private int world_x;
-	private int world_y;
 	private int[] damage_offset_x = new int[3];
 	private int[] damage_offset_y = new int[3];
 	private int[] item_offset_x = new int[4];
@@ -21,12 +19,10 @@ public class Item {
 	private int damage_radius;
 	private int damage;
 	
-	public Item(String newName, int newX, int newY, int newWorldX, int newWorldY, int newDamageRadius, int newDamage){
+	public Item(String newName, int newX, int newY, int newDamageRadius, int newDamage){
 		name = newName;
 		x = newX;
 		y = newY;
-		world_x = newWorldX;
-		world_y = newWorldY;
 		damage_radius=newDamageRadius;
 		damage=newDamage;
 	}
@@ -88,9 +84,14 @@ public class Item {
 			
 		
 	}
-	
+	public void draw(){
+		draw_texture(x,y,texture,-1,-1);
+
+	}
 	
 	public void draw(int newX, int newY, boolean newLocal, boolean newSecondary, int newScaleX, int newScaleY){
+		
+		System.out.println("Drawing!");
 		
 		if(texture != null){
 			
@@ -100,11 +101,9 @@ public class Item {
 				newTexture=texture_2;
 			else
 				newTexture=texture;
-			if(newX==world_x && newY==world_y && !newLocal)
-				draw_texture(x,y,newTexture,newScaleX,newScaleY);
-			else if(newLocal){
-				draw_texture(newX,newY,newTexture,newScaleX,newScaleY);
-			}
+		
+			draw_texture(newX,newY,newTexture,newScaleX,newScaleY);
+			
 		}
 		
 	}
@@ -117,13 +116,6 @@ public class Item {
 	
 	public int getY(){
 		return y;
-	}
-	public int getWorldX(){
-		return world_x;
-	}
-	
-	public int getWorldY(){
-		return world_y;
 	}
 	public int getDamageRadius(){
 		return damage_radius;

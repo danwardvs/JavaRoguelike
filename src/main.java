@@ -113,12 +113,12 @@ public class main {
 		gameWorld.setup();
 		
 		
-		Item newItem =  new Item("Sword",100,125,1,1,5,50);
-		newItem.setTexture("Sword",1);
-		newItem.setDamageOffset(19, 33, 20, 22, 19, 4);
-		newItem.setItemOffset(10,10,12, 2,12,12,12,18);
-		gameWorld.create_item(newItem);
-		Item newItem2 =  new Item("Fist",100,125,1,1,5,10);
+		//Item newItem =  new Item("Sword",100,1255,50);
+		//newItem.setTexture("Sword",1);
+		//newItem.setDamageOffset(19, 33, 20, 22, 19, 4);
+		//newItem.setItemOffset(10,10,12, 2,12,12,12,18);
+		//gameWorld.create_item(newItem);
+		Item newItem2 =  new Item("Fist",100,125,5,10);
 		newItem2.setDamageOffset(7, 25, 7, 20, 8, 13);
 		gameWorld.getCharacter(0).setItem(newItem2);
 		
@@ -132,9 +132,10 @@ public class main {
 	    	updateFPS(); 
 	    	
 	    	Keyboard.poll();
-	    	if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE))
+	    	if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)){
 	    		exit=true;
-	    	
+	    		gameWorld.save_level();
+	    	}
 	        int delta = getDelta();
 	        	
 	        	

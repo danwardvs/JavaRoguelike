@@ -1,38 +1,6 @@
 <?xml version="1.0"?>
 
-<level>	<object type="Enemy">
-		<type>0</type>
-		<health>200</health>
-		<x>23</x>
-		<y>201</y>
-	</object>
+<level>
 
-	<object type="Enemy">
-		<type>0</type>
-		<health>200</health>
-		<x>17</x>
-		<y>180</y>
-	</object>
-
-	<object type="Enemy">
-		<type>0</type>
-		<health>200</health>
-		<x>61</x>
-		<y>198</y>
-	</object>
-
-	<object type="Enemy">
-		<type>0</type>
-		<health>200</health>
-		<x>93</x>
-		<y>107</y>
-	</object>
-
-	<object type="Enemy">
-		<type>0</type>
-		<health>200</health>
-		<x>30</x>
-		<y>196</y>
-	</object>
 
 </level>

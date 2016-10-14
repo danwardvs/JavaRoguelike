@@ -152,8 +152,6 @@ public class Character {
 		
 		gameWorld.apply_damage(damage_x, damage_y, 1, current_item.getDamage());
 
-
-		
 	}
 	
 	public void update(int delta){
@@ -161,15 +159,13 @@ public class Character {
 		for(int j = 0; j < gameWorld.getItems().size(); j++)
 		{
 			if(collision(x,x+16,gameWorld.getItems().get(j).getX(),gameWorld.getItems().get(j).getX()+16,y,y+32,gameWorld.getItems().get(j).getY(),gameWorld.getItems().get(j).getY()+16)){
-        		if(world_x==gameWorld.getItems().get(j).getWorldX() && world_y==gameWorld.getItems().get(j).getWorldY()){
-					current_item = gameWorld.getItems().get(j);
-        			gameWorld.getItems().remove(j);
-        		}
+				current_item = gameWorld.getItems().get(j);
+        		gameWorld.getItems().remove(j);
+        		System.out.println(gameWorld.getItems().size());
+        		
         	}
 		
-		
 		}
-		
 		
 		walk_step++;
 		hit_mark_time++;
@@ -298,8 +294,8 @@ public class Character {
 		
 		
 		if(current_item!=null){
+			
 			int newState=state-1;
-		
 
 			current_item.draw(x+current_item.getItemOffsetX(newState)*scale_from_direction(),y+current_item.getItemOffsetY(newState),true,image_from_state(),scale_from_direction(),scale_from_state());
 
