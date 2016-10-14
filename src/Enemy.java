@@ -29,7 +29,7 @@ public class Enemy {
 		type = newType;
 		gameWorld = newWorld;
 		health = newHealth;
-		load_images();
+		loadData();
 		
 	}
 	
@@ -134,7 +134,7 @@ public class Enemy {
 	
 	
 	
-	void load_images(){
+	void loadData(){
 		try{
 			if(type==0)
 				texture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("Enemy.png"),GL11.GL_NEAREST);

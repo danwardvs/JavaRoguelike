@@ -21,6 +21,7 @@ public class World {
 	private WorldLoader gameLoader;
 	
 	private Menu mainMenu;
+	private MouseHandler gameMouse;
 	
 	private List<Enemy> gameEnemys = new ArrayList<Enemy>();
 	private List<Item> gameItems = new ArrayList<Item>();
@@ -44,9 +45,13 @@ public class World {
 		gameLoader.load_level("gamedata/Level_1_1.xml", 1,1);
 		gameLoader.load_characters("gamedata/Character_0.xml");
 		
-		mainMenu = new Menu();
-		mainMenu.create_button(new Button(10,10,100,50,0f,1f,0f));
-		mainMenu.setup();
+		gameMouse = new MouseHandler();
+		
+		mainMenu = new Menu(gameMouse);
+		mainMenu.create_button(new Button(gameMouse,10,10,100,50,0f,1f,0f));
+		
+		
+		
 		
 		
 		
@@ -201,11 +206,13 @@ public class World {
 		draw_texture(background[x][y],0,0);
 		mainMenu.draw();
 		getCharacter(0).draw();
+		gameMouse.draw();
 	}
 	
 	public void update(int delta){
 		
 		mainMenu.update();
+		gameMouse.update();
     	
     	for(int i=0; i<gameEnemys.size(); i++){
     		

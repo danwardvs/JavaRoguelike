@@ -22,6 +22,7 @@ public class Button {
 	private float r;
 	private float b;
 	private float g;
+	private MouseHandler gameMouse;
 
 	private Texture texture;
 	
@@ -37,7 +38,7 @@ public class Button {
 	    else return false;
 	}
 	
-	public Button(int newX, int newY, int newWidth, int newHeight, float newR, float newB, float newG){
+	public Button(MouseHandler newMouseHandler,int newX, int newY, int newWidth, int newHeight, float newR, float newB, float newG){
 		x = newX;
 		y = newY;
 		width = newWidth;
@@ -46,21 +47,20 @@ public class Button {
 		b = newB;
 		g = newG;
 		
+		gameMouse = newMouseHandler;
+		
 		texture = loadTexture("button.png");
 	}
 	
 	public void update(){
 		
 		//Mouse.setGrabbed(true);
-		mouse_x = Mouse.getX();
-		mouse_y = Math.abs(Mouse.getY()-240);
+		mouse_x = gameMouse.getX();
+		mouse_y = gameMouse.getY();
 		mouse_left_down = Mouse.isButtonDown(0);
 		
 		if(location_clicked(x,x+width,y,y+height)){
 			System.out.println("EXIT");
-		}
-		if(mouse_left_down){
-			System.out.println(x+":"+y);
 		}
 		
 		is_hovered = location_hovered(x,x+width,y,y+height);

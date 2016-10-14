@@ -15,34 +15,30 @@ public class Menu {
 	private int mouse_x;
 	private int mouse_y;
 	
+	private MouseHandler gameMouse;
+	
 	private Texture cursor;
 	
-	public Menu(){
+	public Menu(MouseHandler newMouseHandler){
 		cursor = loadTexture("Hit.png");
+		gameMouse = newMouseHandler;
+		Mouse.setCursorPosition(180, 120);
+
 	}
 	
 	public void create_button(Button newButton){
 		menuButtons.add(newButton);
 	}
 	
-	public void setup(){
-		Mouse.setCursorPosition(180, 120);
-	}
 	
 	public void update(){
 		
-		mouse_x = Mouse.getX();
-		mouse_y = -Mouse.getY()+240;
+		//mouse_x = Mouse.getX();
+		//mouse_y = -Mouse.getY()+240;
 		
+		mouse_x = gameMouse.getX();
+		mouse_y = gameMouse.getY();
 		
-		if(mouse_x>319){
-			Mouse.setCursorPosition(319, mouse_y);
-			mouse_x=319;
-		}
-		if(mouse_y<0)
-			Mouse.setCursorPosition(mouse_x, 240);
-		
-		System.out.println(mouse_x+":"+mouse_y);
 		
 		for(Button newButton: menuButtons){
 	          newButton.update();
@@ -58,7 +54,6 @@ public class Menu {
 
 		  }
 		  
-		  draw_texture(cursor,1,mouse_x,mouse_y);
 		  
 		
 	}
