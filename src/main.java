@@ -68,7 +68,9 @@ public class main {
 	@SuppressWarnings("deprecation")
 	// Runs once when program starts up
 	public void start() {
-	   
+		
+		
+		
 		// Trys to setup displays
 	    try {
 	    	if(fullscreen){
@@ -82,6 +84,8 @@ public class main {
 	        //Display.setFullscreen(true);
 	        Display.create();
 	        Keyboard.create();
+	      
+			
 	    } catch (LWJGLException e) {
 	        e.printStackTrace();
 	        System.exit(0);
@@ -144,9 +148,13 @@ public class main {
 	        
 	        // Sets screen color to white AKA no color
 	        Color.white.bind();
+	        
+	    	
 
 	    	gameWorld.update(delta);
-	    
+	    		
+	    	gameWorld.draw();
+	    	
 	    	Display.update();
 	        
 	    	// Keeps the display from going above 60 FPS

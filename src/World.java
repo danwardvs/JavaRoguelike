@@ -46,6 +46,7 @@ public class World {
 		
 		mainMenu = new Menu();
 		mainMenu.create_button(new Button(10,10,100,50,0f,1f,0f));
+		mainMenu.setup();
 		
 		
 		
@@ -199,11 +200,11 @@ public class World {
 		
 		draw_texture(background[x][y],0,0);
 		mainMenu.draw();
+		getCharacter(0).draw();
 	}
 	
 	public void update(int delta){
 		
-		draw();
 		mainMenu.update();
     	
     	for(int i=0; i<gameEnemys.size(); i++){
@@ -223,7 +224,7 @@ public class World {
     	}
     	
     	getCharacter(0).update(delta);
-    	getCharacter(0).draw();
+    	
 		
 	
 		if(gameCharacters[0].getX()>304){

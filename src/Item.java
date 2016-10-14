@@ -80,12 +80,12 @@ public class Item {
 		texture_number = newAmount;
 		
 		if(newAmount==1){
-			texture = load_texture(newName + ".png");
+			texture = loadTexture(newName + ".png");
 			
 		}
 		
 		if(newAmount==2){
-			texture_2 = load_texture(newName + "_2.png");
+			texture_2 = loadTexture(newName + "_2.png");
 		}
 			
 		
@@ -132,7 +132,7 @@ public class Item {
 		return texture_number;
 	}
 	
-	Texture load_texture(String newPath){
+	Texture loadTexture(String newPath){
 		Texture newTexture = null;
 		try{
 			

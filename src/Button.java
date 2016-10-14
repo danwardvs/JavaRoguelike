@@ -51,6 +51,7 @@ public class Button {
 	
 	public void update(){
 		
+		//Mouse.setGrabbed(true);
 		mouse_x = Mouse.getX();
 		mouse_y = Math.abs(Mouse.getY()-240);
 		mouse_left_down = Mouse.isButtonDown(0);
@@ -58,9 +59,11 @@ public class Button {
 		if(location_clicked(x,x+width,y,y+height)){
 			System.out.println("EXIT");
 		}
+		if(mouse_left_down){
+			System.out.println(x+":"+y);
+		}
 		
 		is_hovered = location_hovered(x,x+width,y,y+height);
-		System.out.println(is_hovered);
 	}
 	
 	private Texture loadTexture(String newPath){
@@ -105,7 +108,7 @@ public class Button {
 	    if(!is_hovered)
 	    		GL11.glColor3f(r, g, b);
 	    
-	    	//GL11.glColor3f(r+0.2f, g+0.2f, b+0.2f);
+	    else GL11.glColor3f(r+0.4f, g+0.4f, b+0.4f);
 	    
 		GL11.glBegin(GL11.GL_QUADS);
 	
