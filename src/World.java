@@ -41,6 +41,8 @@ public class World {
 		
 	}
 	public void setup(){
+		
+		
 		gameLoader = new WorldLoader(this, 1,1);
 		gameLoader.load_level("gamedata/Level_1_1.xml", 1,1);
 		gameLoader.load_characters("gamedata/Character_0.xml");
@@ -48,9 +50,19 @@ public class World {
 		gameMouse = new MouseHandler();
 		
 		mainMenu = new Menu(gameMouse);
-		mainMenu.create_button(new Button(gameMouse,10,10,100,50,0f,1f,0f));
 		
+		//Arcade machine
 		
+		mainMenu.create_button(new Button(gameMouse,120,20,50,25,0f,1f,0f,"1"));
+		mainMenu.create_button(new Button(gameMouse,180,20,50,25,0f,1f,0f,"1"));
+
+		mainMenu.create_button(new Button(gameMouse,220,20,50,25,0f,1f,0f,"1"));
+
+		mainMenu.create_button(new Button(gameMouse,10,20,50,25,0f,1f,0f,"1"));
+		
+		mainMenu.create_button(new Button(gameMouse,10,10,100,50,0f,1f,0f,"Hey"));
+
+
 		
 		
 		

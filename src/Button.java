@@ -1,9 +1,11 @@
+import java.awt.Font;
 import java.io.IOException;
+import java.io.InputStream;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.input.Mouse;
-
-
+import org.newdawn.slick.Color;
+import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 import org.newdawn.slick.util.ResourceLoader;
@@ -11,6 +13,7 @@ import org.newdawn.slick.util.ResourceLoader;
 
 public class Button {
 	
+	private String text;
 	private int x;
 	private int y;
 	private int mouse_x;
@@ -25,6 +28,8 @@ public class Button {
 	private MouseHandler gameMouse;
 
 	private Texture texture;
+
+	private TrueTypeFont font;
 	
 	private boolean location_clicked(int min_x,int max_x,int min_y,int max_y){
 	    if(mouse_x>min_x && mouse_x<max_x && mouse_y>min_y && mouse_y<max_y && mouse_left_down)
@@ -38,7 +43,7 @@ public class Button {
 	    else return false;
 	}
 	
-	public Button(MouseHandler newMouseHandler,int newX, int newY, int newWidth, int newHeight, float newR, float newB, float newG){
+	public Button(MouseHandler newMouseHandler,int newX, int newY, int newWidth, int newHeight, float newR, float newB, float newG, String newText){
 		x = newX;
 		y = newY;
 		width = newWidth;
@@ -47,10 +52,14 @@ public class Button {
 		b = newB;
 		g = newG;
 		
+		text = newText;
+		
 		gameMouse = newMouseHandler;
 		
 		texture = loadTexture("button.png");
+		loadFont("font.ttf",16);
 	}
+	
 	
 	public void update(){
 		
@@ -64,6 +73,21 @@ public class Button {
 		}
 		
 		is_hovered = location_hovered(x,x+width,y,y+height);
+	}
+	
+	// Load font from file
+	public void loadFont(String newPath, int newSize){
+		
+        try {
+            InputStream inputStream = ResourceLoader.getResourceAsStream(newPath);
+             
+            Font awtFont = Font.createFont(Font.TRUETYPE_FONT, inputStream);
+            awtFont = awtFont.deriveFont((float)newSize); // set font size
+            font = new TrueTypeFont(awtFont, false);
+             
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 	}
 	
 	private Texture loadTexture(String newPath){
@@ -85,11 +109,18 @@ public class Button {
 	public void draw(){
 		
 		drawTexture(texture,r,g,b);
+		drawFont(text);
+        
+
+	}
+	private void drawFont(String newText){
+		font.drawString(x+(width/2)-(font.getWidth(newText)/2), y+(height/2)-(font.getHeight(newText)/2), newText, Color.white);
+       
 	}
 
 	
 	// Draws the texture to the screen
-	void drawTexture(Texture newTexture, float newR, float newB, float newG){
+	private void drawTexture(Texture newTexture, float newR, float newB, float newG){
 				
 		newTexture.bind();
 		

@@ -122,6 +122,7 @@ public class main {
 		//newItem.setDamageOffset(19, 33, 20, 22, 19, 4);
 		//newItem.setItemOffset(10,10,12, 2,12,12,12,18);
 		//gameWorld.create_item(newItem);
+		
 		Item newItem2 =  new Item("Fist",100,125,5,10);
 		newItem2.setDamageOffset(7, 25, 7, 20, 8, 13);
 		gameWorld.getCharacter(0).setItem(newItem2);
