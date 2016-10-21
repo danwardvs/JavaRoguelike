@@ -23,6 +23,9 @@ public class World {
 	private Menu mainMenu;
 	private MouseHandler gameMouse;
 	
+	private char vending_digit_1;
+	private char vending_digit_2;
+	
 	private List<Enemy> gameEnemys = new ArrayList<Enemy>();
 	private List<Item> gameItems = new ArrayList<Item>();
 	private Character[] gameCharacters = new Character[4];
@@ -54,14 +57,16 @@ public class World {
 		
 		//Vending machine
 		
-		mainMenu.create_button(new Button(gameMouse,240,20,20,20,0f,0f,1f,0.2f,"A"));
-		mainMenu.create_button(new Button(gameMouse,260,20,20,20,0f,0f,1f,0.2f,"B"));
-		mainMenu.create_button(new Button(gameMouse,280,20,20,20,0f,0f,1f,0.2f,"C"));
-		mainMenu.create_button(new Button(gameMouse,240,40,20,20,0f,1f,0f,0.2f,"1"));
-		mainMenu.create_button(new Button(gameMouse,260,40,20,20,0f,1f,0f,0.2f,"2"));
-		mainMenu.create_button(new Button(gameMouse,280,40,20,20,0f,1f,0f,0.2f,"3"));
+		mainMenu.create_button(new Button(gameMouse,240,20,60,20,0.7f,0.7f,0.7f,0.5f,""));
 		
-		mainMenu.create_button(new Button(gameMouse,240,60,60,20,1f,0f,0f,0.2f,"Order"));
+		mainMenu.create_button(new Button(gameMouse,240,40,20,20,0f,0f,1f,0.5f,"A"));
+		mainMenu.create_button(new Button(gameMouse,260,40,20,20,0f,0f,1f,0.5f,"B"));
+		mainMenu.create_button(new Button(gameMouse,280,40,20,20,0f,0f,1f,0.5f,"C"));
+		mainMenu.create_button(new Button(gameMouse,240,60,20,20,0f,1f,0f,0.5f,"1"));
+		mainMenu.create_button(new Button(gameMouse,260,60,20,20,0f,1f,0f,0.5f,"2"));
+		mainMenu.create_button(new Button(gameMouse,280,60,20,20,0f,1f,0f,0.5f,"3"));
+		
+		mainMenu.create_button(new Button(gameMouse,240,80,60,20,1f,0f,0f,0.5f,"Order"));
 
 
 
@@ -86,7 +91,17 @@ public class World {
 	public Character getCharacter(int newIndex){
 		return gameCharacters[newIndex];
 	}
-	
+	public void pressButton(char newButton){
+		
+		if(newButton == 'A' || newButton == 'B' || newButton == 'C')
+			vending_digit_1=newButton;
+		
+		if(newButton == '1' || newButton == '2' || newButton == '3')
+			vending_digit_2=newButton;
+		
+		
+
+	}
 	
 	
 	private boolean collision(int x_min_1, int x_max_1, int x_min_2, int x_max_2, int y_min_1, int y_max_1, int y_min_2, int y_max_2){

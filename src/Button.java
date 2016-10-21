@@ -70,6 +70,9 @@ public class Button {
 		buttonFont.loadFont();
 	}
 	
+	public void setText(String newText){
+		text = newText;
+	}
 	
 	public void update(){
 		
