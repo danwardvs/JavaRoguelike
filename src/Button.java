@@ -18,7 +18,7 @@ public class Button {
 
 	private Font buttonFont;
 	
-	
+	private float font_size;
 	private String text;
 	private int x;
 	private int y;
@@ -50,7 +50,7 @@ public class Button {
 	    else return false;
 	}
 	
-	public Button(MouseHandler newMouseHandler,int newX, int newY, int newWidth, int newHeight, float newR, float newG, float newB, String newText){
+	public Button(MouseHandler newMouseHandler,int newX, int newY, int newWidth, int newHeight, float newR, float newG, float newB,float newFontSize, String newText){
 		x = newX;
 		y = newY;
 		width = newWidth;
@@ -58,6 +58,7 @@ public class Button {
 		r = newR;
 		b = newB;
 		g = newG;
+		font_size = newFontSize;
 		
 		text = newText;
 		
@@ -86,7 +87,7 @@ public class Button {
 		mouse_left_down = Mouse.isButtonDown(0);
 		
 		if(location_clicked(x,x+width,y,y+height))
-			pressed_timer=10;
+			pressed_timer=5;
 			
 		is_hovered = location_hovered(x,x+width,y,y+height);
 	}
@@ -128,9 +129,9 @@ public class Button {
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
 		
 		if(!is_pressed)
-			buttonFont.drawString( text,x+(width/2)-(buttonFont.getWidth(text,0.2f,0.2f)/2), y+(height/2)-(buttonFont.getHeight(text,0.2f,0.2f)/2),0.2f,0.2f);
+			buttonFont.drawString( text,x+(width/2)-(buttonFont.getWidth(text,font_size)/2), y+(height/2)-(buttonFont.getHeight(text,font_size)/2),font_size);
 		else
-			buttonFont.drawString( text,x-1+(width/2)-(buttonFont.getWidth(text,0.2f,0.2f)/2), y-1+(height/2)-(buttonFont.getHeight(text,0.2f,0.2f)/2),0.2f,0.2f);
+			buttonFont.drawString( text,x-1+(width/2)-(buttonFont.getWidth(text,font_size)/2), y-1+(height/2)-(buttonFont.getHeight(text,font_size)/2),font_size);
 
 		
 		GL11.glColor3f(1,1,1);

@@ -52,14 +52,17 @@ public class World {
 		
 		mainMenu = new Menu(gameMouse);
 		
-		//Arcade machine
+		//Vending machine
 		
-		mainMenu.create_button(new Button(gameMouse,120,20,20,20,0f,0f,1f,"A"));
-		mainMenu.create_button(new Button(gameMouse,140,20,20,20,0f,0f,1f,"B"));
-		mainMenu.create_button(new Button(gameMouse,160,20,20,20,0f,0f,1f,"C"));
-		mainMenu.create_button(new Button(gameMouse,120,40,20,20,0f,1f,0f,"1"));
-		mainMenu.create_button(new Button(gameMouse,140,40,20,20,0f,1f,0f,"2"));
-		mainMenu.create_button(new Button(gameMouse,160,40,20,20,0f,1f,0f,"3"));
+		mainMenu.create_button(new Button(gameMouse,240,20,20,20,0f,0f,1f,0.2f,"A"));
+		mainMenu.create_button(new Button(gameMouse,260,20,20,20,0f,0f,1f,0.2f,"B"));
+		mainMenu.create_button(new Button(gameMouse,280,20,20,20,0f,0f,1f,0.2f,"C"));
+		mainMenu.create_button(new Button(gameMouse,240,40,20,20,0f,1f,0f,0.2f,"1"));
+		mainMenu.create_button(new Button(gameMouse,260,40,20,20,0f,1f,0f,0.2f,"2"));
+		mainMenu.create_button(new Button(gameMouse,280,40,20,20,0f,1f,0f,0.2f,"3"));
+		
+		mainMenu.create_button(new Button(gameMouse,240,60,60,20,1f,0f,0f,0.2f,"Order"));
+
 
 
 		
