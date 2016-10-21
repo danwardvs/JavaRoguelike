@@ -31,6 +31,7 @@ public class World {
 	private boolean locationExists[][] = new boolean[5][5];
 	
 	public World(int newX, int newY){
+		
 		x = newX;
 		y = newY;;
 		
@@ -53,21 +54,14 @@ public class World {
 		
 		//Arcade machine
 		
-		//mainMenu.create_button(new Button(gameMouse,120,20,50,25,0f,1f,0f,"1"));
-		//mainMenu.create_button(new Button(gameMouse,10,10,100,50,0f,1f,0f,"Hey"));
-		mainMenu.create_button(new Button(gameMouse,10,100,20,20,0f,1f,0f,"Killme"));
-		mainMenu.create_button(new Button(gameMouse,40,60,20,20,0f,1f,0f,"pelase"));
+		mainMenu.create_button(new Button(gameMouse,120,20,20,20,0f,0f,1f,"A"));
+		mainMenu.create_button(new Button(gameMouse,140,20,20,20,0f,0f,1f,"B"));
+		mainMenu.create_button(new Button(gameMouse,160,20,20,20,0f,0f,1f,"C"));
+		mainMenu.create_button(new Button(gameMouse,120,40,20,20,0f,1f,0f,"1"));
+		mainMenu.create_button(new Button(gameMouse,140,40,20,20,0f,1f,0f,"2"));
+		mainMenu.create_button(new Button(gameMouse,160,40,20,20,0f,1f,0f,"3"));
 
 
-
-		
-		
-		
-
-
-		
-		
-		
 		
 	}
 	

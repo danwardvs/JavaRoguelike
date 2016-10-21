@@ -28,9 +28,11 @@ public class Button {
 	private int height;
 	private boolean mouse_left_down;
 	private boolean is_hovered;
+	private boolean is_pressed;
 	private float r;
 	private float b;
 	private float g;
+	private int pressed_timer;
 	private MouseHandler gameMouse;
 
 	private Texture texture;
@@ -53,9 +55,9 @@ public class Button {
 		y = newY;
 		width = newWidth;
 		height = newHeight;
-		r = 0.5f;
-		b = 1;
-		g = 0;
+		r = newR;
+		b = newB;
+		g = newG;
 		
 		text = newText;
 		
@@ -70,15 +72,22 @@ public class Button {
 	
 	public void update(){
 		
+		if(pressed_timer>0){
+			pressed_timer--;
+			is_pressed = true;
+		
+		}else{
+			is_pressed=false;
+		}
+		
 		//Mouse.setGrabbed(true);
 		mouse_x = gameMouse.getX();
 		mouse_y = gameMouse.getY();
 		mouse_left_down = Mouse.isButtonDown(0);
 		
-		if(location_clicked(x,x+width,y,y+height)){
-			System.out.println("EXIT");
-		}
-		
+		if(location_clicked(x,x+width,y,y+height))
+			pressed_timer=10;
+			
 		is_hovered = location_hovered(x,x+width,y,y+height);
 	}
 	
@@ -117,8 +126,13 @@ public class Button {
 	}
 	private void drawFont(String newText){
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
+		
+		if(!is_pressed)
+			buttonFont.drawString( text,x+(width/2)-(buttonFont.getWidth(text,0.2f,0.2f)/2), y+(height/2)-(buttonFont.getHeight(text,0.2f,0.2f)/2),0.2f,0.2f);
+		else
+			buttonFont.drawString( text,x-1+(width/2)-(buttonFont.getWidth(text,0.2f,0.2f)/2), y-1+(height/2)-(buttonFont.getHeight(text,0.2f,0.2f)/2),0.2f,0.2f);
 
-		buttonFont.drawString( "Hey! My name is danny. i like text",x, y,0.2f,0.2f);
+		
 		GL11.glColor3f(1,1,1);
        
 	}
@@ -140,16 +154,19 @@ public class Button {
 	    	GL11.glVertex2f(x,y+height);
 	    	
 	    GL11.glEnd();
-	    
-	    System.out.println("" + r +" "+ g+" " +b);
-	   
-	    if(!is_hovered)
-	    		GL11.glColor3f(r, g, b);
+	    	   
 	   
 	    
-	    else GL11.glColor3f(r+0.4f, g+0.4f, b+0.4f);
-	    
-	    //GL11.glColor3f(0.2f , 0.2f, 0.2f);
+	    if(is_pressed)
+	    	GL11.glColor3f(r-0.4f, g-0.4f, b-0.4f);
+
+	    else if(is_hovered)
+	   		GL11.glColor3f(r+0.4f, g+0.4f, b+0.4f);
+
+	    else
+	   		GL11.glColor3f(r, g, b);
+	   
+	
 	    
 		GL11.glBegin(GL11.GL_QUADS);
 	

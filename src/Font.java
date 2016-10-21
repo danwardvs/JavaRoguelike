@@ -20,7 +20,7 @@ public class Font {
 		}
 		
 	}
-	public int getLength(String newString, float newScaleX, float newScaleY){
+	public int getWidth(String newString, float newScaleX, float newScaleY){
 		return (int)(newString.length()*21*newScaleX); 
 	}
 	
