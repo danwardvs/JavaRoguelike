@@ -53,14 +53,16 @@ public class World {
 		
 		//Arcade machine
 		
-		mainMenu.create_button(new Button(gameMouse,120,20,50,25,0f,1f,0f,"1"));
-		mainMenu.create_button(new Button(gameMouse,180,20,50,25,0f,1f,0f,"1"));
+		//mainMenu.create_button(new Button(gameMouse,120,20,50,25,0f,1f,0f,"1"));
+		//mainMenu.create_button(new Button(gameMouse,10,10,100,50,0f,1f,0f,"Hey"));
+		mainMenu.create_button(new Button(gameMouse,10,100,20,20,0f,1f,0f,"Killme"));
+		mainMenu.create_button(new Button(gameMouse,40,60,20,20,0f,1f,0f,"pelase"));
 
-		mainMenu.create_button(new Button(gameMouse,220,20,50,25,0f,1f,0f,"1"));
 
-		mainMenu.create_button(new Button(gameMouse,10,20,50,25,0f,1f,0f,"1"));
+
 		
-		mainMenu.create_button(new Button(gameMouse,10,10,100,50,0f,1f,0f,"Hey"));
+		
+		
 
 
 		

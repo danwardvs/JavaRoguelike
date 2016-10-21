@@ -1,10 +1,12 @@
-import java.awt.Font;
+//import java.awt.Font;
 import java.io.IOException;
 import java.io.InputStream;
 
+
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.font.effects.ColorEffect;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.input.Mouse;
-import org.newdawn.slick.Color;
 import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
@@ -12,6 +14,10 @@ import org.newdawn.slick.util.ResourceLoader;
 
 
 public class Button {
+	
+
+	private Font buttonFont;
+	
 	
 	private String text;
 	private int x;
@@ -29,7 +35,6 @@ public class Button {
 
 	private Texture texture;
 
-	private TrueTypeFont font;
 	
 	private boolean location_clicked(int min_x,int max_x,int min_y,int max_y){
 	    if(mouse_x>min_x && mouse_x<max_x && mouse_y>min_y && mouse_y<max_y && mouse_left_down)
@@ -43,21 +48,23 @@ public class Button {
 	    else return false;
 	}
 	
-	public Button(MouseHandler newMouseHandler,int newX, int newY, int newWidth, int newHeight, float newR, float newB, float newG, String newText){
+	public Button(MouseHandler newMouseHandler,int newX, int newY, int newWidth, int newHeight, float newR, float newG, float newB, String newText){
 		x = newX;
 		y = newY;
 		width = newWidth;
 		height = newHeight;
-		r = newR;
-		b = newB;
-		g = newG;
+		r = 0.5f;
+		b = 1;
+		g = 0;
 		
 		text = newText;
 		
 		gameMouse = newMouseHandler;
 		
 		texture = loadTexture("button.png");
-		loadFont("font.ttf",16);
+		//loadFont("font.ttf",16);
+		buttonFont = new Font();
+		buttonFont.loadFont();
 	}
 	
 	
@@ -78,17 +85,9 @@ public class Button {
 	// Load font from file
 	public void loadFont(String newPath, int newSize){
 		
-        try {
-            InputStream inputStream = ResourceLoader.getResourceAsStream(newPath);
-             
-            Font awtFont = Font.createFont(Font.TRUETYPE_FONT, inputStream);
-            awtFont = awtFont.deriveFont((float)newSize); // set font size
-            font = new TrueTypeFont(awtFont, false);
-             
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 	}
+	
+	 
 	
 	private Texture loadTexture(String newPath){
 		
@@ -108,13 +107,19 @@ public class Button {
 	
 	public void draw(){
 		
+		
 		drawTexture(texture,r,g,b);
 		drawFont(text);
+		
+
         
 
 	}
 	private void drawFont(String newText){
-		font.drawString(x+(width/2)-(font.getWidth(newText)/2), y+(height/2)-(font.getHeight(newText)/2), newText, Color.white);
+		GL11.glDisable(GL11.GL_TEXTURE_2D);
+
+		buttonFont.drawString( "Hey! My name is danny. i like text",x, y,0.2f,0.2f);
+		GL11.glColor3f(1,1,1);
        
 	}
 
@@ -136,10 +141,15 @@ public class Button {
 	    	
 	    GL11.glEnd();
 	    
+	    System.out.println("" + r +" "+ g+" " +b);
+	   
 	    if(!is_hovered)
 	    		GL11.glColor3f(r, g, b);
+	   
 	    
 	    else GL11.glColor3f(r+0.4f, g+0.4f, b+0.4f);
+	    
+	    //GL11.glColor3f(0.2f , 0.2f, 0.2f);
 	    
 		GL11.glBegin(GL11.GL_QUADS);
 	
