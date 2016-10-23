@@ -20,14 +20,14 @@ public class Enemy {
 	private int speed=1;
 	int wait_direction;
 	private Texture texture;
-	private World gameWorld;
+	//private World gameWorld;
 	
 	public Enemy(World newWorld, int newX, int newY, int newType, int newHealth){
 	// Number 1
 		x = newX;
 		y = newY;
 		type = newType;
-		gameWorld = newWorld;
+		//gameWorld = newWorld;
 		health = newHealth;
 		loadData();
 		

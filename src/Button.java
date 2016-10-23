@@ -4,7 +4,6 @@ import java.io.InputStream;
 
 
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.font.effects.ColorEffect;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.TrueTypeFont;
@@ -29,11 +28,14 @@ public class Button {
 	private boolean mouse_left_down;
 	private boolean is_hovered;
 	private boolean is_pressed;
+	private boolean is_active;
 	private float r;
 	private float b;
 	private float g;
 	private int pressed_timer;
+	
 	private MouseHandler gameMouse;
+	private Menu parentMenu;
 
 	private Texture texture;
 
@@ -50,7 +52,7 @@ public class Button {
 	    else return false;
 	}
 	
-	public Button(MouseHandler newMouseHandler,int newX, int newY, int newWidth, int newHeight, float newR, float newG, float newB,float newFontSize, String newText){
+	public Button(MouseHandler newMouseHandler, Menu newParentMenu, int newX, int newY, int newWidth, int newHeight, float newR, float newG, float newB,float newFontSize, String newText, boolean newActive){
 		x = newX;
 		y = newY;
 		width = newWidth;
@@ -59,10 +61,12 @@ public class Button {
 		b = newB;
 		g = newG;
 		font_size = newFontSize;
+		is_active = newActive;
 		
 		text = newText;
 		
 		gameMouse = newMouseHandler;
+		parentMenu = newParentMenu;
 		
 		texture = loadTexture("button.png");
 		//loadFont("font.ttf",16);
@@ -76,28 +80,35 @@ public class Button {
 	
 	public void update(){
 		
-		if(pressed_timer>0){
-			pressed_timer--;
-			is_pressed = true;
+		if(is_active){
 		
-		}else{
-			is_pressed=false;
-		}
-		
-		//Mouse.setGrabbed(true);
-		mouse_x = gameMouse.getX();
-		mouse_y = gameMouse.getY();
-		mouse_left_down = Mouse.isButtonDown(0);
-		
-		if(location_clicked(x,x+width,y,y+height))
-			pressed_timer=5;
+			if(pressed_timer>0){
+				pressed_timer--;
+				is_pressed = true;
 			
-		is_hovered = location_hovered(x,x+width,y,y+height);
+			}else{
+				is_pressed=false;
+			}
+			
+			//Mouse.setGrabbed(true);
+			mouse_x = gameMouse.getX();
+			mouse_y = gameMouse.getY();
+			mouse_left_down = Mouse.isButtonDown(0);
+			
+			if(location_clicked(x,x+width,y,y+height)){
+				pressed_timer=5;
+				parentMenu.recieveButtonPress(text);
+			}
+			is_hovered = location_hovered(x,x+width,y,y+height);
+		}
 	}
 	
 	// Load font from file
 	public void loadFont(String newPath, int newSize){
 		
+	}
+	public void setActive(boolean newActive){
+		is_active = newActive;
 	}
 	
 	 

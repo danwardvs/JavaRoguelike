@@ -23,8 +23,9 @@ public class World {
 	private Menu mainMenu;
 	private MouseHandler gameMouse;
 	
-	private char vending_digit_1;
-	private char vending_digit_2;
+	private char vending_digit_1 = ' ';
+	private char vending_digit_2 = ' ';
+	private String vending_display;
 	
 	private List<Enemy> gameEnemys = new ArrayList<Enemy>();
 	private List<Item> gameItems = new ArrayList<Item>();
@@ -53,20 +54,20 @@ public class World {
 		
 		gameMouse = new MouseHandler();
 		
-		mainMenu = new Menu(gameMouse);
+		mainMenu = new Menu(gameMouse,this);
 		
 		//Vending machine
 		
-		mainMenu.create_button(new Button(gameMouse,240,20,60,20,0.7f,0.7f,0.7f,0.5f,""));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,240,20,60,20,0.7f,0.7f,0.7f,0.5f,"",false));
 		
-		mainMenu.create_button(new Button(gameMouse,240,40,20,20,0f,0f,1f,0.5f,"A"));
-		mainMenu.create_button(new Button(gameMouse,260,40,20,20,0f,0f,1f,0.5f,"B"));
-		mainMenu.create_button(new Button(gameMouse,280,40,20,20,0f,0f,1f,0.5f,"C"));
-		mainMenu.create_button(new Button(gameMouse,240,60,20,20,0f,1f,0f,0.5f,"1"));
-		mainMenu.create_button(new Button(gameMouse,260,60,20,20,0f,1f,0f,0.5f,"2"));
-		mainMenu.create_button(new Button(gameMouse,280,60,20,20,0f,1f,0f,0.5f,"3"));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,240,40,20,20,0f,0f,1f,0.5f,"A",true));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,260,40,20,20,0f,0f,1f,0.5f,"B",true));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,280,40,20,20,0f,0f,1f,0.5f,"C",true));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,240,60,20,20,0f,1f,0f,0.5f,"1",true));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,260,60,20,20,0f,1f,0f,0.5f,"2",true));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,280,60,20,20,0f,1f,0f,0.5f,"3",true));
 		
-		mainMenu.create_button(new Button(gameMouse,240,80,60,20,1f,0f,0f,0.5f,"Order"));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,240,80,60,20,1f,0f,0f,0.5f,"Order",true));
 
 
 
@@ -81,7 +82,7 @@ public class World {
 	}
 	
 	public List<Enemy> getEnemys(){
-		return gameEnemys;
+		return gameEnemys;	
 	}
 	
 	public List<Item> getItems(){
@@ -91,13 +92,27 @@ public class World {
 	public Character getCharacter(int newIndex){
 		return gameCharacters[newIndex];
 	}
-	public void pressButton(char newButton){
+	public void pressVendingButton(char newButton){
+		
 		
 		if(newButton == 'A' || newButton == 'B' || newButton == 'C')
 			vending_digit_1=newButton;
 		
 		if(newButton == '1' || newButton == '2' || newButton == '3')
 			vending_digit_2=newButton;
+		
+		if(newButton == '0'){
+			vending_digit_1 = ' ';
+			vending_digit_2 = ' ';
+			
+		}
+		
+		vending_display = String.valueOf(vending_digit_1) + String.valueOf(vending_digit_2);
+		
+		mainMenu.getButton(0).setText(vending_display);
+		
+		
+		
 		
 		
 

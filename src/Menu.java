@@ -16,12 +16,14 @@ public class Menu {
 	private int mouse_y;
 	
 	private MouseHandler gameMouse;
+	private World gameWorld;
 	
 	private Texture cursor;
 	
-	public Menu(MouseHandler newMouseHandler){
+	public Menu(MouseHandler newMouseHandler, World newWorld){
 		cursor = loadTexture("Hit.png");
 		gameMouse = newMouseHandler;
+		gameWorld = newWorld;
 		Mouse.setCursorPosition(180, 120);
 
 	}
@@ -30,7 +32,11 @@ public class Menu {
 		menuButtons.add(newButton);
 	}
 	
+	public Button getButton(int newIndex){
+		return menuButtons.get(newIndex);
+	}
 	
+
 	public void update(){
 		
 		//mouse_x = Mouse.getX();
@@ -56,6 +62,17 @@ public class Menu {
 		  menuButtons.get(menuButtons.size()-1).draw();
 		  
 		  
+		
+	}
+	public void recieveButtonPress(String newId){
+		if(newId=="A" || newId=="B" || newId=="C" || newId=="1" || newId=="2" || newId=="3"){
+			char newChar = newId.charAt(0);
+			gameWorld.pressVendingButton(newChar);
+		}
+		if(newId=="Order"){
+			char newChar = '0';
+			gameWorld.pressVendingButton(newChar);
+		}
 		
 	}
 	
