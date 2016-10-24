@@ -20,12 +20,14 @@ public class Item {
 	private int damage_radius;
 	private int damage;
 	
-	public Item(String newName, int newX, int newY, int newDamageRadius, int newDamage){
+	public Item(String newName, int newX, int newY, int newDamageRadius, int newDamage, int newTextureAmount){
 		name = newName;
 		x = newX;
 		y = newY;
 		damage_radius=newDamageRadius;
 		damage=newDamage;
+		texture_number = newTextureAmount;
+		setTexture(name,texture_number);
 	}
 	
 	public void setDamageOffset(int newLowerX, int newLowerY,int newMidX, int newMidY, int newHighX, int newHighY){
@@ -135,7 +137,7 @@ public class Item {
 	Texture loadTexture(String newPath){
 		Texture newTexture = null;
 		try{
-			
+			System.out.println(newPath);
 			newTexture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(newPath),GL11.GL_NEAREST);
 
 		} catch (IOException e) {

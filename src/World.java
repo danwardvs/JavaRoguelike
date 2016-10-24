@@ -57,6 +57,10 @@ public class World {
 		mainMenu = new Menu(gameMouse,this);
 		
 		//Vending machine
+		create_item(new Item("Potion_Health",182,22,5,10,1));
+		create_item(new Item("Gold_Axe",202,22,5,10,1));
+		create_item(new Item("Gold_Shovel",222,22,5,10,1));
+
 		
 		mainMenu.create_button(new Button(gameMouse,mainMenu,240,20,60,20,0.7f,0.7f,0.7f,0.5f,"",false));
 		
@@ -68,6 +72,18 @@ public class World {
 		mainMenu.create_button(new Button(gameMouse,mainMenu,280,60,20,20,0f,1f,0f,0.5f,"3",true));
 		
 		mainMenu.create_button(new Button(gameMouse,mainMenu,240,80,60,20,1f,0f,0f,0.5f,"Order",true));
+		
+		mainMenu.create_button(new Button(gameMouse,mainMenu,180,80,60,20,0.5f,0.5f,0.5f,0.5f,"0",false));
+
+		mainMenu.create_button(new Button(gameMouse,mainMenu,180,40,20,20,1f,0f,0f,0.2f,"",false));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,200,40,20,20,1f,0f,0f,0.2f,"",false));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,220,40,20,20,1f,0f,0f,0.2f,"",false));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,180,60,20,20,1f,0f,0f,0.2f,"",false));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,200,60,20,20,1f,0f,0f,0.2f,"",false));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,220,60,20,20,1f,0f,0f,0.2f,"",false));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,180,20,20,20,1f,0f,0f,0.2f,"",false));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,200,20,20,20,1f,0f,0f,0.2f,"",false));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,220,20,20,20,1f,0f,0f,0.2f,"",false));
 
 
 
@@ -101,7 +117,25 @@ public class World {
 		if(newButton == '1' || newButton == '2' || newButton == '3')
 			vending_digit_2=newButton;
 		
+		vending_display = String.valueOf(vending_digit_1) + String.valueOf(vending_digit_2);
+		
+		
 		if(newButton == '0'){
+			
+			if(vending_display.equals("A1"))
+				create_item(new Item("Potion_Health",205,100,50,50,1));
+			
+			if(vending_display.equals("A2"))
+				create_item(new Item("Gold_Axe",205,100,50,50,1));
+			
+			if(vending_display.equals("A3"))
+				create_item(new Item("Gold_Shovel",205,100,50,50,1));
+
+
+
+				
+
+			
 			vending_digit_1 = ' ';
 			vending_digit_2 = ' ';
 			
@@ -247,6 +281,15 @@ public class World {
 		draw_texture(background[x][y],0,0);
 		mainMenu.draw();
 		getCharacter(0).draw();
+		
+		
+		for(int i=0; i<gameEnemys.size(); i++)
+    		gameEnemys.get(i).draw(x,y);
+
+		
+		for(Item item: getItems())
+        	item.draw(item.getX(),item.getY(),false,false,1,1);
+    	
 		gameMouse.draw();
 	}
 	
@@ -255,10 +298,9 @@ public class World {
 		mainMenu.update();
 		gameMouse.update();
     	
-    	for(int i=0; i<gameEnemys.size(); i++){
+		for(int i=0; i<gameEnemys.size(); i++){
     		
     		gameEnemys.get(i).update();
-    		gameEnemys.get(i).draw(x,y);
     		
     	}
     	
@@ -267,9 +309,7 @@ public class World {
     			gameEnemys.remove(i);
     		}
     	}
-    	for(Item item: getItems()){
-        	item.draw(item.getX(),item.getY(),false,false,1,1);
-    	}
+    	
     	
     	getCharacter(0).update(delta);
     	

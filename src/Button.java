@@ -110,7 +110,10 @@ public class Button {
 	public void setActive(boolean newActive){
 		is_active = newActive;
 	}
-	
+	public void setTexture(String newPath){
+		texture = loadTexture(newPath + ".png");
+		
+	}
 	 
 	
 	private Texture loadTexture(String newPath){

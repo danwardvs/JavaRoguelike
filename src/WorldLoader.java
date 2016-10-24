@@ -120,8 +120,8 @@ public class WorldLoader {
 						damage = Integer.valueOf(eElement.getElementsByTagName("damage").item(0).getTextContent());
 						damage_radius = Integer.valueOf(eElement.getElementsByTagName("damage_radius").item(0).getTextContent());
 						
-						Item newItem = new Item(name,x,y,damage_radius,damage);
-						newItem.setTexture(name,texture_number);
+						Item newItem = new Item(name,x,y,damage_radius,damage,texture_number);
+						//newItem.setTexture(name,texture_number);
 						newItem.setDamageOffset(19, 33, 20, 22, 19, 4);
 						newItem.setItemOffset(10,10,12, 2,12,12,12,18);
 						gameWorld.create_item(newItem);

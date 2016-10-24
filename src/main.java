@@ -117,15 +117,9 @@ public class main {
 		gameWorld.setup();
 		
 		
-		//Item newItem =  new Item("Sword",100,1255,50);
-		//newItem.setTexture("Sword",1);
-		//newItem.setDamageOffset(19, 33, 20, 22, 19, 4);
-		//newItem.setItemOffset(10,10,12, 2,12,12,12,18);
-		//gameWorld.create_item(newItem);
-		
-		Item newItem2 =  new Item("Fist",100,125,5,10);
-		newItem2.setDamageOffset(7, 25, 7, 20, 8, 13);
-		gameWorld.getCharacter(0).setItem(newItem2);
+		//Item newItem2 =  new Item("Fist",100,125,5,10,0);
+		//newItem2.setDamageOffset(7, 25, 7, 20, 8, 13);
+		//gameWorld.getCharacter(0).setItem(newItem2);
 		
 
 		
