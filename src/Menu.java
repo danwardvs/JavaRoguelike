@@ -59,7 +59,7 @@ public class Menu {
 	          newButton.draw();
 
 		  }
-		  menuButtons.get(menuButtons.size()-1).draw();
+		  //menuButtons.get(menuButtons.size()-1).draw();
 		  
 		  
 		

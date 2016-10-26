@@ -11,119 +11,47 @@
 	</object>
 
 	<object type="Item">
-		<name>Gold_Axe</name>
-		<x>202</x>
-		<y>22</y>
-		<damage>10</damage>
-		<damage_radius>5</damage_radius>
+		<name>Orb</name>
+		<x>205</x>
+		<y>1020</y>
+		<damage>50</damage>
+		<damage_radius>50</damage_radius>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
-		<name>Gold_Shovel</name>
-		<x>222</x>
-		<y>22</y>
-		<damage>10</damage>
-		<damage_radius>5</damage_radius>
+		<name>Orb</name>
+		<x>205</x>
+		<y>1020</y>
+		<damage>50</damage>
+		<damage_radius>50</damage_radius>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
-		<name>Gold_Axe</name>
-		<x>202</x>
-		<y>22</y>
-		<damage>10</damage>
-		<damage_radius>5</damage_radius>
+		<name>Orb</name>
+		<x>205</x>
+		<y>1020</y>
+		<damage>50</damage>
+		<damage_radius>50</damage_radius>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
-		<name>Gold_Shovel</name>
-		<x>222</x>
-		<y>22</y>
-		<damage>10</damage>
-		<damage_radius>5</damage_radius>
+		<name>Orb</name>
+		<x>205</x>
+		<y>1020</y>
+		<damage>50</damage>
+		<damage_radius>50</damage_radius>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
-		<name>Potion_Health</name>
-		<x>182</x>
-		<y>22</y>
-		<damage>10</damage>
-		<damage_radius>5</damage_radius>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Gold_Axe</name>
-		<x>202</x>
-		<y>22</y>
-		<damage>10</damage>
-		<damage_radius>5</damage_radius>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Gold_Shovel</name>
-		<x>222</x>
-		<y>22</y>
-		<damage>10</damage>
-		<damage_radius>5</damage_radius>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Potion_Health</name>
-		<x>182</x>
-		<y>22</y>
-		<damage>10</damage>
-		<damage_radius>5</damage_radius>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Gold_Axe</name>
-		<x>202</x>
-		<y>22</y>
-		<damage>10</damage>
-		<damage_radius>5</damage_radius>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Gold_Shovel</name>
-		<x>222</x>
-		<y>22</y>
-		<damage>10</damage>
-		<damage_radius>5</damage_radius>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Potion_Health</name>
-		<x>182</x>
-		<y>22</y>
-		<damage>10</damage>
-		<damage_radius>5</damage_radius>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Gold_Axe</name>
-		<x>202</x>
-		<y>22</y>
-		<damage>10</damage>
-		<damage_radius>5</damage_radius>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Gold_Shovel</name>
-		<x>222</x>
-		<y>22</y>
-		<damage>10</damage>
-		<damage_radius>5</damage_radius>
+		<name>Orb</name>
+		<x>205</x>
+		<y>1020</y>
+		<damage>50</damage>
+		<damage_radius>50</damage_radius>
 		<texture_number>1</texture_number>
 	</object>
 

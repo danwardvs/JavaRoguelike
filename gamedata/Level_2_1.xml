@@ -4,22 +4,8 @@
 	<object type="Enemy">
 		<type>0</type>
 		<health>160</health>
-		<x>53</x>
-		<y>208</y>
-	</object>
-
-	<object type="Enemy">
-		<type>0</type>
-		<health>160</health>
-		<x>107</x>
-		<y>111</y>
-	</object>
-
-	<object type="Enemy">
-		<type>0</type>
-		<health>160</health>
-		<x>227</x>
-		<y>32</y>
+		<x>94</x>
+		<y>47</y>
 	</object>
 
 	<object type="Item">

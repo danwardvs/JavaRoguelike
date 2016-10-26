@@ -18,6 +18,9 @@ public class World {
 	private int x;
 	private int y;
 	
+	public static final int SCREEN_W = 320;
+	public static final int SCREEN_H = 240;
+	
 	private WorldLoader gameLoader;
 	
 	private Menu mainMenu;
@@ -56,36 +59,55 @@ public class World {
 		
 		mainMenu = new Menu(gameMouse,this);
 		
+		mainMenu.create_button(new Button(gameMouse,mainMenu,(SCREEN_H/2)-30,SCREEN_H/2,60,20,0.7f,0.7f,0.7f,0.3f,"New Game",true));
+
+		
+		
 		//Vending machine
-		create_item(new Item("Potion_Health",182,22,5,10,1));
-		create_item(new Item("Gold_Axe",202,22,5,10,1));
-		create_item(new Item("Gold_Shovel",222,22,5,10,1));
+		/*
+		create_item(new Item("Potion_Health",182,42,5,10,1));
+		create_item(new Item("Gold_Axe",202,42,5,10,1));
+		create_item(new Item("Gold_Shovel",222,42,5,10,1));
+		create_item(new Item("Diamond_Sword",182,62,5,10,1));
+		create_item(new Item("Diamond_Shovel",202,62,5,10,1));
+		create_item(new Item("Orb",222,62,5,10,1));
+		create_item(new Item("Apple",182,82,5,10,1));
+		create_item(new Item("Diamond",202,82,5,10,1));
+		create_item(new Item("Bow",222,82,5,10,1));
 
 		
-		mainMenu.create_button(new Button(gameMouse,mainMenu,240,20,60,20,0.7f,0.7f,0.7f,0.5f,"",false));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,240,40,60,20,0.7f,0.7f,0.7f,0.5f,"",false));
 		
-		mainMenu.create_button(new Button(gameMouse,mainMenu,240,40,20,20,0f,0f,1f,0.5f,"A",true));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,260,40,20,20,0f,0f,1f,0.5f,"B",true));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,280,40,20,20,0f,0f,1f,0.5f,"C",true));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,240,60,20,20,0f,1f,0f,0.5f,"1",true));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,260,60,20,20,0f,1f,0f,0.5f,"2",true));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,280,60,20,20,0f,1f,0f,0.5f,"3",true));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,240,60,20,20,0f,0f,1f,0.5f,"A",true));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,260,60,20,20,0f,0f,1f,0.5f,"B",true));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,280,60,20,20,0f,0f,1f,0.5f,"C",true));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,240,80,20,20,0f,1f,0f,0.5f,"1",true));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,260,80,20,20,0f,1f,0f,0.5f,"2",true));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,280,80,20,20,0f,1f,0f,0.5f,"3",true));
 		
-		mainMenu.create_button(new Button(gameMouse,mainMenu,240,80,60,20,1f,0f,0f,0.5f,"Order",true));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,240,100,60,20,1f,0f,0f,0.5f,"Order",true));
 		
-		mainMenu.create_button(new Button(gameMouse,mainMenu,180,80,60,20,0.5f,0.5f,0.5f,0.5f,"0",false));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,180,100,60,20,0.5f,0.5f,0.5f,0.5f,"0",false));
 
-		mainMenu.create_button(new Button(gameMouse,mainMenu,180,40,20,20,1f,0f,0f,0.2f,"",false));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,200,40,20,20,1f,0f,0f,0.2f,"",false));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,220,40,20,20,1f,0f,0f,0.2f,"",false));
 		mainMenu.create_button(new Button(gameMouse,mainMenu,180,60,20,20,1f,0f,0f,0.2f,"",false));
 		mainMenu.create_button(new Button(gameMouse,mainMenu,200,60,20,20,1f,0f,0f,0.2f,"",false));
 		mainMenu.create_button(new Button(gameMouse,mainMenu,220,60,20,20,1f,0f,0f,0.2f,"",false));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,180,20,20,20,1f,0f,0f,0.2f,"",false));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,200,20,20,20,1f,0f,0f,0.2f,"",false));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,220,20,20,20,1f,0f,0f,0.2f,"",false));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,180,80,20,20,1f,0f,0f,0.2f,"",false));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,200,80,20,20,1f,0f,0f,0.2f,"",false));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,220,80,20,20,1f,0f,0f,0.2f,"",false));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,180,40,20,20,1f,0f,0f,0.2f,"",false));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,200,40,20,20,1f,0f,0f,0.2f,"",false));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,220,40,20,20,1f,0f,0f,0.2f,"",false));
+		
+		mainMenu.create_button(new Button(gameMouse,mainMenu,180,20,20,20,0f,0.5f,1f,0.5f,"1",false));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,200,20,20,20,0f,0.5f,1f,0.5f,"2",false));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,220,20,20,20,0f,0.5f,1f,0.5f,"3",false));
+		
+		mainMenu.create_button(new Button(gameMouse,mainMenu,160,40,20,20,0f,0.5f,1f,0.5f,"A",false));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,160,60,20,20,0f,0.5f,1f,0.5f,"B",false));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,160,80,20,20,0f,0.5f,1f,0.5f,"C",false));
 
-
+		 */
 
 		
 	}
@@ -123,13 +145,31 @@ public class World {
 		if(newButton == '0'){
 			
 			if(vending_display.equals("A1"))
-				create_item(new Item("Potion_Health",205,100,50,50,1));
+				create_item(new Item("Potion_Health",205,120,50,50,1));
 			
 			if(vending_display.equals("A2"))
-				create_item(new Item("Gold_Axe",205,100,50,50,1));
+				create_item(new Item("Gold_Axe",205,120,50,50,1));
 			
 			if(vending_display.equals("A3"))
-				create_item(new Item("Gold_Shovel",205,100,50,50,1));
+				create_item(new Item("Gold_Shovel",205,120,50,50,1));
+			
+			if(vending_display.equals("B1"))
+				create_item(new Item("Diamond_Sword",205,120,50,50,1));
+			
+			if(vending_display.equals("B2"))
+				create_item(new Item("Diamond_Shovel",205,120,50,50,1));
+			
+			if(vending_display.equals("B3"))
+				create_item(new Item("Orb",205,120,50,50,1));
+			
+			if(vending_display.equals("C1"))
+				create_item(new Item("Apple",205,120,50,50,1));
+			
+			if(vending_display.equals("C2"))
+				create_item(new Item("Diamond",205,120,50,50,1));
+			
+			if(vending_display.equals("C3"))
+				create_item(new Item("Bow",205,120,50,50,1));
 
 
 

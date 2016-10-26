@@ -277,10 +277,11 @@ public class Character {
 		
 		if(current_item!=null){
 			
-			int newState=state-1;
+			if(current_item.getTextureNumber()>0){
+				int newState=state-1;
 
-			current_item.draw(x+current_item.getItemOffsetX(newState)*scale_from_direction(),y+current_item.getItemOffsetY(newState),true,image_from_state(),scale_from_direction(),scale_from_state());
-
+				current_item.draw(x+current_item.getItemOffsetX(newState)*scale_from_direction(),y+current_item.getItemOffsetY(newState),true,image_from_state(),scale_from_direction(),scale_from_state());
+			}
 		}
 		
 		if(hit_mark_time<10){
