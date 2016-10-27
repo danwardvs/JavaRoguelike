@@ -117,9 +117,7 @@ public class main {
 		gameWorld.setup();
 		
 		
-		Item newItem2 =  new Item("Fist",100,125,5,10,0);
-		newItem2.setDamageOffset(7, 25, 7, 20, 8, 13);
-		gameWorld.getCharacter(0).setItem(newItem2);
+	
 		
 
 		

@@ -9,6 +9,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="/home/danwardvs/javalib/jar/lwjgl_util.jar"/>
 	<classpathentry kind="lib" path="/home/danwardvs/javalib/jar/slick-util.jar"/>
-	<classpathentry kind="lib" path="/home/danwardvs/javalib/lib/slick.jar"/>
+	<classpathentry kind="lib" path="/home/danwardvs/javalib/jar/commons-io-2.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

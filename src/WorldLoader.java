@@ -8,6 +8,10 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import java.io.File;
+import java.nio.file.Files;
+import org.apache.commons.io.FileUtils;
+import java.io.IOException;
+
 
 public class WorldLoader {
 	
@@ -31,7 +35,17 @@ public class WorldLoader {
 		gameWorld = newWorld;
 		
 	}
-	public void load_characters(String newCharacterPath){
+	public void copyDirectory(String newSource, String newDestination){
+		File source = new File(newSource);
+		File dest = new File(newDestination);
+		try {
+		    FileUtils.copyDirectory(source, dest);
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}
+		
+	}
+	public void loadCharacters(String newCharacterPath){
 		
 		try {	
 			File fXmlFile = new File(newCharacterPath);
@@ -72,7 +86,7 @@ public class WorldLoader {
 	    }
 	}
 	
-	public void load_level(String newLevelPath, int newWorldX, int newWorldY){
+	public void loadLevel(String newLevelPath, int newWorldX, int newWorldY){
 		try {
 
 			File fXmlFile = new File(newLevelPath);

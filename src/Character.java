@@ -24,7 +24,7 @@ public class Character {
 	
 	private int attack_timer=0;
 	
-	private int hit_mark_time=0;
+	private int hit_mark_time=100;
 	private int hit_mark_x;
 	private int hit_mark_y;
 	

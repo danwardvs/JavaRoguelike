@@ -26,9 +26,11 @@ public class World {
 	private Menu mainMenu;
 	private MouseHandler gameMouse;
 	
+	/*
 	private char vending_digit_1 = ' ';
 	private char vending_digit_2 = ' ';
 	private String vending_display;
+	*/
 	
 	private List<Enemy> gameEnemys = new ArrayList<Enemy>();
 	private List<Item> gameItems = new ArrayList<Item>();
@@ -46,20 +48,21 @@ public class World {
 		locationExists[2][1] = true;
 		
 		loadTextures();
-		
+
 	}
 	public void setup(){
 		
 		
-		gameLoader = new WorldLoader(this, 1,1);
-		gameLoader.load_level("gamedata/Level_1_1.xml", 1,1);
-		gameLoader.load_characters("gamedata/Character_0.xml");
 		
 		gameMouse = new MouseHandler();
 		
 		mainMenu = new Menu(gameMouse,this);
 		
-		mainMenu.create_button(new Button(gameMouse,mainMenu,(SCREEN_H/2)-30,SCREEN_H/2,60,20,0.7f,0.7f,0.7f,0.3f,"New Game",true));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,(SCREEN_W/2)-125,20,250,30,0.7f,0.9f,0.7f,0.8f,"Shogun Jedsun",false));
+
+		
+		mainMenu.create_button(new Button(gameMouse,mainMenu,(SCREEN_W/2)-80,SCREEN_H/2,60,20,0.7f,0.7f,0.7f,0.3f,"New Game",true));
+		mainMenu.create_button(new Button(gameMouse,mainMenu,(SCREEN_W/2)+20,SCREEN_H/2,60,20,0.7f,0.7f,0.7f,0.3f,"Load Game",true));
 
 		
 		
@@ -130,6 +133,20 @@ public class World {
 	public Character getCharacter(int newIndex){
 		return gameCharacters[newIndex];
 	}
+	public void startGame(){
+
+		gameLoader = new WorldLoader(this, 1,1);
+		gameLoader.loadLevel("gamedata/new/Level_1_1.xml", 1,1);
+		gameLoader.loadCharacters("gamedata/new/Character_0.xml");
+		
+		Item newItem2 =  new Item("Fist",100,125,5,10,0);
+		newItem2.setDamageOffset(7, 25, 7, 20, 8, 13);
+		getCharacter(0).setItem(newItem2);
+		gameLoader.copyDirectory("./gamedata/new","./gamedata/save");
+	
+		
+	}
+	/*
 	public void pressVendingButton(char newButton){
 		
 		
@@ -191,7 +208,7 @@ public class World {
 		
 
 	}
-	
+	*/
 	
 	private boolean collision(int x_min_1, int x_max_1, int x_min_2, int x_max_2, int y_min_1, int y_max_1, int y_min_2, int y_max_2){
 		if(x_min_1 < x_max_2 && y_min_1 < y_max_2 && x_min_2 < x_max_1 && y_min_2 < y_max_1)
@@ -290,7 +307,7 @@ public class World {
 
 	}
 	public void read_level(){
-		gameLoader.load_level("gamedata/Level_"+x+"_"+y+".xml", x, y);
+		gameLoader.loadLevel("gamedata/Level_"+x+"_"+y+".xml", x, y);
 	}
 	
 	public void apply_damage(int newX, int newY,int newRadius, int newDamage){
@@ -320,7 +337,11 @@ public class World {
 		
 		draw_texture(background[x][y],0,0);
 		mainMenu.draw();
-		getCharacter(0).draw();
+		for(int i=0; i<gameCharacters.length; i++){
+    		if(gameCharacters[i]!=null)
+    			gameCharacters[i].draw();
+    	}
+    	
 		
 		
 		for(int i=0; i<gameEnemys.size(); i++)
@@ -350,65 +371,69 @@ public class World {
     		}
     	}
     	
+    	for(int i=0; i<gameCharacters.length; i++){
+    		if(gameCharacters[i]!=null)
+    			gameCharacters[i].update(delta);
+    	}
     	
-    	getCharacter(0).update(delta);
     	
 		
+    	if(gameCharacters[0]!=null){
+			if(gameCharacters[0].getX()>304){
+				if(locationExists[x+1][y]){
+					save_level();
+					x+=1;
+					gameCharacters[0].setWorldX(x);
+					gameCharacters[0].setX(0);
+					read_level();
 	
-		if(gameCharacters[0].getX()>304){
-			if(locationExists[x+1][y]){
+				}
+				else{
+					gameCharacters[0].setX(304);
+				}
+			}
+			if(gameCharacters[0].getX()<0){
+				if(locationExists[x-1][y]){
+					save_level();
+					x-=1;
+					gameCharacters[0].setWorldX(x);
+					gameCharacters[0].setX(304);
+					read_level();
+	
+				}
+				else{
+					gameCharacters[0].setX(0);
+				}
+			}
+		
+		
+		if(gameCharacters[0].getY()>210){
+			if(locationExists[x][y+1]){
 				save_level();
-				x+=1;
-				gameCharacters[0].setWorldX(x);
-				gameCharacters[0].setX(0);
+				y+=1;
+				gameCharacters[0].setY(0);
+				gameCharacters[0].setWorldY(y);
 				read_level();
-
 			}
 			else{
-				gameCharacters[0].setX(304);
+				gameCharacters[0].setY(210);
 			}
 		}
-		if(gameCharacters[0].getX()<0){
-			if(locationExists[x-1][y]){
+		if(gameCharacters[0].getY()<-10){
+			if(locationExists[x][y-1]){
 				save_level();
-				x-=1;
-				gameCharacters[0].setWorldX(x);
-				gameCharacters[0].setX(304);
+				y-=1;
+				gameCharacters[0].setY(210);
+				gameCharacters[0].setWorldY(y);
 				read_level();
-
+	
 			}
 			else{
-				gameCharacters[0].setX(0);
+				gameCharacters[0].setY(-10);
 			}
 		}
-	
-	
-	if(gameCharacters[0].getY()>210){
-		if(locationExists[x][y+1]){
-			save_level();
-			y+=1;
-			gameCharacters[0].setY(0);
-			gameCharacters[0].setWorldY(y);
-			read_level();
-		}
-		else{
-			gameCharacters[0].setY(210);
-		}
-	}
-	if(gameCharacters[0].getY()<-10){
-		if(locationExists[x][y-1]){
-			save_level();
-			y-=1;
-			gameCharacters[0].setY(210);
-			gameCharacters[0].setWorldY(y);
-			read_level();
-
-		}
-		else{
-			gameCharacters[0].setY(-10);
-		}
-	}
-}
+    	}
+    	}
 	
 	// Draw a texture object to the screen
 	void draw_texture(Texture newTexture,int x, int y){

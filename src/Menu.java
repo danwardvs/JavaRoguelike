@@ -39,8 +39,6 @@ public class Menu {
 
 	public void update(){
 		
-		//mouse_x = Mouse.getX();
-		//mouse_y = -Mouse.getY()+240;
 		
 		mouse_x = gameMouse.getX();
 		mouse_y = gameMouse.getY();
@@ -59,21 +57,24 @@ public class Menu {
 	          newButton.draw();
 
 		  }
-		  //menuButtons.get(menuButtons.size()-1).draw();
 		  
 		  
 		
 	}
 	public void recieveButtonPress(String newId){
-		if(newId=="A" || newId=="B" || newId=="C" || newId=="1" || newId=="2" || newId=="3"){
+		
+		/*if(newId=="A" || newId=="B" || newId=="C" || newId=="1" || newId=="2" || newId=="3"){
 			char newChar = newId.charAt(0);
 			gameWorld.pressVendingButton(newChar);
 		}
 		if(newId=="Order"){
 			char newChar = '0';
 			gameWorld.pressVendingButton(newChar);
-		}
+		}*/
 		
+		if(newId=="New Game"){
+			gameWorld.startGame();
+		}
 	}
 	
 	Texture loadTexture(String newPath){
