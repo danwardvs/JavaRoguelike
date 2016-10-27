@@ -93,7 +93,7 @@ public class Item {
 		
 	}
 	public void draw(){
-		draw_texture(x,y,texture,-1,-1);
+		drawTexture(x,y,texture,-1,-1);
 
 	}
 	
@@ -108,7 +108,7 @@ public class Item {
 			else
 				newTexture=texture;
 		
-			draw_texture(newX,newY,newTexture,newScaleX,newScaleY);
+			drawTexture(newX,newY,newTexture,newScaleX,newScaleY);
 			
 		}
 		
@@ -147,7 +147,7 @@ public class Item {
 	}
 	
 	 //Draws the texture to the screen
-	void draw_texture(int newX, int newY, Texture newTexture, int newScaleX, int newScaleY){
+	void drawTexture(int newX, int newY, Texture newTexture, int newScaleX, int newScaleY){
 			
 			newTexture.bind();
 			

@@ -140,15 +140,15 @@ public class Character {
 		state = newState;
 		attack_timer=attack_speed;
 		key_pressed=true;
-		int damage_x=x+8+(scale_from_direction()*current_item.getDamageOffsetX(state-2));
+		int damage_x=x+8+(scaleFromDirection()*current_item.getDamageOffsetX(state-2));
 		int damage_y=y+current_item.getDamageOffsetY(state-2);
 
 		hit_mark_time=0;
 		
-		hit_mark_x=((x+8-4)+current_item.getDamageOffsetX(state-2)*scale_from_direction());
+		hit_mark_x=((x+8-4)+current_item.getDamageOffsetX(state-2)*scaleFromDirection());
 		hit_mark_y = (y-4)+current_item.getDamageOffsetY(state-2);
 		
-		gameWorld.apply_damage(damage_x, damage_y, 1, current_item.getDamage());
+		gameWorld.applyDamage(damage_x, damage_y, 1, current_item.getDamage());
 
 	}
 	
@@ -248,7 +248,7 @@ public class Character {
 				attack_timer=0;
 				state=1;
 				
-				item_offset_x=scale_from_direction()*8;
+				item_offset_x=scaleFromDirection()*8;
 				item_offset_y=10;
 			
 			}
@@ -261,16 +261,16 @@ public class Character {
 		switch(state){
 			case 1:
 				if(walk_frame<5)
-					draw_texture(texture_idle,scale_from_direction());
+					drawTexture(texture_idle,scaleFromDirection());
 				else
-					draw_texture(texture_idle_step,scale_from_direction());
+					drawTexture(texture_idle_step,scaleFromDirection());
 				break;
 				
-			case 2:draw_texture(texture_attack_up,scale_from_direction());
+			case 2:drawTexture(texture_attack_up,scaleFromDirection());
 				break;
-			case 3:draw_texture(texture_attack_down,scale_from_direction());
+			case 3:drawTexture(texture_attack_down,scaleFromDirection());
 				break;
-			case 4:draw_texture(texture_attack_forward,scale_from_direction());
+			case 4:drawTexture(texture_attack_forward,scaleFromDirection());
 				break;
 		}
 		
@@ -280,36 +280,36 @@ public class Character {
 			if(current_item.getTextureNumber()>0){
 				int newState=state-1;
 
-				current_item.draw(x+current_item.getItemOffsetX(newState)*scale_from_direction(),y+current_item.getItemOffsetY(newState),true,image_from_state(),scale_from_direction(),scale_from_state());
+				current_item.draw(x+current_item.getItemOffsetX(newState)*scaleFromDirection(),y+current_item.getItemOffsetY(newState),true,imageFromState(),scaleFromDirection(),scaleFromState());
 			}
 		}
 		
 		if(hit_mark_time<10){
-			draw_texture(hit,1,hit_mark_x,hit_mark_y);
+			drawTexture(hit,1,hit_mark_x,hit_mark_y);
 
 			
 		}
-		//draw_texture(debug);
+		//drawTexture(debug);
 		
 	}
 	
-	int scale_from_direction(){
+	int scaleFromDirection(){
 		if(direction)
 			return -1;
 		return 1;
 	}
-	int scale_from_state(){
+	int scaleFromState(){
 		if(state==3)
 			return -1;
 		return 1;
 	}
-	boolean image_from_state(){
+	boolean imageFromState(){
 		if(state==4)
 			return true;
 		return false;
 	}
 
-	void draw_texture(Texture newTexture,int newScale, int newX, int newY){
+	void drawTexture(Texture newTexture,int newScale, int newX, int newY){
 		
 		newTexture.bind();
 		
@@ -329,7 +329,7 @@ public class Character {
 		}
 	
 	// Draws the texture to the screen
-	void draw_texture(Texture newTexture,int newScale){
+	void drawTexture(Texture newTexture,int newScale){
 		
 		newTexture.bind();
 		
@@ -349,7 +349,7 @@ public class Character {
 		}
 	
 	// Draws the texture to the screen
-	void draw_texture(Texture newTexture){
+	void drawTexture(Texture newTexture){
 		
 		newTexture.bind();
 		

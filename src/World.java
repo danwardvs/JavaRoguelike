@@ -23,7 +23,6 @@ public class World {
 	
 	private WorldLoader gameLoader;
 	
-	private Menu mainMenu;
 	private MouseHandler gameMouse;
 	
 	/*
@@ -34,6 +33,7 @@ public class World {
 	
 	private List<Enemy> gameEnemys = new ArrayList<Enemy>();
 	private List<Item> gameItems = new ArrayList<Item>();
+	private Menu[] gameMenus = new Menu[5];
 	private Character[] gameCharacters = new Character[4];
 	
 	private Texture[][] background = new Texture[5][5];
@@ -56,13 +56,13 @@ public class World {
 		
 		gameMouse = new MouseHandler();
 		
-		mainMenu = new Menu(gameMouse,this);
+		gameMenus[0] = new Menu(gameMouse,this);
 		
-		mainMenu.create_button(new Button(gameMouse,mainMenu,(SCREEN_W/2)-125,20,250,30,0.7f,0.9f,0.7f,0.8f,"Shogun Jedsun",false));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)-125,20,250,30,0.7f,0.9f,0.7f,0.8f,"Shogun Jedsun",false));
 
 		
-		mainMenu.create_button(new Button(gameMouse,mainMenu,(SCREEN_W/2)-80,SCREEN_H/2,60,20,0.7f,0.7f,0.7f,0.3f,"New Game",true));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,(SCREEN_W/2)+20,SCREEN_H/2,60,20,0.7f,0.7f,0.7f,0.3f,"Load Game",true));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)-80,SCREEN_H/2,60,20,0.7f,0.7f,0.7f,0.3f,"New Game",true));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)+20,SCREEN_H/2,60,20,0.7f,0.7f,0.7f,0.3f,"Load Game",true));
 
 		
 		
@@ -79,36 +79,36 @@ public class World {
 		create_item(new Item("Bow",222,82,5,10,1));
 
 		
-		mainMenu.create_button(new Button(gameMouse,mainMenu,240,40,60,20,0.7f,0.7f,0.7f,0.5f,"",false));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],240,40,60,20,0.7f,0.7f,0.7f,0.5f,"",false));
 		
-		mainMenu.create_button(new Button(gameMouse,mainMenu,240,60,20,20,0f,0f,1f,0.5f,"A",true));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,260,60,20,20,0f,0f,1f,0.5f,"B",true));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,280,60,20,20,0f,0f,1f,0.5f,"C",true));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,240,80,20,20,0f,1f,0f,0.5f,"1",true));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,260,80,20,20,0f,1f,0f,0.5f,"2",true));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,280,80,20,20,0f,1f,0f,0.5f,"3",true));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],240,60,20,20,0f,0f,1f,0.5f,"A",true));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],260,60,20,20,0f,0f,1f,0.5f,"B",true));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],280,60,20,20,0f,0f,1f,0.5f,"C",true));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],240,80,20,20,0f,1f,0f,0.5f,"1",true));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],260,80,20,20,0f,1f,0f,0.5f,"2",true));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],280,80,20,20,0f,1f,0f,0.5f,"3",true));
 		
-		mainMenu.create_button(new Button(gameMouse,mainMenu,240,100,60,20,1f,0f,0f,0.5f,"Order",true));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],240,100,60,20,1f,0f,0f,0.5f,"Order",true));
 		
-		mainMenu.create_button(new Button(gameMouse,mainMenu,180,100,60,20,0.5f,0.5f,0.5f,0.5f,"0",false));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],180,100,60,20,0.5f,0.5f,0.5f,0.5f,"0",false));
 
-		mainMenu.create_button(new Button(gameMouse,mainMenu,180,60,20,20,1f,0f,0f,0.2f,"",false));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,200,60,20,20,1f,0f,0f,0.2f,"",false));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,220,60,20,20,1f,0f,0f,0.2f,"",false));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,180,80,20,20,1f,0f,0f,0.2f,"",false));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,200,80,20,20,1f,0f,0f,0.2f,"",false));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,220,80,20,20,1f,0f,0f,0.2f,"",false));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,180,40,20,20,1f,0f,0f,0.2f,"",false));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,200,40,20,20,1f,0f,0f,0.2f,"",false));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,220,40,20,20,1f,0f,0f,0.2f,"",false));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],180,60,20,20,1f,0f,0f,0.2f,"",false));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],200,60,20,20,1f,0f,0f,0.2f,"",false));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],220,60,20,20,1f,0f,0f,0.2f,"",false));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],180,80,20,20,1f,0f,0f,0.2f,"",false));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],200,80,20,20,1f,0f,0f,0.2f,"",false));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],220,80,20,20,1f,0f,0f,0.2f,"",false));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],180,40,20,20,1f,0f,0f,0.2f,"",false));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],200,40,20,20,1f,0f,0f,0.2f,"",false));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],220,40,20,20,1f,0f,0f,0.2f,"",false));
 		
-		mainMenu.create_button(new Button(gameMouse,mainMenu,180,20,20,20,0f,0.5f,1f,0.5f,"1",false));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,200,20,20,20,0f,0.5f,1f,0.5f,"2",false));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,220,20,20,20,0f,0.5f,1f,0.5f,"3",false));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],180,20,20,20,0f,0.5f,1f,0.5f,"1",false));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],200,20,20,20,0f,0.5f,1f,0.5f,"2",false));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],220,20,20,20,0f,0.5f,1f,0.5f,"3",false));
 		
-		mainMenu.create_button(new Button(gameMouse,mainMenu,160,40,20,20,0f,0.5f,1f,0.5f,"A",false));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,160,60,20,20,0f,0.5f,1f,0.5f,"B",false));
-		mainMenu.create_button(new Button(gameMouse,mainMenu,160,80,20,20,0f,0.5f,1f,0.5f,"C",false));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],160,40,20,20,0f,0.5f,1f,0.5f,"A",false));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],160,60,20,20,0f,0.5f,1f,0.5f,"B",false));
+		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],160,80,20,20,0f,0.5f,1f,0.5f,"C",false));
 
 		 */
 
@@ -143,6 +143,7 @@ public class World {
 		newItem2.setDamageOffset(7, 25, 7, 20, 8, 13);
 		getCharacter(0).setItem(newItem2);
 		gameLoader.copyDirectory("./gamedata/new","./gamedata/save");
+		
 	
 		
 	}
@@ -200,7 +201,7 @@ public class World {
 		
 		vending_display = String.valueOf(vending_digit_1) + String.valueOf(vending_digit_2);
 		
-		mainMenu.getButton(0).setText(vending_display);
+		gameMenus[0].getButton(0).setText(vending_display);
 		
 		
 		
@@ -235,19 +236,19 @@ public class World {
 	}	
 	
 	
-	public int get_world_x(){
+	public int getWorldX(){
 		return x;
 	}
-	public int get_world_y(){
+	public int getWorldY(){
 		return y;
 	}
 	
-	public void save_level(){
-		write_file("gamedata/Level_"+x+"_"+y+".xml",parse_level());		
+	public void saveLevel(){
+		writeFile("gamedata/Level_"+x+"_"+y+".xml",parseLevel());		
 
 	}
 	
-	private void write_file(String newPath, String newString){
+	private void writeFile(String newPath, String newString){
 		try (Writer writer = new BufferedWriter(new OutputStreamWriter(
 			new FileOutputStream(newPath), "utf-8"))) {
 			writer.write(newString);
@@ -258,7 +259,7 @@ public class World {
 		}
 	}
 	
-	private String parse_level(){
+	private String parseLevel(){
 		
 	
 		
@@ -306,11 +307,11 @@ public class World {
 		
 
 	}
-	public void read_level(){
+	public void readLevel(){
 		gameLoader.loadLevel("gamedata/Level_"+x+"_"+y+".xml", x, y);
 	}
 	
-	public void apply_damage(int newX, int newY,int newRadius, int newDamage){
+	public void applyDamage(int newX, int newY,int newRadius, int newDamage){
 		for(int j = 0; j < gameEnemys.size(); j++){
         	if(collision(newX-newRadius,newX+newRadius,gameEnemys.get(j).getX(),gameEnemys.get(j).getX()+gameEnemys.get(j).getWidth(),newY-newRadius,newY+newRadius,gameEnemys.get(j).getY(),gameEnemys.get(j).getY()+gameEnemys.get(j).getHeight())){
         		gameEnemys.get(j).recieveDamage(newDamage);
@@ -335,8 +336,8 @@ public class World {
 	
 	public void draw(){
 		
-		draw_texture(background[x][y],0,0);
-		mainMenu.draw();
+		drawTexture(background[x][y],0,0);
+		gameMenus[0].draw();
 		for(int i=0; i<gameCharacters.length; i++){
     		if(gameCharacters[i]!=null)
     			gameCharacters[i].draw();
@@ -356,7 +357,7 @@ public class World {
 	
 	public void update(int delta){
 		
-		mainMenu.update();
+		gameMenus[0].update();
 		gameMouse.update();
     	
 		for(int i=0; i<gameEnemys.size(); i++){
@@ -381,11 +382,11 @@ public class World {
     	if(gameCharacters[0]!=null){
 			if(gameCharacters[0].getX()>304){
 				if(locationExists[x+1][y]){
-					save_level();
+					saveLevel();
 					x+=1;
 					gameCharacters[0].setWorldX(x);
 					gameCharacters[0].setX(0);
-					read_level();
+					readLevel();
 	
 				}
 				else{
@@ -394,11 +395,11 @@ public class World {
 			}
 			if(gameCharacters[0].getX()<0){
 				if(locationExists[x-1][y]){
-					save_level();
+					saveLevel();
 					x-=1;
 					gameCharacters[0].setWorldX(x);
 					gameCharacters[0].setX(304);
-					read_level();
+					readLevel();
 	
 				}
 				else{
@@ -409,11 +410,11 @@ public class World {
 		
 		if(gameCharacters[0].getY()>210){
 			if(locationExists[x][y+1]){
-				save_level();
+				saveLevel();
 				y+=1;
 				gameCharacters[0].setY(0);
 				gameCharacters[0].setWorldY(y);
-				read_level();
+				readLevel();
 			}
 			else{
 				gameCharacters[0].setY(210);
@@ -421,11 +422,11 @@ public class World {
 		}
 		if(gameCharacters[0].getY()<-10){
 			if(locationExists[x][y-1]){
-				save_level();
+				saveLevel();
 				y-=1;
 				gameCharacters[0].setY(210);
 				gameCharacters[0].setWorldY(y);
-				read_level();
+				readLevel();
 	
 			}
 			else{
@@ -436,7 +437,7 @@ public class World {
     	}
 	
 	// Draw a texture object to the screen
-	void draw_texture(Texture newTexture,int x, int y){
+	void drawTexture(Texture newTexture,int x, int y){
 			
 		newTexture.bind();
 		    
