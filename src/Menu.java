@@ -19,6 +19,7 @@ public class Menu {
 	private World gameWorld;
 	
 	private Texture cursor;
+	private int pressed_delay;
 	
 	public Menu(MouseHandler newMouseHandler, World newWorld){
 		cursor = loadTexture("Hit.png");
@@ -28,7 +29,7 @@ public class Menu {
 
 	}
 	
-	public void create_button(Button newButton){
+	public void createButton(Button newButton){
 		menuButtons.add(newButton);
 	}
 	
@@ -36,12 +37,23 @@ public class Menu {
 		return menuButtons.get(newIndex);
 	}
 	
-
+	
+	public void setPressedDelay(int newPressedDelay){
+		pressed_delay = newPressedDelay;
+	}
+	
+	public int getPressedDelay(){
+		return pressed_delay;
+	}
+	
 	public void update(){
 		
 		
 		mouse_x = gameMouse.getX();
 		mouse_y = gameMouse.getY();
+		
+		if(pressed_delay>0)
+			pressed_delay--;
 		
 		
 		for(Button newButton: menuButtons){
@@ -49,6 +61,16 @@ public class Menu {
 
 		  }
 		 
+	}
+	
+	public Button getButtonById(String newId){
+		 for(Button newButton: menuButtons){
+	          if(newButton.getText().equals(newId))
+	        	  return newButton;
+		 }
+		 return null;
+		  
+		
 	}
 	
 	public void draw(){
@@ -72,7 +94,18 @@ public class Menu {
 			gameWorld.pressVendingButton(newChar);
 		}*/
 		
-		if(newId=="New Game"){
+		if(newId.equals("new game")){
+			getButtonById("new game").setVisibility(false);
+			getButtonById("load game").setVisibility(false);
+			getButtonById("shogun jedsun").setVisibility(false);
+			getButtonById("create game").setVisibility(true);
+			getButtonById("cancel").setVisibility(true);
+			getButtonById("are you sure? this will clear the existing save.").setVisibility(true);
+
+
+		}
+		
+		if(newId.equals("create game")){
 			gameWorld.startGame();
 		}
 	}

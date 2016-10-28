@@ -53,11 +53,15 @@ public class World {
 		
 		gameMenus[0] = new Menu(gameMouse,this);
 		
-		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)-125,20,250,30,0.7f,0.9f,0.7f,0.8f,"Shogun Jedsun",false));
+		gameMenus[0].createButton(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)-125,20,250,30,0.7f,0.9f,0.7f,0.8f,"Shogun Jedsun",false,true));
 
 		
-		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)-80,SCREEN_H/2,60,20,0.7f,0.7f,0.7f,0.3f,"New Game",true));
-		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)+20,SCREEN_H/2,60,20,0.7f,0.7f,0.7f,0.3f,"Load Game",true));
+		gameMenus[0].createButton(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)-80,SCREEN_H/2,60,20,0.7f,0.4f,0.4f,0.3f,"New Game",true,true));
+		gameMenus[0].createButton(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)+20,SCREEN_H/2,60,20,0.4f,0.7f,0.4f,0.3f,"Load Game",true,true));
+		
+		gameMenus[0].createButton(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)-155,50,310,20,0.8f,0.0f,0.0f,0.3f,"Are you sure? This will clear the existing save.",false,false));
+		gameMenus[0].createButton(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)-90,SCREEN_H/2,80,20,0.4f,0.7f,0.4f,0.3f,"Create game",true,false));
+		gameMenus[0].createButton(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)+30,SCREEN_H/2,60,20,0.7f,0.4f,0.4f,0.3f,"Cancel",true,false));
 
 
 	}

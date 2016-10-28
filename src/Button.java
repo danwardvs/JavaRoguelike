@@ -29,13 +29,15 @@ public class Button {
 	private boolean is_hovered;
 	private boolean is_pressed;
 	private boolean is_active;
+	private boolean is_visible;
 	private float r;
 	private float b;
 	private float g;
-	private int pressed_timer;
+	private int local_pressed_delay;
 	
 	private MouseHandler gameMouse;
 	private Menu parentMenu;
+	
 
 	private Texture texture;
 
@@ -52,7 +54,7 @@ public class Button {
 	    else return false;
 	}
 	
-	public Button(MouseHandler newMouseHandler, Menu newParentMenu, int newX, int newY, int newWidth, int newHeight, float newR, float newG, float newB,float newFontSize, String newText, boolean newActive){
+	public Button(MouseHandler newMouseHandler, Menu newParentMenu, int newX, int newY, int newWidth, int newHeight, float newR, float newG, float newB,float newFontSize, String newText, boolean newActive, boolean newVisible){
 		x = newX;
 		y = newY;
 		width = newWidth;
@@ -62,6 +64,7 @@ public class Button {
 		g = newG;
 		font_size = newFontSize;
 		is_active = newActive;
+		is_visible = newVisible;
 		
 		text = newText;
 		
@@ -78,13 +81,21 @@ public class Button {
 		text = newText;
 	}
 	
+	public String getText(){
+		return text.toLowerCase();
+	}
+	
+	public void setVisibility(boolean newVisible){
+		is_visible = newVisible;
+	}
+	
 	public void update(){
 		
-		if(is_active){
+		if(is_active && is_visible){
 		
-			if(pressed_timer>0){
-				pressed_timer--;
+			if(local_pressed_delay>0){
 				is_pressed = true;
+				local_pressed_delay--;
 			
 			}else{
 				is_pressed=false;
@@ -95,9 +106,10 @@ public class Button {
 			mouse_y = gameMouse.getY();
 			mouse_left_down = Mouse.isButtonDown(0);
 			
-			if(location_clicked(x,x+width,y,y+height)){
-				pressed_timer=5;
-				parentMenu.recieveButtonPress(text);
+			if(location_clicked(x,x+width,y,y+height) && parentMenu.getPressedDelay()==0){
+				parentMenu.setPressedDelay(5);
+				local_pressed_delay=5;
+				parentMenu.recieveButtonPress(text.toLowerCase());
 			}
 			is_hovered = location_hovered(x,x+width,y,y+height);
 		}
@@ -134,9 +146,12 @@ public class Button {
 	
 	public void draw(){
 		
+		if(is_visible){
 		
-		drawTexture(texture,r,g,b);
-		drawFont(text);
+			drawTexture(texture,r,g,b);
+			drawFont(text);
+		
+		}
 		
 
         
