@@ -48,11 +48,6 @@ public class World {
 		locationExists[2][1] = true;
 		
 		loadTextures();
-
-	}
-	public void setup(){
-		
-		
 		
 		gameMouse = new MouseHandler();
 		
@@ -64,6 +59,13 @@ public class World {
 		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)-80,SCREEN_H/2,60,20,0.7f,0.7f,0.7f,0.3f,"New Game",true));
 		gameMenus[0].create_button(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)+20,SCREEN_H/2,60,20,0.7f,0.7f,0.7f,0.3f,"Load Game",true));
 
+
+	}
+	public void setup(){
+		
+		
+		
+		
 		
 		
 		//Vending machine
@@ -143,6 +145,7 @@ public class World {
 		newItem2.setDamageOffset(7, 25, 7, 20, 8, 13);
 		getCharacter(0).setItem(newItem2);
 		gameLoader.copyDirectory("./gamedata/new","./gamedata/save");
+		gameMenus[0] = null;
 		
 	
 		
@@ -337,10 +340,14 @@ public class World {
 	public void draw(){
 		
 		drawTexture(background[x][y],0,0);
-		gameMenus[0].draw();
+		
 		for(int i=0; i<gameCharacters.length; i++){
     		if(gameCharacters[i]!=null)
     			gameCharacters[i].draw();
+    	}
+		for(int i=0; i<gameMenus.length; i++){
+    		if(gameMenus[i]!=null)
+    			gameMenus[i].draw();
     	}
     	
 		
@@ -357,7 +364,6 @@ public class World {
 	
 	public void update(int delta){
 		
-		gameMenus[0].update();
 		gameMouse.update();
     	
 		for(int i=0; i<gameEnemys.size(); i++){
@@ -375,6 +381,11 @@ public class World {
     	for(int i=0; i<gameCharacters.length; i++){
     		if(gameCharacters[i]!=null)
     			gameCharacters[i].update(delta);
+    	}
+    	
+    	for(int i=0; i<gameMenus.length; i++){
+    		if(gameMenus[i]!=null)
+    			gameMenus[i].update();
     	}
     	
     	
