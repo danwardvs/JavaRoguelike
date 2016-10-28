@@ -132,6 +132,7 @@ public class main {
 	    	if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)){
 	    		exit=true;
 	    		gameWorld.saveLevel();
+	    		gameWorld.saveCharacter(0);
 	    	}
 	        int delta = getDelta();
 	        	

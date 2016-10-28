@@ -152,15 +152,20 @@ public class World {
 		return gameCharacters[newIndex];
 	}
 	public void startGame(boolean newNew){
+		
 
+		
 		gameLoader = new WorldLoader(this, 1,1);
-		gameLoader.loadLevel("gamedata/new/Level_1_1.xml", 1,1);
-		gameLoader.loadCharacters("gamedata/new/Character_0.xml");
+		if(newNew)gameLoader.copyDirectory("./gamedata/new","./gamedata/save");
+
+		gameLoader.loadLevel("gamedata/save/Level_1_1.xml", 1,1);
+		gameLoader.loadCharacter("gamedata/save/Character_0.xml");
+		
+		
 		
 		Item newItem2 =  new Item("Fist",100,125,5,10,0);
 		newItem2.setDamageOffset(7, 25, 7, 20, 8, 13);
 		getCharacter(0).setItem(newItem2);
-		if(newNew)gameLoader.copyDirectory("./gamedata/new","./gamedata/save");
 		gameMenus[0] = null;
 		
 	
@@ -243,14 +248,14 @@ public class World {
 		
 		
 	}
-	public void create_item(Item newItem){
+	public void createItem(Item newItem){
 		gameItems.add(newItem);
 	}
-	public void destroy_item(Item newItem){
+	public void destroyItem(Item newItem){
 		gameItems.remove(newItem);
 	}
 	
-	public void destroy_enemy(Enemy newEnemy){
+	public void destroyEnemy(Enemy newEnemy){
 		gameEnemys.remove(newEnemy);	
 	}	
 	
@@ -263,8 +268,11 @@ public class World {
 	}
 	
 	public void saveLevel(){
-		writeFile("gamedata/Level_"+x+"_"+y+".xml",parseLevel());		
+		writeFile("gamedata/save/Level_"+x+"_"+y+".xml",parseLevel());		
 
+	}
+	public void saveCharacter(int newIndex){
+		writeFile("gamedata/save/Character_"+newIndex+".xml",parseCharacter(newIndex));
 	}
 	
 	private void writeFile(String newPath, String newString){
@@ -276,6 +284,28 @@ public class World {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	private String parseCharacter(int newIndex){
+		
+		
+		System.out.println(gameCharacters[0].getX());
+		String newEntry = "<?xml version=\"1.0\"?>\n\n<level>\n";
+		
+		
+		
+		newEntry += "	<object type=\"Character\">\n";
+		
+		newEntry += "		<index>"+newIndex+"</index>\n";
+
+		
+		newEntry += "		<x>"+gameCharacters[newIndex].getX() + "</x>\n";
+		newEntry += "		<y>"+gameCharacters[newIndex].getY() + "</y>\n";
+		newEntry += "	</object>\n\n";
+		newEntry += "\n\n</level>";
+		
+		return newEntry;
+
+		
 	}
 	
 	private String parseLevel(){
