@@ -95,18 +95,31 @@ public class Menu {
 		}*/
 		
 		if(newId.equals("new game")){
-			getButtonById("new game").setVisibility(false);
-			getButtonById("load game").setVisibility(false);
-			getButtonById("shogun jedsun").setVisibility(false);
-			getButtonById("create game").setVisibility(true);
-			getButtonById("cancel").setVisibility(true);
-			getButtonById("are you sure? this will clear the existing save.").setVisibility(true);
+			if(gameWorld.isSaveGame()){
+				getButtonById("new game").setVisibility(false);
+				getButtonById("load game").setVisibility(false);
+				getButtonById("shogun jedsun").setVisibility(false);
+				getButtonById("create game").setVisibility(true);
+				getButtonById("cancel").setVisibility(true);
+				getButtonById("are you sure? this will clear the existing save.").setVisibility(true);
+			}
 
 
 		}
 		
 		if(newId.equals("create game")){
-			gameWorld.startGame();
+			gameWorld.startGame(true);
+		}
+		if(newId.equals("load game")){
+			gameWorld.startGame(false);
+		}
+		if(newId.equals("cancel")){
+			getButtonById("new game").setVisibility(true);
+			getButtonById("load game").setVisibility(true);
+			getButtonById("shogun jedsun").setVisibility(true);
+			getButtonById("create game").setVisibility(false);
+			getButtonById("cancel").setVisibility(false);
+			getButtonById("are you sure? this will clear the existing save.").setVisibility(false);
 		}
 	}
 	

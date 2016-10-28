@@ -1,4 +1,5 @@
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -58,6 +59,13 @@ public class World {
 		
 		gameMenus[0].createButton(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)-80,SCREEN_H/2,60,20,0.7f,0.4f,0.4f,0.3f,"New Game",true,true));
 		gameMenus[0].createButton(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)+20,SCREEN_H/2,60,20,0.4f,0.7f,0.4f,0.3f,"Load Game",true,true));
+	
+		System.out.println(isSaveGame());
+		if(!isSaveGame()){
+			gameMenus[0].getButtonById("load game").setActive(false);
+			gameMenus[0].getButtonById("load game").setColour(0.2f,0.2f,0.2f);
+
+		}
 		
 		gameMenus[0].createButton(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)-155,50,310,20,0.8f,0.0f,0.0f,0.3f,"Are you sure? This will clear the existing save.",false,false));
 		gameMenus[0].createButton(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)-90,SCREEN_H/2,80,20,0.4f,0.7f,0.4f,0.3f,"Create game",true,false));
@@ -127,6 +135,10 @@ public class World {
 		gameCharacters[newIndex] = newCharacter;
 		
 	}
+	public boolean isSaveGame(){
+		File f = new File("gamedata/save/Character_0.xml");
+		return f.exists();
+	}
 	
 	public List<Enemy> getEnemys(){
 		return gameEnemys;	
@@ -139,7 +151,7 @@ public class World {
 	public Character getCharacter(int newIndex){
 		return gameCharacters[newIndex];
 	}
-	public void startGame(){
+	public void startGame(boolean newNew){
 
 		gameLoader = new WorldLoader(this, 1,1);
 		gameLoader.loadLevel("gamedata/new/Level_1_1.xml", 1,1);
@@ -148,7 +160,7 @@ public class World {
 		Item newItem2 =  new Item("Fist",100,125,5,10,0);
 		newItem2.setDamageOffset(7, 25, 7, 20, 8, 13);
 		getCharacter(0).setItem(newItem2);
-		gameLoader.copyDirectory("./gamedata/new","./gamedata/save");
+		if(newNew)gameLoader.copyDirectory("./gamedata/new","./gamedata/save");
 		gameMenus[0] = null;
 		
 	

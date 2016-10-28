@@ -45,6 +45,12 @@ public class WorldLoader {
 		}
 		
 	}
+	
+	public boolean checkIfFileExists(String newPath){
+		File f = new File(newPath);
+		return f.exists();
+	}
+	
 	public void loadCharacters(String newCharacterPath){
 		
 		try {	

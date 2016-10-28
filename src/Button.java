@@ -88,6 +88,12 @@ public class Button {
 	public void setVisibility(boolean newVisible){
 		is_visible = newVisible;
 	}
+	public void setColour(float newR, float newG, float newB){
+		r = newR;
+		g = newG;
+		b = newB;
+		
+	}
 	
 	public void update(){
 		
