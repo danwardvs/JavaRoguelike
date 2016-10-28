@@ -102,6 +102,8 @@ public class Menu {
 				getButtonById("create game").setVisibility(true);
 				getButtonById("cancel").setVisibility(true);
 				getButtonById("are you sure? this will clear the existing save.").setVisibility(true);
+			}else{
+				gameWorld.startGame(true);
 			}
 
 

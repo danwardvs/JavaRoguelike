@@ -1,6 +1,15 @@
 <?xml version="1.0"?>
 
 <level>
+	<object type="Item">
+		<name>Potion_Health</name>
+		<x>100</x>
+		<y>1255</y>
+		<damage>50</damage>
+		<damage_radius>50</damage_radius>
+		<texture_number>0</texture_number>
+	</object>
+
 
 
 </level>
