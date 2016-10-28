@@ -10,5 +10,23 @@
 		<texture_number>0</texture_number>
 	</object>
 
+<object type="Enemy">
+		<type>0</type>
+		<health>160</health>
+		<x>120</x>
+		<y>208</y>
+	</object>
+
+
+<object type="Enemy">
+		<type>0</type>
+		<health>160</health>
+		<x>150</x>
+		<y>28</y>
+	</object>
+
+
+	
+
 
 </level>
