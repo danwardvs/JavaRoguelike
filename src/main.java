@@ -117,7 +117,11 @@ public class main {
 		gameWorld.setup();
 		
 		
-	
+
+		Item newItem =  new Item("Sword",10,10,5,50,2);
+		newItem.setDamageOffset(19, 33, 20, 22, 19, 4);
+		newItem.setItemOffset(10,10,12, 2,12,12,12,18);
+		gameWorld.createItem(newItem);
 		
 
 		

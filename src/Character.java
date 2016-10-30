@@ -11,7 +11,6 @@ public class Character {
 	private int y=0;
 	private int world_x;
 	private int world_y;
-	private int character_index;
 	private int key_left;
 	private int key_right;
 	private int key_up;
@@ -40,8 +39,8 @@ public class Character {
 	private boolean key_pressed=false;
 	private int state=1;
 	
-	private int item_offset_x=8;
-	private int item_offset_y=8;
+	//private int item_offset_x=8;
+	//private int item_offset_y=8;
 	
 	private Item current_item;
 	
@@ -58,7 +57,6 @@ public class Character {
 	
 	public Character(int newCharacterIndex,int newX, int newY, int newLeft,int newRight, int newUp, int newDown, int newAttackLeft, int newAttackRight, int newAttackUp, int newAttackDown){
 		
-		character_index = newCharacterIndex;
 		x = newX;
 		y = newY;
 		key_left =  newLeft;
@@ -156,6 +154,7 @@ public class Character {
 		hit_mark_y = (y-4)+current_item.getDamageOffsetY(state-2);
 		
 		gameWorld.applyDamage(damage_x, damage_y, 1, current_item.getDamage());
+		System.out.println(current_item.getDamage());
 
 	}
 	
@@ -184,19 +183,13 @@ public class Character {
 		move_y=0;
 		if(Keyboard.isKeyDown(key_left)){
 			direction=true;
-			if(attack_timer==0){
-				item_offset_x=-10;
-				item_offset_y=10;
-			}
+
 			
 			move_x=(int)-tick_speed;
 		}
 		if(Keyboard.isKeyDown(key_right)){
 			move_x=(int)tick_speed;
-			if(attack_timer==0){
-				item_offset_x=10;
-				item_offset_y=10;
-			}
+
 			direction=false;
 		}
 		
@@ -254,9 +247,6 @@ public class Character {
 			if(attack_timer<=0){
 				attack_timer=0;
 				state=1;
-				
-				item_offset_x=scaleFromDirection()*8;
-				item_offset_y=10;
 			
 			}
 		}

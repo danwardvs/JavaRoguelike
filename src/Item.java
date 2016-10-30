@@ -10,7 +10,7 @@ public class Item {
 	private int x;
 	private int y;
 	private String name;
-	private int texture_number=0;
+	private int texture_number;
 	private Texture texture;
 	private Texture texture_2;
 	private int[] damage_offset_x = new int[3];
@@ -78,22 +78,21 @@ public class Item {
 		return name;
 	}
 	public void setTexture(String newName, int newAmount){
+	
 		
-		texture_number = newAmount;
-		
-		if(newAmount==1){
+		if(newAmount>0){
 			texture = loadTexture(newName + ".png");
 			
 		}
 		
-		if(newAmount==2){
+		if(newAmount>1){
 			texture_2 = loadTexture(newName + "_2.png");
 		}
 			
 		
 	}
 	public void draw(){
-		drawTexture(x,y,texture,-1,-1);
+		drawTexture(x,y,texture,1,1);
 
 	}
 	

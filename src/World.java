@@ -414,7 +414,7 @@ public class World {
 
 		
 		for(Item item: getItems())
-        	item.draw(item.getX(),item.getY(),false,false,1,1);
+        	item.draw();
     	
 		gameMouse.draw();
 	}
