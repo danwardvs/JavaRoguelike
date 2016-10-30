@@ -84,6 +84,13 @@ public class Character {
 	public void setWorldY(int newWorldY){
 		world_y = newWorldY;
 	}
+	public int getWorldX(){
+		return world_x;
+	}
+	
+	public int getWorldY(){
+		return world_y;
+	}
 	
 	public int getX(){
 		return x;

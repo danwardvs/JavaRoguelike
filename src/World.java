@@ -43,7 +43,7 @@ public class World {
 	public World(int newX, int newY){
 		
 		x = newX;
-		y = newY;;
+		y = newY;
 		
 		locationExists[1][1] = true;
 		locationExists[2][1] = true;
@@ -60,7 +60,6 @@ public class World {
 		gameMenus[0].createButton(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)-80,SCREEN_H/2,60,20,0.7f,0.4f,0.4f,0.3f,"New Game",true,true));
 		gameMenus[0].createButton(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)+20,SCREEN_H/2,60,20,0.4f,0.7f,0.4f,0.3f,"Load Game",true,true));
 	
-		System.out.println(isSaveGame());
 		if(!isSaveGame()){
 			gameMenus[0].getButtonById("load game").setActive(false);
 			gameMenus[0].getButtonById("load game").setColour(0.2f,0.2f,0.2f);
@@ -157,9 +156,13 @@ public class World {
 		
 		gameLoader = new WorldLoader(this, 1,1);
 		if(newNew)gameLoader.copyDirectory("./gamedata/new","./gamedata/save");
-
-		gameLoader.loadLevel("gamedata/save/Level_1_1.xml", 1,1);
+		
+		
 		gameLoader.loadCharacter("gamedata/save/Character_0.xml");
+		x = gameCharacters[0].getWorldX();
+		y = gameCharacters[0].getWorldY();
+		
+		gameLoader.loadLevel("gamedata/save/Level_1_1.xml");
 		
 		
 		
@@ -266,6 +269,13 @@ public class World {
 	public int getWorldY(){
 		return y;
 	}
+	public void setWorldX(int newWorldX){
+		x = newWorldX;
+	}
+	
+	public void setWorldY(int newWorldY){
+		y = newWorldY;
+	}
 	
 	public void saveLevel(){
 		writeFile("gamedata/save/Level_"+x+"_"+y+".xml",parseLevel());		
@@ -288,7 +298,6 @@ public class World {
 	private String parseCharacter(int newIndex){
 		
 		
-		System.out.println(gameCharacters[0].getX());
 		String newEntry = "<?xml version=\"1.0\"?>\n\n<level>\n";
 		
 		
@@ -300,6 +309,8 @@ public class World {
 		
 		newEntry += "		<x>"+gameCharacters[newIndex].getX() + "</x>\n";
 		newEntry += "		<y>"+gameCharacters[newIndex].getY() + "</y>\n";
+		newEntry += "		<world_x>"+gameCharacters[newIndex].getWorldX() + "</world_x>\n";
+		newEntry += "		<world_y>"+gameCharacters[newIndex].getWorldY() + "</world_y>\n";
 		newEntry += "	</object>\n\n";
 		newEntry += "\n\n</level>";
 		
@@ -357,7 +368,7 @@ public class World {
 
 	}
 	public void readLevel(){
-		gameLoader.loadLevel("gamedata/Level_"+x+"_"+y+".xml", x, y);
+		gameLoader.loadLevel("gamedata/save/Level_"+x+"_"+y+".xml");
 	}
 	
 	public void applyDamage(int newX, int newY,int newRadius, int newDamage){
