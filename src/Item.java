@@ -30,6 +30,14 @@ public class Item {
 		setTexture(name,texture_number);
 	}
 	
+	public Item(String newName, int newDamageRadius, int newDamage, int newTextureAmount){
+		name = newName;
+		damage_radius=newDamageRadius;
+		damage=newDamage;
+		texture_number = newTextureAmount;
+		setTexture(name,texture_number);
+	}
+	
 	public void setDamageOffset(int newLowerX, int newLowerY,int newMidX, int newMidY, int newHighX, int newHighY){
 		
 		damage_offset_x[0] = newHighX;
@@ -77,6 +85,8 @@ public class Item {
 	public String getName(){
 		return name;
 	}
+	
+	
 	public void setTexture(String newName, int newAmount){
 	
 		

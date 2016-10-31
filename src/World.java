@@ -6,7 +6,6 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
-import java.nio.file.Files;
 
 import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.opengl.Texture;
@@ -166,9 +165,9 @@ public class World {
 		
 		
 		
-		Item newItem2 =  new Item("Fist",100,125,5,10,0);
-		newItem2.setDamageOffset(7, 25, 7, 20, 8, 13);
-		getCharacter(0).setItem(newItem2);
+		//Item newItem2 =  new Item("Fist",100,125,5,10,0);
+		//newItem2.setDamageOffset(7, 25, 7, 20, 8, 13);
+		//getCharacter(0).setItem(newItem2);
 		gameMenus[0] = null;
 		
 	
@@ -312,7 +311,19 @@ public class World {
 		newEntry += "		<world_x>"+gameCharacters[newIndex].getWorldX() + "</world_x>\n";
 		newEntry += "		<world_y>"+gameCharacters[newIndex].getWorldY() + "</world_y>\n";
 		newEntry += "	</object>\n\n";
+		
+		newEntry += "	<object type=\"Item\">\n";
+		
+
+
+		newEntry += "		<name>"+gameCharacters[newIndex].getItem().getName() + "</name>\n";
+
+		newEntry += "		<texture_number>"+gameCharacters[newIndex].getItem().getTextureNumber() + "</texture_number>\n";
+		newEntry += "		<damage>"+gameCharacters[newIndex].getItem().getDamage() + "</damage>\n";
+		newEntry += "		<damage_radius>"+gameCharacters[newIndex].getItem().getDamageRadius() + "</damage_radius>\n";
+		newEntry += "	</object>\n\n";
 		newEntry += "\n\n</level>";
+		
 		
 		return newEntry;
 

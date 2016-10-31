@@ -65,7 +65,6 @@ public class MouseHandler {
 	}
 	public void draw(){
 		
-		cursor = cursor;
 		cursor.bind();
 			
 		GL11.glBegin(GL11.GL_QUADS);

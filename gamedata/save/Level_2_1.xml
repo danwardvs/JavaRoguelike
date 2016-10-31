@@ -1,6 +1,22 @@
 <?xml version="1.0"?>
 
 <level>
+	<object type="Enemy">
+		<type>0</type>
+		<health>160</health>
+		<x>94</x>
+		<y>47</y>
+	</object>
+
+	<object type="Item">
+		<name>Sword</name>
+		<x>120</x>
+		<y>208</y>
+		<damage>100</damage>
+		<damage_radius>5</damage_radius>
+		<texture_number>2</texture_number>
+	</object>
+
 
 
 </level>

@@ -8,7 +8,7 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import java.io.File;
-import java.nio.file.Files;
+
 import org.apache.commons.io.FileUtils;
 import java.io.IOException;
 
@@ -73,13 +73,13 @@ public class WorldLoader {
 					Element eElement = (Element) nNode;
 	
 					object_type = (eElement.getAttribute("type"));
-					x = Integer.valueOf(eElement.getElementsByTagName("x").item(0).getTextContent());
-					y = Integer.valueOf(eElement.getElementsByTagName("y").item(0).getTextContent());
-					world_x = Integer.valueOf(eElement.getElementsByTagName("world_x").item(0).getTextContent());
-					world_y = Integer.valueOf(eElement.getElementsByTagName("world_y").item(0).getTextContent());
-
 					
 					if(object_type.equals("Character")){
+						
+						x = Integer.valueOf(eElement.getElementsByTagName("x").item(0).getTextContent());
+						y = Integer.valueOf(eElement.getElementsByTagName("y").item(0).getTextContent());
+						world_x = Integer.valueOf(eElement.getElementsByTagName("world_x").item(0).getTextContent());
+						world_y = Integer.valueOf(eElement.getElementsByTagName("world_y").item(0).getTextContent());
 						
 						index = Integer.valueOf(eElement.getElementsByTagName("index").item(0).getTextContent());
 	
@@ -87,6 +87,19 @@ public class WorldLoader {
 						newCharacter.setWorldX(world_x);
 						newCharacter.setWorldY(world_y);
 						gameWorld.setCharacter(newCharacter,index);
+						
+					}
+					if(object_type.equals("Item")){
+						
+						name = eElement.getElementsByTagName("name").item(0).getTextContent();
+
+						texture_number = Integer.valueOf(eElement.getElementsByTagName("texture_number").item(0).getTextContent());
+
+						damage = Integer.valueOf(eElement.getElementsByTagName("damage").item(0).getTextContent());
+						damage_radius = Integer.valueOf(eElement.getElementsByTagName("damage_radius").item(0).getTextContent());
+						Item newItem = new Item(name,damage_radius,damage,texture_number);
+						newItem.setDamageOffset(7, 25, 7, 20, 8, 13);
+						gameWorld.getCharacter(index).setItem(newItem);
 						
 					}
 				}

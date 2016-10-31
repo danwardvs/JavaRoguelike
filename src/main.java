@@ -4,22 +4,10 @@ import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.input.Mouse;
 
-import java.awt.Font;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.io.IOException;
-
-import org.newdawn.slick.opengl.Texture;
-import org.newdawn.slick.opengl.TextureLoader;
-import org.newdawn.slick.util.ResourceLoader;
 import org.newdawn.slick.Color;
-import org.newdawn.slick.TrueTypeFont;
-import org.newdawn.slick.util.ResourceLoader;
 
-@SuppressWarnings("deprecation")
+
 public class main {
 	
 	World gameWorld;
@@ -65,7 +53,6 @@ public class main {
 	}
 	
 	// Store update loop
-	@SuppressWarnings("deprecation")
 	// Runs once when program starts up
 	public void start() {
 		
@@ -118,10 +105,10 @@ public class main {
 		
 		
 
-		Item newItem =  new Item("Sword",10,10,5,50,2);
-		newItem.setDamageOffset(19, 33, 20, 22, 19, 4);
-		newItem.setItemOffset(10,10,12, 2,12,12,12,18);
-		gameWorld.createItem(newItem);
+		//Item newItem =  new Item("Sword",10,10,5,50,2);
+		//newItem.setDamageOffset(19, 33, 20, 22, 19, 4);
+		//newItem.setItemOffset(10,10,12, 2,12,12,12,18);
+		//gameWorld.createItem(newItem);
 		
 
 		
@@ -135,8 +122,10 @@ public class main {
 	    	Keyboard.poll();
 	    	if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)){
 	    		exit=true;
-	    		gameWorld.saveLevel();
-	    		gameWorld.saveCharacter(0);
+	    		if(gameWorld.getCharacter(0)!=null){
+		    		gameWorld.saveLevel();
+		    		gameWorld.saveCharacter(0);
+	    		}
 	    	}
 	        int delta = getDelta();
 	        	

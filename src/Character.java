@@ -51,7 +51,7 @@ public class Character {
 	private Texture texture_idle_step;
 	
 	private Texture hit;
-	private Texture debug;
+	//private Texture debug;
 	
 	World gameWorld;
 	
@@ -84,6 +84,9 @@ public class Character {
 	}
 	public int getWorldX(){
 		return world_x;
+	}
+	public Item getItem(){
+		return current_item;
 	}
 	
 	public int getWorldY(){
@@ -124,7 +127,7 @@ public class Character {
 
 			hit = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("Hit.png"),GL11.GL_NEAREST);
 			
-			debug = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("debug.png"),GL11.GL_NEAREST);
+			//debug = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("debug.png"),GL11.GL_NEAREST);
 		
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -12,18 +12,12 @@ public class Menu {
 	
 	List<Button> menuButtons = new ArrayList<Button>();
 	
-	private int mouse_x;
-	private int mouse_y;
-	
-	private MouseHandler gameMouse;
 	private World gameWorld;
 	
-	private Texture cursor;
 	private int pressed_delay;
 	
 	public Menu(MouseHandler newMouseHandler, World newWorld){
-		cursor = loadTexture("Hit.png");
-		gameMouse = newMouseHandler;
+		
 		gameWorld = newWorld;
 		Mouse.setCursorPosition(180, 120);
 
@@ -48,10 +42,7 @@ public class Menu {
 	
 	public void update(){
 		
-		
-		mouse_x = gameMouse.getX();
-		mouse_y = gameMouse.getY();
-		
+	
 		if(pressed_delay>0)
 			pressed_delay--;
 		
