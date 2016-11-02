@@ -5,13 +5,13 @@
 		<type>0</type>
 		<health>160</health>
 		<x>152</x>
-		<y>208</y>
+		<y>206</y>
 	</object>
 
 	<object type="Enemy">
 		<type>0</type>
 		<health>160</health>
-		<x>124</x>
+		<x>149</x>
 		<y>32</y>
 	</object>
 
