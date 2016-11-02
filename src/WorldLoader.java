@@ -92,13 +92,23 @@ public class WorldLoader {
 					if(object_type.equals("Item")){
 						
 						name = eElement.getElementsByTagName("name").item(0).getTextContent();
+						type = Integer.valueOf(eElement.getElementsByTagName("type").item(0).getTextContent());
+
 
 						texture_number = Integer.valueOf(eElement.getElementsByTagName("texture_number").item(0).getTextContent());
 
 						damage = Integer.valueOf(eElement.getElementsByTagName("damage").item(0).getTextContent());
 						damage_radius = Integer.valueOf(eElement.getElementsByTagName("damage_radius").item(0).getTextContent());
-						Item newItem = new Item(name,damage_radius,damage,texture_number);
-						newItem.setDamageOffset(7, 25, 7, 20, 8, 13);
+						Item newItem = new Item(name,type,damage_radius,damage,texture_number);
+						
+						newItem.setItemOffset(10,10,12, 2,12,12,12,18);
+
+						if(type==0)
+							newItem.setDamageOffset(7, 25, 7, 20, 8, 13);
+
+						if(type==1)
+							newItem.setDamageOffset(19, 33, 20, 22, 19, 4);
+
 						gameWorld.getCharacter(index).setItem(newItem);
 						
 					}
@@ -150,16 +160,25 @@ public class WorldLoader {
 						x = Integer.valueOf(eElement.getElementsByTagName("x").item(0).getTextContent());
 						y = Integer.valueOf(eElement.getElementsByTagName("y").item(0).getTextContent());
 						
+						type = Integer.valueOf(eElement.getElementsByTagName("type").item(0).getTextContent());
+
+						
 						texture_number = Integer.valueOf(eElement.getElementsByTagName("texture_number").item(0).getTextContent());
 
 						
 						damage = Integer.valueOf(eElement.getElementsByTagName("damage").item(0).getTextContent());
 						damage_radius = Integer.valueOf(eElement.getElementsByTagName("damage_radius").item(0).getTextContent());
 						
-						Item newItem = new Item(name,x,y,damage_radius,damage,texture_number);
-						//newItem.setTexture(name,texture_number);
-						newItem.setDamageOffset(19, 33, 20, 22, 19, 4);
+						Item newItem = new Item(name,type,x,y,damage_radius,damage,texture_number);
+						
 						newItem.setItemOffset(10,10,12, 2,12,12,12,18);
+
+						if(type==0)
+							newItem.setDamageOffset(7, 25, 7, 20, 8, 13);
+
+						if(type==1)
+							newItem.setDamageOffset(19, 33, 20, 22, 19, 4);
+						
 						gameWorld.createItem(newItem);
 					}
 				}

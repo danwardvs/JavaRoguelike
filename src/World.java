@@ -169,6 +169,7 @@ public class World {
 		//newItem2.setDamageOffset(7, 25, 7, 20, 8, 13);
 		//getCharacter(0).setItem(newItem2);
 		gameMenus[0] = null;
+		gameMouse.setVisibility(false);
 		
 	
 		
@@ -317,7 +318,7 @@ public class World {
 
 
 		newEntry += "		<name>"+gameCharacters[newIndex].getItem().getName() + "</name>\n";
-
+		newEntry += "		<type>"+gameCharacters[newIndex].getItem().getType() + "</type>\n";
 		newEntry += "		<texture_number>"+gameCharacters[newIndex].getItem().getTextureNumber() + "</texture_number>\n";
 		newEntry += "		<damage>"+gameCharacters[newIndex].getItem().getDamage() + "</damage>\n";
 		newEntry += "		<damage_radius>"+gameCharacters[newIndex].getItem().getDamageRadius() + "</damage_radius>\n";
@@ -354,6 +355,8 @@ public class World {
 			String newLevelEntry = "";
 			newLevelEntry = newLevelEntry + "	<object type=\"Item\">\n";
 			newLevelEntry += "		<name>" + gameItems.get(j).getName() + "</name>\n";
+			newLevelEntry += "		<type>" + gameItems.get(j).getType() + "</type>\n";
+
 			newLevelEntry += "		<x>" + gameItems.get(j).getX() + "</x>\n";
 			newLevelEntry += "		<y>" + gameItems.get(j).getY() + "</y>\n";
 			newLevelEntry += "		<damage>" + gameItems.get(j).getDamage() + "</damage>\n";

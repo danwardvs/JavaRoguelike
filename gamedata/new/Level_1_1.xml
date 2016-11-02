@@ -9,7 +9,7 @@
 	</object>
 
 
-<object type="Enemy">
+	<object type="Enemy">
 		<type>0</type>
 		<health>160</health>
 		<x>150</x>
@@ -17,7 +17,6 @@
 	</object>
 
 
-	
 
 
 </level>

@@ -10,6 +10,7 @@ public class Item {
 	private int x;
 	private int y;
 	private String name;
+	private int type;
 	private int texture_number;
 	private Texture texture;
 	private Texture texture_2;
@@ -20,8 +21,9 @@ public class Item {
 	private int damage_radius;
 	private int damage;
 	
-	public Item(String newName, int newX, int newY, int newDamageRadius, int newDamage, int newTextureAmount){
+	public Item(String newName, int newType, int newX, int newY, int newDamageRadius, int newDamage, int newTextureAmount){
 		name = newName;
+		type = newType;
 		x = newX;
 		y = newY;
 		damage_radius=newDamageRadius;
@@ -30,8 +32,9 @@ public class Item {
 		setTexture(name,texture_number);
 	}
 	
-	public Item(String newName, int newDamageRadius, int newDamage, int newTextureAmount){
+	public Item(String newName, int newType, int newDamageRadius, int newDamage, int newTextureAmount){
 		name = newName;
+		type = newType;
 		damage_radius=newDamageRadius;
 		damage=newDamage;
 		texture_number = newTextureAmount;
@@ -84,6 +87,10 @@ public class Item {
 	
 	public String getName(){
 		return name;
+	}
+	
+	public int getType(){
+		return type;
 	}
 	
 	

@@ -12,6 +12,7 @@ public class MouseHandler {
 	private static final int SCREEN_H=240;
 	private int mouse_x=180;
 	private int mouse_y=120;
+	private boolean is_visible=true;
 	private float sensitivity = 0.5f;
 	private Texture cursor;
 	
@@ -42,6 +43,9 @@ public class MouseHandler {
 		return newTexture;
 	}
 	
+	public void setVisibility(boolean newVisibility){
+		is_visible = newVisibility;
+	}
 	
 	public void update(){
 		double mouse_delta_x = Mouse.getDX();
@@ -65,18 +69,21 @@ public class MouseHandler {
 	}
 	public void draw(){
 		
-		cursor.bind();
-			
-		GL11.glBegin(GL11.GL_QUADS);
-		   	GL11.glTexCoord2f(0,0);
-		   	GL11.glVertex2f(mouse_x,mouse_y);
-			GL11.glTexCoord2f(1,0);
-			GL11.glVertex2f(mouse_x+cursor.getTextureWidth(),mouse_y);
-			GL11.glTexCoord2f(1,1);
-			GL11.glVertex2f(mouse_x+cursor.getTextureWidth(),mouse_y+cursor.getTextureHeight());
-			GL11.glTexCoord2f(0,1);
-			GL11.glVertex2f(mouse_x,mouse_y+cursor.getTextureHeight());	
-		GL11.glEnd();
+	
+		if(is_visible){
+			cursor.bind();
+				
+			GL11.glBegin(GL11.GL_QUADS);
+			   	GL11.glTexCoord2f(0,0);
+			   	GL11.glVertex2f(mouse_x,mouse_y);
+				GL11.glTexCoord2f(1,0);
+				GL11.glVertex2f(mouse_x+cursor.getTextureWidth(),mouse_y);
+				GL11.glTexCoord2f(1,1);
+				GL11.glVertex2f(mouse_x+cursor.getTextureWidth(),mouse_y+cursor.getTextureHeight());
+				GL11.glTexCoord2f(0,1);
+				GL11.glVertex2f(mouse_x,mouse_y+cursor.getTextureHeight());	
+			GL11.glEnd();
+		}
 	}
 	
 	public int getX(){
