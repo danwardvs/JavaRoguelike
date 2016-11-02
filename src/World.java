@@ -39,10 +39,7 @@ public class World {
 	private Texture[][] background = new Texture[5][5];
 	private boolean locationExists[][] = new boolean[5][5];
 	
-	public World(int newX, int newY){
-		
-		x = newX;
-		y = newY;
+	public World(){
 		
 		locationExists[1][1] = true;
 		locationExists[2][1] = true;
@@ -133,6 +130,7 @@ public class World {
 		gameCharacters[newIndex] = newCharacter;
 		
 	}
+
 	public boolean isSaveGame(){
 		File f = new File("gamedata/save/Character_0.xml");
 		return f.exists();
@@ -161,7 +159,7 @@ public class World {
 		x = gameCharacters[0].getWorldX();
 		y = gameCharacters[0].getWorldY();
 		
-		gameLoader.loadLevel("gamedata/save/Level_1_1.xml");
+		gameLoader.loadLevel("gamedata/save/Level_"+x+"_"+y+".xml");
 		
 		
 		

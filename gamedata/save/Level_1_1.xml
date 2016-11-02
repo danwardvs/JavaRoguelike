@@ -4,14 +4,14 @@
 	<object type="Enemy">
 		<type>0</type>
 		<health>160</health>
-		<x>145</x>
+		<x>152</x>
 		<y>208</y>
 	</object>
 
 	<object type="Enemy">
 		<type>0</type>
 		<health>160</health>
-		<x>153</x>
+		<x>124</x>
 		<y>32</y>
 	</object>
 
