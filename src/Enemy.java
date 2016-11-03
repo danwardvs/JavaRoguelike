@@ -138,7 +138,9 @@ public class Enemy {
 		if(health>=0)
 			return true;
 		return false;
+		
 	}
+	
 	
 	
 	
@@ -195,8 +197,8 @@ public class Enemy {
 		 		
 		 		    	GL11.glVertex2f(x+1,y+1+offset_y);
 		 		
-		 		    	GL11.glVertex2f((int)(x-1)+(width*((float)health/max_health)),y+1+offset_y);
-		 		    	GL11.glVertex2f((int)(x-1)+(width*((float)health/max_health)),y+height-1+offset_y);
+		 		    	GL11.glVertex2f((int)(x+1)+((width-2)*((float)health/max_health)),y+1+offset_y);
+		 		    	GL11.glVertex2f((int)(x+1)+((width-2)*((float)health/max_health)),y+height-1+offset_y);
 		 		    	GL11.glVertex2f(x+1,y+height-1+offset_y);
 		 		    	
 		 		    GL11.glEnd();

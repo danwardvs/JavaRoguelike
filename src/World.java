@@ -38,7 +38,7 @@ public class World {
 	
 	private Texture[][] background = new Texture[5][5];
 	private boolean locationExists[][] = new boolean[5][5];
-	private boolean thisshouldneverbetrue=true;
+	private boolean thisshouldneverbetrue=false;
 	private float scale=1;
 	private boolean scale_direction;
 	
