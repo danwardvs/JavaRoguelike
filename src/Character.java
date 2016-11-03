@@ -157,7 +157,6 @@ public class Character {
 		hit_mark_y = (y-4)+current_item.getDamageOffsetY(state-2);
 		
 		gameWorld.applyDamage(damage_x, damage_y, 1, current_item.getDamage());
-		System.out.println(current_item.getDamage());
 
 	}
 	

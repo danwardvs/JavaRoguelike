@@ -15,20 +15,23 @@ public class Enemy {
 	private int world_x;
 	private int world_y;
 	private int health;
+	private int max_health;
 	private int hurt;
 	private int direction;
 	private int speed=1;
 	int wait_direction;
 	private Texture texture;
+	private Texture health_texture;
 	//private World gameWorld;
 	
-	public Enemy(World newWorld, int newX, int newY, int newType, int newHealth){
+	public Enemy(World newWorld, int newX, int newY, int newType, int newHealth, int newMaxHealth){
 	// Number 1
 		x = newX;
 		y = newY;
 		type = newType;
 		//gameWorld = newWorld;
 		health = newHealth;
+		max_health = newMaxHealth;
 		loadData();
 		
 	}
@@ -39,12 +42,13 @@ public class Enemy {
 			newHurt=true;
 
 		draw_texture(texture,1,newHurt);
+		drawHealth(health_texture);
 	}
 	public void update(){
 		if(wait_direction<=0){
-			if(Math.ceil(Math.random()*20)==2){
+			if(Math.ceil(Math.random()*200)==-1){
 				direction=(int)Math.floor(Math.random()*5);
-				wait_direction=10;
+				wait_direction=100;
 					
 			}
 			if(direction==1)
@@ -118,6 +122,10 @@ public class Enemy {
 	public int getType(){
 		return type;
 	}
+	public int getMaxHealth(){
+		return max_health;
+	}
+	
 	
 	public void recieveDamage(int newDamage){
 		health-=newDamage;
@@ -139,13 +147,67 @@ public class Enemy {
 			if(type==0)
 				texture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("Enemy.png"),GL11.GL_NEAREST);
 
-			
+			health_texture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("button.png"),GL11.GL_NEAREST);
+
 
 		
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
+	void drawHealth(Texture newTexture){
+		
+		int width=16;
+		int height=4;
+		int offset_y=-4;
+		// Draws the texture to the screen					
+			newTexture.bind();
+			
+			GL11.glColor3f(0, 0, 0);
+			
+			GL11.glBegin(GL11.GL_QUADS);
+
+		    	GL11.glVertex2f(x,y+offset_y);
+
+		    	GL11.glVertex2f(x+width,y+offset_y);
+		    	GL11.glVertex2f(x+width,y+height+offset_y);
+		    	GL11.glVertex2f(x,y+height+offset_y);
+		    	
+		    GL11.glEnd();
+
+		    GL11.glColor3f(1, 0, 0);
+
+		    
+			GL11.glBegin(GL11.GL_QUADS);
+		
+		    	GL11.glVertex2f(x+1,y+1+offset_y);
+		
+		    	GL11.glVertex2f(x-1+width,y+1+offset_y);
+		    	GL11.glVertex2f(x+width-1,y+height-1+offset_y);
+		    	GL11.glVertex2f(x+1,y+height-1+offset_y);
+	    	
+		    GL11.glEnd();
+		    
+		    GL11.glColor3f(0, 1, 0);
+
+		    
+		 			GL11.glBegin(GL11.GL_QUADS);
+		 		
+		 		    	GL11.glVertex2f(x+1,y+1+offset_y);
+		 		
+		 		    	GL11.glVertex2f((int)(x-1)+(width*((float)health/max_health)),y+1+offset_y);
+		 		    	GL11.glVertex2f((int)(x-1)+(width*((float)health/max_health)),y+height-1+offset_y);
+		 		    	GL11.glVertex2f(x+1,y+height-1+offset_y);
+		 		    	
+		 		    GL11.glEnd();
+		    
+			GL11.glColor3f(1, 1, 1);
+			
+			System.out.println((width*((float)health/max_health)));
+			
+		}
+		
+	
 	
 	// Draws the texture to the screen
 	void draw_texture(Texture newTexture, int newScale, boolean newHurt){

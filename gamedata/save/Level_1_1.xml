@@ -4,15 +4,9 @@
 	<object type="Enemy">
 		<type>0</type>
 		<health>160</health>
-		<x>152</x>
-		<y>206</y>
-	</object>
-
-	<object type="Enemy">
-		<type>0</type>
-		<health>160</health>
-		<x>149</x>
-		<y>32</y>
+		<max_health>160</max_health>
+		<x>120</x>
+		<y>208</y>
 	</object>
 
 

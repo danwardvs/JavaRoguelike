@@ -38,6 +38,9 @@ public class World {
 	
 	private Texture[][] background = new Texture[5][5];
 	private boolean locationExists[][] = new boolean[5][5];
+	private boolean thisshouldneverbetrue=true;
+	private float scale=1;
+	private boolean scale_direction;
 	
 	public World(){
 		
@@ -340,6 +343,8 @@ public class World {
 			newLevelEntry = newLevelEntry + "	<object type=\"Enemy\">\n";
 			newLevelEntry += "		<type>" + gameEnemys.get(j).getType() + "</type>\n";
 			newLevelEntry += "		<health>" + gameEnemys.get(j).getHealth() + "</health>\n";
+			newLevelEntry += "		<max_health>" + gameEnemys.get(j).getMaxHealth() + "</max_health>\n";
+
 			newLevelEntry += "		<x>" + gameEnemys.get(j).getX() + "</x>\n";
 			newLevelEntry += "		<y>" + gameEnemys.get(j).getY() + "</y>\n";
 			newLevelEntry += "	</object>\n\n";
@@ -408,6 +413,9 @@ public class World {
 	
 	public void draw(){
 		
+	
+		
+
 		drawTexture(background[x][y],0,0);
 		
 		for(int i=0; i<gameCharacters.length; i++){
@@ -429,6 +437,29 @@ public class World {
         	item.draw();
     	
 		gameMouse.draw();
+		
+		
+		if(thisshouldneverbetrue){
+			if(scale<0.9){
+				scale_direction=false;
+			}
+			if(scale>1.1)
+				scale_direction=true;
+			
+			if(scale_direction)
+				scale+=-0.005;
+			else
+				scale+=0.005;
+				
+			
+			GL11.glTranslatef(180, 120, 0);
+			GL11.glRotatef((float)Math.toDegrees(0.01), 0, 0, 1);
+			GL11.glScalef(scale, scale, 1f);
+			GL11.glTranslatef(-180, -120, 0);
+			GL11.glClearColor(1,1, 1, 1);
+			
+		}
+
 	}
 	
 	public void update(int delta){

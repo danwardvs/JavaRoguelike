@@ -3,7 +3,8 @@
 <level>
 	<object type="Enemy">
 		<type>0</type>
-		<health>160</health>
+		<health>95</health>
+		<max_health>160</max_health>
 		<x>94</x>
 		<y>47</y>
 	</object>
@@ -12,10 +13,10 @@
 		<name>Sword</name>
 		<type>1</type>
 		<x>100</x>
-		<y>200</y>	
-		<texture_number>2</texture_number>
+		<y>200</y>
 		<damage>1000</damage>
 		<damage_radius>5</damage_radius>
+		<texture_number>2</texture_number>
 	</object>
 
 

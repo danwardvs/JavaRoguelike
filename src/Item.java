@@ -92,8 +92,7 @@ public class Item {
 	public int getType(){
 		return type;
 	}
-	
-	
+
 	public void setTexture(String newName, int newAmount){
 	
 		

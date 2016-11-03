@@ -24,6 +24,7 @@ public class WorldLoader {
 	int index;
 	int type;
 	int health;
+	int max_health;
 	int damage;
 	int damage_radius;
 	int texture_number;
@@ -148,8 +149,10 @@ public class WorldLoader {
 						
 						type = Integer.valueOf(eElement.getElementsByTagName("type").item(0).getTextContent());
 						health = Integer.valueOf(eElement.getElementsByTagName("health").item(0).getTextContent());
+						max_health = Integer.valueOf(eElement.getElementsByTagName("max_health").item(0).getTextContent());
 
-						Enemy newEnemy = new Enemy(gameWorld,x,y,type,health);
+
+						Enemy newEnemy = new Enemy(gameWorld,x,y,type,health,max_health);
 						gameWorld.create_enemy(newEnemy);
 					}
 					

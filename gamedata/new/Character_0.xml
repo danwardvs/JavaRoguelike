@@ -13,7 +13,7 @@
 		<name>Fist</name>
 		<type>0</type>
 		<texture_number>0</texture_number>
-		<damage>1000</damage>
+		<damage>5</damage>
 		<damage_radius>5</damage_radius>
 	</object>	
 	

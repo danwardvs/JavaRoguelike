@@ -4,6 +4,7 @@
 	<object type="Enemy">
 		<type>0</type>
 		<health>160</health>
+		<max_health>160</max_health>
 		<x>94</x>
 		<y>47</y>
 	</object>
