@@ -38,6 +38,10 @@ public class Character {
 	private boolean direction = false;
 	private boolean key_pressed=false;
 	private int state=1;
+	private int health=100;
+	
+	private int width=16;
+	private int height=32;
 	
 	//private int item_offset_x=8;
 	//private int item_offset_y=8;
@@ -70,6 +74,9 @@ public class Character {
 		key_attack_up = newAttackUp;
 		
 		loadData();
+	}
+	public void recieveDamage(int newDamage){
+		health -= newDamage;
 	}
 
 	public void setWorld(World newGameWorld){
@@ -110,6 +117,13 @@ public class Character {
 	}
 	public void setItem(Item newItem){
 		current_item = newItem;
+	}
+	public int getWidth(){
+		return width;
+	}
+	
+	public int getHeight(){
+		return height;
 	}
 	
 	void loadData(){
@@ -156,7 +170,7 @@ public class Character {
 		hit_mark_x=((x+8-4)+current_item.getDamageOffsetX(state-2)*scaleFromDirection());
 		hit_mark_y = (y-4)+current_item.getDamageOffsetY(state-2);
 		
-		gameWorld.applyDamage(damage_x, damage_y, 1, current_item.getDamage());
+		//gameWorld.applyDamage(damage_x, damage_y, 1, current_item.getDamage(),this);
 
 	}
 	

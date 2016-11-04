@@ -3,17 +3,17 @@
 <level>
 	<object type="Character">
 		<index>0</index>
-		<x>251</x>
-		<y>21</y>
+		<x>166</x>
+		<y>84</y>
 		<world_x>1</world_x>
 		<world_y>1</world_y>
 	</object>
 
 	<object type="Item">
-		<name>Sword</name>
-		<type>1</type>
-		<texture_number>2</texture_number>
-		<damage>1000</damage>
+		<name>Fist</name>
+		<type>0</type>
+		<texture_number>0</texture_number>
+		<damage>5</damage>
 		<damage_radius>5</damage_radius>
 	</object>
 
