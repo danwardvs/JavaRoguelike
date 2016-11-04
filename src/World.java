@@ -389,13 +389,13 @@ public class World {
 	}
 	
 	public void applyDamage(int newX, int newY, int newRadius, int newDamage, Enemy newInstigator){
-	/*	for(int i = 0; i < 4; i++){
-        	if(collision(newX-newRadius,newX+newRadius,gameCharacters[i].getX(),gameCharacters[i].getX()+gameCharacters[i].getWidth(),newY-newRadius,newY+newRadius,gameCharacters[i].getY(),gameCharacters[i].getY()+gameCharacters[i].getHeight())){
-        		gameEnemys.get(i).recieveDamage(newDamage);
-        	
+		for(int i = 0; i < 4; i++){
+			if(gameCharacters[i]!=null){
+				if(collision(newX-newRadius,newX+newRadius,gameCharacters[i].getX(),gameCharacters[i].getX()+gameCharacters[i].getWidth(),newY-newRadius,newY+newRadius,gameCharacters[i].getY(),gameCharacters[i].getY()+gameCharacters[i].getHeight())){
+					gameCharacters[i].recieveDamage(newDamage);
+        		}
        		}
 		}
-	}*/
 	}
 	
 	public void applyDamage(int newX, int newY, int newRadius, int newDamage, Character newInstigator){

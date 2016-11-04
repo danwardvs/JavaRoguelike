@@ -22,14 +22,14 @@ public class Enemy {
 	int wait_direction;
 	private Texture texture;
 	private Texture health_texture;
-	//private World gameWorld;
+	private World gameWorld;
 	
 	public Enemy(World newWorld, int newX, int newY, int newType, int newHealth, int newMaxHealth){
 	// Number 1
 		x = newX;
 		y = newY;
 		type = newType;
-		//gameWorld = newWorld;
+		gameWorld = newWorld;
 		health = newHealth;
 		max_health = newMaxHealth;
 		loadData();
@@ -45,6 +45,9 @@ public class Enemy {
 		drawHealth(health_texture);
 	}
 	public void update(){
+		
+		gameWorld.applyDamage(x,y,10,10,this);
+		
 		if(wait_direction<=0){
 			if(Math.ceil(Math.random()*200)==-1){
 				direction=(int)Math.floor(Math.random()*5);

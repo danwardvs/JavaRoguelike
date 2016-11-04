@@ -170,7 +170,7 @@ public class Character {
 		hit_mark_x=((x+8-4)+current_item.getDamageOffsetX(state-2)*scaleFromDirection());
 		hit_mark_y = (y-4)+current_item.getDamageOffsetY(state-2);
 		
-		//gameWorld.applyDamage(damage_x, damage_y, 1, current_item.getDamage(),this);
+		gameWorld.applyDamage(damage_x, damage_y, 1, current_item.getDamage(),this);
 
 	}
 	
@@ -270,7 +270,7 @@ public class Character {
 	}
 	
 	public void draw(){
-		
+		if(health>0){
 		switch(state){
 			case 1:
 				if(walk_frame<5)
@@ -303,7 +303,7 @@ public class Character {
 			
 		}
 		//drawTexture(debug);
-		
+		}
 	}
 	
 	int scaleFromDirection(){
