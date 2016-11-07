@@ -153,7 +153,7 @@ public class WorldLoader {
 
 
 						Enemy newEnemy = new Enemy(gameWorld,x,y,type,health,max_health);
-						gameWorld.create_enemy(newEnemy);
+						gameWorld.createEnemy(newEnemy);
 					}
 					
 					else if(object_type.equals("Item")){

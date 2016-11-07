@@ -247,7 +247,7 @@ public class World {
 		
 	}
 	
-	public void create_enemy(Enemy newEnemy){
+	public void createEnemy(Enemy newEnemy){
 		gameEnemys.add(newEnemy);	
 		
 		
@@ -263,6 +263,9 @@ public class World {
 		gameEnemys.remove(newEnemy);	
 	}	
 	
+	public void destroyCharacter(int newIndex){
+		gameCharacters[newIndex] = null;
+	}
 	
 	public int getWorldX(){
 		return x;
@@ -277,7 +280,7 @@ public class World {
 	public void setWorldY(int newWorldY){
 		y = newWorldY;
 	}
-	
+
 	public void saveLevel(){
 		writeFile("gamedata/save/Level_"+x+"_"+y+".xml",parseLevel());		
 

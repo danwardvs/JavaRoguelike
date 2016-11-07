@@ -3,7 +3,7 @@
 <level>
 	<object type="Enemy">
 		<type>0</type>
-		<health>105</health>
+		<health>160</health>
 		<max_health>160</max_health>
 		<x>120</x>
 		<y>208</y>

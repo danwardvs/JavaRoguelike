@@ -175,6 +175,9 @@ public class Character {
 	}
 	
 	public void update(int delta){
+		
+		if(health<0)
+			gameWorld.destroyCharacter(0);
 				
 		for(int i = 0; i < gameWorld.getItems().size(); i++)
 		{
@@ -270,7 +273,7 @@ public class Character {
 	}
 	
 	public void draw(){
-		if(health>0){
+		
 		switch(state){
 			case 1:
 				if(walk_frame<5)
@@ -303,7 +306,7 @@ public class Character {
 			
 		}
 		//drawTexture(debug);
-		}
+		
 	}
 	
 	int scaleFromDirection(){
