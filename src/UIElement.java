@@ -6,27 +6,27 @@ import org.newdawn.slick.opengl.TextureLoader;
 import org.newdawn.slick.util.ResourceLoader;
 
 
-public class Label {
+public class UIElement {
 	
 
-	private Font buttonFont;
+	 Font buttonFont;
 	
-	private float font_size;
-	private String text;
-	private int x;
-	private int y;
-	private int width;
-	private int height;
-	private boolean is_visible;
-	private float r;
-	private float b;
-	private float g;
+	 float font_size;
+	 String text;
+	 int x;
+	 int y;
+	 int width;
+	 int height;
+	 boolean is_visible;
+	 float r;
+	 float b;
+	 float g;
 
-	private Texture texture;
+	 Texture texture;
 
 
 	
-	public Label(int newX, int newY, int newWidth, int newHeight, float newR, float newG, float newB,float newFontSize, String newText, boolean newVisible){
+	public UIElement(int newX, int newY, int newWidth, int newHeight, float newR, float newG, float newB,float newFontSize, String newText, boolean newVisible){
 		x = newX;
 		y = newY;
 		width = newWidth;
@@ -56,6 +56,8 @@ public class Label {
 	public void setVisibility(boolean newVisible){
 		is_visible = newVisible;
 	}
+	public void setActive(boolean newActive){}
+	
 	public void setColour(float newR, float newG, float newB){
 		r = newR;
 		g = newG;
@@ -99,6 +101,11 @@ public class Label {
         
 
 	}
+	
+	public void update(){
+		
+	}
+	
 	private void drawFont(String newText){
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
 		

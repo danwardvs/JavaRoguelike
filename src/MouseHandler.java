@@ -13,6 +13,8 @@ public class MouseHandler {
 	private int mouse_x=180;
 	private int mouse_y=120;
 	private boolean is_visible=true;
+	private boolean left_mouse_down;
+	private boolean right_mouse_down;
 	private float sensitivity = 0.5f;
 	private Texture cursor;
 	
@@ -50,7 +52,11 @@ public class MouseHandler {
 	public void update(){
 		double mouse_delta_x = Mouse.getDX();
 		double mouse_delta_y = Mouse.getDY();
+		
+		left_mouse_down = Mouse.isButtonDown(0);
+		right_mouse_down = Mouse.isButtonDown(1);
 
+		
 		mouse_x += mouse_delta_x*sensitivity;
 		mouse_y += -mouse_delta_y*sensitivity;
 
@@ -93,5 +99,12 @@ public class MouseHandler {
 	public int getY(){
 		return mouse_y;
 	}
+	
+	public boolean getLeftMouseDown(){
+		return left_mouse_down;
+	}
 
+	public boolean getRightMouseDown(){
+		return right_mouse_down;
+	}
 }

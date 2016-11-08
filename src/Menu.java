@@ -10,7 +10,7 @@ import org.newdawn.slick.util.ResourceLoader;
 
 public class Menu {
 	
-	List<Button> menuButtons = new ArrayList<Button>();
+	List<UIElement> menuButtons = new ArrayList<UIElement>();
 	
 	private World gameWorld;
 	
@@ -23,11 +23,11 @@ public class Menu {
 
 	}
 	
-	public void createButton(Button newButton){
+	public void createButton(UIElement newButton){
 		menuButtons.add(newButton);
 	}
 	
-	public Button getButton(int newIndex){
+	public UIElement getButton(int newIndex){
 		return menuButtons.get(newIndex);
 	}
 	
@@ -47,15 +47,15 @@ public class Menu {
 			pressed_delay--;
 		
 		
-		for(Button newButton: menuButtons){
+		for(UIElement newButton: menuButtons){
 	          newButton.update();
 
 		  }
 		 
 	}
 	
-	public Button getButtonById(String newId){
-		 for(Button newButton: menuButtons){
+	public UIElement getButtonById(String newId){
+		 for(UIElement newButton: menuButtons){
 	          if(newButton.getText().equals(newId))
 	        	  return newButton;
 		 }
@@ -66,7 +66,7 @@ public class Menu {
 	
 	public void draw(){
 			//TODO use this as standard
-		  for(Button newButton: menuButtons){
+		  for(UIElement newButton: menuButtons){
 	          newButton.draw();
 
 		  }
