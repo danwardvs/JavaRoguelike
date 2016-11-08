@@ -72,7 +72,7 @@ public class Button extends UIElement {
 	}
 	
 	// Draws the texture to the screen
-		private void drawTexture(Texture newTexture, float newR, float newB, float newG){
+	private void drawTexture(Texture newTexture, float newR, float newB, float newG){
 					
 			newTexture.bind();
 			

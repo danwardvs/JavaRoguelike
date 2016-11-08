@@ -65,7 +65,7 @@ public class World {
 
 		}
 		
-		gameMenus[0].createButton(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)-155,50,310,20,0.8f,0.0f,0.0f,0.3f,"Are you sure? This will clear the existing save.",false,false));
+		gameMenus[0].createButton(new UIElement((SCREEN_W/2)-155,50,310,20,0.8f,0.0f,0.0f,0.3f,"Are you sure? This will clear the existing save.",false));
 		gameMenus[0].createButton(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)-90,SCREEN_H/2,80,20,0.4f,0.7f,0.4f,0.3f,"Create game",true,false));
 		gameMenus[0].createButton(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)+30,SCREEN_H/2,60,20,0.7f,0.4f,0.4f,0.3f,"Cancel",true,false));
 
