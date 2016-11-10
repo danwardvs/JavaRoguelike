@@ -10,10 +10,6 @@ public class Font {
 	
 	private Texture[] character = new Texture[38];
 	
-	public Font(){
-		
-	}
-	
 	public void loadFont(){
 		for(int i=0; i<38; i++){
 			character[i] = loadTexture("font/font_"+i+".png");			

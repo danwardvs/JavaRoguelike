@@ -24,6 +24,7 @@ public class World {
 	private WorldLoader gameLoader;
 	
 	private MouseHandler gameMouse;
+	private KeyboardHandler gameKeyboard;
 	
 	/*
 	private char vending_digit_1 = ' ';
@@ -50,10 +51,13 @@ public class World {
 		loadTextures();
 		
 		gameMouse = new MouseHandler();
+		gameKeyboard = new KeyboardHandler();
 		
 		gameMenus[0] = new Menu(gameMouse,this);
 		
 		gameMenus[0].createButton(new UIElement((SCREEN_W/2)-125,20,250,30,0.7f,0.9f,0.7f,0.8f,"Shogun Jedsun",true));
+		
+		gameMenus[0].createButton(new TextBox(gameKeyboard,(SCREEN_W/2)-125,4,250,30,0.7f,0.9f,0.7f,0.8f,"",true));
 
 		
 		gameMenus[0].createButton(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)-80,SCREEN_H/2,60,20,0.7f,0.4f,0.4f,0.3f,"New Game",true,true));

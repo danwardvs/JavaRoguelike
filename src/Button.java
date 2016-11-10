@@ -53,7 +53,7 @@ public class Button extends UIElement {
 				local_pressed_delay--;
 			
 			}
-			if(local_pressed_delay==0 && is_pressed){
+			if(local_pressed_delay==0 && is_pressed && !location_clicked(x,x+width,y,y+height)){
 				
 		
 				parentMenu.setPressedDelay(5);
@@ -77,7 +77,6 @@ public class Button extends UIElement {
 			is_hovered = location_hovered(x,x+width,y,y+height);
 			
 			
-			System.out.println(parentMenu.getPressedDelay());
 			
 		}
 	}
