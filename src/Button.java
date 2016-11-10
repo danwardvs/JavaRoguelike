@@ -48,12 +48,19 @@ public class Button extends UIElement {
 		
 		if(is_active && is_visible){
 		
-			if(local_pressed_delay>0){
-				is_pressed = true;
+			if(local_pressed_delay>0 && is_pressed){
+				
 				local_pressed_delay--;
 			
-			}else{
+			}
+			if(local_pressed_delay==0 && is_pressed){
+				
+		
+				parentMenu.setPressedDelay(5);
+				local_pressed_delay=0;
 				is_pressed=false;
+				parentMenu.recieveButtonPress(text.toLowerCase());
+
 			}
 			
 			//Mouse.setGrabbed(true);
@@ -61,33 +68,20 @@ public class Button extends UIElement {
 			mouse_y = gameMouse.getY();
 			mouse_left_down = gameMouse.getLeftMouseDown();
 			
-			if(location_clicked(x,x+width,y,y+height) && parentMenu.getPressedDelay()==0){
-				parentMenu.setPressedDelay(5);
+			if(location_clicked(x,x+width,y,y+height) && parentMenu.getPressedDelay()==0 && !is_pressed){
+				
+				is_pressed = true;
 				local_pressed_delay=5;
-				parentMenu.recieveButtonPress(text.toLowerCase());
 			}
 			
 			is_hovered = location_hovered(x,x+width,y,y+height);
 			
 			
-			System.out.println(is_hovered);
+			System.out.println(parentMenu.getPressedDelay());
 			
 		}
 	}
-	public void draw(){
-		
-		if(is_visible){
-		
-			drawTexture(texture,r,g,b);
-			drawFont(text);
-		
-		}
-		
 
-        
-
-	}
-	
 	// Draws the texture to the screen
 	void drawTexture(Texture newTexture, float newR, float newB, float newG){
 					

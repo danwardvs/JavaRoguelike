@@ -44,10 +44,7 @@ public class Menu {
 		
 	
 		if(pressed_delay>0)
-			pressed_delay--;
-		
-		System.out.println(pressed_delay);
-		
+			pressed_delay--;		
 		
 		for(UIElement newButton: menuUIElements){
 	          newButton.update();
