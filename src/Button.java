@@ -68,11 +68,28 @@ public class Button extends UIElement {
 			}
 			
 			is_hovered = location_hovered(x,x+width,y,y+height);
+			
+			
+			System.out.println(is_hovered);
+			
 		}
+	}
+	public void draw(){
+		
+		if(is_visible){
+		
+			drawTexture(texture,r,g,b);
+			drawFont(text);
+		
+		}
+		
+
+        
+
 	}
 	
 	// Draws the texture to the screen
-	private void drawTexture(Texture newTexture, float newR, float newB, float newG){
+	void drawTexture(Texture newTexture, float newR, float newB, float newG){
 					
 			newTexture.bind();
 			
@@ -99,7 +116,6 @@ public class Button extends UIElement {
 		    else
 		   		GL11.glColor3f(r, g, b);
 		   
-		
 		    
 			GL11.glBegin(GL11.GL_QUADS);
 		

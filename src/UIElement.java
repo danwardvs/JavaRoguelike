@@ -72,7 +72,7 @@ public class UIElement {
 	}
 	 
 	
-	private Texture loadTexture(String newPath){
+	Texture loadTexture(String newPath){
 		
 		Texture newTexture = null;
 		
@@ -106,7 +106,7 @@ public class UIElement {
 		
 	}
 	
-	private void drawFont(String newText){
+	void drawFont(String newText){
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
 		
 	
@@ -120,7 +120,7 @@ public class UIElement {
 
 	
 	// Draws the texture to the screen
-	private void drawTexture(Texture newTexture, float newR, float newB, float newG){
+	void drawTexture(Texture newTexture, float newR, float newB, float newG){
 				
 		newTexture.bind();
 		
