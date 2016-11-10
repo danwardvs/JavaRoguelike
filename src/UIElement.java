@@ -110,7 +110,7 @@ public class UIElement {
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
 		
 	
-		buttonFont.drawString( text,x+(width/2)-(buttonFont.getWidth(text,font_size)/2), y+(height/2)-(buttonFont.getHeight(text,font_size)/2),font_size);
+		buttonFont.drawString( newText,x+(width/2)-(buttonFont.getWidth(text,font_size)/2), y+(height/2)-(buttonFont.getHeight(text,font_size)/2),font_size);
 	
 
 		
