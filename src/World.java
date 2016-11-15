@@ -57,15 +57,15 @@ public class World {
 		
 		gameMenus[0].createButton(new UIElement((SCREEN_W/2)-125,20,250,30,0.7f,0.9f,0.7f,0.8f,"Shogun Jedsun",true));
 		
-		gameMenus[0].createButton(new TextBox(gameKeyboard,gameMouse,gameMenus[0],(SCREEN_W/2)-125,4,250,30,0.7f,0.9f,0.7f,0.8f,"",true));
+		//gameMenus[0].createButton(new TextBox(gameKeyboard,gameMouse,gameMenus[0],(SCREEN_W/2)-125,4,250,30,0.7f,0.9f,0.7f,0.8f,"",true));
 
 		
 		gameMenus[0].createButton(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)-80,SCREEN_H/2,60,20,0.7f,0.4f,0.4f,0.3f,"New Game",true,true));
 		gameMenus[0].createButton(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)+20,SCREEN_H/2,60,20,0.4f,0.7f,0.4f,0.3f,"Load Game",true,true));
 	
 		if(!isSaveGame()){
-			gameMenus[0].getButtonById("load game").setActive(false);
-			gameMenus[0].getButtonById("load game").setColour(0.2f,0.2f,0.2f);
+			gameMenus[0].getButtonByText("load game").setActive(false);
+			gameMenus[0].getButtonByText("load game").setColour(0.2f,0.2f,0.2f);
 
 		}
 		
@@ -151,6 +151,10 @@ public class World {
 		return gameItems;
 	}
 	
+	public Menu getMenu(int newIndex){
+		return gameMenus[newIndex];
+	}
+	
 	public Character getCharacter(int newIndex){
 		return gameCharacters[newIndex];
 	}
@@ -174,6 +178,14 @@ public class World {
 		//newItem2.setDamageOffset(7, 25, 7, 20, 8, 13);
 		//getCharacter(0).setItem(newItem2);
 		gameMenus[0] = null;
+		
+		gameMenus[1] = new Menu(gameMouse,this);
+		UIElement healthBar = new UIElement(5,5,100,10,0.7f,0.9f,0.7f,0.2f,"100",true);
+		healthBar.setId("healthbar");
+		healthBar.setJustification(0);
+		gameMenus[1].createButton(healthBar);
+
+		
 		gameMouse.setVisibility(false);
 		
 	
@@ -263,6 +275,10 @@ public class World {
 		gameItems.remove(newItem);
 	}
 	
+	public void destroyMenu(int newIndex){
+		gameMenus[newIndex] = null;
+	}
+	
 	public void destroyEnemy(Enemy newEnemy){
 		gameEnemys.remove(newEnemy);	
 	}	
@@ -314,11 +330,13 @@ public class World {
 		
 		newEntry += "		<index>"+newIndex+"</index>\n";
 
-		
+
 		newEntry += "		<x>"+gameCharacters[newIndex].getX() + "</x>\n";
 		newEntry += "		<y>"+gameCharacters[newIndex].getY() + "</y>\n";
 		newEntry += "		<world_x>"+gameCharacters[newIndex].getWorldX() + "</world_x>\n";
 		newEntry += "		<world_y>"+gameCharacters[newIndex].getWorldY() + "</world_y>\n";
+		newEntry += "		<health>"+gameCharacters[newIndex].getHealth() + "</health>\n";
+
 		newEntry += "	</object>\n\n";
 		
 		newEntry += "	<object type=\"Item\">\n";
@@ -485,7 +503,7 @@ public class World {
     	
 		for(int i=0; i<gameEnemys.size(); i++){
     		
-    		gameEnemys.get(i).update();
+    		gameEnemys.get(i).update(delta);
     		
     	}
     	

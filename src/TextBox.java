@@ -39,14 +39,14 @@ public class TextBox extends UIElement {
 			drawTexture(texture,r,g,b);
 			
 			if(is_focused && cursor_delay>20){
-				drawFont(text+"i");
+				drawFont(text+"i",font_justification);
 			
 			}else if(is_focused && cursor_delay<21){
-				drawFont(text+" ");
+				drawFont(text+" ",font_justification);
 			}
 			
 			else
-				drawFont(text);
+				drawFont(text, font_justification);
 			
 		
 		}

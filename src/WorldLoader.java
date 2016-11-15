@@ -82,11 +82,15 @@ public class WorldLoader {
 						world_x = Integer.valueOf(eElement.getElementsByTagName("world_x").item(0).getTextContent());
 						world_y = Integer.valueOf(eElement.getElementsByTagName("world_y").item(0).getTextContent());
 						
+						health = Integer.valueOf(eElement.getElementsByTagName("health").item(0).getTextContent());
+
+						
 						index = Integer.valueOf(eElement.getElementsByTagName("index").item(0).getTextContent());
 	
 						Character newCharacter = new Character(index,x,y,Keyboard.KEY_LEFT,Keyboard.KEY_RIGHT,Keyboard.KEY_UP,Keyboard.KEY_DOWN,Keyboard.KEY_A,Keyboard.KEY_D,Keyboard.KEY_W,Keyboard.KEY_S);
 						newCharacter.setWorldX(world_x);
 						newCharacter.setWorldY(world_y);
+						newCharacter.setHealth(health);
 						gameWorld.setCharacter(newCharacter,index);
 						
 					}

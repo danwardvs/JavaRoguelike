@@ -39,6 +39,8 @@ public class Character {
 	private boolean key_pressed=false;
 	private int state=1;
 	private int health=100;
+	private int hurt_timer;
+	private boolean is_hurt;
 	
 	private int width=16;
 	private int height=32;
@@ -75,8 +77,21 @@ public class Character {
 		
 		loadData();
 	}
+	public void setHealth(int newHealth){
+		health = newHealth;
+	}
+	public int getHealth(){
+		return health;
+	}
+	
+	
+	
+	
+	
+	
 	public void recieveDamage(int newDamage){
 		health -= newDamage;
+		hurt_timer=10;
 	}
 
 	public void setWorld(World newGameWorld){
@@ -176,8 +191,11 @@ public class Character {
 	
 	public void update(int delta){
 		
-		if(health<0)
+		if(health<=0){
 			gameWorld.destroyCharacter(0);
+			gameWorld.getMenu(1).getButtonById("healthbar").setVisibility(false);
+
+		}
 				
 		for(int i = 0; i < gameWorld.getItems().size(); i++)
 		{
@@ -191,6 +209,18 @@ public class Character {
 		
 		walk_step++;
 		hit_mark_time++;
+	
+		
+		if(hurt_timer>0){
+			hurt_timer--;
+			is_hurt=true;
+		
+		}
+		else
+			is_hurt=false;
+		
+		
+		
 		
 		// Correcting the 60fps rounding stutter error
 		if(delta==17)
@@ -269,6 +299,11 @@ public class Character {
 			
 			}
 		}
+		
+		gameWorld.getMenu(1).getButtonById("healthbar").setText(String.valueOf(health));
+		gameWorld.getMenu(1).getButtonById("healthbar").setWidth(health);
+		gameWorld.getMenu(1).getButtonById("healthbar").setColour((1-((float)health/100)),((float)health/100),0);
+
 		
 	}
 	

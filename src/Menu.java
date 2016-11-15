@@ -53,10 +53,20 @@ public class Menu {
 		 
 	}
 	
-	public UIElement getButtonById(String newId){
+	public UIElement getButtonByText(String newId){
 		 for(UIElement newButton: menuUIElements){
 	          if(newButton.getText().equals(newId))
 	        	  return newButton;
+		 }
+		 return null;
+		  
+		
+	}
+	
+	public UIElement getButtonById(String newId){
+		 for(UIElement newUIElement: menuUIElements){
+	          if(newUIElement.getId().equals(newId))
+	        	  return newUIElement;
 		 }
 		 return null;
 		  
@@ -86,12 +96,12 @@ public class Menu {
 		
 		if(newId.equals("new game")){
 			if(gameWorld.isSaveGame()){
-				getButtonById("new game").setVisibility(false);
-				getButtonById("load game").setVisibility(false);
-				getButtonById("shogun jedsun").setVisibility(false);
-				getButtonById("create game").setVisibility(true);
-				getButtonById("cancel").setVisibility(true);
-				getButtonById("are you sure? this will clear the existing save.").setVisibility(true);
+				getButtonByText("new game").setVisibility(false);
+				getButtonByText("load game").setVisibility(false);
+				getButtonByText("shogun jedsun").setVisibility(false);
+				getButtonByText("create game").setVisibility(true);
+				getButtonByText("cancel").setVisibility(true);
+				getButtonByText("are you sure? this will clear the existing save.").setVisibility(true);
 			}else{
 				gameWorld.startGame(true);
 			}
@@ -106,12 +116,12 @@ public class Menu {
 			gameWorld.startGame(false);
 		}
 		if(newId.equals("cancel")){
-			getButtonById("new game").setVisibility(true);
-			getButtonById("load game").setVisibility(true);
-			getButtonById("shogun jedsun").setVisibility(true);
-			getButtonById("create game").setVisibility(false);
-			getButtonById("cancel").setVisibility(false);
-			getButtonById("are you sure? this will clear the existing save.").setVisibility(false);
+			getButtonByText("new game").setVisibility(true);
+			getButtonByText("load game").setVisibility(true);
+			getButtonByText("shogun jedsun").setVisibility(true);
+			getButtonByText("create game").setVisibility(false);
+			getButtonByText("cancel").setVisibility(false);
+			getButtonByText("are you sure? this will clear the existing save.").setVisibility(false);
 		}
 	}
 	

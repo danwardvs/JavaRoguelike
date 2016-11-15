@@ -12,6 +12,10 @@ public class UIElement {
 	 Font buttonFont;
 	
 	 float font_size;
+	 int font_justification=1;
+	 
+	 String id;
+	 
 	 String text;
 	 int x;
 	 int y;
@@ -21,6 +25,8 @@ public class UIElement {
 	 float r;
 	 float b;
 	 float g;
+	 
+	
 
 	 Texture texture;
 
@@ -37,6 +43,7 @@ public class UIElement {
 		font_size = newFontSize;
 		is_visible = newVisible;
 		
+		
 		text = newText;
 		
 		texture = loadTexture("button.png");
@@ -52,6 +59,20 @@ public class UIElement {
 	public String getText(){
 		return text.toLowerCase();
 	}
+	public void setJustification(int newJustification){
+		font_justification = newJustification;
+	}
+	
+	public void setId(String newId){
+		id = newId;
+	}
+	public String getId(){
+		return id;
+	}
+	public void setWidth( int newWidth){
+		width = newWidth;
+	}
+	
 	
 	public void setVisibility(boolean newVisible){
 		is_visible = newVisible;
@@ -93,7 +114,7 @@ public class UIElement {
 		if(is_visible){
 		
 			drawTexture(texture,r,g,b);
-			drawFont(text);
+			drawFont(text,font_justification);
 		
 		}
 		
@@ -106,13 +127,14 @@ public class UIElement {
 		
 	}
 	
-	void drawFont(String newText){
+	void drawFont(String newText, int newJustification){
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
 		
+		if(newJustification==1)
+			buttonFont.drawString( newText,x+(width/2)-(buttonFont.getWidth(text,font_size)/2), y+(height/2)-(buttonFont.getHeight(text,font_size)/2),font_size);
 	
-		buttonFont.drawString( newText,x+(width/2)-(buttonFont.getWidth(text,font_size)/2), y+(height/2)-(buttonFont.getHeight(text,font_size)/2),font_size);
-	
-
+		if(newJustification==0)
+			buttonFont.drawString( newText,x+3,y+(height/2)-(buttonFont.getHeight(text,font_size)/2),font_size);
 		
 		GL11.glColor3f(1,1,1);
        

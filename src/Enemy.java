@@ -23,6 +23,7 @@ public class Enemy {
 	private Texture texture;
 	private Texture health_texture;
 	private World gameWorld;
+	private int attack_delay;
 	
 	public Enemy(World newWorld, int newX, int newY, int newType, int newHealth, int newMaxHealth){
 	// Number 1
@@ -41,12 +42,18 @@ public class Enemy {
 		if(hurt>0)
 			newHurt=true;
 
-		draw_texture(texture,1,newHurt);
+		drawTexture(texture,1,newHurt);
 		drawHealth(health_texture);
 	}
-	public void update(){
+	public void update(int delta){
 		
-		gameWorld.applyDamage(x,y,10,10,this);
+		if(attack_delay>1000){
+			gameWorld.applyDamage(x,y,1,10,this);
+			attack_delay=0;
+			
+		}
+		
+		attack_delay+=delta;
 		
 		if(wait_direction<=0){
 			if(Math.ceil(Math.random()*200)==-1){
@@ -136,16 +143,7 @@ public class Enemy {
 		if(health<0)
 			health=0;
 	}
-	
-	public boolean update(int delta){
-		if(health>=0)
-			return true;
-		return false;
-		
-	}
-	
-	
-	
+
 	
 	void loadData(){
 		try{
@@ -215,7 +213,7 @@ public class Enemy {
 	
 	
 	// Draws the texture to the screen
-	void draw_texture(Texture newTexture, int newScale, boolean newHurt){
+	void drawTexture(Texture newTexture, int newScale, boolean newHurt){
 			
 			newTexture.bind();
 			

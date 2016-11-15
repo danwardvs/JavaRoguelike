@@ -47,6 +47,13 @@ public class Button extends UIElement {
 	public void update(){
 		
 		if(is_active && is_visible){
+			
+			//Mouse.setGrabbed(true);
+			mouse_x = gameMouse.getX();
+			mouse_y = gameMouse.getY();
+			mouse_left_down = gameMouse.getLeftMouseDown();
+			
+			is_hovered = location_hovered(x,x+width,y,y+height);
 		
 			if(local_pressed_delay>0 && is_pressed){
 				
@@ -55,26 +62,28 @@ public class Button extends UIElement {
 			}
 			if(local_pressed_delay==0 && is_pressed && !location_clicked(x,x+width,y,y+height)){
 				
-		
-				parentMenu.setPressedDelay(5);
-				local_pressed_delay=0;
-				is_pressed=false;
-				parentMenu.recieveButtonPress(text.toLowerCase());
+				if(is_hovered){
+					parentMenu.setPressedDelay(5);
+					local_pressed_delay=0;
+					is_pressed=false;
+					parentMenu.recieveButtonPress(text.toLowerCase());
+				}else
+					is_pressed=false;
 
 			}
 			
-			//Mouse.setGrabbed(true);
-			mouse_x = gameMouse.getX();
-			mouse_y = gameMouse.getY();
-			mouse_left_down = gameMouse.getLeftMouseDown();
+			
+			
+			
+
 			
 			if(location_clicked(x,x+width,y,y+height) && parentMenu.getPressedDelay()==0 && !is_pressed){
 				
 				is_pressed = true;
 				local_pressed_delay=5;
-			}
+			}	
 			
-			is_hovered = location_hovered(x,x+width,y,y+height);
+			
 			
 			
 			
