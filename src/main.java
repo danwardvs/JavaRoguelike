@@ -25,6 +25,7 @@ public class main {
 	long lastFrame;
     
 	int fps;
+	int fps_real;
 	
 	long lastFPS;
 	
@@ -32,6 +33,7 @@ public class main {
 	public void updateFPS() {
 	    if (getTime() - lastFPS > 1000) {
 	    	Display.setTitle("FPS: " + fps);
+	    	fps_real=fps;
 	        fps = 0;
 	        lastFPS += 1000;
 	    }
@@ -148,7 +150,6 @@ public class main {
 	        
 	    	// Keeps the display from going above 60 FPS
 	        Display.sync(60);
-	            
 	    }
 	    	
 	    // Destroy the display when the program ends

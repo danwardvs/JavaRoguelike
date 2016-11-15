@@ -91,7 +91,7 @@ public class Character {
 	
 	public void recieveDamage(int newDamage){
 		health -= newDamage;
-		hurt_timer=10;
+		hurt_timer=50;
 	}
 
 	public void setWorld(World newGameWorld){
@@ -212,7 +212,7 @@ public class Character {
 	
 		
 		if(hurt_timer>0){
-			hurt_timer--;
+			hurt_timer-=delta;
 			is_hurt=true;
 		
 		}
@@ -309,6 +309,9 @@ public class Character {
 	
 	public void draw(){
 		
+		if(is_hurt)
+			GL11.glColor3f(1, 0, 0);
+		
 		switch(state){
 			case 1:
 				if(walk_frame<5)
@@ -340,6 +343,9 @@ public class Character {
 
 			
 		}
+		
+		GL11.glColor3f(1, 1, 1);
+
 		//drawTexture(debug);
 		
 	}

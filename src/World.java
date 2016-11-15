@@ -130,7 +130,10 @@ public class World {
 
 		
 	}
-	
+	private int getDistance(int newX1, int newY1, int newX2, int newY2){
+		return ((int)Math.sqrt(Math.abs(newX1-newX2)^2+Math.abs(newX2-newY2)));
+	}
+
 	
 	public void setCharacter(Character newCharacter, int newIndex){
 		newCharacter.setWorld(this);

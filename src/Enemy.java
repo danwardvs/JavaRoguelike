@@ -16,8 +16,10 @@ public class Enemy {
 	private int world_y;
 	private int health;
 	private int max_health;
-	private int hurt;
-	private int direction;
+	private int hurt_timer;
+	private boolean is_hurt;
+	private int direction_heading;
+	private boolean direction;
 	private int speed=1;
 	int wait_direction;
 	private Texture texture;
@@ -38,14 +40,27 @@ public class Enemy {
 	}
 	
 	public void draw(int newWorldX, int newWorldY){
-		boolean newHurt=false;
-		if(hurt>0)
-			newHurt=true;
+		
 
-		drawTexture(texture,1,newHurt);
+		drawTexture(texture,scaleFromDirection(),1);
 		drawHealth(health_texture);
 	}
+	
 	public void update(int delta){
+		
+		if(gameWorld.getgameCharacters[0]!=null){
+			
+		}
+		
+		if(hurt_timer>0)
+			is_hurt=true;
+		else
+			is_hurt=false;
+		
+		hurt_timer-=delta;
+		//Preventing any overflowing on an idle enemy
+		if(hurt_timer<0)
+			hurt_timer=0;
 		
 		if(attack_delay>1000){
 			gameWorld.applyDamage(x,y,1,10,this);
@@ -56,18 +71,18 @@ public class Enemy {
 		attack_delay+=delta;
 		
 		if(wait_direction<=0){
-			if(Math.ceil(Math.random()*200)==-1){
-				direction=(int)Math.floor(Math.random()*5);
+			if(Math.ceil(Math.random()*200)==1){
+				direction_heading=(int)Math.floor(Math.random()*5);
 				wait_direction=100;
 					
 			}
-			if(direction==1)
+			if(direction_heading==1)
 				x+=speed;
-			if(direction==2)
+			if(direction_heading==2)
 				x-=speed;
-			if(direction==3)
+			if(direction_heading==3)
 				y+=speed;
-			if(direction==4)
+			if(direction_heading==4)
 				y-=speed;
 		}
 		
@@ -87,10 +102,7 @@ public class Enemy {
 		
 		
 		wait_direction--;
-		hurt--;
-		//Preventing any overflowing on an idle enemy
-		if(hurt<0)
-			hurt=0;
+		
 		if(wait_direction<0)
 			wait_direction=0;
 		
@@ -110,8 +122,8 @@ public class Enemy {
 	public int getY(){
 		return y;
 	}
-	public void setHurt(int newHurt){
-		hurt = newHurt;
+	public void setHurtTimer(int newHurt){
+		hurt_timer = newHurt;
 	}
 	public int getWorldX(){
 		return world_x;
@@ -135,11 +147,15 @@ public class Enemy {
 	public int getMaxHealth(){
 		return max_health;
 	}
-	
+	int scaleFromDirection(){
+		if(direction)
+			return -1;
+		return 1;
+	}
 	
 	public void recieveDamage(int newDamage){
 		health-=newDamage;
-		hurt=5;
+		hurt_timer=50;
 		if(health<0)
 			health=0;
 	}
@@ -206,42 +222,39 @@ public class Enemy {
 		    
 			GL11.glColor3f(1, 1, 1);
 			
-			System.out.println((width*((float)health/max_health)));
 			
 		}
 		
 	
-	
-	// Draws the texture to the screen
-	void drawTexture(Texture newTexture, int newScale, boolean newHurt){
+	void drawTexture( Texture newTexture, int newScaleX, int newScaleY){
+		
+		newTexture.bind();
+		
+		
+		
+		GL11.glBegin(GL11.GL_QUADS);
+	   			
+		if(is_hurt)
+			GL11.glColor3f(1, 0, 0);
+		
+		
+	   		GL11.glTexCoord2f(0,0);
+	   		GL11.glVertex2f(x,y);
+		    GL11.glTexCoord2f(newScaleX*1,0);
+		    GL11.glVertex2f(x+newTexture.getTextureWidth(),y);
+		    GL11.glTexCoord2f(newScaleX*1,newScaleY*1);
+		    GL11.glVertex2f(x+newTexture.getTextureWidth(),y+newTexture.getTextureHeight());
+			GL11.glTexCoord2f(0,newScaleY*1);
+			GL11.glVertex2f(x,y+newTexture.getTextureHeight());
 			
-			newTexture.bind();
-			
+			GL11.glColor3f(1, 1, 1);
 
-			
-			//GL11.glScalef(1, 1, 1);
-			GL11.glBegin(GL11.GL_QUADS);
-			
-			
-				if(newHurt)
-					GL11.glColor3f(1, 0, 0);
-				
-		   		GL11.glTexCoord2f(0,0);
-		   		GL11.glVertex2f(x,y);
-				GL11.glTexCoord2f(newScale*1,0);
-				GL11.glVertex2f(x+newTexture.getTextureWidth(),y);
-				GL11.glTexCoord2f(newScale*1,1);
-				GL11.glVertex2f(x+newTexture.getTextureWidth(),y+newTexture.getTextureHeight());
-				GL11.glTexCoord2f(0,1);
-				GL11.glVertex2f(x,y+newTexture.getTextureHeight());
-				GL11.glColor3f(1, 1, 1);
+	   		
+		GL11.glEnd();
+		 
+	}
 
-			    GL11.glEnd();
-			 
-			
-			    
-			}
-			
+
 		
 
 }
