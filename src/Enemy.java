@@ -9,8 +9,8 @@ public class Enemy {
 	
 	private int SCREEN_W = 320;
 	private int SCREEN_H = 240;
-	private int x;
-	private int y;
+	private float x;
+	private float y;
 	private int type;
 	private int world_x;
 	private int world_y;
@@ -19,13 +19,22 @@ public class Enemy {
 	private int hurt_timer;
 	private boolean is_hurt;
 	private int direction_heading;
-	private boolean direction;
-	private int speed=1;
+	private int x_direction;
+	private int y_direction;
 	int wait_direction;
 	private Texture texture;
 	private Texture health_texture;
 	private World gameWorld;
-	private int attack_delay;
+	private int attack_delay_timer;
+	private float delta_speed;
+	
+	private float behavior_speed=0.010f;
+	private int behavior_attack_delay=2000;
+	private boolean behavior_wander=false;
+	private boolean behavior_follow=true;
+	private int behavior_wander_amount=100;
+	private int behavior_follow_tolerance=25;
+
 	
 	public Enemy(World newWorld, int newX, int newY, int newType, int newHealth, int newMaxHealth){
 	// Number 1
@@ -42,14 +51,29 @@ public class Enemy {
 	public void draw(int newWorldX, int newWorldY){
 		
 
+
 		drawTexture(texture,scaleFromDirection(),1);
 		drawHealth(health_texture);
 	}
 	
 	public void update(int delta){
 		
-		if(gameWorld.getgameCharacters[0]!=null){
+		delta_speed=delta*behavior_speed;
+		
+		if(gameWorld.getCharacter(0)!=null){
+			if(gameWorld.getCharacter(0).getX()>x+behavior_follow_tolerance)
+				x_direction=2;
+			else if(gameWorld.getCharacter(0).getX()<x-behavior_follow_tolerance)
+				x_direction=1;
+			else 
+				x_direction=0;
 			
+			if(gameWorld.getCharacter(0).getY()>y+behavior_follow_tolerance)
+				y_direction=2;
+			else if(gameWorld.getCharacter(0).getY()<y-behavior_follow_tolerance)
+				y_direction=1;
+			else 
+				y_direction=0;
 		}
 		
 		if(hurt_timer>0)
@@ -62,28 +86,48 @@ public class Enemy {
 		if(hurt_timer<0)
 			hurt_timer=0;
 		
-		if(attack_delay>1000){
-			gameWorld.applyDamage(x,y,1,10,this);
-			attack_delay=0;
+		if(attack_delay_timer>behavior_attack_delay){
+			gameWorld.applyDamage((int)x,(int)y,1,10,this);
+			attack_delay_timer=0;
 			
 		}
 		
-		attack_delay+=delta;
+		attack_delay_timer+=delta;
 		
 		if(wait_direction<=0){
-			if(Math.ceil(Math.random()*200)==1){
-				direction_heading=(int)Math.floor(Math.random()*5);
-				wait_direction=100;
+			if(behavior_wander){
+				if(Math.ceil(Math.random()*behavior_wander_amount)==1){
+					direction_heading=(int)Math.floor(Math.random()*5);
+					wait_direction=100;
 					
+				}
+				if(direction_heading==1)
+					x+=delta_speed;
+				if(direction_heading==2)
+					x-=delta_speed;
+				if(direction_heading==3)
+					y+=delta_speed;
+				if(direction_heading==4)
+					y-=delta_speed;
 			}
-			if(direction_heading==1)
-				x+=speed;
-			if(direction_heading==2)
-				x-=speed;
-			if(direction_heading==3)
-				y+=speed;
-			if(direction_heading==4)
-				y-=speed;
+			else if(behavior_follow){
+				if(x_direction==2)
+					x+=delta_speed;
+				System.out.println("+" + delta_speed);
+
+				
+				if(x_direction==1)
+					x-=delta_speed;
+					System.out.println("-" + delta_speed);
+				
+				if(y_direction==2)
+					y+=delta_speed;
+				
+				if(y_direction==1)
+					y-=delta_speed;
+			}
+			
+			
 		}
 		
 		if(x<0+getWidth())
@@ -105,6 +149,7 @@ public class Enemy {
 		
 		if(wait_direction<0)
 			wait_direction=0;
+	
 		
 		
 	}
@@ -116,11 +161,11 @@ public class Enemy {
 	}
 	
 	public int getX(){
-		return x;
+		return (int)x;
 	}
 	
 	public int getY(){
-		return y;
+		return (int)y;
 	}
 	public void setHurtTimer(int newHurt){
 		hurt_timer = newHurt;
@@ -148,8 +193,10 @@ public class Enemy {
 		return max_health;
 	}
 	int scaleFromDirection(){
-		if(direction)
+		if(x_direction==2)
 			return -1;
+		if(x_direction==1)
+			return 1;
 		return 1;
 	}
 	
@@ -186,11 +233,11 @@ public class Enemy {
 			
 			GL11.glBegin(GL11.GL_QUADS);
 
-		    	GL11.glVertex2f(x,y+offset_y);
+		    	GL11.glVertex2f((int)x,(int)y+offset_y);
 
-		    	GL11.glVertex2f(x+width,y+offset_y);
-		    	GL11.glVertex2f(x+width,y+height+offset_y);
-		    	GL11.glVertex2f(x,y+height+offset_y);
+		    	GL11.glVertex2f((int)x+width,(int)y+offset_y);
+		    	GL11.glVertex2f((int)x+width,(int)y+height+offset_y);
+		    	GL11.glVertex2f((int)x,(int)y+height+offset_y);
 		    	
 		    GL11.glEnd();
 
@@ -199,11 +246,11 @@ public class Enemy {
 		    
 			GL11.glBegin(GL11.GL_QUADS);
 		
-		    	GL11.glVertex2f(x+1,y+1+offset_y);
+		    	GL11.glVertex2f((int)x+1,y+1+offset_y);
 		
-		    	GL11.glVertex2f(x-1+width,y+1+offset_y);
-		    	GL11.glVertex2f(x+width-1,y+height-1+offset_y);
-		    	GL11.glVertex2f(x+1,y+height-1+offset_y);
+		    	GL11.glVertex2f((int)x-1+width,(int)y+1+offset_y);
+		    	GL11.glVertex2f((int)x+width-1,(int)y+height-1+offset_y);
+		    	GL11.glVertex2f((int)x+1,(int)y+height-1+offset_y);
 	    	
 		    GL11.glEnd();
 		    
@@ -212,11 +259,11 @@ public class Enemy {
 		    
 		 			GL11.glBegin(GL11.GL_QUADS);
 		 		
-		 		    	GL11.glVertex2f(x+1,y+1+offset_y);
+		 		    	GL11.glVertex2f((int)x+1,(int)y+1+offset_y);
 		 		
-		 		    	GL11.glVertex2f((int)(x+1)+((width-2)*((float)health/max_health)),y+1+offset_y);
-		 		    	GL11.glVertex2f((int)(x+1)+((width-2)*((float)health/max_health)),y+height-1+offset_y);
-		 		    	GL11.glVertex2f(x+1,y+height-1+offset_y);
+		 		    	GL11.glVertex2f((int)(x+1)+((width-2)*((float)health/max_health)),(int)y+1+offset_y);
+		 		    	GL11.glVertex2f((int)(x+1)+((width-2)*((float)health/max_health)),(int)y+height-1+offset_y);
+		 		    	GL11.glVertex2f((int)x+1,(int)y+height-1+offset_y);
 		 		    	
 		 		    GL11.glEnd();
 		    
@@ -239,13 +286,13 @@ public class Enemy {
 		
 		
 	   		GL11.glTexCoord2f(0,0);
-	   		GL11.glVertex2f(x,y);
+	   		GL11.glVertex2f((int)x,(int)y);
 		    GL11.glTexCoord2f(newScaleX*1,0);
-		    GL11.glVertex2f(x+newTexture.getTextureWidth(),y);
+		    GL11.glVertex2f((int)x+newTexture.getTextureWidth(),(int)y);
 		    GL11.glTexCoord2f(newScaleX*1,newScaleY*1);
-		    GL11.glVertex2f(x+newTexture.getTextureWidth(),y+newTexture.getTextureHeight());
+		    GL11.glVertex2f((int)x+newTexture.getTextureWidth(),(int)y+newTexture.getTextureHeight());
 			GL11.glTexCoord2f(0,newScaleY*1);
-			GL11.glVertex2f(x,y+newTexture.getTextureHeight());
+			GL11.glVertex2f((int)x,(int)y+newTexture.getTextureHeight());
 			
 			GL11.glColor3f(1, 1, 1);
 
