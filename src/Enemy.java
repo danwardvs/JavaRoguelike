@@ -30,9 +30,9 @@ public class Enemy {
 	
 	private float behavior_speed=0.010f;
 	private int behavior_attack_delay=2000;
-	private boolean behavior_wander=false;
-	private boolean behavior_follow=true;
-	private int behavior_wander_amount=100;
+	private boolean behavior_wander=true;
+	private boolean behavior_follow=false;
+	private int behavior_wander_amount=10;
 	private int behavior_follow_tolerance=25;
 
 	
@@ -49,8 +49,6 @@ public class Enemy {
 	}
 	
 	public void draw(int newWorldX, int newWorldY){
-		
-
 
 		drawTexture(texture,scaleFromDirection(),1);
 		drawHealth(health_texture);
@@ -94,7 +92,7 @@ public class Enemy {
 		
 		attack_delay_timer+=delta;
 		
-		if(wait_direction<=0){
+		if(wait_direction>=0){
 			if(behavior_wander){
 				if(Math.ceil(Math.random()*behavior_wander_amount)==1){
 					direction_heading=(int)Math.floor(Math.random()*5);
