@@ -18,10 +18,11 @@ public class Enemy {
 	private int max_health;
 	private int hurt_timer;
 	private boolean is_hurt;
-	private int direction_heading;
+	private int wander_direction_heading;
+	private int wander_delay;
+	private boolean direction_facing;
 	private int x_direction;
 	private int y_direction;
-	int wait_direction;
 	private Texture texture;
 	private Texture health_texture;
 	private World gameWorld;
@@ -32,8 +33,10 @@ public class Enemy {
 	private int behavior_attack_delay=2000;
 	private boolean behavior_wander=true;
 	private boolean behavior_follow=false;
-	private int behavior_wander_amount=10;
+	private boolean behavior_face_character=false;
+	private int behavior_wander_amount=200;
 	private int behavior_follow_tolerance=25;
+	private int behavior_wander_delay=500;
 
 	
 	public Enemy(World newWorld, int newX, int newY, int newType, int newHealth, int newMaxHealth){
@@ -58,20 +61,41 @@ public class Enemy {
 		
 		delta_speed=delta*behavior_speed;
 		
-		if(gameWorld.getCharacter(0)!=null){
-			if(gameWorld.getCharacter(0).getX()>x+behavior_follow_tolerance)
-				x_direction=2;
-			else if(gameWorld.getCharacter(0).getX()<x-behavior_follow_tolerance)
-				x_direction=1;
-			else 
-				x_direction=0;
+		if(behavior_face_character){
+			if(gameWorld.getCharacter(0).getX()>x+5)
+				direction_facing=true;
+			else if(gameWorld.getCharacter(0).getX()<x-5)
+				direction_facing=false;
 			
-			if(gameWorld.getCharacter(0).getY()>y+behavior_follow_tolerance)
-				y_direction=2;
-			else if(gameWorld.getCharacter(0).getY()<y-behavior_follow_tolerance)
-				y_direction=1;
-			else 
-				y_direction=0;
+			
+		}
+		
+		if(gameWorld.getCharacter(0)!=null){
+			
+			if(behavior_follow){
+				if(gameWorld.getCharacter(0).getX()>x+behavior_follow_tolerance){
+					x_direction=2;
+				}
+				else if(gameWorld.getCharacter(0).getX()<x-behavior_follow_tolerance){
+					x_direction=1;
+				}
+				else 
+					x_direction=0;
+				
+				if(gameWorld.getCharacter(0).getY()>y+behavior_follow_tolerance)
+					y_direction=2;
+				else if(gameWorld.getCharacter(0).getY()<y-behavior_follow_tolerance)
+					y_direction=1;
+				else 
+					y_direction=0;
+			}
+		}
+		
+		
+		if(attack_delay_timer>behavior_attack_delay){
+			gameWorld.applyDamage((int)x,(int)y,1,10,this);
+			attack_delay_timer=0;
+			
 		}
 		
 		if(hurt_timer>0)
@@ -84,49 +108,48 @@ public class Enemy {
 		if(hurt_timer<0)
 			hurt_timer=0;
 		
-		if(attack_delay_timer>behavior_attack_delay){
-			gameWorld.applyDamage((int)x,(int)y,1,10,this);
-			attack_delay_timer=0;
-			
-		}
+		
 		
 		attack_delay_timer+=delta;
 		
-		if(wait_direction>=0){
-			if(behavior_wander){
+	
+		if(behavior_wander){
+			
+			if(wander_delay<=0){
 				if(Math.ceil(Math.random()*behavior_wander_amount)==1){
-					direction_heading=(int)Math.floor(Math.random()*5);
-					wait_direction=100;
-					
+					wander_direction_heading=(int)Math.floor(Math.random()*5);
+					wander_delay=behavior_wander_delay;
+	
 				}
-				if(direction_heading==1)
+				if(wander_direction_heading==1)
 					x+=delta_speed;
-				if(direction_heading==2)
+				if(wander_direction_heading==2)
 					x-=delta_speed;
-				if(direction_heading==3)
+				if(wander_direction_heading==3)
 					y+=delta_speed;
-				if(direction_heading==4)
+				if(wander_direction_heading==4)
 					y-=delta_speed;
-			}
-			else if(behavior_follow){
-				if(x_direction==2)
-					x+=delta_speed;
-				System.out.println("+" + delta_speed);
+			}else
+				wander_delay-=delta;
+		}
+		
+		else if(behavior_follow){
+			if(x_direction==2)
+				x+=delta_speed;				
 
 				
-				if(x_direction==1)
-					x-=delta_speed;
-					System.out.println("-" + delta_speed);
+			if(x_direction==1)
+				x-=delta_speed;
 				
-				if(y_direction==2)
-					y+=delta_speed;
+			if(y_direction==2)
+				y+=delta_speed;
 				
-				if(y_direction==1)
-					y-=delta_speed;
-			}
-			
-			
+			if(y_direction==1)
+				y-=delta_speed;
 		}
+			
+			
+		
 		
 		if(x<0+getWidth())
 			x=0+getWidth();
@@ -140,13 +163,6 @@ public class Enemy {
 		if(y>SCREEN_H-getHeight())
 			y=SCREEN_H-getHeight();
 		
-		
-		
-		
-		wait_direction--;
-		
-		if(wait_direction<0)
-			wait_direction=0;
 	
 		
 		
@@ -191,10 +207,8 @@ public class Enemy {
 		return max_health;
 	}
 	int scaleFromDirection(){
-		if(x_direction==2)
+		if(direction_facing)
 			return -1;
-		if(x_direction==1)
-			return 1;
 		return 1;
 	}
 	
@@ -244,7 +258,7 @@ public class Enemy {
 		    
 			GL11.glBegin(GL11.GL_QUADS);
 		
-		    	GL11.glVertex2f((int)x+1,y+1+offset_y);
+		    	GL11.glVertex2f((int)x+1,(int)y+1+offset_y);
 		
 		    	GL11.glVertex2f((int)x-1+width,(int)y+1+offset_y);
 		    	GL11.glVertex2f((int)x+width-1,(int)y+height-1+offset_y);

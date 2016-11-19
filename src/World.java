@@ -34,6 +34,7 @@ public class World {
 	
 	private List<Enemy> gameEnemys = new ArrayList<Enemy>();
 	private List<Item> gameItems = new ArrayList<Item>();
+	private List<Particle> gameParticles = new ArrayList<Particle>();
 	private Menu[] gameMenus = new Menu[5];
 	private Character[] gameCharacters = new Character[4];
 	
@@ -130,10 +131,6 @@ public class World {
 
 		
 	}
-	private int getDistance(int newX1, int newY1, int newX2, int newY2){
-		return ((int)Math.sqrt(Math.abs(newX1-newX2)^2+Math.abs(newX2-newY2)));
-	}
-
 	
 	public void setCharacter(Character newCharacter, int newIndex){
 		newCharacter.setWorld(this);
@@ -269,13 +266,22 @@ public class World {
 	public void createEnemy(Enemy newEnemy){
 		gameEnemys.add(newEnemy);	
 		
-		
 	}
+	
+	public void createParticle(Particle newParticle){
+		gameParticles.add(newParticle);	
+			
+	}
+	
 	public void createItem(Item newItem){
 		gameItems.add(newItem);
 	}
 	public void destroyItem(Item newItem){
 		gameItems.remove(newItem);
+	}
+	
+	public void destroyParticle(Particle newParticle){
+		gameParticles.remove(newParticle);
 	}
 	
 	public void destroyMenu(int newIndex){
@@ -471,8 +477,11 @@ public class World {
     		gameEnemys.get(i).draw(x,y);
 
 		
-		for(Item item: getItems())
+		for(Item item: gameItems)
         	item.draw();
+		
+		for(Particle particle: gameParticles)
+        	particle.draw();
     	
 		gameMouse.draw();
 		
@@ -504,17 +513,26 @@ public class World {
 		
 		gameMouse.update();
     	
-		for(int i=0; i<gameEnemys.size(); i++){
+
+    	
+    	for(int i=0; i<gameEnemys.size(); i++){
     		
     		gameEnemys.get(i).update(delta);
     		
-    	}
-    	
-    	for(int i=0; i<gameEnemys.size(); i++){
     		if(gameEnemys.get(i).getHealth()<=0){
     			gameEnemys.remove(i);
     		}
     	}
+    	
+    	for(int i=0; i<gameParticles.size(); i++){
+    		
+    		gameParticles.get(i).update(delta);
+    		
+    		if(gameParticles.get(i).getLifetime()<=0){
+    			gameParticles.remove(i);
+    		}
+    	}
+    	
     	
     	for(int i=0; i<gameCharacters.length; i++){
     		if(gameCharacters[i]!=null)

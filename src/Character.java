@@ -23,10 +23,6 @@ public class Character {
 	
 	private int attack_timer=0;
 	
-	private int hit_mark_time=100;
-	private int hit_mark_x;
-	private int hit_mark_y;
-	
 	private int attack_speed=100;
 	private float speed = 0.0625f;
 	private int walk_step=0;
@@ -179,11 +175,11 @@ public class Character {
 		key_pressed=true;
 		int damage_x=x+8+(scaleFromDirection()*current_item.getDamageOffsetX(state-2));
 		int damage_y=y+current_item.getDamageOffsetY(state-2);
-
-		hit_mark_time=0;
 		
-		hit_mark_x=((x+8-4)+current_item.getDamageOffsetX(state-2)*scaleFromDirection());
-		hit_mark_y = (y-4)+current_item.getDamageOffsetY(state-2);
+		int hit_mark_x=((x+8-4)+current_item.getDamageOffsetX(state-2)*scaleFromDirection());
+		int hit_mark_y = (y-4)+current_item.getDamageOffsetY(state-2);
+		
+		gameWorld.createParticle(new Particle(hit_mark_x,hit_mark_y,"Hit",100));
 		
 		gameWorld.applyDamage(damage_x, damage_y, 1, current_item.getDamage(),this);
 
@@ -208,8 +204,6 @@ public class Character {
 		}
 		
 		walk_step++;
-		hit_mark_time++;
-	
 		
 		if(hurt_timer>0){
 			hurt_timer-=delta;
@@ -338,11 +332,6 @@ public class Character {
 			}
 		}
 		
-		if(hit_mark_time<10){
-			drawTexture(hit,1,hit_mark_x,hit_mark_y);
-
-			
-		}
 		
 		GL11.glColor3f(1, 1, 1);
 
