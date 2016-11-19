@@ -31,9 +31,9 @@ public class Enemy {
 	
 	private float behavior_speed=0.010f;
 	private int behavior_attack_delay=2000;
-	private boolean behavior_wander=true;
-	private boolean behavior_follow=false;
-	private boolean behavior_face_character=false;
+	private boolean behavior_wander=false;
+	private boolean behavior_follow=true;
+	private boolean behavior_face_character=true;
 	private int behavior_wander_amount=200;
 	private int behavior_follow_tolerance=25;
 	private int behavior_wander_delay=500;
@@ -93,7 +93,10 @@ public class Enemy {
 		
 		
 		if(attack_delay_timer>behavior_attack_delay){
-			gameWorld.applyDamage((int)x,(int)y,1,10,this);
+			System.out.println((int)x+getHalfWidth()-8*scaleFromDirection());
+
+			gameWorld.applyDamage(((int)x+getHalfWidth()-4)-8*scaleFromDirection(),(int)y,10,10,this);
+			gameWorld.createParticle(new Particle(((int)x+getHalfWidth()-4)-8*scaleFromDirection(),(int)y+10,"Hit",100));
 			attack_delay_timer=0;
 			
 		}
@@ -184,6 +187,7 @@ public class Enemy {
 	public void setHurtTimer(int newHurt){
 		hurt_timer = newHurt;
 	}
+	
 	public int getWorldX(){
 		return world_x;
 	}
@@ -210,6 +214,11 @@ public class Enemy {
 		if(direction_facing)
 			return -1;
 		return 1;
+	}
+	
+	private int getHalfWidth(){
+		return texture.getImageWidth()/2;
+		
 	}
 	
 	public void recieveDamage(int newDamage){
