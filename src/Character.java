@@ -115,6 +115,12 @@ public class Character {
 		return x;
 	}
 	
+	public void giveHealth(int newHealth){
+		health+=newHealth;
+		if(health>100)
+			health=100;
+	}
+	
 	public int getY(){
 		return y;
 	}
@@ -196,8 +202,15 @@ public class Character {
 		for(int i = 0; i < gameWorld.getItems().size(); i++)
 		{
 			if(collision(x,x+16,gameWorld.getItems().get(i).getX(),gameWorld.getItems().get(i).getX()+16,y,y+32,gameWorld.getItems().get(i).getY(),gameWorld.getItems().get(i).getY()+16)){
-				current_item = gameWorld.getItems().get(i);
+				if(gameWorld.getItems().get(i).getType()==1 || gameWorld.getItems().get(i).getType()==2){
+					if(gameWorld.getItems().get(i).getName().equals("Heart"))
+						giveHealth(10);
+					else{
+						current_item = gameWorld.getItems().get(i);
+					}
+				}
         		gameWorld.getItems().remove(i);
+				
         		
         	}
 		

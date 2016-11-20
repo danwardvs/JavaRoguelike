@@ -171,21 +171,31 @@ public class WorldLoader {
 
 						
 						texture_number = Integer.valueOf(eElement.getElementsByTagName("texture_number").item(0).getTextContent());
+						
+						
+						
+						Item newItem = new Item(name,type,x,y,texture_number);
 
 						
-						damage = Integer.valueOf(eElement.getElementsByTagName("damage").item(0).getTextContent());
-						damage_radius = Integer.valueOf(eElement.getElementsByTagName("damage_radius").item(0).getTextContent());
 						
-						Item newItem = new Item(name,type,x,y,damage_radius,damage,texture_number);
-						
-						newItem.setItemOffset(10,10,12, 2,12,12,12,18);
 
-						if(type==0)
+						if(type==0){
+							
 							newItem.setDamageOffset(7, 25, 7, 20, 8, 13);
-
-						if(type==1)
+							damage = Integer.valueOf(eElement.getElementsByTagName("damage").item(0).getTextContent());
+							damage_radius = Integer.valueOf(eElement.getElementsByTagName("damage_radius").item(0).getTextContent());
+						}
+						if(type==1){
 							newItem.setDamageOffset(19, 33, 20, 22, 19, 4);
+							damage = Integer.valueOf(eElement.getElementsByTagName("damage").item(0).getTextContent());
+							damage_radius = Integer.valueOf(eElement.getElementsByTagName("damage_radius").item(0).getTextContent());
+						}
+						if(type==2)
 						
+							
+							
+							
+						newItem.setItemOffset(10,10,12, 2,12,12,12,18);
 						gameWorld.createItem(newItem);
 					}
 				}

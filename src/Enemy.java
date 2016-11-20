@@ -35,7 +35,7 @@ public class Enemy {
 	private boolean behavior_follow=true;
 	private boolean behavior_face_character=true;
 	private int behavior_wander_amount=200;
-	private int behavior_follow_tolerance=25;
+	private int behavior_follow_tolerance=10;
 	private int behavior_wander_delay=500;
 
 	

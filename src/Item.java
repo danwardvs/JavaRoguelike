@@ -41,6 +41,14 @@ public class Item {
 		setTexture(name,texture_number);
 	}
 	
+	public Item(String newName, int newType, int newX, int newY, int newTextureAmount, boolean isAProp){
+		type = newType;
+		texture_number = newTextureAmount;
+		x = newX;
+		y = newY;
+		setTexture(name,texture_number);
+	}
+	
 	public void setDamageOffset(int newLowerX, int newLowerY,int newMidX, int newMidY, int newHighX, int newHighY){
 		
 		damage_offset_x[0] = newHighX;
