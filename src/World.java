@@ -462,10 +462,32 @@ public class World {
 
 		drawTexture(background[x][y],0,0);
 		
+		for(Item item: gameItems){
+        	if(gameCharacters[0]!=null){
+        			if(item.getY()+item.getHeight()<gameCharacters[0].getY()+gameCharacters[0].getHeight()){
+        				item.draw();
+        			}
+        	}
+			
+		}
+		
 		for(int i=0; i<gameCharacters.length; i++){
     		if(gameCharacters[i]!=null)
     			gameCharacters[i].draw();
     	}
+		
+		
+		for(Item item: gameItems){
+        	if(gameCharacters[0]!=null){
+        			if(item.getY()+item.getHeight()>=gameCharacters[0].getY()+gameCharacters[0].getHeight()){
+        				item.draw();
+        			}
+        	}else{
+        		item.draw();
+        	}
+			
+		}
+		
 		for(int i=0; i<gameMenus.length; i++){
     		if(gameMenus[i]!=null)
     			gameMenus[i].draw();
@@ -477,8 +499,7 @@ public class World {
     		gameEnemys.get(i).draw(x,y);
 
 		
-		for(Item item: gameItems)
-        	item.draw();
+		
 		
 		for(Particle particle: gameParticles)
         	particle.draw();

@@ -59,16 +59,20 @@ public class Enemy {
 	
 	public void update(int delta){
 		
-		delta_speed=delta*behavior_speed;
 		
-		if(behavior_face_character){
-			if(gameWorld.getCharacter(0).getX()>x+5)
-				direction_facing=true;
-			else if(gameWorld.getCharacter(0).getX()<x-5)
-				direction_facing=false;
+		
+		delta_speed=delta*behavior_speed;
+		if(gameWorld.getCharacter(0)!=null){
+		
+			if(behavior_face_character){
+			
+				if(gameWorld.getCharacter(0).getX()>x+5)
+					direction_facing=true;
+				else if(gameWorld.getCharacter(0).getX()<x-5)
+					direction_facing=false;
+				}
 			
 			
-		}
 		
 		if(gameWorld.getCharacter(0)!=null){
 			
@@ -90,10 +94,9 @@ public class Enemy {
 					y_direction=0;
 			}
 		}
-		
+	}
 		
 		if(attack_delay_timer>behavior_attack_delay){
-			System.out.println((int)x+getHalfWidth()-8*scaleFromDirection());
 
 			gameWorld.applyDamage(((int)x+getHalfWidth()-4)-8*scaleFromDirection(),(int)y,10,10,this);
 			gameWorld.createParticle(new Particle(((int)x+getHalfWidth()-4)-8*scaleFromDirection(),(int)y+10,"Hit",100));

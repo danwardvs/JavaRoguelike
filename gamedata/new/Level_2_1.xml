@@ -21,7 +21,7 @@
 
 	<object type="Item">
 		<name>Heart</name>
-		<type>2</type>
+		<type>0</type>
 		<x>10</x>
 		<y>50</y>	
 		<texture_number>1</texture_number>

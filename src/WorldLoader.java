@@ -104,13 +104,17 @@ public class WorldLoader {
 
 						damage = Integer.valueOf(eElement.getElementsByTagName("damage").item(0).getTextContent());
 						damage_radius = Integer.valueOf(eElement.getElementsByTagName("damage_radius").item(0).getTextContent());
-						Item newItem = new Item(name,type,damage_radius,damage,texture_number);
+						Item newItem = new Item(name,type,0,0,texture_number);
 						
 						newItem.setItemOffset(10,10,12, 2,12,12,12,18);
-
+						
+						newItem.setDamage(damage);
+						newItem.setDamageRadius(damage_radius);
+						
 						if(type==0)
 							newItem.setDamageOffset(7, 25, 7, 20, 8, 13);
-
+							
+						
 						if(type==1)
 							newItem.setDamageOffset(19, 33, 20, 22, 19, 4);
 
@@ -178,23 +182,21 @@ public class WorldLoader {
 
 						
 						
-
-						if(type==0){
-							
-							newItem.setDamageOffset(7, 25, 7, 20, 8, 13);
+						if(type==0 || type==1){
 							damage = Integer.valueOf(eElement.getElementsByTagName("damage").item(0).getTextContent());
 							damage_radius = Integer.valueOf(eElement.getElementsByTagName("damage_radius").item(0).getTextContent());
+							newItem.setDamage(damage);
+							newItem.setDamageRadius(damage_radius);
 						}
-						if(type==1){
-							newItem.setDamageOffset(19, 33, 20, 22, 19, 4);
-							damage = Integer.valueOf(eElement.getElementsByTagName("damage").item(0).getTextContent());
-							damage_radius = Integer.valueOf(eElement.getElementsByTagName("damage_radius").item(0).getTextContent());
-						}
-						if(type==2)
 						
+						if(type==0)
+							newItem.setDamageOffset(7, 25, 7, 20, 8, 13);
+						
+						if(type==1)
+							newItem.setDamageOffset(19, 33, 20, 22, 19, 4);
 							
-							
-							
+		
+			
 						newItem.setItemOffset(10,10,12, 2,12,12,12,18);
 						gameWorld.createItem(newItem);
 					}

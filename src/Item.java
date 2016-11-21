@@ -21,25 +21,23 @@ public class Item {
 	private int damage_radius;
 	private int damage;
 	
-	public Item(String newName, int newType, int newX, int newY, int newDamageRadius, int newDamage, int newTextureAmount){
+	public Item(String newName, int newType, int newX, int newY, int newTextureAmount){
 		name = newName;
 		type = newType;
 		x = newX;
 		y = newY;
-		damage_radius=newDamageRadius;
-		damage=newDamage;
 		texture_number = newTextureAmount;
 		setTexture(name,texture_number);
 	}
 	
-	public Item(String newName, int newType, int newDamageRadius, int newDamage, int newTextureAmount){
+	/*public Item(String newName, int newType, int newDamageRadius, int newDamage, int newTextureAmount){
 		name = newName;
 		type = newType;
 		damage_radius=newDamageRadius;
 		damage=newDamage;
 		texture_number = newTextureAmount;
 		setTexture(name,texture_number);
-	}
+	}*/
 	
 	public Item(String newName, int newType, int newX, int newY, int newTextureAmount, boolean isAProp){
 		type = newType;
@@ -95,6 +93,14 @@ public class Item {
 	
 	public String getName(){
 		return name;
+	}
+	
+	public void setDamage(int newDamage){
+		damage = newDamage;
+	}
+	
+	public void setDamageRadius(int newDamageRadius){
+		damage_radius = newDamageRadius;
 	}
 	
 	public int getType(){
@@ -153,6 +159,11 @@ public class Item {
 	public int getDamage(){
 		return damage;
 	}
+	public int getHeight(){
+		return texture.getImageHeight();
+	}
+	
+	
 	public int getTextureNumber(){
 		return texture_number;
 	}
