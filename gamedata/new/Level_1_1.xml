@@ -24,13 +24,22 @@
 		<x>150</x>
 		<y>84</y>
 	</object>
+	
+	<object type="Item">
+		<type>2</type>
+		<name>Tree</name>
+		<texture_number>1</texture_number>
+		<x>200</x>
+		<y>20</y>
+	</object>
+
 
 	<object type="Item">
 		<type>3</type>
 		<name>Tree</name>
 		<texture_number>1</texture_number>
 		<x>32</x>
-		<y>190</y>
+		<y>30</y>
 	</object>
 
 

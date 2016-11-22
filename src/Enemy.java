@@ -51,11 +51,62 @@ public class Enemy {
 		
 	}
 	
+
+	boolean collision(int x_min_1, int x_max_1, int x_min_2, int x_max_2, int y_min_1, int y_max_1, int y_min_2, int y_max_2){
+		if(x_min_1 < x_max_2 && y_min_1 < y_max_2 && x_min_2 < x_max_1 && y_min_2 < y_max_1)
+			return true;
+		else
+			return false;
+		
+	}
+	
 	public void draw(int newWorldX, int newWorldY){
 
 		drawTexture(texture,scaleFromDirection(),1);
 		drawHealth(health_texture);
 	}
+	
+	
+	private boolean tryMoveX(float newX){
+		
+		x+=newX;
+		
+		for(int i = 0; i < gameWorld.getItems().size(); i++){
+			if(collision((int)x,(int)x+getWidth(),gameWorld.getItems().get(i).getX(),gameWorld.getItems().get(i).getX()+gameWorld.getItems().get(i).getWidth(),(int)y,(int)y+getHeight(),gameWorld.getItems().get(i).getY(),gameWorld.getItems().get(i).getY()+gameWorld.getItems().get(i).getHeight())){
+				if(gameWorld.getItems().get(i).getType()==3){
+					x-=newX;
+		
+					return false;
+					
+				}
+
+				
+				
+			}
+		}
+		return true;
+		
+	}
+	
+	private boolean tryMoveY(float newY){
+		
+		y+=newY;
+		
+		for(int i = 0; i < gameWorld.getItems().size(); i++){
+			if(collision((int)x,(int)x+getWidth(),gameWorld.getItems().get(i).getX(),gameWorld.getItems().get(i).getX()+gameWorld.getItems().get(i).getWidth(),(int)y,(int)y+getHeight(),gameWorld.getItems().get(i).getY(),gameWorld.getItems().get(i).getY()+gameWorld.getItems().get(i).getHeight())){
+				if(gameWorld.getItems().get(i).getType()==3){
+					y-=newY;
+					return false;
+				}
+
+				
+				
+			}
+		}
+		return true;
+		
+	}
+	
 	
 	public void update(int delta){
 		
@@ -128,30 +179,35 @@ public class Enemy {
 	
 				}
 				if(wander_direction_heading==1)
-					x+=delta_speed;
+					tryMoveX(delta_speed);
 				if(wander_direction_heading==2)
-					x-=delta_speed;
+					tryMoveX(-delta_speed);
+
 				if(wander_direction_heading==3)
-					y+=delta_speed;
+					tryMoveY(delta_speed);
+
 				if(wander_direction_heading==4)
-					y-=delta_speed;
+					tryMoveY(-delta_speed);
 			}else
 				wander_delay-=delta;
 		}
 		
 		else if(behavior_follow){
 			if(x_direction==2)
-				x+=delta_speed;				
+				tryMoveX(delta_speed);		
 
 				
 			if(x_direction==1)
-				x-=delta_speed;
+				tryMoveX(-delta_speed);		
+
 				
 			if(y_direction==2)
-				y+=delta_speed;
+				tryMoveY(delta_speed);
+
 				
 			if(y_direction==1)
-				y-=delta_speed;
+				tryMoveY(-delta_speed);
+
 		}
 			
 			

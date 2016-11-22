@@ -260,8 +260,33 @@ public class Character {
 		
 		}
 		if(walk_step>=walk_step_speed){
+			
 			x+=move_x;
+			for(int i = 0; i < gameWorld.getItems().size(); i++){
+				if(collision(x,x+16,gameWorld.getItems().get(i).getX(),gameWorld.getItems().get(i).getX()+gameWorld.getItems().get(i).getWidth(),y,y+32,gameWorld.getItems().get(i).getY(),gameWorld.getItems().get(i).getY()+gameWorld.getItems().get(i).getHeight())){
+					if(gameWorld.getItems().get(i).getType()==3){
+						x-=move_x;
+				
+					}
+
+					
+					
+				}
+			}
+			
 			y+=move_y;
+			for(int i = 0; i < gameWorld.getItems().size(); i++){
+				if(collision(x,x+16,gameWorld.getItems().get(i).getX(),gameWorld.getItems().get(i).getX()+gameWorld.getItems().get(i).getWidth(),y,y+32,gameWorld.getItems().get(i).getY(),gameWorld.getItems().get(i).getY()+gameWorld.getItems().get(i).getHeight())){
+					if(gameWorld.getItems().get(i).getType()==3){
+						y-=move_y;
+				
+					}
+
+					
+					
+				}
+			}
+	
 			walk_step=0;
 		}
 		

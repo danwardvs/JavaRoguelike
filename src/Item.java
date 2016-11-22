@@ -163,6 +163,11 @@ public class Item {
 		return texture.getImageHeight();
 	}
 	
+	public int getWidth(){
+		return texture.getImageWidth();
+	}
+	
+	
 	
 	public int getTextureNumber(){
 		return texture_number;

@@ -168,9 +168,6 @@ public class WorldLoader {
 						
 						name = eElement.getElementsByTagName("name").item(0).getTextContent();
 						
-						x = Integer.valueOf(eElement.getElementsByTagName("x").item(0).getTextContent());
-						y = Integer.valueOf(eElement.getElementsByTagName("y").item(0).getTextContent());
-						
 						type = Integer.valueOf(eElement.getElementsByTagName("type").item(0).getTextContent());
 
 						

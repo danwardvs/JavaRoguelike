@@ -5,37 +5,49 @@
 		<type>0</type>
 		<health>160</health>
 		<max_health>160</max_health>
-		<x>120</x>
-		<y>208</y>
+		<x>170</x>
+		<y>52</y>
 	</object>
 
 	<object type="Item">
-		<type>3</type>
 		<name>Tree</name>
-		<texture_number>1</texture_number>
+		<type>3</type>
 		<x>100</x>
 		<y>100</y>
+		<damage>0</damage>
+		<damage_radius>0</damage_radius>
+		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
-		<type>3</type>
 		<name>Tree</name>
-		<texture_number>1</texture_number>
+		<type>3</type>
 		<x>150</x>
 		<y>84</y>
+		<damage>0</damage>
+		<damage_radius>0</damage_radius>
+		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
-		<type>3</type>
 		<name>Tree</name>
+		<type>2</type>
+		<x>200</x>
+		<y>20</y>
+		<damage>0</damage>
+		<damage_radius>0</damage_radius>
 		<texture_number>1</texture_number>
-		<x>32</x>
-		<y>190</y>
 	</object>
 
-
-
-
+	<object type="Item">
+		<name>Tree</name>
+		<type>3</type>
+		<x>32</x>
+		<y>30</y>
+		<damage>0</damage>
+		<damage_radius>0</damage_radius>
+		<texture_number>1</texture_number>
+	</object>
 
 
 
