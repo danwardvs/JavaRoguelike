@@ -10,37 +10,14 @@
 	</object>
 
 	<object type="Item">
-		<type>3</type>
+		<type>4</type>
 		<name>Tree</name>
 		<texture_number>1</texture_number>
 		<x>100</x>
 		<y>100</y>
 	</object>
 
-	<object type="Item">
-		<type>3</type>
-		<name>Tree</name>
-		<texture_number>1</texture_number>
-		<x>150</x>
-		<y>84</y>
-	</object>
-	
-	<object type="Item">
-		<type>2</type>
-		<name>Tree</name>
-		<texture_number>1</texture_number>
-		<x>200</x>
-		<y>20</y>
-	</object>
 
-
-	<object type="Item">
-		<type>3</type>
-		<name>Tree</name>
-		<texture_number>1</texture_number>
-		<x>32</x>
-		<y>30</y>
-	</object>
 
 
 

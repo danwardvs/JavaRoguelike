@@ -191,6 +191,22 @@ public class Character {
 
 	}
 	
+	private boolean itemCollision(Item newItem, int x_1, int x_2, int y_1, int y_2){
+		
+		if(collision(x_1,x_2,newItem.getBoundingX(),newItem.getBoundingX()+newItem.getBoundingWidth(),y_1,y_2,newItem.getBoundingY(),newItem.getBoundingY()+newItem.getBoundingHeight()))
+			return true;
+		return false;
+		
+	}
+	
+	private boolean characterItemCollision(int newIndex){
+		return itemCollision(gameWorld.getItems().get(newIndex),x,x+16,y+16,y+32);
+			
+		
+	}
+	
+	
+	
 	public void update(int delta){
 		
 		if(health<=0){
@@ -201,7 +217,7 @@ public class Character {
 				
 		for(int i = 0; i < gameWorld.getItems().size(); i++)
 		{
-			if(collision(x,x+16,gameWorld.getItems().get(i).getX(),gameWorld.getItems().get(i).getX()+16,y,y+32,gameWorld.getItems().get(i).getY(),gameWorld.getItems().get(i).getY()+16)){
+			if(characterItemCollision(i)){
 				if(gameWorld.getItems().get(i).getType()==0 || gameWorld.getItems().get(i).getType()==1){
 					if(gameWorld.getItems().get(i).getName().equals("Heart"))
 						giveHealth(10);
@@ -263,8 +279,8 @@ public class Character {
 			
 			x+=move_x;
 			for(int i = 0; i < gameWorld.getItems().size(); i++){
-				if(collision(x,x+16,gameWorld.getItems().get(i).getX(),gameWorld.getItems().get(i).getX()+gameWorld.getItems().get(i).getWidth(),y,y+32,gameWorld.getItems().get(i).getY(),gameWorld.getItems().get(i).getY()+gameWorld.getItems().get(i).getHeight())){
-					if(gameWorld.getItems().get(i).getType()==3){
+				if(characterItemCollision(i)){
+					if(gameWorld.getItems().get(i).getType()==3 || gameWorld.getItems().get(i).getType()==4 ){
 						x-=move_x;
 				
 					}
@@ -276,8 +292,8 @@ public class Character {
 			
 			y+=move_y;
 			for(int i = 0; i < gameWorld.getItems().size(); i++){
-				if(collision(x,x+16,gameWorld.getItems().get(i).getX(),gameWorld.getItems().get(i).getX()+gameWorld.getItems().get(i).getWidth(),y,y+32,gameWorld.getItems().get(i).getY(),gameWorld.getItems().get(i).getY()+gameWorld.getItems().get(i).getHeight())){
-					if(gameWorld.getItems().get(i).getType()==3){
+				if(characterItemCollision(i)){
+					if(gameWorld.getItems().get(i).getType()==3 || gameWorld.getItems().get(i).getType()==4){
 						y-=move_y;
 				
 					}

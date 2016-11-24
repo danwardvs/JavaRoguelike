@@ -51,7 +51,15 @@ public class Enemy {
 		
 	}
 	
-
+	
+	private boolean itemCollision(Item newItem, int x_1, int x_2, int y_1, int y_2){
+		
+		if(collision(x_1,x_2,newItem.getBoundingX(),newItem.getBoundingX()+newItem.getBoundingWidth(),y_1,y_2,newItem.getBoundingY(),newItem.getBoundingY()+newItem.getBoundingHeight()))
+			return true;
+		return false;
+		
+	}
+	
 	boolean collision(int x_min_1, int x_max_1, int x_min_2, int x_max_2, int y_min_1, int y_max_1, int y_min_2, int y_max_2){
 		if(x_min_1 < x_max_2 && y_min_1 < y_max_2 && x_min_2 < x_max_1 && y_min_2 < y_max_1)
 			return true;
@@ -72,8 +80,8 @@ public class Enemy {
 		x+=newX;
 		
 		for(int i = 0; i < gameWorld.getItems().size(); i++){
-			if(collision((int)x,(int)x+getWidth(),gameWorld.getItems().get(i).getX(),gameWorld.getItems().get(i).getX()+gameWorld.getItems().get(i).getWidth(),(int)y,(int)y+getHeight(),gameWorld.getItems().get(i).getY(),gameWorld.getItems().get(i).getY()+gameWorld.getItems().get(i).getHeight())){
-				if(gameWorld.getItems().get(i).getType()==3){
+			if(itemCollision(gameWorld.getItems().get(i),(int)x,(int)x+getWidth(),(int)y,(int)y+getHeight())){
+				if(gameWorld.getItems().get(i).getType()==3 || gameWorld.getItems().get(i).getType()==4){
 					x-=newX;
 		
 					return false;
@@ -93,8 +101,8 @@ public class Enemy {
 		y+=newY;
 		
 		for(int i = 0; i < gameWorld.getItems().size(); i++){
-			if(collision((int)x,(int)x+getWidth(),gameWorld.getItems().get(i).getX(),gameWorld.getItems().get(i).getX()+gameWorld.getItems().get(i).getWidth(),(int)y,(int)y+getHeight(),gameWorld.getItems().get(i).getY(),gameWorld.getItems().get(i).getY()+gameWorld.getItems().get(i).getHeight())){
-				if(gameWorld.getItems().get(i).getType()==3){
+			if(itemCollision(gameWorld.getItems().get(i),(int)x,(int)x+getWidth(),(int)y,(int)y+getHeight())){
+				if(gameWorld.getItems().get(i).getType()==3 || gameWorld.getItems().get(i).getType()==4){
 					y-=newY;
 					return false;
 				}

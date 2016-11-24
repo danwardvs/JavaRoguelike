@@ -167,6 +167,25 @@ public class Item {
 		return texture.getImageWidth();
 	}
 	
+	public int getBoundingX(){
+		return x;
+	}
+	
+	public int getBoundingY(){
+		if(type==4)
+			return y+getHeight()-8;
+		return y;
+	}
+	
+	public int getBoundingWidth(){
+		return getWidth();
+	}
+	
+	public int getBoundingHeight(){
+		if(type==4)
+			return 0;
+		return getHeight();
+	}
 	
 	
 	public int getTextureNumber(){
