@@ -27,6 +27,8 @@ public class WorldLoader {
 	int max_health;
 	int damage;
 	int damage_radius;
+	int width;
+	int height;
 	int texture_number;
 	String name;
 	
@@ -192,7 +194,12 @@ public class WorldLoader {
 						if(type==1)
 							newItem.setDamageOffset(19, 33, 20, 22, 19, 4);
 							
-		
+						if(type==3 && texture_number==0){
+							width = Integer.valueOf(eElement.getElementsByTagName("width").item(0).getTextContent());
+							height = Integer.valueOf(eElement.getElementsByTagName("height").item(0).getTextContent());
+							newItem.setWidth(width);
+							newItem.setHeight(height);
+						}
 			
 						newItem.setItemOffset(10,10,12, 2,12,12,12,18);
 						gameWorld.createItem(newItem);

@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+
+<level>
+	<object type="Enemy">
+		<type>0</type>
+		<health>160</health>
+		<max_health>160</max_health>
+		<x>227</x>
+		<y>141</y>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>100</x>
+		<y>75</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>0</x>
+		<y>123</y>
+		<width>17</width>
+		<height>18</height>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>14</x>
+		<y>119</y>
+		<width>14</width>
+		<height>43</height>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>27</x>
+		<y>124</y>
+		<width>32</width>
+		<height>18</height>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>60</x>
+		<y>133</y>
+		<width>32</width>
+		<height>20</height>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>90</x>
+		<y>141</y>
+		<width>23</width>
+		<height>25</height>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>114</x>
+		<y>152</y>
+		<width>23</width>
+		<height>19</height>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>134</x>
+		<y>161</y>
+		<width>19</width>
+		<height>20</height>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>151</x>
+		<y>164</y>
+		<width>23</width>
+		<height>25</height>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>170</x>
+		<y>168</y>
+		<width>53</width>
+		<height>23</height>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>219</x>
+		<y>176</y>
+		<width>33</width>
+		<height>14</height>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>247</x>
+		<y>184</y>
+		<width>22</width>
+		<height>14</height>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>266</x>
+		<y>193</y>
+		<width>37</width>
+		<height>16</height>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>300</x>
+		<y>205</y>
+		<width>19</width>
+		<height>34</height>
+		<texture_number>0</texture_number>
+	</object>
+
+
+
+</level>

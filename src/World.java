@@ -7,6 +7,7 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
@@ -17,6 +18,8 @@ public class World {
 	//Game Data
 	private int x;
 	private int y;
+	
+	private int editor_click_timer;
 	
 	public static final int SCREEN_W = 320;
 	public static final int SCREEN_H = 240;
@@ -38,8 +41,8 @@ public class World {
 	private Menu[] gameMenus = new Menu[5];
 	private Character[] gameCharacters = new Character[4];
 	
-	private Texture[][] background = new Texture[5][5];
-	private boolean locationExists[][] = new boolean[5][5];
+	private Texture[][] background = new Texture[7][7];
+	private boolean locationExists[][] = new boolean[7][7];
 	private boolean thisshouldneverbetrue=false;
 	private float scale=1;
 	private boolean scale_direction;
@@ -48,6 +51,10 @@ public class World {
 		
 		locationExists[1][1] = true;
 		locationExists[2][1] = true;
+		locationExists[3][1] = true;
+		locationExists[4][1] = true;
+		locationExists[5][1] = true;
+
 		
 		loadTextures();
 		
@@ -181,9 +188,11 @@ public class World {
 		healthBar.setId("healthbar");
 		healthBar.setJustification(0);
 		gameMenus[1].createButton(healthBar);
+		
+		gameMenus[2] = new EditorMenu(gameMouse,this);
 
 		
-		gameMouse.setVisibility(false);
+		//gameMouse.setVisibility(false);
 		
 	
 		
@@ -307,6 +316,14 @@ public class World {
 		y = newWorldY;
 	}
 
+	
+	private void clearLevel(){
+		gameEnemys.clear();
+		gameItems.clear();
+		gameParticles.clear();
+		
+	}
+	
 	public void saveLevel(){
 		writeFile("gamedata/save/Level_"+x+"_"+y+".xml",parseLevel());		
 
@@ -393,8 +410,21 @@ public class World {
 
 			newLevelEntry += "		<x>" + gameItems.get(j).getX() + "</x>\n";
 			newLevelEntry += "		<y>" + gameItems.get(j).getY() + "</y>\n";
-			newLevelEntry += "		<damage>" + gameItems.get(j).getDamage() + "</damage>\n";
-			newLevelEntry += "		<damage_radius>" + gameItems.get(j).getDamageRadius() + "</damage_radius>\n";
+			
+			if(gameItems.get(j).getType() == 0 || gameItems.get(j).getType() == 1){
+				newLevelEntry += "		<damage>" + gameItems.get(j).getDamage() + "</damage>\n";
+				newLevelEntry += "		<damage_radius>" + gameItems.get(j).getDamageRadius() + "</damage_radius>\n";
+				
+			}
+			
+			if(gameItems.get(j).getType() == 2 || gameItems.get(j).getType() == 3){
+				newLevelEntry += "		<width>" + gameItems.get(j).getWidth() + "</width>\n";
+				newLevelEntry += "		<height>" + gameItems.get(j).getHeight() + "</height>\n";
+
+				
+			}
+			
+			
 			newLevelEntry += "		<texture_number>" + gameItems.get(j).getTextureNumber() + "</texture_number>\n";
 
 			newLevelEntry += "	</object>\n\n";
@@ -408,8 +438,7 @@ public class World {
 		
 		
 		
-		gameEnemys.clear();
-		gameItems.clear();
+		clearLevel();
 		
 		return newEntry;
 		
@@ -441,9 +470,13 @@ public class World {
 	private void loadTextures(){
 		
 		try{
+			for(int i=0; i<6; i++){
+				for(int j=0; j<6; j++){
+					if(locationExists[i][j])
+						background[i][j] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("background_"+i+"_"+j+".png"),GL11.GL_NEAREST);
 			
-			background[1][1] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("background_0_0.png"),GL11.GL_NEAREST);
-			background[2][1] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("background_1_0.png"),GL11.GL_NEAREST);
+				}
+			}
 
 			
 		} catch (IOException e) {
@@ -530,6 +563,21 @@ public class World {
 	public void update(int delta){
 		
 		gameMouse.update();
+		
+		if(gameKeyboard.lastKeyPressed().equals("R")){
+			clearLevel();
+			gameLoader.loadLevel("gamedata/new/Level_"+x+"_"+y+".xml");
+
+
+		}
+		
+		if(gameKeyboard.lastKeyPressed().equals("Q") && gameMouse.getLeftMouseDown()){
+			clearLevel();
+			gameLoader.loadLevel("gamedata/new/Level_"+x+"_"+y+".xml");
+
+
+		}
+    	
     	
 
     	

@@ -18,7 +18,6 @@ public class KeyboardHandler {
 	public String lastKeyPressed(){
 		for(int i=0; i<122;i++){
 			if(Keyboard.isKeyDown(i)){
-				System.out.println(Keyboard.getKeyName(i));
 
 				return Keyboard.getKeyName(i);
 			}

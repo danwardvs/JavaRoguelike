@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+
+<level>
+	<object type="Item">
+		<name>WaterBlockingVolume</name>
+		<type>3</type>
+		<x>160</x>
+		<y>200</y>
+		<width>160</width>
+		<height>40</height>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>171</x>
+		<y>144</y>
+		<width>148</width>
+		<height>26</height>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>177</x>
+		<y>169</y>
+		<width>18</width>
+		<height>23</height>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>168</x>
+		<y>190</y>
+		<width>32</width>
+		<height>25</height>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>162</x>
+		<y>205</y>
+		<width>13</width>
+		<height>33</height>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>157</x>
+		<y>218</y>
+		<width>7</width>
+		<height>20</height>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>277</x>
+		<y>132</y>
+		<width>41</width>
+		<height>14</height>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>301</x>
+		<y>123</y>
+		<width>17</width>
+		<height>18</height>
+		<texture_number>0</texture_number>
+	</object>
+
+
+
+</level>

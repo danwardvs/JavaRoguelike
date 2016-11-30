@@ -11,6 +11,8 @@ public class Item {
 	private int y;
 	private String name;
 	private int type;
+	private int width;
+	private int height;
 	private int texture_number;
 	private Texture texture;
 	private Texture texture_2;
@@ -122,7 +124,8 @@ public class Item {
 		
 	}
 	public void draw(){
-		drawTexture(x,y,texture,1,1);
+		if(texture!=null)
+			drawTexture(x,y,texture,1,1);
 
 	}
 	
@@ -143,7 +146,13 @@ public class Item {
 		
 	}
 	
+	public void setWidth(int newWidth){
+		width = newWidth;
+	}
 	
+	public void setHeight(int newHeight){
+		height = newHeight;
+	}
 	
 	public int getX(){
 		return x;
@@ -160,10 +169,14 @@ public class Item {
 		return damage;
 	}
 	public int getHeight(){
+		if(texture_number==0)
+			return height;
 		return texture.getImageHeight();
 	}
 	
 	public int getWidth(){
+		if(texture_number==0)
+			return width;
 		return texture.getImageWidth();
 	}
 	

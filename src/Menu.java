@@ -12,9 +12,9 @@ public class Menu {
 	
 	List<UIElement> menuUIElements = new ArrayList<UIElement>();
 	
-	private World gameWorld;
+	World gameWorld;
 	
-	private int pressed_delay;
+	int pressed_delay;
 	
 	public Menu(MouseHandler newMouseHandler, World newWorld){
 		

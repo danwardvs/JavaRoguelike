@@ -5,23 +5,17 @@
 		<type>0</type>
 		<health>160</health>
 		<max_health>160</max_health>
-		<x>120</x>
-		<y>208</y>
+		<x>106</x>
+		<y>198</y>
 	</object>
 
 	<object type="Item">
-		<type>4</type>
 		<name>Tree</name>
-		<texture_number>1</texture_number>
+		<type>4</type>
 		<x>100</x>
 		<y>100</y>
+		<texture_number>1</texture_number>
 	</object>
-
-
-
-
-
-
 
 
 
