@@ -42,12 +42,29 @@ public class EditorMenu extends Menu {
 			point_2_x=gameMouse.getX();
 			point_2_y=gameMouse.getY();
 			click_timer=false;
+			
+			if(point_2_x<point_1_x){
+				int new_point_1_x=point_1_x;
+				point_1_x=point_2_x;
+				point_2_x=new_point_1_x;
+			}
+			
+		
+			if(point_2_y<point_1_y){
+				int new_point_1_y=point_1_y;
+				point_1_y=point_2_y;
+				point_2_y=new_point_1_y;
+			}
+				
 			Item newItem = new Item("BlockingVolume",3,point_1_x,point_1_y,0);
 
-			newItem.setWidth(Math.abs(point_2_x-point_1_x));
-			newItem.setHeight(Math.abs(point_2_y-point_1_y));
+			
+				
+				
+				
+			newItem.setWidth(point_2_x-point_1_x);
+			newItem.setHeight(point_2_y-point_1_y);
 			gameWorld.createItem(newItem);
-			System.out.println("MADEITEM");
 		}
 		
 		if(gameMouse.getLeftMouseDown() && click_timer){
