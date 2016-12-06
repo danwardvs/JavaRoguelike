@@ -18,6 +18,7 @@ public class World {
 	//Game Data
 	private int x;
 	private int y;
+	private int keypress_delay;
 	
 	private int editor_click_timer;
 	
@@ -189,10 +190,14 @@ public class World {
 		healthBar.setJustification(0);
 		gameMenus[1].createButton(healthBar);
 		
-		gameMenus[2] = new EditorMenu(gameMouse,this);
+		UIElement ItemId = new UIElement(265,5,50,10,0.5f,0.5f,0.5f,0.2f,"Fists",true);
+		ItemId.setId("itemid");
+		healthBar.setJustification(0);
+		
+		gameMenus[1].createButton(ItemId);
 
 		
-		//gameMouse.setVisibility(false);
+		gameMouse.setVisibility(false);
 		
 	
 		
@@ -564,20 +569,33 @@ public class World {
 		
 		gameMouse.update();
 		
-		if(gameKeyboard.lastKeyPressed().equals("R")){
+		
+		
+
+		
+		if(delta>=0)
+			keypress_delay+=delta;
+		if(keypress_delay>=1000)
+			keypress_delay=1000;
+		
+		if(gameKeyboard.lastKeyPressed().equals("R") && keypress_delay>100){
 			clearLevel();
 			gameLoader.loadLevel("gamedata/new/Level_"+x+"_"+y+".xml");
+		}
+		if(gameKeyboard.lastKeyPressed().equals("E") && keypress_delay>100){
+			keypress_delay=0;
+			
+			if(gameMenus[4]==null){
+				gameMenus[4] = new EditorMenu(gameMouse,this,gameKeyboard);
+				gameMouse.setVisibility(true);
+			}else{
+				gameMenus[4] = null;
+				gameMouse.setVisibility(false);
 
-
+			}
+				
 		}
 		
-		if(gameKeyboard.lastKeyPressed().equals("Q") && gameMouse.getLeftMouseDown()){
-			clearLevel();
-			gameLoader.loadLevel("gamedata/new/Level_"+x+"_"+y+".xml");
-
-
-		}
-    	
     	
 
     	

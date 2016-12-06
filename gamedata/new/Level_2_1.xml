@@ -10,12 +10,12 @@
 	</object>
 
 	<object type="Item">
-		<name>Sword</name>
+		<name>Hoe</name>
 		<type>1</type>
 		<x>100</x>
 		<y>200</y>	
 		<texture_number>2</texture_number>
-		<damage>1000</damage>
+		<damage>10</damage>
 		<damage_radius>5</damage_radius>
 	</object>
 

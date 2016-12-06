@@ -84,30 +84,10 @@
 	<object type="Item">
 		<name>BlockingVolume</name>
 		<type>3</type>
-		<x>59</x>
-		<y>0</y>
-		<width>65</width>
-		<height>216</height>
-		<texture_number>0</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>BlockingVolume</name>
-		<type>3</type>
-		<x>120</x>
-		<y>50</y>
-		<width>74</width>
-		<height>87</height>
-		<texture_number>0</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>BlockingVolume</name>
-		<type>3</type>
-		<x>91</x>
-		<y>81</y>
-		<width>153</width>
-		<height>49</height>
+		<x>310</x>
+		<y>119</y>
+		<width>14</width>
+		<height>43</height>
 		<texture_number>0</texture_number>
 	</object>
 

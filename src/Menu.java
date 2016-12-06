@@ -80,9 +80,10 @@ public class Menu {
 
 		  }
 		  
-		  
+		 
 		
 	}
+	
 	public void recieveButtonPress(String newId){
 		
 		/*if(newId=="A" || newId=="B" || newId=="C" || newId=="1" || newId=="2" || newId=="3"){

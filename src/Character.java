@@ -352,7 +352,8 @@ public class Character {
 		gameWorld.getMenu(1).getButtonById("healthbar").setText(String.valueOf(health));
 		gameWorld.getMenu(1).getButtonById("healthbar").setWidth(health);
 		gameWorld.getMenu(1).getButtonById("healthbar").setColour((1-((float)health/100)),((float)health/100),0);
-
+		
+		gameWorld.getMenu(1).getButtonById("itemid").setText(current_item.getName()+ "  "+ current_item.getDamage()+ "  " + current_item.getDamageRadius());
 		
 	}
 	

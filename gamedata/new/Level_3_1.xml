@@ -81,6 +81,16 @@
 		<texture_number>0</texture_number>
 	</object>
 
+<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>310</x>
+		<y>119</y>
+		<width>14</width>
+		<height>43</height>
+		<texture_number>0</texture_number>
+	</object>
+
 
 
 </level>

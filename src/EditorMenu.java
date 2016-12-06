@@ -9,6 +9,7 @@ import org.newdawn.slick.util.ResourceLoader;
 public class EditorMenu extends Menu {
 	
 	MouseHandler gameMouse;
+	KeyboardHandler gameKeyboard;
 	Texture texture;
 	
 	boolean click_timer;
@@ -17,11 +18,15 @@ public class EditorMenu extends Menu {
 	
 	int point_2_x;
 	int point_2_y;
+	
+	int tool=2;
+	//^^Ryan
 
-	public EditorMenu(MouseHandler newMouseHandler, World newWorld) {
+	public EditorMenu(MouseHandler newMouseHandler, World newWorld, KeyboardHandler newKeyboardHandler) {
 		super(newMouseHandler, newWorld);
 		// TODO Auto-generated constructor stub
 		gameMouse = newMouseHandler;
+		gameKeyboard = newKeyboardHandler;
 		
 		texture = loadTexture("button.png");
 		
@@ -32,46 +37,70 @@ public class EditorMenu extends Menu {
 	
 	public void update(){
 		
-		if(gameMouse.getLeftMouseDown() && !click_timer){
-			point_1_x=gameMouse.getX();
-			point_1_y=gameMouse.getY();
-			click_timer=true;
-		}
+		if(gameKeyboard.lastKeyPressed().equals("1"))
+			tool=1;
+		if(gameKeyboard.lastKeyPressed().equals("2"))
+			tool=2;
 		
-		if(!gameMouse.getLeftMouseDown() && click_timer){
-			point_2_x=gameMouse.getX();
-			point_2_y=gameMouse.getY();
-			click_timer=false;
-			
-			if(point_2_x<point_1_x){
-				int new_point_1_x=point_1_x;
-				point_1_x=point_2_x;
-				point_2_x=new_point_1_x;
+		
+		
+		if(tool==1){
+		
+			if(gameMouse.getLeftMouseDown() && !click_timer){
+				point_1_x=gameMouse.getX();
+				point_1_y=gameMouse.getY();
+				click_timer=true;
 			}
 			
-		
-			if(point_2_y<point_1_y){
-				int new_point_1_y=point_1_y;
-				point_1_y=point_2_y;
-				point_2_y=new_point_1_y;
-			}
+			if(!gameMouse.getLeftMouseDown() && click_timer){
+				point_2_x=gameMouse.getX();
+				point_2_y=gameMouse.getY();
+				click_timer=false;
 				
-			Item newItem = new Item("BlockingVolume",3,point_1_x,point_1_y,0);
+				if(point_2_x<point_1_x){
+					int new_point_1_x=point_1_x;
+					point_1_x=point_2_x;
+					point_2_x=new_point_1_x;
+				}
+				
+			
+				if(point_2_y<point_1_y){
+					int new_point_1_y=point_1_y;
+					point_1_y=point_2_y;
+					point_2_y=new_point_1_y;
+				}
+					
+				Item newItem = new Item("BlockingVolume",3,point_1_x,point_1_y,0);
+				newItem.setWidth(point_2_x-point_1_x);
+				newItem.setHeight(point_2_y-point_1_y);
+				gameWorld.createItem(newItem);
+			}
+		
+		
+			if(gameMouse.getLeftMouseDown() && click_timer){
+				point_2_x=gameMouse.getX();
+				point_2_y=gameMouse.getY();
+			}
+		}
+		if(tool==2){
+			
+			if(gameMouse.getLeftMouseDown() && !click_timer){
+				point_1_x=gameMouse.getX();
+				point_1_y=gameMouse.getY();
+				click_timer=true;
+				Item newItem = new Item("Tree",4,point_1_x,point_1_y,1);
+				gameWorld.createItem(newItem);
 
+
+				
+			}
 			
-				
-				
-				
-			newItem.setWidth(point_2_x-point_1_x);
-			newItem.setHeight(point_2_y-point_1_y);
-			gameWorld.createItem(newItem);
+			if(!gameMouse.getLeftMouseDown() && click_timer){
+				click_timer=false;
+			}
+			
 		}
 		
-		if(gameMouse.getLeftMouseDown() && click_timer){
-			point_2_x=gameMouse.getX();
-			point_2_y=gameMouse.getY();
-		}
-	
 		if(pressed_delay>0)
 			pressed_delay--;		
 		
@@ -101,10 +130,11 @@ public class EditorMenu extends Menu {
 	          newButton.draw();
 
 		  }
-				
-		if(texture != null)
+		if(tool==1){
+			if(texture != null)
 		
-			drawTexture(texture);
+				drawTexture(texture);
+		}
 			
 	}
 		
