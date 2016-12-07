@@ -3,3 +3,4 @@
 2=no collision prop
 3=custom size prop
 4=base colliding
+5=npc
