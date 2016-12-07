@@ -3,18 +3,18 @@
 <level>
 	<object type="Character">
 		<index>0</index>
-		<x>68</x>
-		<y>144</y>
-		<world_x>2</world_x>
+		<x>104</x>
+		<y>40</y>
+		<world_x>1</world_x>
 		<world_y>1</world_y>
 		<health>100</health>
 	</object>
 
 	<object type="Item">
-		<name>Hoe</name>
-		<type>1</type>
-		<texture_number>2</texture_number>
-		<damage>10</damage>
+		<name>Fist</name>
+		<type>0</type>
+		<texture_number>0</texture_number>
+		<damage>5</damage>
 		<damage_radius>5</damage_radius>
 	</object>
 

@@ -1,0 +1,5 @@
+0=handheld item
+1=ranged weapon
+2=no collision prop
+3=custom size prop
+4=base colliding

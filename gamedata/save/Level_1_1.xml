@@ -1,27 +1,193 @@
 <?xml version="1.0"?>
 
 <level>
-	<object type="Enemy">
-		<type>0</type>
-		<health>160</health>
-		<max_health>160</max_health>
-		<x>120</x>
-		<y>208</y>
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>64</x>
+		<y>43</y>
+		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
-		<type>4</type>
 		<name>Tree</name>
+		<type>4</type>
+		<x>147</x>
+		<y>50</y>
 		<texture_number>1</texture_number>
-		<x>100</x>
-		<y>100</y>
 	</object>
 
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>265</x>
+		<y>68</y>
+		<texture_number>1</texture_number>
+	</object>
 
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>221</x>
+		<y>173</y>
+		<texture_number>1</texture_number>
+	</object>
 
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>63</x>
+		<y>143</y>
+		<texture_number>1</texture_number>
+	</object>
 
+	<object type="Item">
+		<name>Rock</name>
+		<type>4</type>
+		<x>150</x>
+		<y>182</y>
+		<texture_number>1</texture_number>
+	</object>
 
+	<object type="Item">
+		<name>Rock</name>
+		<type>4</type>
+		<x>90</x>
+		<y>117</y>
+		<texture_number>1</texture_number>
+	</object>
 
+	<object type="Item">
+		<name>Rock</name>
+		<type>4</type>
+		<x>120</x>
+		<y>38</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Rock</name>
+		<type>4</type>
+		<x>224</x>
+		<y>68</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Rock</name>
+		<type>4</type>
+		<x>280</x>
+		<y>189</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Rock</name>
+		<type>4</type>
+		<x>193</x>
+		<y>117</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Rock</name>
+		<type>4</type>
+		<x>36</x>
+		<y>209</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>106</x>
+		<y>202</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>295</x>
+		<y>222</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>303</x>
+		<y>38</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>15</x>
+		<y>17</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>0</x>
+		<y>0</y>
+		<width>6</width>
+		<height>239</height>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>0</x>
+		<y>0</y>
+		<width>115</width>
+		<height>5</height>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>118</x>
+		<y>0</y>
+		<width>197</width>
+		<height>6</height>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>138</x>
+		<y>1</y>
+		<width>181</width>
+		<height>17</height>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>186</x>
+		<y>9</y>
+		<width>132</width>
+		<height>12</height>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>262</x>
+		<y>25</y>
+		<width>53</width>
+		<height>1</height>
+		<texture_number>0</texture_number>
+	</object>
 
 
 

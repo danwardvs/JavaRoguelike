@@ -81,7 +81,7 @@
 		<texture_number>0</texture_number>
 	</object>
 
-	<object type="Item">
+<object type="Item">
 		<name>BlockingVolume</name>
 		<type>3</type>
 		<x>310</x>

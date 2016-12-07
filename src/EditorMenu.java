@@ -13,13 +13,14 @@ public class EditorMenu extends Menu {
 	Texture texture;
 	
 	boolean click_timer;
+	int button_delay;
 	int point_1_x;
 	int point_1_y;
 	
 	int point_2_x;
 	int point_2_y;
 	
-	int tool=2;
+	int tool=1;
 	//^^Ryan
 
 	public EditorMenu(MouseHandler newMouseHandler, World newWorld, KeyboardHandler newKeyboardHandler) {
@@ -31,17 +32,65 @@ public class EditorMenu extends Menu {
 		texture = loadTexture("button.png");
 		
 		
+		
 
 	}
 	
 	
 	public void update(){
 		
-		if(gameKeyboard.lastKeyPressed().equals("1"))
-			tool=1;
-		if(gameKeyboard.lastKeyPressed().equals("2"))
-			tool=2;
+		if(gameKeyboard.lastKeyPressed().equals("F1") && button_delay>10){
+			
+			gameWorld.overwriteNewLevel();
+			button_delay=0;
+			
+		}
+		if(gameKeyboard.lastKeyPressed().equals("F2") && button_delay>10){
+			
+			gameWorld.clearLevel();
+			button_delay=0;
+			
+		}
+		if(gameKeyboard.lastKeyPressed().equals("F3") && button_delay>10){
+			
+			gameMouse.toggleBounds();
+			button_delay=0;
+			
+		}
+	
 		
+		
+		if(gameKeyboard.lastKeyPressed().equals("1") && button_delay>10){
+			
+			tool=1;
+			gameMouse.setCursor("Cursor.png");
+			button_delay=0;
+			
+		}
+			
+		if(gameKeyboard.lastKeyPressed().equals("2") && button_delay>10){
+			tool=2;
+			gameMouse.setCursor("Tree.png");
+			button_delay=0;
+		}
+		
+		if(gameKeyboard.lastKeyPressed().equals("3") && button_delay>10){
+			tool=3;
+			gameMouse.setCursor("Rock.png");
+			button_delay=0;
+		}
+		
+		if(gameKeyboard.lastKeyPressed().equals("4") && button_delay>10){
+			tool=4;
+			gameMouse.setCursor("Flower.png");
+			button_delay=0;
+		}
+		
+		if(gameKeyboard.lastKeyPressed().equals("5") && button_delay>10){
+			tool=5;
+			gameMouse.setCursor("Flower_2.png");
+			button_delay=0;
+		}
 		
 		
 		if(tool==1){
@@ -101,8 +150,68 @@ public class EditorMenu extends Menu {
 			
 		}
 		
+		if(tool==3){
+			
+			if(gameMouse.getLeftMouseDown() && !click_timer){
+				point_1_x=gameMouse.getX();
+				point_1_y=gameMouse.getY();
+				click_timer=true;
+				Item newItem = new Item("Rock",4,point_1_x,point_1_y,1);
+				gameWorld.createItem(newItem);
+
+
+				
+			}
+			
+			if(!gameMouse.getLeftMouseDown() && click_timer){
+				click_timer=false;
+			}
+			
+		}
+		
+		if(tool==4){
+			
+			if(gameMouse.getLeftMouseDown() && !click_timer){
+				point_1_x=gameMouse.getX();
+				point_1_y=gameMouse.getY();
+				click_timer=true;
+				Item newItem = new Item("Flower",2,point_1_x,point_1_y,1);
+				gameWorld.createItem(newItem);
+
+
+				
+			}
+			
+			if(!gameMouse.getLeftMouseDown() && click_timer){
+				click_timer=false;
+			}
+			
+		}
+		
+		if(tool==5){
+			
+			if(gameMouse.getLeftMouseDown() && !click_timer){
+				point_1_x=gameMouse.getX();
+				point_1_y=gameMouse.getY();
+				click_timer=true;
+				Item newItem = new Item("Flower_2",2,point_1_x,point_1_y,1);
+				gameWorld.createItem(newItem);
+
+
+				
+			}
+			
+			if(!gameMouse.getLeftMouseDown() && click_timer){
+				click_timer=false;
+			}
+			
+		}
+		
 		if(pressed_delay>0)
-			pressed_delay--;		
+			pressed_delay--;	
+		
+		if(button_delay<10000)
+			button_delay++;
 		
 		for(UIElement newButton: menuUIElements){
 	          newButton.update();
@@ -130,7 +239,7 @@ public class EditorMenu extends Menu {
 	          newButton.draw();
 
 		  }
-		if(tool==1){
+		if(tool==1 && gameMouse.getLeftMouseDown()){
 			if(texture != null)
 		
 				drawTexture(texture);
@@ -152,7 +261,7 @@ public class EditorMenu extends Menu {
 			
 				newTexture.bind();
 				
-				GL11.glColor3f(0, 0, 0);
+				GL11.glColor4f(0, 0, 0,0.5f);
 				
 				GL11.glBegin(GL11.GL_QUADS);
 

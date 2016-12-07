@@ -4,16 +4,96 @@
 	<object type="Item">
 		<name>Tree</name>
 		<type>4</type>
-		<x>64</x>
-		<y>43</y>
+		<x>105</x>
+		<y>-32</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
 		<name>Tree</name>
 		<type>4</type>
-		<x>147</x>
-		<y>50</y>
+		<x>273</x>
+		<y>91</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>196</x>
+		<y>174</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>58</x>
+		<y>157</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>44</x>
+		<y>86</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>112</x>
+		<y>127</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>150</x>
+		<y>175</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>181</x>
+		<y>59</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>104</x>
+		<y>33</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>257</x>
+		<y>14</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>215</x>
+		<y>-6</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>64</x>
+		<y>205</y>
 		<texture_number>1</texture_number>
 	</object>
 
@@ -21,111 +101,103 @@
 		<name>Tree</name>
 		<type>4</type>
 		<x>265</x>
-		<y>68</y>
+		<y>203</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
 		<name>Tree</name>
 		<type>4</type>
-		<x>221</x>
-		<y>173</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Tree</name>
-		<type>4</type>
-		<x>63</x>
-		<y>143</y>
+		<x>214</x>
+		<y>109</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
 		<name>Rock</name>
 		<type>4</type>
-		<x>150</x>
-		<y>182</y>
+		<x>140</x>
+		<y>94</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
 		<name>Rock</name>
 		<type>4</type>
-		<x>90</x>
-		<y>117</y>
+		<x>173</x>
+		<y>124</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
 		<name>Rock</name>
 		<type>4</type>
-		<x>120</x>
-		<y>38</y>
+		<x>100</x>
+		<y>201</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
 		<name>Rock</name>
 		<type>4</type>
-		<x>224</x>
-		<y>68</y>
+		<x>65</x>
+		<y>134</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
 		<name>Rock</name>
 		<type>4</type>
-		<x>280</x>
-		<y>189</y>
+		<x>22</x>
+		<y>174</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
 		<name>Rock</name>
 		<type>4</type>
-		<x>193</x>
-		<y>117</y>
+		<x>52</x>
+		<y>29</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
 		<name>Rock</name>
 		<type>4</type>
-		<x>36</x>
-		<y>209</y>
+		<x>267</x>
+		<y>175</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
-		<name>Tree</name>
+		<name>Rock</name>
 		<type>4</type>
-		<x>106</x>
-		<y>202</y>
+		<x>243</x>
+		<y>215</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
-		<name>Tree</name>
+		<name>Rock</name>
 		<type>4</type>
-		<x>295</x>
-		<y>222</y>
+		<x>235</x>
+		<y>57</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
-		<name>Tree</name>
+		<name>Rock</name>
 		<type>4</type>
-		<x>303</x>
-		<y>38</y>
+		<x>275</x>
+		<y>70</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
-		<name>Tree</name>
+		<name>Rock</name>
 		<type>4</type>
-		<x>15</x>
-		<y>17</y>
+		<x>174</x>
+		<y>9</y>
 		<texture_number>1</texture_number>
 	</object>
 
@@ -134,7 +206,7 @@
 		<type>3</type>
 		<x>0</x>
 		<y>0</y>
-		<width>6</width>
+		<width>7</width>
 		<height>239</height>
 		<texture_number>0</texture_number>
 	</object>
@@ -142,50 +214,30 @@
 	<object type="Item">
 		<name>BlockingVolume</name>
 		<type>3</type>
-		<x>0</x>
-		<y>0</y>
-		<width>115</width>
-		<height>5</height>
+		<x>5</x>
+		<y>38</y>
+		<width>31</width>
+		<height>37</height>
 		<texture_number>0</texture_number>
 	</object>
 
 	<object type="Item">
 		<name>BlockingVolume</name>
 		<type>3</type>
-		<x>118</x>
-		<y>0</y>
-		<width>197</width>
-		<height>6</height>
+		<x>34</x>
+		<y>45</y>
+		<width>16</width>
+		<height>24</height>
 		<texture_number>0</texture_number>
 	</object>
 
 	<object type="Item">
 		<name>BlockingVolume</name>
 		<type>3</type>
-		<x>138</x>
-		<y>1</y>
-		<width>181</width>
-		<height>17</height>
-		<texture_number>0</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>BlockingVolume</name>
-		<type>3</type>
-		<x>186</x>
-		<y>9</y>
-		<width>132</width>
-		<height>12</height>
-		<texture_number>0</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>BlockingVolume</name>
-		<type>3</type>
-		<x>262</x>
-		<y>25</y>
-		<width>53</width>
-		<height>1</height>
+		<x>46</x>
+		<y>51</y>
+		<width>8</width>
+		<height>15</height>
 		<texture_number>0</texture_number>
 	</object>
 

@@ -52,9 +52,12 @@ public class World {
 		
 		locationExists[1][1] = true;
 		locationExists[2][1] = true;
+		locationExists[2][1] = true;
 		locationExists[3][1] = true;
 		locationExists[4][1] = true;
 		locationExists[5][1] = true;
+		locationExists[1][2] = true;
+
 
 		
 		loadTextures();
@@ -322,7 +325,7 @@ public class World {
 	}
 
 	
-	private void clearLevel(){
+	public void clearLevel(){
 		gameEnemys.clear();
 		gameItems.clear();
 		gameParticles.clear();
@@ -331,8 +334,14 @@ public class World {
 	
 	public void saveLevel(){
 		writeFile("gamedata/save/Level_"+x+"_"+y+".xml",parseLevel());		
+		clearLevel();
 
 	}
+	public void overwriteNewLevel(){
+		writeFile("gamedata/new/Level_"+x+"_"+y+".xml",parseLevel());		
+
+	}
+	
 	public void saveCharacter(int newIndex){
 		writeFile("gamedata/save/Character_"+newIndex+".xml",parseCharacter(newIndex));
 	}
@@ -442,9 +451,7 @@ public class World {
 		newEntry += "\n\n</level>";
 		
 		
-		
-		clearLevel();
-		
+
 		return newEntry;
 		
 
