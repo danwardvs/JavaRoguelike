@@ -10,6 +10,14 @@
 	</object>
 
 	<object type="Item">
+		<name>Horatio</name>
+		<type>5</type>
+		<x>100</x>
+		<y>43</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
 		<name>Tree</name>
 		<type>4</type>
 		<x>147</x>

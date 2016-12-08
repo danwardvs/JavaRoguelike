@@ -204,7 +204,7 @@ public class Character {
 			
 		
 	}
-	
+
 	
 	
 	public void update(int delta){
@@ -214,10 +214,18 @@ public class Character {
 			gameWorld.getMenu(1).getButtonById("healthbar").setVisibility(false);
 
 		}
-				
+		
+		gameWorld.setNPCtouching(-1);
+		
+		
 		for(int i = 0; i < gameWorld.getItems().size(); i++)
 		{
 			if(characterItemCollision(i)){
+				
+				//BAD CODE FIX LATER 
+				//Make colliding a property in items
+				//This is bad
+				
 				if(gameWorld.getItems().get(i).getType()==0 || gameWorld.getItems().get(i).getType()==1){
 					if(gameWorld.getItems().get(i).getName().equals("Heart"))
 						giveHealth(10);
@@ -225,6 +233,10 @@ public class Character {
 						current_item = gameWorld.getItems().get(i);
 					}
 					gameWorld.getItems().remove(i);
+				}
+				if(gameWorld.getItemByName("Horatio")==gameWorld.getItems().get(i)){
+					gameWorld.setNPCtouching(i);
+					
 				}
         		
 				

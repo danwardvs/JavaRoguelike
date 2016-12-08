@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
-
 <level>
 	<object type="Character">
-		<index>0</index>
-		<x>98</x>
-		<y>77</y>
+		<index>0</index>		
+		<x>10</x>
+		<y>10</y>
 		<world_x>1</world_x>
-		<world_y>2</world_y>
+		<world_y>1</world_y>
 		<health>100</health>
-	</object>
+
+	</object>			
 
 	<object type="Item">
 		<name>Fist</name>
@@ -16,8 +16,7 @@
 		<texture_number>0</texture_number>
 		<damage>5</damage>
 		<damage_radius>5</damage_radius>
-	</object>
-
-
-
+	</object>	
+	
 </level>
+

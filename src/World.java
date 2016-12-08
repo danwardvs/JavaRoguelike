@@ -47,6 +47,7 @@ public class World {
 	private boolean thisshouldneverbetrue=false;
 	private float scale=1;
 	private boolean scale_direction;
+	private int dialog_npc_touching;
 	
 	public World(){
 		
@@ -145,6 +146,12 @@ public class World {
 		gameCharacters[newIndex] = newCharacter;
 		
 	}
+	public void setNPCtouching(int newNPC){
+		dialog_npc_touching = newNPC;
+	}
+	public int getNPCtouching(){
+		return dialog_npc_touching;
+	}
 
 	public boolean isSaveGame(){
 		File f = new File("gamedata/save/Character_0.xml");
@@ -157,6 +164,15 @@ public class World {
 	
 	public List<Item> getItems(){
 		return gameItems;
+	}
+	
+	public Item getItemByName(String newName){
+		
+		for(int i=0; i<gameItems.size(); i++){
+			if(gameItems.get(i).getName().equals(newName))
+				return gameItems.get(i);
+		}
+		return null;
 	}
 	
 	public Menu getMenu(int newIndex){
@@ -203,6 +219,7 @@ public class World {
 		healthBar.setJustification(0);
 		
 		gameMenus[1].createButton(ItemId);
+		gameMenus[4] = new DialogMenu(gameMouse,this,gameKeyboard);
 
 		
 		gameMouse.setVisibility(false);

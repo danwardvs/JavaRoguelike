@@ -108,6 +108,9 @@ public class Item {
 	public int getType(){
 		return type;
 	}
+	public String loadDialog(){
+		return "";
+	}
 
 	public void setTexture(String newName, int newAmount){
 	

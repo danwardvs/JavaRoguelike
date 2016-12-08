@@ -5,28 +5,28 @@
 		<type>0</type>
 		<health>160</health>
 		<max_health>160</max_health>
-		<x>94</x>
-		<y>47</y>
+		<x>76</x>
+		<y>64</y>
 	</object>
 
 	<object type="Item">
 		<name>Hoe</name>
 		<type>1</type>
 		<x>100</x>
-		<y>200</y>	
-		<texture_number>2</texture_number>
+		<y>200</y>
 		<damage>10</damage>
 		<damage_radius>5</damage_radius>
+		<texture_number>2</texture_number>
 	</object>
 
 	<object type="Item">
 		<name>Heart</name>
 		<type>0</type>
 		<x>10</x>
-		<y>50</y>	
-		<texture_number>1</texture_number>
+		<y>50</y>
 		<damage>10</damage>
 		<damage_radius>5</damage_radius>
+		<texture_number>1</texture_number>
 	</object>
 
 
