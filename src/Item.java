@@ -4,6 +4,8 @@ import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 import org.newdawn.slick.util.ResourceLoader;
+import java.util.List;
+
 
 public class Item {
 	
@@ -120,6 +122,12 @@ public class Item {
 	}
 	public void setBaseReply(String how_do_i_actally_polymorph){
 		
+	}
+	public void addDialog(String plz_to_help){
+		
+	}
+	public List<String> getDialog(){
+		return null;
 	}
 
 	

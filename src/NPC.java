@@ -12,8 +12,7 @@ public class NPC extends Item {
 	public NPC(String newName, int newType, int newX, int newY, int newTextureAmount) {
 		super(newName, newType, newX, newY, newTextureAmount);
 		// TODO Auto-generated constructor stub
-		dialog.add("Hello");
-		dialog.add("Eyy");
+		;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	}
 
 	public NPC(String newName, int newType, int newX, int newY, int newTextureAmount, boolean isAProp) {
@@ -26,6 +25,13 @@ public class NPC extends Item {
 	public void setBaseReply(String newBaseReply){
 		dialog_base_reply=newBaseReply;
 	}
+	public void addDialog(String newDialog){
+		dialog.add(newDialog);
+	}
+	public List<String> getDialog(){
+		return dialog;
+	}
+	
 	
 	public String loadDialog(){
 		

@@ -15,6 +15,10 @@
 		<x>100</x>
 		<y>43</y>
 		<base_reply>Wherefore art tho Romeo?</base_reply>
+		<dialog_1>Hello, have you seen a spooky ghost?</dialog_1>
+		<dialog_2>No? Well. In that case</dialog_2>
+		<dialog_3>Go talk to Mr. Guydude</dialog_3>
+		<dialog_4>He has seen one</dialog_4>
 		<texture_number>1</texture_number>
 	</object>
 

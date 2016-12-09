@@ -439,6 +439,8 @@ public class World {
 		
 		for(int j = 0; j < gameItems.size(); j++){
 			
+			
+			
 			String newLevelEntry = "";
 			newLevelEntry = newLevelEntry + "	<object type=\"Item\">\n";
 			newLevelEntry += "		<name>" + gameItems.get(j).getName() + "</name>\n";
@@ -459,12 +461,22 @@ public class World {
 
 				
 			}
-			if(gameItems.get(j).getType() == 5)
-				newLevelEntry += "		<base_reply>" + gameItems.get(j).getBaseReply() + "</base_reply>\n";
+			newLevelEntry += "		<texture_number>" + gameItems.get(j).getTextureNumber() + "</texture_number>\n";
 
 			
+			if(gameItems.get(j).getType() == 5){
+				
+				
+				
+				newLevelEntry += "		<base_reply>" + gameItems.get(j).getBaseReply() + "</base_reply>\n";
+				for(int i=0; i<gameItems.get(j).getDialog().size(); i++){
+					newLevelEntry += "		<dialog_"+(i+1)+">" + gameItems.get(j).getDialog().get(i) + "</dialog_"+(i+1)+">\n";
+					
+
+				}
+			}
 			
-			newLevelEntry += "		<texture_number>" + gameItems.get(j).getTextureNumber() + "</texture_number>\n";
+			
 
 			newLevelEntry += "	</object>\n\n";
 
