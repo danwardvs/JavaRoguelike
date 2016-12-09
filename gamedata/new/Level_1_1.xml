@@ -15,7 +15,7 @@
 		<x>100</x>
 		<y>43</y>
 		<texture_number>1</texture_number>
-		<dialog>Hey dude, nice dialog</dialog>
+		<base_reply>Wherefore art tho Romeo?</base_reply>
 	</object>
 
 	<object type="Item">

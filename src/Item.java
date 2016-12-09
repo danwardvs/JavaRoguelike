@@ -118,6 +118,9 @@ public class Item {
 	public String getBaseReply(){
 		return "";
 	}
+	public void setBaseReply(String how_do_i_actally_polymorph){
+		
+	}
 
 	
 	public void setTexture(String newName, int newAmount){

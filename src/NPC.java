@@ -23,9 +23,11 @@ public class NPC extends Item {
 	public String getBaseReply(){
 		return dialog_base_reply;
 	}
+	public void setBaseReply(String newBaseReply){
+		dialog_base_reply=newBaseReply;
+	}
 	
 	public String loadDialog(){
-		System.out.println("KYS");
 		
 		if(dialog.size()>0){
 			

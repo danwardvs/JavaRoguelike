@@ -31,6 +31,7 @@ public class WorldLoader {
 	int height;
 	int texture_number;
 	String name;
+	String base_reply;
 	
 	
 	public WorldLoader(World newWorld, int newWorldX, int newWorldY){
@@ -181,8 +182,13 @@ public class WorldLoader {
 						
 						if(type!=5){
 							newItem = new Item(name,type,x,y,texture_number);
+							
+							
 						}else{
 							newItem = new NPC(name,type,x,y,texture_number);
+							base_reply = eElement.getElementsByTagName("base_reply").item(0).getTextContent();
+							newItem.setBaseReply(base_reply);
+
 						}
 						
 						if(type==0 || type==1){

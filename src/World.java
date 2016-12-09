@@ -459,6 +459,9 @@ public class World {
 
 				
 			}
+			if(gameItems.get(j).getType() == 5)
+				newLevelEntry += "		<base_reply>" + gameItems.get(j).getBaseReply() + "</base_reply>\n";
+
 			
 			
 			newLevelEntry += "		<texture_number>" + gameItems.get(j).getTextureNumber() + "</texture_number>\n";
