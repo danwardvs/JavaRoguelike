@@ -5,6 +5,7 @@ public class NPC extends Item {
 	
 	private boolean alert;
 	private List<String> dialog = new ArrayList<String>();
+	private String dialog_base_reply = "I have nothing for you.";
 	
 	
 	
@@ -19,14 +20,20 @@ public class NPC extends Item {
 		super(newName, newType, newX, newY, newTextureAmount, isAProp);
 		// TODO Auto-generated constructor stub
 	}
+	public String getBaseReply(){
+		return dialog_base_reply;
+	}
 	
 	public String loadDialog(){
+		System.out.println("KYS");
+		
 		if(dialog.size()>0){
+			
 			String newString = dialog.get(0);
 			dialog.remove(0);
 			return newString;
 		}
-		return null;
+		return dialog_base_reply;
 	}
 
 }

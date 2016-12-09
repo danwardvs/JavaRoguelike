@@ -108,10 +108,18 @@ public class Item {
 	public int getType(){
 		return type;
 	}
+	
+	//Haxx to use polymorphism...
+	//Pls to help
 	public String loadDialog(){
 		return "";
 	}
+	
+	public String getBaseReply(){
+		return "";
+	}
 
+	
 	public void setTexture(String newName, int newAmount){
 	
 		

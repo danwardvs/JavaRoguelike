@@ -68,20 +68,20 @@ public class World {
 		
 		gameMenus[0] = new Menu(gameMouse,this);
 		
-		gameMenus[0].createButton(new UIElement((SCREEN_W/2)-125,20,250,30,0.7f,0.9f,0.7f,0.8f,"Shogun Jedsun",true));
+		gameMenus[0].createUIElement(new UIElement((SCREEN_W/2)-125,20,250,30,0.7f,0.9f,0.7f,0.8f,"Shogun Jedsun",true));
 		
-		gameMenus[0].createButton(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)-80,SCREEN_H/2,60,20,0.7f,0.4f,0.4f,0.3f,"New Game",true,true));
-		gameMenus[0].createButton(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)+20,SCREEN_H/2,60,20,0.4f,0.7f,0.4f,0.3f,"Load Game",true,true));
+		gameMenus[0].createUIElement(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)-80,SCREEN_H/2,60,20,0.7f,0.4f,0.4f,0.3f,"New Game",true,true));
+		gameMenus[0].createUIElement(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)+20,SCREEN_H/2,60,20,0.4f,0.7f,0.4f,0.3f,"Load Game",true,true));
 	
 		if(!isSaveGame()){
-			gameMenus[0].getButtonByText("load game").setActive(false);
-			gameMenus[0].getButtonByText("load game").setColour(0.2f,0.2f,0.2f);
+			gameMenus[0].getUIElementByText("load game").setActive(false);
+			gameMenus[0].getUIElementByText("load game").setColour(0.2f,0.2f,0.2f);
 
 		}
 		
-		gameMenus[0].createButton(new UIElement((SCREEN_W/2)-155,50,310,20,0.8f,0.0f,0.0f,0.3f,"Are you sure? This will clear the existing save.",false));
-		gameMenus[0].createButton(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)-90,SCREEN_H/2,80,20,0.4f,0.7f,0.4f,0.3f,"Create game",true,false));
-		gameMenus[0].createButton(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)+30,SCREEN_H/2,60,20,0.7f,0.4f,0.4f,0.3f,"Cancel",true,false));
+		gameMenus[0].createUIElement(new UIElement((SCREEN_W/2)-155,50,310,20,0.8f,0.0f,0.0f,0.3f,"Are you sure? This will clear the existing save.",false));
+		gameMenus[0].createUIElement(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)-90,SCREEN_H/2,80,20,0.4f,0.7f,0.4f,0.3f,"Create game",true,false));
+		gameMenus[0].createUIElement(new Button(gameMouse,gameMenus[0],(SCREEN_W/2)+30,SCREEN_H/2,60,20,0.7f,0.4f,0.4f,0.3f,"Cancel",true,false));
 
 
 	}
@@ -212,13 +212,13 @@ public class World {
 		UIElement healthBar = new UIElement(5,5,100,10,0.7f,0.9f,0.7f,0.2f,"100",true);
 		healthBar.setId("healthbar");
 		healthBar.setJustification(0);
-		gameMenus[1].createButton(healthBar);
+		gameMenus[1].createUIElement(healthBar);
 		
 		UIElement ItemId = new UIElement(265,5,50,10,0.5f,0.5f,0.5f,0.2f,"Fists",true);
 		ItemId.setId("itemid");
 		healthBar.setJustification(0);
 		
-		gameMenus[1].createButton(ItemId);
+		gameMenus[1].createUIElement(ItemId);
 		gameMenus[4] = new DialogMenu(gameMouse,this,gameKeyboard);
 
 		

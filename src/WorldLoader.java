@@ -106,8 +106,9 @@ public class WorldLoader {
 
 						damage = Integer.valueOf(eElement.getElementsByTagName("damage").item(0).getTextContent());
 						damage_radius = Integer.valueOf(eElement.getElementsByTagName("damage_radius").item(0).getTextContent());
-						Item newItem = new Item(name,type,0,0,texture_number);
 						
+						Item newItem = new Item(name,type,0,0,texture_number);
+					
 						newItem.setItemOffset(10,10,12, 2,12,12,12,18);
 						
 						newItem.setDamage(damage);
@@ -176,10 +177,13 @@ public class WorldLoader {
 						texture_number = Integer.valueOf(eElement.getElementsByTagName("texture_number").item(0).getTextContent());
 						
 						
+						Item newItem;
 						
-						Item newItem = new Item(name,type,x,y,texture_number);
-
-						
+						if(type!=5){
+							newItem = new Item(name,type,x,y,texture_number);
+						}else{
+							newItem = new NPC(name,type,x,y,texture_number);
+						}
 						
 						if(type==0 || type==1){
 							damage = Integer.valueOf(eElement.getElementsByTagName("damage").item(0).getTextContent());

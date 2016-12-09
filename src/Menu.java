@@ -23,11 +23,11 @@ public class Menu {
 
 	}
 	
-	public void createButton(UIElement newButton){
-		menuUIElements.add(newButton);
+	public void createUIElement(UIElement newUIElement){
+		menuUIElements.add(newUIElement);
 	}
 	
-	public UIElement getButton(int newIndex){
+	public UIElement getUIElement(int newIndex){
 		return menuUIElements.get(newIndex);
 	}
 	
@@ -46,24 +46,24 @@ public class Menu {
 		if(pressed_delay>0)
 			pressed_delay--;		
 		
-		for(UIElement newButton: menuUIElements){
-	          newButton.update();
+		for(UIElement newUIElement: menuUIElements){
+	          newUIElement.update();
 
 		  }
 		 
 	}
 	
-	public UIElement getButtonByText(String newId){
-		 for(UIElement newButton: menuUIElements){
-	          if(newButton.getText().equals(newId))
-	        	  return newButton;
+	public UIElement getUIElementByText(String newId){
+		 for(UIElement newUIElement: menuUIElements){
+	          if(newUIElement.getText().equals(newId))
+	        	  return newUIElement;
 		 }
 		 return null;
 		  
 		
 	}
 	
-	public UIElement getButtonById(String newId){
+	public UIElement getUIElementById(String newId){
 		 for(UIElement newUIElement: menuUIElements){
 	          if(newUIElement.getId().equals(newId))
 	        	  return newUIElement;
@@ -75,8 +75,8 @@ public class Menu {
 	
 	public void draw(){
 			//TODO use this as standard
-		  for(UIElement newButton: menuUIElements){
-	          newButton.draw();
+		  for(UIElement newUIElement: menuUIElements){
+	          newUIElement.draw();
 
 		  }
 		  
@@ -88,21 +88,21 @@ public class Menu {
 		
 		/*if(newId=="A" || newId=="B" || newId=="C" || newId=="1" || newId=="2" || newId=="3"){
 			char newChar = newId.charAt(0);
-			gameWorld.pressVendingButton(newChar);
+			gameWorld.pressVendingUIElement(newChar);
 		}
 		if(newId=="Order"){
 			char newChar = '0';
-			gameWorld.pressVendingButton(newChar);
+			gameWorld.pressVendingUIElement(newChar);
 		}*/
 		
 		if(newId.equals("new game")){
 			if(gameWorld.isSaveGame()){
-				getButtonByText("new game").setVisibility(false);
-				getButtonByText("load game").setVisibility(false);
-				getButtonByText("shogun jedsun").setVisibility(false);
-				getButtonByText("create game").setVisibility(true);
-				getButtonByText("cancel").setVisibility(true);
-				getButtonByText("are you sure? this will clear the existing save.").setVisibility(true);
+				getUIElementByText("new game").setVisibility(false);
+				getUIElementByText("load game").setVisibility(false);
+				getUIElementByText("shogun jedsun").setVisibility(false);
+				getUIElementByText("create game").setVisibility(true);
+				getUIElementByText("cancel").setVisibility(true);
+				getUIElementByText("are you sure? this will clear the existing save.").setVisibility(true);
 			}else{
 				gameWorld.startGame(true);
 			}
@@ -117,12 +117,12 @@ public class Menu {
 			gameWorld.startGame(false);
 		}
 		if(newId.equals("cancel")){
-			getButtonByText("new game").setVisibility(true);
-			getButtonByText("load game").setVisibility(true);
-			getButtonByText("shogun jedsun").setVisibility(true);
-			getButtonByText("create game").setVisibility(false);
-			getButtonByText("cancel").setVisibility(false);
-			getButtonByText("are you sure? this will clear the existing save.").setVisibility(false);
+			getUIElementByText("new game").setVisibility(true);
+			getUIElementByText("load game").setVisibility(true);
+			getUIElementByText("shogun jedsun").setVisibility(true);
+			getUIElementByText("create game").setVisibility(false);
+			getUIElementByText("cancel").setVisibility(false);
+			getUIElementByText("are you sure? this will clear the existing save.").setVisibility(false);
 		}
 	}
 	
