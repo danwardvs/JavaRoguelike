@@ -4,141 +4,260 @@
 	<object type="Item">
 		<name>Tree</name>
 		<type>4</type>
-		<x>64</x>
-		<y>43</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Horatio</name>
-		<type>5</type>
-		<x>100</x>
-		<y>43</y>
-		<texture_number>1</texture_number>
-		<base_reply>Wherefore art tho Romeo?</base_reply>
-		<dialog_1>Hello, have you seen a spooky ghost?</dialog_1>
-		<dialog_2>No? Well. In that case</dialog_2>
-		<dialog_3>Go talk to Mr. Guydude</dialog_3>
-		<dialog_4>He has seen one</dialog_4>
-	</object>
-
-	<object type="Item">
-		<name>Tree</name>
-		<type>4</type>
-		<x>147</x>
-		<y>50</y>
+		<x>113</x>
+		<y>212</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
 		<name>Tree</name>
 		<type>4</type>
-		<x>265</x>
-		<y>68</y>
+		<x>76</x>
+		<y>52</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
 		<name>Tree</name>
 		<type>4</type>
-		<x>221</x>
-		<y>173</y>
+		<x>188</x>
+		<y>51</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
 		<name>Tree</name>
 		<type>4</type>
-		<x>63</x>
-		<y>143</y>
+		<x>237</x>
+		<y>119</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>153</x>
+		<y>105</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>73</x>
+		<y>105</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>48</x>
+		<y>181</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>304</x>
+		<y>72</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>250</x>
+		<y>32</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>132</x>
+		<y>39</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>261</x>
+		<y>175</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>185</x>
+		<y>176</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>98</x>
+		<y>153</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>118</x>
+		<y>96</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
 		<name>Rock</name>
 		<type>4</type>
-		<x>150</x>
-		<y>182</y>
+		<x>196</x>
+		<y>119</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
 		<name>Rock</name>
 		<type>4</type>
-		<x>90</x>
-		<y>117</y>
+		<x>138</x>
+		<y>174</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
 		<name>Rock</name>
 		<type>4</type>
-		<x>120</x>
-		<y>38</y>
+		<x>142</x>
+		<y>85</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
 		<name>Rock</name>
 		<type>4</type>
-		<x>224</x>
-		<y>68</y>
+		<x>54</x>
+		<y>40</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
 		<name>Rock</name>
 		<type>4</type>
-		<x>280</x>
-		<y>189</y>
+		<x>166</x>
+		<y>47</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
 		<name>Rock</name>
 		<type>4</type>
-		<x>193</x>
-		<y>117</y>
+		<x>274</x>
+		<y>86</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
 		<name>Rock</name>
 		<type>4</type>
-		<x>36</x>
-		<y>209</y>
+		<x>294</x>
+		<y>32</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
-		<name>Tree</name>
+		<name>Rock</name>
 		<type>4</type>
-		<x>106</x>
-		<y>202</y>
+		<x>283</x>
+		<y>159</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
-		<name>Tree</name>
+		<name>Rock</name>
 		<type>4</type>
-		<x>295</x>
-		<y>222</y>
+		<x>225</x>
+		<y>201</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
-		<name>Tree</name>
+		<name>Rock</name>
 		<type>4</type>
-		<x>303</x>
-		<y>38</y>
+		<x>152</x>
+		<y>167</y>
 		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
-		<name>Tree</name>
+		<name>Rock</name>
 		<type>4</type>
-		<x>15</x>
-		<y>17</y>
+		<x>136</x>
+		<y>153</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Flower</name>
+		<type>2</type>
+		<x>52</x>
+		<y>80</y>
+		<width>16</width>
+		<height>16</height>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Flower</name>
+		<type>2</type>
+		<x>112</x>
+		<y>44</y>
+		<width>16</width>
+		<height>16</height>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Flower</name>
+		<type>2</type>
+		<x>229</x>
+		<y>58</y>
+		<width>16</width>
+		<height>16</height>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Flower</name>
+		<type>2</type>
+		<x>227</x>
+		<y>99</y>
+		<width>16</width>
+		<height>16</height>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Flower</name>
+		<type>2</type>
+		<x>268</x>
+		<y>147</y>
+		<width>16</width>
+		<height>16</height>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Flower</name>
+		<type>2</type>
+		<x>205</x>
+		<y>156</y>
+		<width>16</width>
+		<height>16</height>
 		<texture_number>1</texture_number>
 	</object>
 
@@ -147,7 +266,7 @@
 		<type>3</type>
 		<x>0</x>
 		<y>0</y>
-		<width>6</width>
+		<width>33</width>
 		<height>239</height>
 		<texture_number>0</texture_number>
 	</object>
@@ -155,50 +274,10 @@
 	<object type="Item">
 		<name>BlockingVolume</name>
 		<type>3</type>
-		<x>0</x>
-		<y>0</y>
-		<width>115</width>
-		<height>5</height>
-		<texture_number>0</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>BlockingVolume</name>
-		<type>3</type>
-		<x>118</x>
-		<y>0</y>
-		<width>197</width>
-		<height>6</height>
-		<texture_number>0</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>BlockingVolume</name>
-		<type>3</type>
-		<x>138</x>
-		<y>1</y>
-		<width>181</width>
-		<height>17</height>
-		<texture_number>0</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>BlockingVolume</name>
-		<type>3</type>
-		<x>186</x>
-		<y>9</y>
-		<width>132</width>
-		<height>12</height>
-		<texture_number>0</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>BlockingVolume</name>
-		<type>3</type>
-		<x>262</x>
-		<y>25</y>
-		<width>53</width>
-		<height>1</height>
+		<x>12</x>
+		<y>6</y>
+		<width>307</width>
+		<height>27</height>
 		<texture_number>0</texture_number>
 	</object>
 

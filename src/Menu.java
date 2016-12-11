@@ -99,7 +99,7 @@ public class Menu {
 			if(gameWorld.isSaveGame()){
 				getUIElementByText("new game").setVisibility(false);
 				getUIElementByText("load game").setVisibility(false);
-				getUIElementByText("shogun jedsun").setVisibility(false);
+				getUIElementByText("hamlet: the game").setVisibility(false);
 				getUIElementByText("create game").setVisibility(true);
 				getUIElementByText("cancel").setVisibility(true);
 				getUIElementByText("are you sure? this will clear the existing save.").setVisibility(true);

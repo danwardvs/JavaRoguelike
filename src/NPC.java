@@ -12,6 +12,7 @@ public class NPC extends Item {
 	public NPC(String newName, int newType, int newX, int newY, int newTextureAmount) {
 		super(newName, newType, newX, newY, newTextureAmount);
 		// TODO Auto-generated constructor stub
+		// ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 		;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	}
 

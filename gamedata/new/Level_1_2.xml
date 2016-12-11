@@ -2,243 +2,107 @@
 
 <level>
 	<object type="Item">
-		<name>Tree</name>
-		<type>4</type>
-		<x>105</x>
-		<y>-32</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Tree</name>
-		<type>4</type>
-		<x>273</x>
-		<y>91</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Tree</name>
-		<type>4</type>
-		<x>196</x>
-		<y>174</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Tree</name>
-		<type>4</type>
-		<x>58</x>
-		<y>157</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Tree</name>
-		<type>4</type>
-		<x>44</x>
-		<y>86</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Tree</name>
-		<type>4</type>
-		<x>112</x>
-		<y>127</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Tree</name>
-		<type>4</type>
-		<x>150</x>
-		<y>175</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Tree</name>
-		<type>4</type>
-		<x>181</x>
-		<y>59</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Tree</name>
-		<type>4</type>
-		<x>104</x>
-		<y>33</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Tree</name>
-		<type>4</type>
-		<x>257</x>
-		<y>14</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Tree</name>
-		<type>4</type>
-		<x>215</x>
-		<y>-6</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Tree</name>
-		<type>4</type>
-		<x>64</x>
-		<y>205</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Tree</name>
-		<type>4</type>
-		<x>265</x>
-		<y>203</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Tree</name>
-		<type>4</type>
-		<x>214</x>
-		<y>109</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Rock</name>
-		<type>4</type>
-		<x>140</x>
-		<y>94</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Rock</name>
-		<type>4</type>
-		<x>173</x>
-		<y>124</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Rock</name>
-		<type>4</type>
-		<x>100</x>
-		<y>201</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Rock</name>
-		<type>4</type>
-		<x>65</x>
-		<y>134</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Rock</name>
-		<type>4</type>
-		<x>22</x>
-		<y>174</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Rock</name>
-		<type>4</type>
-		<x>52</x>
-		<y>29</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Rock</name>
-		<type>4</type>
-		<x>267</x>
-		<y>175</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Rock</name>
-		<type>4</type>
-		<x>243</x>
-		<y>215</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Rock</name>
-		<type>4</type>
-		<x>235</x>
-		<y>57</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Rock</name>
-		<type>4</type>
-		<x>275</x>
-		<y>70</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
-		<name>Rock</name>
-		<type>4</type>
-		<x>174</x>
-		<y>9</y>
-		<texture_number>1</texture_number>
-	</object>
-
-	<object type="Item">
 		<name>BlockingVolume</name>
 		<type>3</type>
 		<x>0</x>
 		<y>0</y>
-		<width>7</width>
+		<width>33</width>
 		<height>239</height>
 		<texture_number>0</texture_number>
 	</object>
 
 	<object type="Item">
-		<name>BlockingVolume</name>
-		<type>3</type>
-		<x>5</x>
-		<y>38</y>
-		<width>31</width>
-		<height>37</height>
-		<texture_number>0</texture_number>
+		<name>Tree</name>
+		<type>4</type>
+		<x>63</x>
+		<y>16</y>
+		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
-		<name>BlockingVolume</name>
-		<type>3</type>
-		<x>34</x>
-		<y>45</y>
+		<name>Tree</name>
+		<type>4</type>
+		<x>157</x>
+		<y>23</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>255</x>
+		<y>0</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>250</x>
+		<y>167</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>160</x>
+		<y>180</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>60</x>
+		<y>154</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>198</x>
+		<y>133</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>108</x>
+		<y>-27</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Flower</name>
+		<type>2</type>
+		<x>123</x>
+		<y>41</y>
 		<width>16</width>
-		<height>24</height>
-		<texture_number>0</texture_number>
+		<height>16</height>
+		<texture_number>1</texture_number>
 	</object>
 
 	<object type="Item">
-		<name>BlockingVolume</name>
-		<type>3</type>
-		<x>46</x>
-		<y>51</y>
-		<width>8</width>
-		<height>15</height>
-		<texture_number>0</texture_number>
+		<name>Flower</name>
+		<type>2</type>
+		<x>226</x>
+		<y>207</y>
+		<width>16</width>
+		<height>16</height>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Flower</name>
+		<type>2</type>
+		<x>285</x>
+		<y>15</y>
+		<width>16</width>
+		<height>16</height>
+		<texture_number>1</texture_number>
 	</object>
 
 
