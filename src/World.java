@@ -42,8 +42,8 @@ public class World {
 	private Menu[] gameMenus = new Menu[5];
 	private Character[] gameCharacters = new Character[4];
 	
-	private Texture[][] background = new Texture[7][7];
-	private boolean locationExists[][] = new boolean[7][7];
+	private Texture[][] background = new Texture[10][10];
+	private boolean locationExists[][] = new boolean[10][10];
 	private boolean thisshouldneverbetrue=false;
 	private float scale=1;
 	private boolean scale_direction;
@@ -53,11 +53,23 @@ public class World {
 		
 		locationExists[1][1] = true;
 		locationExists[2][1] = true;
-		locationExists[2][1] = true;
 		locationExists[3][1] = true;
-		locationExists[4][1] = true;
-		locationExists[5][1] = true;
 		locationExists[1][2] = true;
+		locationExists[2][2] = true;
+		locationExists[3][2] = true;
+		locationExists[1][3] = true;
+		locationExists[2][3] = true;
+		locationExists[3][3] = true;
+		
+		locationExists[1][4] = true;
+		locationExists[2][4] = true;
+		locationExists[3][4] = true;
+		locationExists[1][5] = true;
+		locationExists[2][5] = true;
+		locationExists[3][5] = true;
+		locationExists[1][6] = true;
+		locationExists[2][6] = true;
+		locationExists[3][6] = true;
 
 
 		
@@ -525,8 +537,8 @@ public class World {
 	private void loadTextures(){
 		
 		try{
-			for(int i=0; i<6; i++){
-				for(int j=0; j<6; j++){
+			for(int i=0; i<10; i++){
+				for(int j=0; j<10; j++){
 					if(locationExists[i][j])
 						background[i][j] = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("background_"+i+"_"+j+".png"),GL11.GL_NEAREST);
 			
@@ -618,9 +630,7 @@ public class World {
 	public void update(int delta){
 		
 		gameMouse.update();
-		
-		
-		
+			
 
 		
 		if(delta>=0)

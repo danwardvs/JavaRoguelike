@@ -235,8 +235,10 @@ public class Character {
 					gameWorld.getItems().remove(i);
 				}
 				if(gameWorld.getItemByName("Horatio")==gameWorld.getItems().get(i)){
-					gameWorld.setNPCtouching(i);
-					
+					gameWorld.setNPCtouching(i);	
+				}
+				if(gameWorld.getItemByName("Ghost")==gameWorld.getItems().get(i)){
+					gameWorld.setNPCtouching(i);	
 				}
         		
 				
@@ -318,7 +320,7 @@ public class Character {
 			walk_step=0;
 		}
 		
-		
+		/*
 		if(Keyboard.isKeyDown(key_attack_left) && attack_timer==0 && !key_pressed && move_x<=0){
 			direction=true;
 			attack(4);
@@ -344,6 +346,9 @@ public class Character {
 			key_pressed=false;
 		}
 		
+		*/
+		
+		//Hamlet doesnt need no weapons 
 		if(move_x!=0 || move_y!=0){
 			walk_frame++;
 			if(walk_frame==11)

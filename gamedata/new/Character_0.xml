@@ -4,8 +4,8 @@
 		<index>0</index>		
 		<x>200</x>
 		<y>50</y>
-		<world_x>1</world_x>
-		<world_y>1</world_y>
+		<world_x>2</world_x>
+		<world_y>4</world_y>
 		<health>100</health>
 
 	</object>			
