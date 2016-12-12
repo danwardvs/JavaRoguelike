@@ -8,6 +8,7 @@
 		<y>0</y>
 		<width>110</width>
 		<height>33</height>
+		<bounding_y>0</bounding_y>
 		<texture_number>0</texture_number>
 	</object>
 
@@ -18,6 +19,7 @@
 		<y>0</y>
 		<width>109</width>
 		<height>33</height>
+		<bounding_y>0</bounding_y>
 		<texture_number>0</texture_number>
 	</object>
 
@@ -178,6 +180,14 @@
 		<y>229</y>
 		<width>16</width>
 		<height>16</height>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>-14</x>
+		<y>67</y>
 		<texture_number>1</texture_number>
 	</object>
 

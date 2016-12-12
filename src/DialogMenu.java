@@ -42,6 +42,8 @@ public class DialogMenu extends Menu {
 				if(newString!=null && !newString.contains("R:")){
 					createUIElement(new UIElement(10,30,300,20,0.7f,0.9f,0.7f,0.3f,newString,true));
 					createUIElement(new UIElement(80,10,160,15,0.3f,0.9f,0.7f,0.3f,gameWorld.getItems().get(npc_touching).getName(),true));
+					createUIElement(new UIElement(10,215,150,15,0.2f,0.2f,0.2f,0.25f,"Press Q to continue",true));
+
 				}
 				if(newString!=null && newString.contains("R:")){
 					createUIElement(new UIElement(10,30,300,20,0.7f,0.3f,0.3f,0.3f,newString,true));

@@ -1,12 +1,12 @@
 import java.util.ArrayList;
+import org.newdawn.slick.opengl.Texture;
 import java.util.List;
 
 public class NPC extends Item {
 	
-	private boolean alert;
 	private List<String> dialog = new ArrayList<String>();
 	private String dialog_base_reply = "I have nothing for you.";
-	
+	private Texture indicator;
 	
 	
 	public NPC(String newName, int newType, int newX, int newY, int newTextureAmount) {
@@ -14,6 +14,8 @@ public class NPC extends Item {
 		// TODO Auto-generated constructor stub
 		// ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 		;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+		
+		indicator=loadTexture("indicator.png");
 	}
 
 	public NPC(String newName, int newType, int newX, int newY, int newTextureAmount, boolean isAProp) {
@@ -31,6 +33,13 @@ public class NPC extends Item {
 	}
 	public List<String> getDialog(){
 		return dialog;
+	}
+	public void draw(){
+		if(texture!=null)
+			drawTexture(x,y,texture,1,1);
+		if(dialog.size()>0)
+			drawTexture(x+5,y-9,indicator,1,1);
+
 	}
 	
 	

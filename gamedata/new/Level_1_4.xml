@@ -12,7 +12,7 @@
 	<object type="Item">
 		<name>Horatio</name>
 		<type>5</type>
-		<x>200</x>
+		<x>800</x>
 		<y>150</y>
 		<texture_number>1</texture_number>
 		<base_reply>Hello goodbye sir</base_reply>

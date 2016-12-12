@@ -214,11 +214,18 @@ public class WorldLoader {
 						if(type==1)
 							newItem.setDamageOffset(19, 33, 20, 22, 19, 4);
 							
-						if(type==3 && texture_number==0){
+						if(type==3){
 							width = Integer.valueOf(eElement.getElementsByTagName("width").item(0).getTextContent());
 							height = Integer.valueOf(eElement.getElementsByTagName("height").item(0).getTextContent());
 							newItem.setWidth(width);
 							newItem.setHeight(height);
+							try{
+								newItem.setBoundingY(Integer.valueOf(eElement.getElementsByTagName("bounding_y").item(0).getTextContent()));
+
+
+							} catch (Exception e) {
+					    	
+							}
 						}
 			
 						newItem.setItemOffset(10,10,12, 2,12,12,12,18);

@@ -479,6 +479,12 @@ public class World {
 
 				
 			}
+			if(gameItems.get(j).getType() == 3){
+				newLevelEntry += "		<bounding_y>" + gameItems.get(j).getLocalBoundingY() + "</bounding_y>\n";
+
+				
+			}
+			
 			newLevelEntry += "		<texture_number>" + gameItems.get(j).getTextureNumber() + "</texture_number>\n";
 
 			

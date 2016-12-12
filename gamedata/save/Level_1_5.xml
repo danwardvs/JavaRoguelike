@@ -8,6 +8,7 @@
 		<y>0</y>
 		<width>33</width>
 		<height>239</height>
+		<bounding_y>0</bounding_y>
 		<texture_number>0</texture_number>
 	</object>
 
@@ -18,7 +19,6 @@
 		<y>200</y>
 		<texture_number>1</texture_number>
 		<base_reply>Go, avenge me</base_reply>
-		<dialog_1>I am your father's spirit</dialog_1>
 	</object>
 
 	<object type="Item">

@@ -1,6 +1,207 @@
 <?xml version="1.0"?>
 
 <level>
+	<object type="Item">
+		<name>Fountain</name>
+		<type>3</type>
+		<x>100</x>
+		<y>100</y>
+		<width>110</width>
+		<height>29</height>
+		<bounding_y>22</bounding_y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>45</x>
+		<y>36</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>7</x>
+		<y>0</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>247</x>
+		<y>8</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>267</x>
+		<y>133</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>220</x>
+		<y>176</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>43</x>
+		<y>185</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Flower</name>
+		<type>2</type>
+		<x>82</x>
+		<y>178</y>
+		<width>16</width>
+		<height>16</height>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Flower</name>
+		<type>2</type>
+		<x>111</x>
+		<y>191</y>
+		<width>16</width>
+		<height>16</height>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Flower</name>
+		<type>2</type>
+		<x>155</x>
+		<y>196</y>
+		<width>16</width>
+		<height>16</height>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Flower</name>
+		<type>2</type>
+		<x>204</x>
+		<y>184</y>
+		<width>16</width>
+		<height>16</height>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Flower</name>
+		<type>2</type>
+		<x>249</x>
+		<y>151</y>
+		<width>16</width>
+		<height>16</height>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Flower</name>
+		<type>2</type>
+		<x>263</x>
+		<y>105</y>
+		<width>16</width>
+		<height>16</height>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Flower</name>
+		<type>2</type>
+		<x>219</x>
+		<y>57</y>
+		<width>16</width>
+		<height>16</height>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Flower</name>
+		<type>2</type>
+		<x>244</x>
+		<y>71</y>
+		<width>16</width>
+		<height>16</height>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Flower</name>
+		<type>2</type>
+		<x>100</x>
+		<y>44</y>
+		<width>16</width>
+		<height>16</height>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Flower</name>
+		<type>2</type>
+		<x>78</x>
+		<y>67</y>
+		<width>16</width>
+		<height>16</height>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Flower</name>
+		<type>2</type>
+		<x>64</x>
+		<y>83</y>
+		<width>16</width>
+		<height>16</height>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>277</x>
+		<y>40</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>94</x>
+		<y>-33</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>189</x>
+		<y>-3</y>
+		<texture_number>1</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>Tree</name>
+		<type>4</type>
+		<x>83</x>
+		<y>-4</y>
+		<texture_number>1</texture_number>
+	</object>
+
 
 
 </level>

@@ -9,21 +9,24 @@ import java.util.List;
 
 public class Item {
 	
-	private int x;
-	private int y;
+	int x;
+	int y;
 	private String name;
 	private int type;
 	private int width;
 	private int height;
 	private int texture_number;
-	private Texture texture;
-	private Texture texture_2;
+	Texture texture;
+	Texture texture_2;
+	private int bounding_y;
 	private int[] damage_offset_x = new int[3];
 	private int[] damage_offset_y = new int[3];
 	private int[] item_offset_x = new int[4];
 	private int[] item_offset_y = new int[4];
 	private int damage_radius;
 	private int damage;
+
+	
 	
 	public Item(String newName, int newType, int newX, int newY, int newTextureAmount){
 		name = newName;
@@ -32,6 +35,7 @@ public class Item {
 		y = newY;
 		texture_number = newTextureAmount;
 		setTexture(name,texture_number);
+		
 	}
 	
 	/*public Item(String newName, int newType, int newDamageRadius, int newDamage, int newTextureAmount){
@@ -129,7 +133,10 @@ public class Item {
 	public List<String> getDialog(){
 		return null;
 	}
-
+	
+	public void setBoundingY(int newY){
+		bounding_y=newY;
+	}
 	
 	public void setTexture(String newName, int newAmount){
 	
@@ -191,13 +198,13 @@ public class Item {
 		return damage;
 	}
 	public int getHeight(){
-		if(texture_number==0)
+		if(texture_number==0|| (texture_number != 0 && type==3))
 			return height;
 		return texture.getImageHeight();
 	}
 	
 	public int getWidth(){
-		if(texture_number==0)
+		if(texture_number==0 || (texture_number != 0 && type==3))
 			return width;
 		return texture.getImageWidth();
 	}
@@ -209,7 +216,13 @@ public class Item {
 	public int getBoundingY(){
 		if(type==4)
 			return y+getHeight()-8;
+		if(type==3)
+			return y+bounding_y;
 		return y;
+	}
+	
+	public int getLocalBoundingY(){
+		return bounding_y;
 	}
 	
 	public int getBoundingWidth(){
