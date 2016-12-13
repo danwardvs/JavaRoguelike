@@ -38,7 +38,7 @@ public class NPC extends Item {
 		if(texture!=null)
 			drawTexture(x,y,texture,1,1);
 		if(dialog.size()>0)
-			drawTexture(x+5,y-9,indicator,1,1);
+			drawTexture(x+4,y-10,indicator,1,1);
 
 	}
 	

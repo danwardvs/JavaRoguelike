@@ -1,6 +1,15 @@
 <?xml version="1.0"?>
 
 <level>
-	
+	<object type="Item">
+		<name>Claudius</name>
+		<type>5</type>
+		<x>150</x>
+		<y>200</y>
+		<texture_number>1</texture_number>
+		<base_reply>Shoo.</base_reply>
+	</object>
+
+
 
 </level>

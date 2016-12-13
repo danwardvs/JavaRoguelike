@@ -240,6 +240,9 @@ public class Character {
 				if(gameWorld.getItemByName("Ghost")==gameWorld.getItems().get(i)){
 					gameWorld.setNPCtouching(i);	
 				}
+				if(gameWorld.getItemByName("Claudius")==gameWorld.getItems().get(i)){
+					gameWorld.setNPCtouching(i);	
+				}
         		
 				
         		
