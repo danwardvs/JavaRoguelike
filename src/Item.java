@@ -11,20 +11,20 @@ public class Item {
 	
 	int x;
 	int y;
-	private String name;
-	private int type;
-	private int width;
-	private int height;
-	private int texture_number;
+	String name;
+	int type;
+	int width;
+	int height;
+	int texture_number;
 	Texture texture;
 	Texture texture_2;
-	private int bounding_y;
-	private int[] damage_offset_x = new int[3];
-	private int[] damage_offset_y = new int[3];
-	private int[] item_offset_x = new int[4];
-	private int[] item_offset_y = new int[4];
-	private int damage_radius;
-	private int damage;
+	int bounding_y;
+	int[] damage_offset_x = new int[3];
+	int[] damage_offset_y = new int[3];
+	int[] item_offset_x = new int[4];
+	int[] item_offset_y = new int[4];
+	int damage_radius;
+	int damage;
 
 	
 	

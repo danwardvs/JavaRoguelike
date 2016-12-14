@@ -51,6 +51,7 @@ public class Character {
 	private Texture texture_attack_down;
 	private Texture texture_idle;
 	private Texture texture_idle_step;
+	private Texture texture_idle_step_2;
 	
 	private Texture hit;
 	//private Texture debug;
@@ -155,7 +156,10 @@ public class Character {
 			texture_idle = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("CharacterIdle.png"),GL11.GL_NEAREST);
 			
 			texture_idle_step = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("CharacterIdleStep.png"),GL11.GL_NEAREST);
+			
+			texture_idle_step_2 = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("CharacterIdleStep2.png"),GL11.GL_NEAREST);
 
+			
 			hit = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("Hit.png"),GL11.GL_NEAREST);
 			
 			//debug = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("debug.png"),GL11.GL_NEAREST);
@@ -234,16 +238,10 @@ public class Character {
 					}
 					gameWorld.getItems().remove(i);
 				}
-				if(gameWorld.getItemByName("Horatio")==gameWorld.getItems().get(i)){
+				if(gameWorld.getItems().get(i).getType()==5){
 					gameWorld.setNPCtouching(i);	
 				}
-				if(gameWorld.getItemByName("Ghost")==gameWorld.getItems().get(i)){
-					gameWorld.setNPCtouching(i);	
-				}
-				if(gameWorld.getItemByName("Claudius")==gameWorld.getItems().get(i)){
-					gameWorld.setNPCtouching(i);	
-				}
-        		
+				
 				
         		
         	}
@@ -384,10 +382,13 @@ public class Character {
 		
 		switch(state){
 			case 1:
-				if(walk_frame<5)
+				if(walk_frame==0)
 					drawTexture(texture_idle,scaleFromDirection());
-				else
+
+				else if(walk_frame<5)
 					drawTexture(texture_idle_step,scaleFromDirection());
+				else
+					drawTexture(texture_idle_step_2,scaleFromDirection());
 				break;
 				
 			case 2:drawTexture(texture_attack_up,scaleFromDirection());

@@ -2,10 +2,19 @@
 
 <level>
 	<object type="Item">
-		<name>Claudius</name>
+		<name>Gertrude</name>
 		<type>5</type>
 		<x>150</x>
-		<y>200</y>
+		<y>100</y>
+		<texture_number>1</texture_number>
+		<base_reply>Bye, son</base_reply>
+	</object>
+
+	<object type="Item">
+		<name>Claudius</name>
+		<type>5</type>
+		<x>110</x>
+		<y>100</y>
 		<texture_number>1</texture_number>
 		<base_reply>Shoo.</base_reply>
 	</object>
