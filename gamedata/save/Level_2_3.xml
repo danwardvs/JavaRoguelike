@@ -2,10 +2,32 @@
 
 <level>
 	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>0</x>
+		<y>238</y>
+		<width>110</width>
+		<height>33</height>
+		<bounding_y>0</bounding_y>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
+		<name>BlockingVolume</name>
+		<type>3</type>
+		<x>209</x>
+		<y>238</y>
+		<width>109</width>
+		<height>33</height>
+		<bounding_y>0</bounding_y>
+		<texture_number>0</texture_number>
+	</object>
+
+	<object type="Item">
 		<name>Gertrude</name>
 		<type>5</type>
-		<x>150</x>
-		<y>100</y>
+		<x>100</x>
+		<y>90</y>
 		<texture_number>1</texture_number>
 		<base_reply>Bye, son</base_reply>
 	</object>
@@ -13,8 +35,8 @@
 	<object type="Item">
 		<name>Claudius</name>
 		<type>5</type>
-		<x>110</x>
-		<y>100</y>
+		<x>130</x>
+		<y>60</y>
 		<texture_number>1</texture_number>
 		<base_reply>Shoo.</base_reply>
 	</object>

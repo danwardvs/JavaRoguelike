@@ -22,6 +22,17 @@
 	</object>
 
 	<object type="Item">
+		<name>Horatio</name>
+		<type>5</type>
+		<x>130</x>
+		<y>90</y>
+			<texture_number>1</texture_number>
+			<base_reply>Head inside.</base_reply>
+			<dialog_1>Your parents are waiting in the castle</dialog_1>
+		
+	</object>
+
+	<object type="Item">
 		<name>Tree</name>
 		<type>4</type>
 		<x>84</x>

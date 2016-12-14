@@ -46,6 +46,7 @@ public class DialogMenu extends Menu {
 
 				}
 				if(newString!=null && newString.contains("R:")){
+					newString=newString.replace("R:","");
 					createUIElement(new UIElement(10,30,300,20,0.7f,0.3f,0.3f,0.3f,newString,true));
 					createUIElement(new UIElement(80,10,160,15,0.3f,0.3f,0.3f,0.3f,"Hamlet",true));
 				}
