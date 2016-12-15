@@ -30,6 +30,7 @@
 		<y>90</y>
 		<texture_number>1</texture_number>
 		<base_reply>Head inside.</base_reply>
+		<dialog_1>Your parents are waiting in the castle</dialog_1>
 	</object>
 
 	<object type="Item">

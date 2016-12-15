@@ -30,6 +30,26 @@
 		<y>120</y>
 		<texture_number>1</texture_number>
 		<base_reply>Bye, son</base_reply>
+		<dialog_1>Good Hamlet, cast off your black clothes</dialog_1>
+		<dialog_2>and be friendly to the king.</dialog_2>
+		<dialog_3>You can't spend the rest of your life</dialog_3>
+		<dialog_4>looking at the ground remembering your</dialog_4>
+		<dialog_5>noble father. You know it happens all</dialog_5>
+		<dialog_6>the time. What lives must die eventually.</dialog_6>
+		<dialog_7>R:Yes madam, it is common.</dialog_7>
+		<dialog_8>Why does it seem so particular with you?</dialog_8>
+		<dialog_9>R:"Seems", madam? No, it is. I don't know</dialog_9>
+		<dialog_10>R:what you mean by seem. Neither my black</dialog_10>
+		<dialog_11>R:clothes, my heavy sighs, my weeping, or</dialog_11>
+		<dialog_12>R:any other diplay of grief can show how</dialog_12>
+		<dialog_13>R:how I'm really feeling. I have much more</dialog_13>
+		<dialog_14>R:grief inside me that you could ever see</dialog_14>
+		<dialog_15>R:on the outside. My black clothes are just</dialog_15>
+		<dialog_16>R:a hint of it.</dialog_16>
+		<dialog_17>Let not a mother lose her prayers, Hamlet.</dialog_17>
+		<dialog_18>I pray thee, stay with us. Don't go</dialog_18>
+		<dialog_19>to Wittenberg.</dialog_19>
+		<dialog_20>R:I shall obey you best I can, madam.</dialog_20>
 	</object>
 
 	<object type="Item">
@@ -39,6 +59,32 @@
 		<y>130</y>
 		<texture_number>1</texture_number>
 		<base_reply>Get going, son.</base_reply>
+		<dialog_1>Why are you still so gloomy, with</dialog_1>
+		<dialog_2>clouds over your head?</dialog_2>
+		<dialog_3>R:Not so. I am too much in the sun.</dialog_3>
+		<dialog_4>It's commendable in your nature, Hamlet,</dialog_4>
+		<dialog_5>to mourn your father like this.</dialog_5>
+		<dialog_6>But remember, your father lost his.</dialog_6>
+		<dialog_7>That father lost his, and it continues.</dialog_7>
+		<dialog_8>But mourning too long is stubborn</dialog_8>
+		<dialog_9>and unmanly. It's not the right will</dialog_9>
+		<dialog_10>to have before God.</dialog_10>
+		<dialog_11>It shows a vulnerable heart and an</dialog_11>
+		<dialog_12>ingorant and weak heart.</dialog_12>
+		<dialog_13>Since we know everyone dies eventually,</dialog_13>
+		<dialog_14>why should we take it to heart?</dialog_14>
+		<dialog_15>It's a fault to heaven, a fault against</dialog_15>
+		<dialog_16>the dead, and a fault against nature.</dialog_16>
+		<dialog_17>It's irrational, since every father must die.</dialog_17>
+		<dialog_18>Please give up this useless mourning, and start</dialog_18>
+		<dialog_19>thinking of me as your new father.</dialog_19>
+		<dialog_20>Everyone knows you are the man closest</dialog_20>
+		<dialog_21>to this throne. I love you just as much</dialog_21>
+		<dialog_22>as any father loves his son.</dialog_22>
+		<dialog_23>I don't want you to go back to Wittenburg.</dialog_23>
+		<dialog_24>I'm asking you to stay here in my company</dialog_24>
+		<dialog_25>as my number one member of my court, my</dialog_25>
+		<dialog_26>nephew and now my son.</dialog_26>
 	</object>
 
 
