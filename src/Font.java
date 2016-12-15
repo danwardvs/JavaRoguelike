@@ -8,7 +8,7 @@ import org.newdawn.slick.util.ResourceLoader;
 
 public class Font {
 	
-	private final int CHARACTER_AMOUNT=42;
+	private final int CHARACTER_AMOUNT=43;
 	private Texture[] character = new Texture[CHARACTER_AMOUNT];
 	
 	public void loadFont(){
@@ -163,6 +163,10 @@ public class Font {
 			else if(c=='\'')
 				drawTexture(offset,newY,character[41],newSize);
 		
+			else if(c=='\"')
+				drawTexture(offset,newY,character[42],newSize);
+		
+			
 			else if(c!=' ')
 				drawTexture(offset,newY,character[12],newSize);
 			

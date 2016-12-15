@@ -189,7 +189,7 @@ public class WorldLoader {
 							base_reply = eElement.getElementsByTagName("base_reply").item(0).getTextContent();
 							newItem.setBaseReply(base_reply);
 							
-							for(int i=0; i<10; i++){
+							for(int i=0; i<50; i++){
 								try{
 									newItem.addDialog(eElement.getElementsByTagName("dialog_"+i).item(0).getTextContent());
 
