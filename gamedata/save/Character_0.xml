@@ -3,8 +3,8 @@
 <level>
 	<object type="Character">
 		<index>0</index>
-		<x>141</x>
-		<y>70</y>
+		<x>180</x>
+		<y>50</y>
 		<world_x>2</world_x>
 		<world_y>4</world_y>
 		<health>100</health>
