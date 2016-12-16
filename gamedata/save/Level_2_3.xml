@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 
 <level>
+
+
 	<object type="Item">
 		<name>BlockingVolume</name>
 		<type>3</type>
@@ -8,7 +10,6 @@
 		<y>238</y>
 		<width>110</width>
 		<height>33</height>
-		<bounding_y>0</bounding_y>
 		<texture_number>0</texture_number>
 	</object>
 
@@ -19,9 +20,9 @@
 		<y>238</y>
 		<width>109</width>
 		<height>33</height>
-		<bounding_y>0</bounding_y>
 		<texture_number>0</texture_number>
 	</object>
+
 
 	<object type="Item">
 		<name>Gertrude</name>
@@ -49,7 +50,8 @@
 		<dialog_17>Let not a mother lose her prayers, Hamlet.</dialog_17>
 		<dialog_18>I pray thee, stay with us. Don't go</dialog_18>
 		<dialog_19>to Wittenberg.</dialog_19>
-		<dialog_20>R:I shall obey you best I can, madam.</dialog_20>
+		<dialog_20>R:I shall obey you best I can, madam.</dialog_20>	
+	
 	</object>
 
 	<object type="Item">
@@ -85,8 +87,17 @@
 		<dialog_24>I'm asking you to stay here in my company</dialog_24>
 		<dialog_25>as my number one member of my court, my</dialog_25>
 		<dialog_26>nephew and now my son.</dialog_26>
+
+
+
+
+
+
+
+
+
+
+
 	</object>
-
-
 
 </level>

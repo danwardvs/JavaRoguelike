@@ -1,0 +1,48 @@
+﻿asfds
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   .classpath
+#	new file:   build/Hamlet.jar
+#	new file:   build/Hamlet2.jar
+#	new file:   build/Hamlet23.jar
+#	modified:   gamedata/save/Character_0.xml
+#	modified:   gamedata/save/Level_2_3.xml
+#	new file:   native/linux/libjinput-linux.so
+#	new file:   native/linux/libjinput-linux64.so
+#	new file:   native/linux/liblwjgl.so
+#	new file:   native/linux/liblwjgl64.so
+#	new file:   native/linux/libopenal.so
+#	new file:   native/linux/libopenal64.so
+#	new file:   native/macosx/libjinput-osx.dylib
+#	new file:   native/macosx/liblwjgl.dylib
+#	new file:   native/macosx/openal.dylib
+#	new file:   native/solaris/liblwjgl.so
+#	new file:   native/solaris/liblwjgl64.so
+#	new file:   native/solaris/libopenal.so
+#	new file:   native/solaris/libopenal64.so
+#	renamed:    src/Button.java -> src/myGame/Button.java
+#	renamed:    src/Character.java -> src/myGame/Character.java
+#	renamed:    src/DialogMenu.java -> src/myGame/DialogMenu.java
+#	renamed:    src/EditorMenu.java -> src/myGame/EditorMenu.java
+#	renamed:    src/Enemy.java -> src/myGame/Enemy.java
+#	renamed:    src/Font.java -> src/myGame/Font.java
+#	renamed:    src/Item.java -> src/myGame/Item.java
+#	renamed:    src/KeyboardHandler.java -> src/myGame/KeyboardHandler.java
+#	renamed:    src/Menu.java -> src/myGame/Menu.java
+#	renamed:    src/MouseHandler.java -> src/myGame/MouseHandler.java
+#	renamed:    src/NPC.java -> src/myGame/NPC.java
+#	renamed:    src/Particle.java -> src/myGame/Particle.java
+#	renamed:    src/TextBox.java -> src/myGame/TextBox.java
+#	renamed:    src/UIElement.java -> src/myGame/UIElement.java
+#	renamed:    src/World.java -> src/myGame/World.java
+#	renamed:    src/WorldLoader.java -> src/myGame/WorldLoader.java
+#	renamed:    src/main.java -> src/myGame/main.java
+#
+# Untracked files:
+#	c3n132o5.bj0.txt
+#
+

@@ -2,13 +2,13 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/home/danwardvs/javalib/jar/lwjgl.jar">
+	<classpathentry kind="lib" path="C:/Libraries/lwjgl-2.9.3/jar/lwjgl.jar">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/home/danwardvs/javalib/native/linux"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Libraries/lwjgl-2.9.3/native/windows"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/danwardvs/javalib/jar/lwjgl_util.jar"/>
-	<classpathentry kind="lib" path="/home/danwardvs/javalib/jar/slick-util.jar"/>
-	<classpathentry kind="lib" path="/home/danwardvs/javalib/jar/commons-io-2.5.jar"/>
+	<classpathentry kind="lib" path="C:/Libraries/lwjgl-2.9.3/jar/lwjgl_util.jar"/>
+	<classpathentry kind="lib" path="C:/Libraries/lwjgl-2.9.3/jar/slick-util.jar"/>
+	<classpathentry kind="lib" path="C:/Libraries/commons-io-2.5-bin/commons-io-2.5/commons-io-2.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
