@@ -9,7 +9,7 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Libraries/lwjgl-2.9.3/jar/lwjgl_util.jar"/>
 	<classpathentry kind="lib" path="C:/Libraries/lwjgl-2.9.3/jar/slick-util.jar"/>
-	<classpathentry kind="lib" path="C:/Libraries/commons-io-2.5-bin/commons-io-2.5/commons-io-2.5.jar"/>
+	<classpathentry kind="lib" path="C:/Libraries/commons-io-2.5-bin/commons-io-2.5/commons-io-2.5.jar" sourcepath="C:/Libraries/commons-io-2.5-bin/commons-io-2.5/docs/org"/>
 	<classpathentry kind="lib" path="gamedata"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
